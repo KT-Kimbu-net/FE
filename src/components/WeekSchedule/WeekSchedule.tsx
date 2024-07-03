@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import TeamLogo from "@/img/TeamLogo.svg";
+import Lg from "@/img/TeamLogo/Lg.svg";
 
 export default function WeekSchedule() {
   const scheduleListStyle =
@@ -16,7 +16,7 @@ export default function WeekSchedule() {
             <span>6.24</span>
             <span>잠실</span>
           </section>
-          <Image src={TeamLogo} alt={"team logo"} />
+          <Image src={Lg} alt={"team logo"} />
           <section>
             <span>2</span>
             <span> : </span>
@@ -28,7 +28,7 @@ export default function WeekSchedule() {
             <span>6.24</span>
             <span>잠실</span>
           </section>
-          <Image src={TeamLogo} alt={"team logo"} />
+          <Image src={Lg} alt={"team logo"} />
           <section>
             <span>2</span>
             <span> : </span>
@@ -40,7 +40,7 @@ export default function WeekSchedule() {
             <span>6.24</span>
             <span>잠실</span>
           </section>
-          <Image src={TeamLogo} alt={"team logo"} />
+          <Image src={Lg} alt={"team logo"} />
           <section>
             <span>2</span>
             <span> : </span>
@@ -52,7 +52,7 @@ export default function WeekSchedule() {
             <span>6.24</span>
             <span>잠실</span>
           </section>
-          <Image src={TeamLogo} alt={"team logo"} />
+          <Image src={Lg} alt={"team logo"} />
           <section>
             <span>2</span>
             <span> : </span>
@@ -64,7 +64,7 @@ export default function WeekSchedule() {
             <span>6.24</span>
             <span>잠실</span>
           </section>
-          <Image src={TeamLogo} alt={"team logo"} />
+          <Image src={Lg} alt={"team logo"} />
           <button>예매하기</button>
           {/* <section>
               <span>2</span>
@@ -77,7 +77,7 @@ export default function WeekSchedule() {
             <span>6.24</span>
             <span>잠실</span>
           </section>
-          <Image src={TeamLogo} alt={"team logo"} />
+          <Image src={Lg} alt={"team logo"} />
           <section>
             <span>2</span>
             <span> : </span>
@@ -89,7 +89,7 @@ export default function WeekSchedule() {
             <span>6.24</span>
             <span>잠실</span>
           </section>
-          <Image src={TeamLogo} alt={"team logo"} />
+          <Image src={Lg} alt={"team logo"} />
           <section>
             <span>2</span>
             <span> : </span>

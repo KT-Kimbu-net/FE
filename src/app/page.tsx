@@ -1,6 +1,7 @@
 import Image from "next/image";
 import bgImage from "@/img/BgImage.svg";
 import WeekSchedule from "@/components/WeekSchedule/WeekSchedule";
+import LeagueRanking from "@/components/LeagueRanking/LeagueRanking";
 
 export default function Page() {
   return (
@@ -18,11 +19,8 @@ export default function Page() {
           </section>
         </section>
       </section>
-      {/* 주간일정 */}
       <WeekSchedule />
-      <section className="w-full p-10 bg-blue-500">
-        하이라이트 및 사진, 리그랭킹
-      </section>
+      <LeagueRanking />
       <section className="w-full p-10 bg-blue-700">공지사항</section>
       <section className="w-full p-10 bg-blue-900">스폰서</section>
     </>
