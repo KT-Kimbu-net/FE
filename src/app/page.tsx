@@ -2,6 +2,7 @@ import Image from "next/image";
 import bgImage from "@/img/BgImage.svg";
 import WeekSchedule from "@/components/WeekSchedule/WeekSchedule";
 import LeagueRanking from "@/components/LeagueRanking/LeagueRanking";
+import Notice from "@/components/Notice/Notice";
 
 export default function Page() {
   return (
@@ -21,7 +22,7 @@ export default function Page() {
       </section>
       <WeekSchedule />
       <LeagueRanking />
-      <section className="w-full p-10 bg-blue-700">공지사항</section>
+      <Notice />
       <section className="w-full p-10 bg-blue-900">스폰서</section>
     </>
   );

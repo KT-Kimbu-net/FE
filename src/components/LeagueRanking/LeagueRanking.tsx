@@ -9,6 +9,7 @@ import Hanwha from "@/img/TeamLogo/Hanwha.svg";
 import Lotte from "@/img/TeamLogo/Lotte.svg";
 import Kiwoom from "@/img/TeamLogo/Kiwoom.svg";
 import RankingList from "./RankingList";
+import HighLights from "../HighLights/HighLights";
 
 const LeagueRankingDummyData = [
   {
@@ -115,10 +116,8 @@ const LeagueRankingDummyData = [
 
 export default function LeagueRanking() {
   return (
-    <section className="w-full flex h-[46rem]">
-      <section className="w-2/3 bg-white p-10">
-        <section>HighLights</section>
-      </section>
+    <section className="w-full flex">
+      <HighLights />
       <section className="w-1/3 bg-black p-10">
         <section className="text-white text-2xl">League Ranking</section>
         <table className="mt-6 w-full border-collapse">
