@@ -11,19 +11,19 @@ export default function Shortcuts() {
     <ul className="w-3/4 flex justify-between gap-5">
       <li className={shortcutListStlye}>
         <Image src={shop} alt="shortcut shop" className="w-[50rem]" />
-        <span className="text-2xl text-white absolute top-[10%] left-[10%]">
+        <span className="text-2xl text-white absolute top-[10%] left-[10%] font-[Leferi]">
           KT WIZ Shop
         </span>
       </li>
       <li className={shortcutListStlye}>
         <Image src={ticket} alt="shortcut shop" className="w-[50rem]" />
-        <span className="text-2xl text-white absolute top-[10%] left-[10%]">
+        <span className="text-2xl text-white absolute top-[10%] left-[10%] font-[Leferi]">
           Ticket
         </span>
       </li>
       <li className={shortcutListStlye}>
         <Image src={parking} alt="shortcut shop" className="w-[50rem]" />
-        <span className="text-2xl text-white absolute top-[10%] left-[10%]">
+        <span className="text-2xl text-white absolute top-[10%] left-[10%] font-[Leferi]">
           Parking
         </span>
       </li>

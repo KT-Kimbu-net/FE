@@ -11,12 +11,16 @@ export default function Match() {
 
   return (
     <section className="flex flex-col w-2/5 items-center gap-6">
-      <section className="text-xl">Match</section>
+      <section className="text-xl font-[Leferi]">Match</section>
       <section className="w-full flex justify-between">
         <Image src={prevArrow} alt="prev game match" />
         <section className="flex gap-2 items-center">
-          <section className="text-base">06.25 ( 화 ) 18:30 </section>
-          <span className="text-sm">수원 Kt wiz 파크</span>
+          <section className="text-base font-[Pretendard-ExtraBold]">
+            06.25 ( 화 ) 18:30
+          </section>
+          <span className="text-sm font-[Pretendard-SemiBold]">
+            수원 Kt wiz 파크
+          </span>
           <section className="border-[1px]">60%</section>
         </section>
         <Image src={subseArrow} alt="next game match" />
@@ -55,12 +59,13 @@ export default function Match() {
             스코어
           </span>
         </section>
+        {/* 라이브스코어 컴포넌트화 필수 */}
         <table className="border-collapse w-full">
           <thead className="bg-gray-800">
             <tr className="text-white">
               <th scope="col" className="rounded-tl-xl w-20"></th>
               <th scope="col" className={inningThStyle}>
-                <span>1</span>
+                1
               </th>
               <th scope="col" className={inningThStyle}>
                 2
@@ -162,55 +167,62 @@ export default function Match() {
             팀 전력비교
           </span>
         </section>
-        <table className="border-separate mt-4">
+        {/* 컴포넌트화 필수 */}
+        <table className="border-collapse mt-4">
           <thead></thead>
           <tbody>
             <tr>
               <td className="flex items-center flex-col">
                 <Image src={Kt} alt="kt" />
-                <strong className="text-lg">KT Wiz</strong>
+                <strong className="text-lg mt-2">KT Wiz</strong>
               </td>
-              <th className="align-bottom">vs</th>
+              <th className="align-bottom font-[Leferi] text-gray-500 text-lg">
+                vs
+              </th>
               <td className="flex items-center flex-col">
                 <Image src={Kia} alt="kia" />
-                <strong className="text-lg">Kia Tigers</strong>
+                <strong className="text-lg mt-2">Kia Tigers</strong>
               </td>
             </tr>
-            <tr>
-              <td className="text-center">9</td>
-              <th>현재순위</th>
-              <td className="text-center">1</td>
+            <tr className="bg-[#f3f3f3]">
+              <td className="text-center py-2 font-[Pretendard-SemiBold] bg-[#f3f3f3] text-lg rounded-tl-xl">
+                9
+              </td>
+              <th className="py-2">현재순위</th>
+              <td className="text-center py-2 font-[Pretendard-SemiBold] text-lg text-main rounded-tr-xl">
+                1
+              </td>
             </tr>
-            <tr>
-              <td className="text-center">33승 1무 43패</td>
-              <th>시즌 성적</th>
-              <td className="text-center">45승 2무 30패</td>
+            <tr className="bg-[#f3f3f3]">
+              <td className="text-center py-2">33승 1무 43패</td>
+              <th className="py-2">시즌 성적</th>
+              <td className="text-center py-2">45승 2무 30패</td>
             </tr>
-            <tr>
-              <td className="text-center">5승 2패</td>
-              <th>상대 전적</th>
-              <td className="text-center">2승 5패</td>
+            <tr className="bg-[#f3f3f3]">
+              <td className="text-center py-2">5승 2패</td>
+              <th className="py-2">상대 전적</th>
+              <td className="text-center py-2">2승 5패</td>
             </tr>
-            <tr>
-              <td className="text-center">0.434</td>
-              <th>승률</th>
-              <td className="text-center">0.600</td>
+            <tr className="bg-[#f3f3f3]">
+              <td className="text-center py-2">0.434</td>
+              <th className="py-2">승률</th>
+              <td className="text-center py-2">0.600</td>
             </tr>
-            <tr>
-              <td className="text-center relative">
+            <tr className="bg-[#f3f3f3]">
+              <td className="text-center relative rounded-bl-xl">
                 <span>고영표</span>
                 <Image
                   src={luck}
                   alt="luck"
-                  className="absolute right-6 top-1/2 translate-y-[-50%]"
+                  className="absolute right-8 top-1/2 translate-y-[-50%]"
                 />
               </td>
               <th className="py-2">선발투수</th>
-              <td className="text-center relative">
+              <td className="text-center relative rounded-br-xl">
                 <Image
                   src={luck}
                   alt="luck"
-                  className="absolute left-6 top-1/2 translate-y-[-50%]"
+                  className="absolute left-8 top-1/2 translate-y-[-50%]"
                 />
                 <span>양현종</span>
               </td>
