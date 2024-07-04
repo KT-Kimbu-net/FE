@@ -7,6 +7,8 @@ export default function WeekSchedule() {
   const scheduleListStyle =
     "px-3 py-4 bg-white h-52 w-[15%] flex flex-col justify-between gap-4 items-center border-r-2 border-black";
 
+  const teamLogoStyle = "w-1/3";
+
   return (
     <section className="w-full p-10 bg-black flex flex-col gap-10">
       <section className="text-white text-2xl">Weekend Schedule</section>
@@ -16,7 +18,7 @@ export default function WeekSchedule() {
             <span>6.24</span>
             <span>잠실</span>
           </section>
-          <Image src={Lg} alt={"team logo"} />
+          <Image src={Lg} alt={"team logo"} className={teamLogoStyle} />
           <section>
             <span>2</span>
             <span> : </span>
@@ -28,7 +30,7 @@ export default function WeekSchedule() {
             <span>6.24</span>
             <span>잠실</span>
           </section>
-          <Image src={Lg} alt={"team logo"} />
+          <Image src={Lg} alt={"team logo"} className={teamLogoStyle} />
           <section>
             <span>2</span>
             <span> : </span>
@@ -40,7 +42,7 @@ export default function WeekSchedule() {
             <span>6.24</span>
             <span>잠실</span>
           </section>
-          <Image src={Lg} alt={"team logo"} />
+          <Image src={Lg} alt={"team logo"} className={teamLogoStyle} />
           <section>
             <span>2</span>
             <span> : </span>
@@ -52,7 +54,7 @@ export default function WeekSchedule() {
             <span>6.24</span>
             <span>잠실</span>
           </section>
-          <Image src={Lg} alt={"team logo"} />
+          <Image src={Lg} alt={"team logo"} className={teamLogoStyle} />
           <section>
             <span>2</span>
             <span> : </span>
@@ -64,7 +66,7 @@ export default function WeekSchedule() {
             <span>6.24</span>
             <span>잠실</span>
           </section>
-          <Image src={Lg} alt={"team logo"} />
+          <Image src={Lg} alt={"team logo"} className={teamLogoStyle} />
           <button>예매하기</button>
           {/* <section>
               <span>2</span>
@@ -77,7 +79,7 @@ export default function WeekSchedule() {
             <span>6.24</span>
             <span>잠실</span>
           </section>
-          <Image src={Lg} alt={"team logo"} />
+          <Image src={Lg} alt={"team logo"} className={teamLogoStyle} />
           <section>
             <span>2</span>
             <span> : </span>
@@ -89,7 +91,7 @@ export default function WeekSchedule() {
             <span>6.24</span>
             <span>잠실</span>
           </section>
-          <Image src={Lg} alt={"team logo"} />
+          <Image src={Lg} alt={"team logo"} className={teamLogoStyle} />
           <section>
             <span>2</span>
             <span> : </span>

@@ -32,12 +32,6 @@ export default function Notice() {
         <li className="bg-[#f1f1f1] w-fit py-12">
           <Image src={NoticeExam} alt="notice" />
         </li>
-        <li className="bg-[#f1f1f1] w-fit py-12">
-          <Image src={NoticeExam} alt="notice" />
-        </li>
-        <li className="bg-[#f1f1f1] w-fit py-12">
-          <Image src={NoticeExam} alt="notice" />
-        </li>
       </ul>
     </section>
   );

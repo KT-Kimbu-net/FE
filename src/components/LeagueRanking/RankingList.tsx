@@ -13,7 +13,7 @@ type TRankingList = {
 
 export default function RankingList(props: TRankingList) {
   const trStyle = props.teamName === "KT" ? " border-[3px] bg-gray-800" : "";
-  const tdStyle = "text-center py-3";
+  const tdStyle = "text-center py-[3%]";
   const teamLogoStyle =
     "absolute left-[-0.5rem] top-1/2 translate-y-[-50%] w-8 h-8";
 

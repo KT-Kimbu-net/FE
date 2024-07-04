@@ -3,20 +3,22 @@ import bgImage from "@/img/BgImage.svg";
 import WeekSchedule from "@/components/WeekSchedule/WeekSchedule";
 import LeagueRanking from "@/components/LeagueRanking/LeagueRanking";
 import Notice from "@/components/Notice/Notice";
+import GameInfo from "@/components/GameInfo/GameInfo";
+import Shortcuts from "@/components/Shortcuts/Shortcuts";
 
 export default function Page() {
   return (
     <>
       <section>
-        <Image src={bgImage} alt={"bg"} className="w-full" />
-        <section className="absolute top-16 p-10 w-full flex flex-col gap-12">
+        {/* <Image src={bgImage} alt={"bg"} className="w-full h-full" /> */}
+        <section className="p-10 w-full flex flex-col gap-12 bg-[url('/img/BgImage.svg')]">
           <section className="flex gap-14">
-            <section className="bg-white w-2/3">heloo</section>
-            <section className="bg-white w-1/3">hello</section>
+            <GameInfo />
+            <section className="bg-white w-1/4">채팅</section>
           </section>
           <section className="flex gap-14">
-            <section className="bg-white w-2/3">heloo</section>
-            <section className="bg-white w-1/3">hello</section>
+            <Shortcuts />
+            <section className="bg-white w-1/4">승부예측</section>
           </section>
         </section>
       </section>
