@@ -1,5 +1,3 @@
-import Image from "next/image";
-import bgImage from "@/img/BgImage.svg";
 import WeekSchedule from "@/components/WeekSchedule/WeekSchedule";
 import LeagueRanking from "@/components/LeagueRanking/LeagueRanking";
 import Notice from "@/components/Notice/Notice";
@@ -10,7 +8,6 @@ export default function Page() {
   return (
     <>
       <section>
-        {/* <Image src={bgImage} alt={"bg"} className="w-full h-full" /> */}
         <section className="p-10 w-full flex flex-col gap-12 bg-[url('/img/BgImage.svg')]">
           <section className="flex gap-14">
             <GameInfo />
