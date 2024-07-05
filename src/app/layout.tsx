@@ -1,4 +1,6 @@
 import Header from "@/components/header/Header";
+import ModalContainer from "@/components/ModalContainer";
+
 import "./globals.css";
 import { Noto_Sans_KR } from "next/font/google";
 import Footer from "@/components/footer/Footer";
@@ -17,8 +19,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={notoSansKr.className}>
+        <div id="modalLayout" />
+        <div id="modalContent" />
         <Header />
         {children}
+        <ModalContainer />
         <Footer />
       </body>
     </html>
