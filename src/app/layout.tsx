@@ -1,4 +1,8 @@
+import Header from "@/components/header/Header";
 import "./globals.css";
+import { Noto_Sans_KR } from "next/font/google";
+import Footer from "@/components/footer/Footer";
+const notoSansKr = Noto_Sans_KR({ subsets: ["latin"] });
 
 export const metadata = {
   title: "WINNING KT : WE ARE GREAT MAGIC",
@@ -12,7 +16,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className={notoSansKr.className}>
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
