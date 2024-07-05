@@ -1,3 +1,4 @@
+import ModalContainer from "@/components/ModalContainer";
 import "./globals.css";
 
 export const metadata = {
@@ -12,7 +13,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <div id="modalLayout" />
+        <div id="modalContent" />
+        {children}
+        <ModalContainer />
+      </body>
     </html>
   );
 }
