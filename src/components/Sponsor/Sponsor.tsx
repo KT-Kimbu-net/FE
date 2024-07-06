@@ -33,18 +33,18 @@ const responsive = {
 
 export default function Sponsor() {
   return (
-    <section className="w-full">
+    <section className="w-ful py-4">
       <Carousel
         swipeable={false}
         draggable={false}
         responsive={responsive}
         ssr={true}
         infinite={true}
-        // autoPlay={true}
-        // autoPlaySpeed={1000}
-        keyBoardControl={true}
-        customTransition="all .5"
-        transitionDuration={500}
+        autoPlay={true}
+        autoPlaySpeed={1000}
+        // keyBoardControl={true}
+        customTransition="transform 1000ms linear"
+        transitionDuration={1000}
         containerClass="carousel-container"
         removeArrowOnDeviceType={["tablet", "mobile"]}
         // deviceType={this.props.deviceType}
