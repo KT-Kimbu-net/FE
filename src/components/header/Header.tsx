@@ -92,10 +92,10 @@ export default function Header() {
 
   return (
     <header className="bg-white fixed top-0 left-0 w-full z-50">
-      <div className="sm:px-6 lg:px-8">
-        <div className="hidden md:flex h-16 relative border-b border-gray-200">
+      <div className="relative sm:px-6 lg:px-8">
+        <div className="hiddne justify-center md:flex h-16 relative border-b border-gray-200">
           {/* 좌측 로고 */}
-          <div className="">
+          <div className="absolute left-0 top-1/2 translate-y-[-50%]">
             <Link href="/">
               <Image
                 src="/img-logo-black.svg"
@@ -108,14 +108,14 @@ export default function Header() {
 
           {/* 중앙 메뉴 항목들 */}
           <nav
-            className="flex justify-center flex-grow space-x-7"
+            className="flex justify-center flex-grow"
             onMouseEnter={handleMouseEnter}
           >
             {menus.map((menu, index) => (
-              <div key={index} className="flex items-center">
+              <div key={index} className="flex items-center text-center">
                 <Link
                   href="#"
-                  className="text-black font-semibold hover:bg-gray-200 rounded-lg p-2"
+                  className="text-black font-semibold hover:bg-gray-200 rounded-lg p-2 w-28"
                 >
                   {menu.title}
                 </Link>
@@ -124,7 +124,7 @@ export default function Header() {
           </nav>
 
           {/* 우측 버튼들 */}
-          <div className="ml-auto flex items-center space-x-4">
+          <div className="ml-auto flex items-center space-x-4 absolute right-0 top-1/2 translate-y-[-50%]">
             <Link href="/login" className="text-black font-normal">
               로그인
             </Link>
@@ -142,20 +142,20 @@ export default function Header() {
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          <div className="max-w-7xl space-x-2 m-auto">
-            <div className="flex justify-center py-4 pr-20">
+          <div className="w-full m-auto">
+            <div className="flex justify-center py-4">
               {menus.map((submenu, submenuIndex) => (
                 <div
                   key={submenuIndex}
                   className={`${
                     submenuIndex > 0 ? "border-l border-gray-300" : ""
-                  } pl-4`}
+                  }`}
                 >
-                  <ul>
+                  <ul className="text-center w-28 flex flex-col">
                     {submenu.items.map((item, itemIndex) => (
                       <li key={itemIndex} className="py-1">
                         <Link href={item.link}>
-                          <div className="text-black hover:bg-gray-200 block px-2 py-1 -translate-x-5">
+                          <div className="text-black hover:bg-gray-200 block py-1">
                             {item.name}
                           </div>
                         </Link>

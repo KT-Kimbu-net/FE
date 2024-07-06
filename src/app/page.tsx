@@ -3,6 +3,7 @@ import LeagueRanking from "@/components/LeagueRanking/LeagueRanking";
 import Notice from "@/components/Notice/Notice";
 import GameInfo from "@/components/GameInfo/GameInfo";
 import Shortcuts from "@/components/Shortcuts/Shortcuts";
+import MatchBet from "@/components/MatchBet/MatchBet";
 
 export default function Page() {
   return (
@@ -15,7 +16,7 @@ export default function Page() {
           </section>
           <section className="flex gap-14">
             <Shortcuts />
-            <section className="bg-white w-1/4">승부예측</section>
+            <MatchBet />
           </section>
         </section>
       </section>

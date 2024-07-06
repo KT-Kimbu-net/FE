@@ -58,7 +58,7 @@ const data = {
   ],
 };
 
-export default function MatchPredict() {
+export default function PHMatchPredict() {
   return (
     <section className="flex flex-col w-2/5 items-center">
       <section className="font-[Leferi] text-lg">투수 vs 타자 예측</section>
@@ -132,7 +132,7 @@ export default function MatchPredict() {
             </li>
           </ul>
         </section>
-        <span className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] font-[Pretendard-Bold] text-[#3e3e3e] text-xl">
+        <span className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] font-[Pretendard-Bold] text-[#3e3e3e] text-2xl">
           vs
         </span>
         <section className="w-1/2 bg-[#D4D4D4] rounded-2xl flex flex-col items-center py-6 px-5 before:content-['선택타자기록'] before:font-[Pretendard-Bold] before:border-[1px] before:py-3 before:px-8 before:rounded-xl before:text-[#242424] before:bg-white before:absolute before:top-[-2rem]">
