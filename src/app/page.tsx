@@ -4,6 +4,7 @@ import Notice from "@/components/Notice/Notice";
 import GameInfo from "@/components/GameInfo/GameInfo";
 import Shortcuts from "@/components/Shortcuts/Shortcuts";
 import MatchBet from "@/components/MatchBet/MatchBet";
+import Sponsor from "@/components/Sponsor/Sponsor";
 
 export default function Page() {
   return (
@@ -23,7 +24,7 @@ export default function Page() {
       <WeekSchedule />
       <LeagueRanking />
       <Notice />
-      <section className="w-full p-10 bg-blue-900">스폰서</section>
+      <Sponsor />
     </>
   );
 }
