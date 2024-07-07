@@ -13,7 +13,7 @@ export default function Notice() {
           className="cursor-pointer"
         />
       </section>
-      <ul className="flex flex-nowrap gap-16 mt-8 w-full overflow-x-hidden">
+      <ul className="flex flex-nowrap justify-between mt-8 w-full overflow-x-hidden">
         <li className="bg-[#f1f1f1] w-fit py-12">
           <Image src={NoticeExam} alt="notice" />
         </li>
