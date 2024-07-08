@@ -40,8 +40,8 @@ export default function HighLights() {
     <section className="w-2/3 bg-white p-10">
       <section className="w-full flex items-center justify-between">
         <section className="flex gap-14 text-2xl">
-          <span>HighLights</span>
-          <span>Photo</span>
+          <span className="font-[Leferi]">HighLights</span>
+          <span className="font-[Leferi]">Photo</span>
         </section>
         <Image src={seeMore} alt="더 보기" className="cursor-pointer" />
       </section>

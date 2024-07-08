@@ -119,7 +119,9 @@ export default function LeagueRanking() {
     <section className="w-full flex">
       <HighLights />
       <section className="w-1/3 bg-black p-10">
-        <section className="text-white text-2xl">League Ranking</section>
+        <section className="text-white text-2xl font-[Leferi]">
+          League Ranking
+        </section>
         <table className="mt-6 w-full border-collapse">
           <thead>
             <tr className="text-white">

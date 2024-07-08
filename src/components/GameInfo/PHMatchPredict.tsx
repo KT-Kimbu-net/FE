@@ -65,13 +65,13 @@ export default function PHMatchPredict() {
       <section className="flex flex-col items-center mt-3.5 w-full">
         <section className="relative w-full flex justify-center">
           <section className="absolute left-0 flex items-center">
-            <strong>KT Wiz</strong>
+            <strong className="font-[Pretendard-Bold]">KT Wiz</strong>
             <Image src={Kt} alt="Kt" className="ml-5" />
           </section>
           <section className="font-[Leferi] text-lg text-gray-500">vs</section>
           <section className="absolute right-0 flex items-center">
             <Image src={Kia} alt="Kia" className="mr-5" />
-            <strong>Kia Tigers</strong>
+            <strong className="font-[Pretendard-Bold]">Kia Tigers</strong>
           </section>
         </section>
         <section className="relative flex w-full pt-5">

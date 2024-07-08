@@ -5,6 +5,7 @@ import GameInfo from "@/components/GameInfo/GameInfo";
 import Shortcuts from "@/components/Shortcuts/Shortcuts";
 import MatchBet from "@/components/MatchBet/MatchBet";
 import Sponsor from "@/components/Sponsor/Sponsor";
+import Chatting from "@/components/Chatting/Chatting";
 
 export default function Page() {
   return (
@@ -13,7 +14,7 @@ export default function Page() {
         <section className="p-10 w-full flex flex-col gap-12 bg-[url('/img/BgImage.svg')]">
           <section className="flex gap-14">
             <GameInfo />
-            <section className="bg-white w-1/4">채팅</section>
+            <Chatting />
           </section>
           <section className="flex gap-14">
             <Shortcuts />

@@ -4,7 +4,7 @@ import Kia from "@/img/TeamLogo/Kia.svg";
 
 export default function MatchBet() {
   return (
-    <section className="bg-white w-1/4 rounded-2xl flex flex-col items-center p-5">
+    <section className="bg-white w-1/3 rounded-2xl flex flex-col items-center p-5">
       <section className="font-[Pretendard-Bold] text-xl">
         오늘의 경기 결과를 예측하고 크레딧을 받아가세요!
       </section>

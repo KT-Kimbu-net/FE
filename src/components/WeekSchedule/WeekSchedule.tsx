@@ -11,7 +11,9 @@ export default function WeekSchedule() {
 
   return (
     <section className="w-full p-10 bg-black flex flex-col gap-10">
-      <section className="text-white text-2xl">Weekend Schedule</section>
+      <section className="text-white text-2xl font-[Leferi]">
+        Weekend Schedule
+      </section>
       <ul className="flex h-full [&>:first-child]:rounded-tl-xl [&>:first-child]:rounded-bl-xl  [&>:last-child]:rounded-br-xl [&>:last-child]:rounded-tr-xl">
         <li className={scheduleListStyle}>
           <section className="flex w-full justify-between">
