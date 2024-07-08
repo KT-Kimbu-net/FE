@@ -118,7 +118,7 @@ export default function LeagueRanking() {
   return (
     <section className="w-full flex">
       <HighLights />
-      <section className="w-1/3 bg-black p-10">
+      <section className="w-1/3 bg-[#161616] p-10">
         <section className="text-white text-2xl font-[Leferi]">
           League Ranking
         </section>

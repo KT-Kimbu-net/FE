@@ -6,6 +6,7 @@ import Shortcuts from "@/components/Shortcuts/Shortcuts";
 import MatchBet from "@/components/MatchBet/MatchBet";
 import Sponsor from "@/components/Sponsor/Sponsor";
 import Chatting from "@/components/Chatting/Chatting";
+import Floating from "@/components/Floating/Floating";
 
 export default function Page() {
   return (
@@ -26,6 +27,7 @@ export default function Page() {
       <LeagueRanking />
       <Notice />
       <Sponsor />
+      <Floating />
     </>
   );
 }
