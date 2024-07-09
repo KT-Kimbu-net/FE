@@ -2,7 +2,7 @@ import Image from "next/image";
 import RankItem from "./RankItem";
 import vicImg from "/public/img/vic.svg";
 import dorriImg from "/public/img/dorri.svg";
-import Tooltip from "../layout/Tooltip";
+import Tooltip from "../Layouts/Tooltip";
 
 const dummyData = [
   {

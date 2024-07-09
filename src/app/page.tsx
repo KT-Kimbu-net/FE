@@ -9,7 +9,7 @@ import MatchBet from "@/components/MatchBet/MatchBet";
 import Sponsor from "@/components/Sponsor/Sponsor";
 import Chatting from "@/components/Chatting/Chatting";
 import Floating from "@/components/Floating/Floating";
-import Header from "@/components/header/Header";
+import Header from "@/components/Header/Header";
 import Image from "next/image";
 import { useModalState } from "@/store/modal";
 

@@ -1,6 +1,6 @@
-import SideMenu from "@/components/layout/SideMenu";
-import SubHeader from "@/components/layout/SubHeader";
-import SubMenu from "@/components/layout/SubMenu";
+import SideMenu from "@/components/Layouts/SideMenu";
+import SubHeader from "@/components/Layouts/SubHeader";
+import SubMenu from "@/components/Layouts/SubMenu";
 import { mypageSideMenuData } from "@/data/sideMenu/dataPlayer";
 
 export default function layout({

@@ -28,7 +28,7 @@ export default function SideMenu(props: TSideMenu) {
   };
 
   return (
-    <div className="fixed top-[30%] left-10 h-[10%] w-[20%] min-h-[300px] max-h-[400px] min-w-[230px] max-w-[270px] border-[1px] border-[#EFEFEF] rounded-[10px] flex items-center flex-col justify-start p-3 pl-1 ">
+    <div className="fixed top-[30%] left-10 h-[10%] w-[20%] min-h-[300px] max-h-[400px] min-w-[230px] max-w-[270px] border-[1px] border-[#EFEFEF] rounded-[10px] items-center flex-col justify-start p-3 pl-1 hidden md:flex">
       <h4 className="w-[90%] font-[700]  border-b-[1px] pb-2 text-left text-[20px]">
         {props.title}
       </h4>
