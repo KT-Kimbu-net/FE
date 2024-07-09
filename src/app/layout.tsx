@@ -18,11 +18,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={notoSansKr.className}>
+      <body className={`${notoSansKr.className} min-h-svh flex flex-col`}>
         <div id="modalLayout" />
         <div id="modalContent" />
         <Header />
-        {children}
+        <main className="flex-grow flex flex-col">
+          {children}
+          </main>
         <ModalContainer />
         <Footer />
       </body>
