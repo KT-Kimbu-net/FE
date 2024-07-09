@@ -1,6 +1,5 @@
-import Header from "@/components/header/Header";
 import ModalContainer from "@/components/ModalContainer";
-
+import Header from "@/components/header/Header";
 import "./globals.css";
 import { Noto_Sans_KR } from "next/font/google";
 import Footer from "@/components/footer/Footer";

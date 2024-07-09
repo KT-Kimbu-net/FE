@@ -1,33 +1,39 @@
 "use client";
+
+import WeekSchedule from "@/components/WeekSchedule/WeekSchedule";
+import LeagueRanking from "@/components/LeagueRanking/LeagueRanking";
+import Notice from "@/components/Notice/Notice";
+import GameInfo from "@/components/GameInfo/GameInfo";
+import Shortcuts from "@/components/Shortcuts/Shortcuts";
+import MatchBet from "@/components/MatchBet/MatchBet";
+import Sponsor from "@/components/Sponsor/Sponsor";
+import Chatting from "@/components/Chatting/Chatting";
+import Floating from "@/components/Floating/Floating";
 import Header from "@/components/header/Header";
-import Test from "@/components/Test";
 import Image from "next/image";
 import { useModalState } from "@/store/modal";
 
-export default function page() {
+export default function Page() {
   const { setModalName } = useModalState();
   return (
-    <>
-      <main>
-        {/* 퀴즈 플로팅 버튼 임시 */}
-        <div className="z-40 fixed top-40 right-10">
-          <button
-            onClick={() => {
-              setModalName("quizStart");
-            }}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full shadow-lg text-3xl"
-          >
-            Quiz
-          </button>
-        </div>
-        <div className="relative w-full h-800">
-          <img
-            src="/2024_season_bg_web.png"
-            className="object-cover object-center w-full h-full"
-            alt=""
-          />
-        </div>
-      </main>
-    </>
+    <section>
+      <section>
+        <section className="p-10 w-full flex flex-col gap-12 bg-[url('/img/BgImage.svg')]">
+          <section className="flex gap-14">
+            <GameInfo />
+            <Chatting />
+          </section>
+          <section className="flex gap-14">
+            <Shortcuts />
+            <MatchBet />
+          </section>
+        </section>
+      </section>
+      <WeekSchedule />
+      <LeagueRanking />
+      <Notice />
+      <Sponsor />
+      <Floating />
+    </section>
   );
 }
