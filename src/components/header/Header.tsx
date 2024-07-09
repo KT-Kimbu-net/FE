@@ -91,9 +91,9 @@ export default function Header() {
   ];
 
   return (
-    <header className="bg-white fixed top-0 left-0 w-full z-50">
-      <div className="relative sm:px-6 lg:px-8">
-        <div className="hiddne justify-center md:flex h-16 relative border-b border-gray-200">
+    <header className="bg-white sticky top-0 left-0 w-full z-50">
+      <div className="sm:px-6 lg:px-8">
+        <div className="hidden md:flex h-16 relative border-b border-gray-200">
           {/* 좌측 로고 */}
           <div className="absolute left-0 top-1/2 translate-y-[-50%]">
             <Link href="/">

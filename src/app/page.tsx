@@ -1,3 +1,5 @@
+"use client";
+
 import WeekSchedule from "@/components/WeekSchedule/WeekSchedule";
 import LeagueRanking from "@/components/LeagueRanking/LeagueRanking";
 import Notice from "@/components/Notice/Notice";
@@ -7,8 +9,12 @@ import MatchBet from "@/components/MatchBet/MatchBet";
 import Sponsor from "@/components/Sponsor/Sponsor";
 import Chatting from "@/components/Chatting/Chatting";
 import Floating from "@/components/Floating/Floating";
+import Header from "@/components/header/Header";
+import Image from "next/image";
+import { useModalState } from "@/store/modal";
 
 export default function Page() {
+  const { setModalName } = useModalState();
   return (
     <>
       <section>

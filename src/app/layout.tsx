@@ -1,5 +1,6 @@
-import ModalContainer from "@/components/ModalContainer";
 import Header from "@/components/header/Header";
+import ModalContainer from "@/components/ModalContainer";
+
 import "./globals.css";
 import { Noto_Sans_KR } from "next/font/google";
 import Footer from "@/components/footer/Footer";
@@ -17,11 +18,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={notoSansKr.className}>
+      <body className={`${notoSansKr.className} min-h-svh flex flex-col`}>
         <div id="modalLayout" />
         <div id="modalContent" />
-        {/* <Header /> */}
-        {children}
+        <Header />
+        <main className="flex-grow flex flex-col">
+          {children}
+          </main>
         <ModalContainer />
         <Footer />
       </body>
