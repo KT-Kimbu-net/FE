@@ -10,6 +10,7 @@ import QuizResult from "./Modal/QuizResult";
 import AlertLogin from "./Modal/AlertLogin";
 import AlertRetry from "./Modal/AlertRetry";
 import AlertExit from "./Modal/AlertExit";
+import QuizRanking from "./Modal/QuizRanking";
 
 const ModalLayout = () => {
   const { modalName } = useModalState();
@@ -33,6 +34,7 @@ const ModalContent = (): JSX.Element => {
     alertLogin: <AlertLogin />,
     alertRetry: <AlertRetry />,
     alertExit: <AlertExit />,
+    quizRanking: <QuizRanking />,
   };
   // 로그인 상태 확인
   const isLoggedIn = () => {
