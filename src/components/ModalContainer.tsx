@@ -3,7 +3,13 @@
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { useModalState } from "@/store/modal";
-import Test from "./Modal/Test";
+import QuizStart from "./Modal/QuizStart";
+import QuizProblem from "./Modal/QuizProblem";
+import QuizLoading from "./Modal/QuizLoading";
+import QuizResult from "./Modal/QuizResult";
+import AlertLogin from "./Modal/AlertLogin";
+import AlertRetry from "./Modal/AlertRetry";
+import AlertExit from "./Modal/AlertExit";
 
 const ModalLayout = () => {
   const { modalName } = useModalState();
@@ -17,16 +23,40 @@ const ModalLayout = () => {
 };
 
 const ModalContent = (): JSX.Element => {
-  const { modalName } = useModalState();
+  const { modalName, setModalName } = useModalState();
 
   const modalContent: { [key: string]: JSX.Element } = {
-    test: <Test />,
+    quizStart: <QuizStart />,
+    quizProblem: <QuizProblem />,
+    quizLoading: <QuizLoading />,
+    quizResult: <QuizResult />,
+    alertLogin: <AlertLogin />,
+    alertRetry: <AlertRetry />,
+    alertExit: <AlertExit />,
   };
+  // 로그인 상태 확인
+  const isLoggedIn = () => {
+    // todo
+    return true;
+  };
+
+  // 임시
+  useEffect(() => {
+    if (modalName === "quizStart" && !isLoggedIn()) {
+      setModalName("alertLogin");
+    } else if (modalName === "quizLoading") {
+      const timer = setTimeout(() => {
+        setModalName("quizResult");
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [modalName, setModalName]);
 
   return (
     <>
       {modalName && (
-        <section className="z-20 flex w-screen-50 min-w-[325px] max-w-[700px] flex-col jusfify-content center fixed top-1/2 left-1/2 text-center px-2 py-2.5 xs:px-2.5 xs:py-3 sm:px-3 sm:py-4 md:px-3.5 md:py-4.5 lg:px-4 lg:py-5 -translate-x-1/2 -translate-y-1/2 bg-white rounded-xl text-xs sm:text-base md:text-lg lg:text-xl xl:text-2xl font-[Pretendard-SemiBold]">
+        <section className="z-20 flex w-screen-50 min-w-[325px] max-w-[700px] flex-col jusfify-content center fixed top-1/2 left-1/2 text-center -translate-x-1/2 -translate-y-1/2 rounded-[12px] bg-white text-xs sm:text-base md:text-lg lg:text-xl xl:text-2xl">
           {modalName ? modalContent[modalName] : null}
         </section>
       )}
