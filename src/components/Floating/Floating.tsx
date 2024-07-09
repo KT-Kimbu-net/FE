@@ -4,7 +4,8 @@ import { TbBuildingStadium } from "react-icons/tb";
 import { SiShopee } from "react-icons/si";
 
 export default function Floating() {
-  const listStyle = "h-1/5 flex items-center py-4";
+  const listStyle =
+    "h-1/5 flex items-center py-4 cursor-pointer hover:scale-150 duration-300";
   const iconStyle = "w-8 h-8";
 
   return (

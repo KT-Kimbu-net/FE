@@ -2,8 +2,3 @@
 @tailwind components;
 @tailwind utilities;
 @import "../font/font.css";
-
-body {
-  height: 100vh;
-  overflow-y: auto;
-}

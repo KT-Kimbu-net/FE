@@ -7,15 +7,15 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    color: {
-      main: "#EC1C23",
-      "black-900": "#000000",
-      "black-800": "#262626",
-      "black-700": "#525252",
-      "black-600": "#797979",
-      "black-500": "#909090",
-    },
     extend: {
+      colors: {
+        main: "#EC1C23",
+        "gray-900": "#000000",
+        "gray-800": "#262626",
+        "gray-700": "#525252",
+        "gray-600": "#797979",
+        "gray-500": "#909090",
+      },
       backgroundImage: {
         subHeaderImg: 'url("/img/subHeaderImg.png")',
       },

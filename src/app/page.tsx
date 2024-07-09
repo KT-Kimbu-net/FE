@@ -16,7 +16,7 @@ import { useModalState } from "@/store/modal";
 export default function Page() {
   const { setModalName } = useModalState();
   return (
-    <>
+    <section>
       <section>
         <section className="p-10 w-full flex flex-col gap-12 bg-[url('/img/BgImage.svg')]">
           <section className="flex gap-14">
@@ -34,6 +34,6 @@ export default function Page() {
       <Notice />
       <Sponsor />
       <Floating />
-    </>
+    </section>
   );
 }
