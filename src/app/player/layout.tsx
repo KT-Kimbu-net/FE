@@ -1,5 +1,5 @@
-import SideMenu from "@/components/layout/SideMenu";
-import SubHeader from "@/components/layout/SubHeader";
+import SideMenu from "@/components/Layouts/SideMenu";
+import SubHeader from "@/components/Layouts/SubHeader";
 
 export default function layout({
   children,

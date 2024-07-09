@@ -1,4 +1,4 @@
-import SideMenu from "@/components/layout/SideMenu";
+import SideMenu from "@/components/Layouts/SideMenu";
 import { playerSideMenuData } from "@/data/sideMenu/dataPlayer";
 
 type TPageProps = {

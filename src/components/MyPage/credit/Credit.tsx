@@ -1,4 +1,4 @@
-import SubMenu from "@/components/layout/SubMenu";
+import SubMenu from "@/components/Layouts/SubMenu";
 import CreditGet from "./CreditGet";
 import CreditUsed from "./CreditUsed";
 import CreditDelete from "./CreditDelete";

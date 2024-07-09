@@ -1,8 +1,8 @@
 "use client";
 
-import SubHeader from "@/components/layout/SubHeader";
-import SubMenu from "@/components/layout/SubMenu";
-import Rank from "@/components/rank/Rank";
+import SubHeader from "@/components/Layouts/SubHeader";
+import SubMenu from "@/components/Layouts/SubMenu";
+import Rank from "@/components/Rank/Rank";
 import useSubMenu from "@/hooks/useSubMenu";
 import { useEffect, useState } from "react";
 
