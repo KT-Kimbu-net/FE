@@ -15,7 +15,11 @@ const config: Config = {
       "black-600": "#797979",
       "black-500": "#909090",
     },
-    extend: {},
+    extend: {
+      backgroundImage: {
+        subHeaderImg: 'url("/img/subHeaderImg.png")',
+      },
+    },
   },
   plugins: [],
 };
