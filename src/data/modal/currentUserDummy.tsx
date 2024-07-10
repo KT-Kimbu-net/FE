@@ -5,7 +5,7 @@ export const dummyCurrentUser: UserData = {
   password: "default123",
   nickname: "Guest",
   credit: {
-    creditAmount: 0,
+    creditAmount: 100,
     usedHistory: [],
     deleteHistory: [],
     getHistory: [],
