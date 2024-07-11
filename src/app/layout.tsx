@@ -1,8 +1,8 @@
 import ModalContainer from "@/components/ModalContainer";
-import Header from "@/components/header/Header";
+import Header from "@/components/Header/Header";
 import "./globals.css";
 import { Noto_Sans_KR } from "next/font/google";
-import Footer from "@/components/footer/Footer";
+import Footer from "@/components/Footer/Footer";
 const notoSansKr = Noto_Sans_KR({ subsets: ["latin"] });
 
 export const metadata = {
@@ -21,9 +21,7 @@ export default function RootLayout({
         <div id="modalLayout" />
         <div id="modalContent" />
         <Header />
-        <main className="flex-grow flex flex-col">
-          {children}
-          </main>
+        <main className="flex-grow flex flex-col">{children}</main>
         <ModalContainer />
         <Footer />
       </body>

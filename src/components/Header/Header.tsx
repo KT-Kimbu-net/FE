@@ -3,6 +3,9 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import HeaderMobile from "./HeaderMobile";
+import { BiLogOut } from "react-icons/bi"; // 로그아웃
+import { dummyCurrentUser } from "@/data/modal/currentUserDummy";
+import { UserData } from "@/types/api";
 
 interface MenuItem {
   name: string;
@@ -18,6 +21,16 @@ export default function Header() {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+
+  const [user, setUser] = useState<null | UserData>(null);
+
+  const handleLogin = () => {
+    setUser(dummyCurrentUser);
+  };
+
+  const handleLogout = () => {
+    setUser(null);
+  };
 
   const handleMouseEnter = () => {
     setIsDropdownVisible(true);
@@ -43,16 +56,15 @@ export default function Header() {
         { name: "구단 BI", link: "/ktwiz/bi/symbol" },
         { name: "회원 정책", link: "/ktwiz/policy/regular" },
         { name: "스폰서", link: "/ktwiz/sponsor" },
-        { name: "월페이퍼", link: "/ktwiz/wallpaper" },
+        { name: "wiz공지사항", link: "/ktwiz/notice" },
       ],
     },
     {
       title: "wiz park",
       items: [
-        { name: "수원 park", link: "/wizpark/intro" },
+        { name: "야구장", link: "/wizpark/intro" },
         { name: "주차 예약", link: "/wizpark/parking" },
         { name: "찾아오기", link: "/wizpark/location" },
-        { name: "익산야구장", link: "/wizpark/iksan" },
       ],
     },
     {
@@ -69,23 +81,27 @@ export default function Header() {
         { name: "투수", link: "/player/pitcher" },
         { name: "타자", link: "/player/catcher" },
         { name: "응원단", link: "/player/cheer" },
-        { name: "응원가", link: "/player/song" },
-        { name: "응원가 저작권", link: "/player/song-copyright" },
       ],
     },
     {
       title: "Media",
       items: [
-        { name: "wiz 뉴스", link: "/media/wiznews" },
-        { name: "wiz 스토리", link: "/media/wizstory" },
-        { name: "시구자 정보", link: "/media/firstpitch" },
-        { name: "wiz 포토", link: "/media/photos" },
-        { name: "하이라이트", link: "/media/highlight" },
-        { name: "Live 영상모음", link: "/media/live/pts" },
+        { name: "wiz소식", link: "/media/wiznews" },
+        { name: "wiz포토", link: "/media/photos" },
+        { name: "wiz하이라이트", link: "/media/highlight" },
+        { name: "응원가", link: "/media/song" },
       ],
     },
     {
       title: "Ticket",
+      items: [
+        { name: "티켓 예매", link: "/ticket/reservation" },
+        { name: "단체관람", link: "/ticket/group" },
+        { name: "좌석 배치도", link: "/ticket/seatmap" },
+      ],
+    },
+    {
+      title: "Shop",
       items: [],
     },
   ];
@@ -114,8 +130,12 @@ export default function Header() {
             {menus.map((menu, index) => (
               <div key={index} className="flex items-center text-center">
                 <Link
-                  href="#"
-                  className="text-black font-semibold hover:bg-gray-200 rounded-lg p-2 w-28"
+                  href={menu.title === "Shop" ? "/shop" : "#"}
+                  className={`font-semibold hover:bg-gray-200 rounded-lg p-2 w-28 ${
+                    menu.title === "Ticket" || menu.title === "Shop"
+                      ? "text-red-600"
+                      : "text-black"
+                  }`}
                 >
                   {menu.title}
                 </Link>
@@ -124,14 +144,57 @@ export default function Header() {
           </nav>
 
           {/* 우측 버튼들 */}
-          <div className="ml-auto flex items-center space-x-4 absolute right-0 top-1/2 translate-y-[-50%]">
-            <Link href="/login" className="text-black font-normal">
-              로그인
+          <div className="ml-auto flex items-center space-x-2 absolute right-0 top-1/2 translate-y-[-50%]">
+            {user ? (
+              <>
+                <span className="text-gray-500 text-sm font-normal">
+                  {user.credit.creditAmount} point
+                </span>
+                <span className="hover:text-gray-800 text-gray-500">|</span>
+                <span className="text-gray-500 text-sm font-normal">
+                  {user.userId}
+                </span>
+                {/* <button onClick={handleLogout} className="flex items-center"> */}
+                <BiLogOut
+                  onClick={handleLogout}
+                  className="text-gray-500 text-lg cursor-pointer"
+                />
+                {/* </button> */}
+              </>
+            ) : (
+              <>
+                <button
+                  onClick={handleLogin}
+                  className="bg-blue-300 text-white mr-5"
+                >
+                  test
+                </button>
+                <Link
+                  href="/login"
+                  className="hover:text-gray-800 text-gray-500 text-sm font-normal"
+                >
+                  로그인
+                </Link>
+                <span className="hover:text-gray-800 text-gray-500">|</span>
+                <Link
+                  href="/signup"
+                  className="text-gray-500 text-sm font-normal"
+                >
+                  회원가입
+                </Link>
+              </>
+            )}
+            <Link
+              href="http://kt-sports.co.kr/sports/site/main.do"
+              className="bg-gray-200 text-black font-normal px-3 py-1 rounded-3xl flex items-center hover:bg-gray-300"
+              passHref
+            >
+              <img
+                src="/img-logo-ktsports.svg"
+                alt="Icon"
+                className="w-20 h-15"
+              />
             </Link>
-            <Link href="/signup" className="text-black font-normal">
-              회원가입
-            </Link>
-            <button className="text-black font-normal">다른 페이지</button>
           </div>
         </div>
       </div>
@@ -144,25 +207,18 @@ export default function Header() {
         >
           <div className="w-full m-auto">
             <div className="flex justify-center py-4">
-              {menus.map((submenu, submenuIndex) => (
-                <div
-                  key={submenuIndex}
-                  className={`${
-                    submenuIndex > 0 ? "border-l border-gray-300" : ""
-                  }`}
-                >
-                  <ul className="text-center w-28 flex flex-col">
-                    {submenu.items.map((item, itemIndex) => (
-                      <li key={itemIndex} className="py-1">
-                        <Link href={item.link}>
-                          <div className="text-black hover:bg-gray-200 block py-1">
-                            {item.name}
-                          </div>
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+              {menus.map((submenu) => (
+                <ul className="text-center w-28 flex flex-col">
+                  {submenu.items.map((item, itemIndex) => (
+                    <li key={itemIndex} className="py-1">
+                      <Link href={item.link}>
+                        <div className="text-black hover:bg-gray-200 block py-1">
+                          {item.name}
+                        </div>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               ))}
             </div>
           </div>

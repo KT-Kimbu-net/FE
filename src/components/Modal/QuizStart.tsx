@@ -25,7 +25,7 @@ export default function QuizStart() {
           </div>
           <div id="text" className="pt-7">
             <div className="tracking-wider text-2xl font-bold">
-              오늘의 퀴즈에 오신 것을 환영합니다.
+              AI 퀴즈에 오신 것을 환영합니다.
             </div>
             <div className="text-base pt-2">
               퀴즈는 <span className="text-blue-500 font-bold">2문제</span>로
@@ -41,13 +41,27 @@ export default function QuizStart() {
               <div className="w-4 h-4 bg-gray-200 rounded-full"></div>
             </div>
           </div>
-          <button
+          {/* <button
             onClick={() => setModalName("quizProblem")}
             className="mt-9 text-lg font-bold bg-[#a42a2a] rounded-[12px] text-white w-[80%] h-[10%] hover:bg-gray-500
           transition duration-300 ease-in-out"
           >
             GO
-          </button>
+          </button> */}
+          <div className="flex justify-center mt-8 gap-x-4 w-full">
+            <button
+              onClick={() => setModalName("quizProblem")}
+              className="text-xl font-bold bg-[#a42a2a] text-white rounded-[12px] w-[40%] h-14 hover:bg-gray-700 hover:text-white hover:border-transparent transition duration-300 ease-in-out"
+            >
+              퀴즈 풀기
+            </button>
+            <button
+              onClick={() => setModalName("quizRanking")}
+              className="text-xl font-bold bg-gray-500 text-white border border-gray-400 rounded-[12px] w-[40%] h-14 hover:bg-gray-700 hover:text-white hover:border-transparent transition duration-300 ease-in-out"
+            >
+              랭킹 보기
+            </button>
+          </div>
         </div>
       </div>
     </>

@@ -105,11 +105,11 @@ export default function QuizLoading() {
               ></div>
               <div
                 id="progressbar-quiz1"
-                className="animate-bounce w-4 h-4 bg-red-500 rounded-full"
+                className="w-4 h-4 bg-gray-200 rounded-full"
               ></div>
               <div
                 id="progressbar-quiz2"
-                className="w-4 h-4 bg-gray-200 rounded-full"
+                className="animate-bounce w-4 h-4 bg-red-500 rounded-full"
               ></div>
               <div className="w-4 h-4 bg-gray-200 rounded-full"></div>
             </div>

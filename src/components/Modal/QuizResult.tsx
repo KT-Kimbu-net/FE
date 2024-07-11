@@ -24,9 +24,9 @@ export default function QuizResult() {
             </div>
             <div className="mt-2 text-center text-base pt-2 bg-slate-200 rounded-2xl pl-2 pb-2">
               <div>
-                <span className="text-blue-500 font-bold">홍길동님</span>의 현재
-                포인트는 <span className="text-blue-500 font-bold">300</span> +{" "}
-                <span className="text-red-500 font-bold">100 포인트</span>
+                <span className="text-blue-500 font-bold">홍길동님 </span>의
+                현재 포인트는{" "}
+                <span className="text-red-500 font-bold">400 포인트</span>
                 입니다.
               </div>
             </div>

@@ -10,6 +10,9 @@ import QuizResult from "./Modal/QuizResult";
 import AlertLogin from "./Modal/AlertLogin";
 import AlertRetry from "./Modal/AlertRetry";
 import AlertExit from "./Modal/AlertExit";
+import QuizRanking from "./Modal/QuizRanking";
+import { UserData } from "@/types/api";
+import { dummyCurrentUser } from "@/data/modal/currentUserDummy";
 
 const ModalLayout = () => {
   const { modalName } = useModalState();
@@ -21,8 +24,15 @@ const ModalLayout = () => {
     </>
   );
 };
+type ModalProps = {
+  currentUser: UserData;
+  isLoggedIn: boolean;
+};
 
-const ModalContent = (): JSX.Element => {
+const ModalContent = ({
+  currentUser,
+  isLoggedIn = true,
+}: ModalProps): JSX.Element => {
   const { modalName, setModalName } = useModalState();
 
   const modalContent: { [key: string]: JSX.Element } = {
@@ -33,16 +43,12 @@ const ModalContent = (): JSX.Element => {
     alertLogin: <AlertLogin />,
     alertRetry: <AlertRetry />,
     alertExit: <AlertExit />,
-  };
-  // 로그인 상태 확인
-  const isLoggedIn = () => {
-    // todo
-    return true;
+    quizRanking: <QuizRanking currentUser={currentUser} />,
   };
 
   // 임시
   useEffect(() => {
-    if (modalName === "quizStart" && !isLoggedIn()) {
+    if (modalName === "quizStart" && !isLoggedIn) {
       setModalName("alertLogin");
     } else if (modalName === "quizLoading") {
       const timer = setTimeout(() => {
@@ -64,7 +70,10 @@ const ModalContent = (): JSX.Element => {
   );
 };
 
-export default function ModalContainer() {
+export default function ModalContainer({
+  currentUser = dummyCurrentUser,
+  isLoggedIn = true,
+}: ModalProps) {
   const [isMount, setIsMount] = useState(false);
 
   useEffect(() => {
@@ -81,7 +90,7 @@ export default function ModalContainer() {
         document.getElementById("modalLayout") as HTMLElement
       )}
       {createPortal(
-        <ModalContent />,
+        <ModalContent currentUser={currentUser} isLoggedIn={isLoggedIn} />,
         document.getElementById("modalContent") as HTMLElement
       )}
     </>
