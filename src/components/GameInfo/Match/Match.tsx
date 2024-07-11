@@ -26,8 +26,10 @@ export default function Match() {
         <Image src={subseArrow} alt="next game match" />
       </section>
       <section className="w-full">
-        <section className="w-full bg-[#1b1b1b] rounded-t-xl p-4">
-          <section className="text-center text-[#d6d6d6]">2회말</section>
+        <section className="w-full bg-[#1b1b1b] rounded-t-xl p-4 flex flex-col items-center">
+          <section className="text-center text-[#d6d6d6] w-fit py-1 px-3 rounded-xl bg-[#3a3a3a] font-[Pretendard-Bold]">
+            2회말
+          </section>
           <section className="flex gap-2 w-full justify-between items-center">
             <section className="flex items-center justify-between w-1/3">
               <strong className="text-white text-lg">KT Wiz</strong>
