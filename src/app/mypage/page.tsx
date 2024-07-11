@@ -1,7 +1,7 @@
 "use client";
 
-import Credit from "@/components/myPage/credit/Credit";
-import Login from "@/components/myPage/login/Login";
+import Credit from "@/components/MyPage/Credit/Credit";
+import Login from "@/components/MyPage/Login/Login";
 import React from "react";
 
 export default function MyPage() {

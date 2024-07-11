@@ -3,6 +3,8 @@ import { useModalState, useUserQuizState } from "@/store/modal";
 import { useEffect, useState } from "react";
 import { IoIosClose } from "react-icons/io";
 import { SvgQuizProblemLoading } from "@/img/Svg";
+import tmp from "@/img/Quiz/tmp.jpg";
+import Image from "next/image";
 
 export default function QuizProblem() {
   const { setModalName, setPreviousModalName } = useModalState();
@@ -65,8 +67,8 @@ export default function QuizProblem() {
             {/* Image section */}
             {problem && (
               <div className="relative flex items-center justify-center bg-gray-300 w-[80%] h-56 rounded-[12px] border border-black mt-4 overflow-hidden">
-                <img
-                  src="/tmp.jpg"
+                <Image
+                  src={tmp}
                   className="absolute inset-0 w-full h-full object-cover rounded-[12px] object-top"
                   alt="Problem illustration"
                 />

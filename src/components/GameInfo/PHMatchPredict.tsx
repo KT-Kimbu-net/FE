@@ -184,7 +184,7 @@ export default function PHMatchPredict() {
         <section className="flex items-center ml-5 top-[-0.5rem] self-start">
           <Image src={ddory} alt="ddory" className="" />
           <span className="text-main font-[Pretendard-Bold]">
-            투수 vs 선택타자 예측
+            선택타자 예측
           </span>
         </section>
         <Pie data={data} options={options} />

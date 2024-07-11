@@ -1,5 +1,3 @@
-"use client";
-
 import WeekSchedule from "@/components/WeekSchedule/WeekSchedule";
 import LeagueRanking from "@/components/LeagueRanking/LeagueRanking";
 import Notice from "@/components/Notice/Notice";
@@ -9,28 +7,36 @@ import MatchBet from "@/components/MatchBet/MatchBet";
 import Sponsor from "@/components/Sponsor/Sponsor";
 import Chatting from "@/components/Chatting/Chatting";
 import Floating from "@/components/Floating/Floating";
-import Header from "@/components/Header/Header";
-import Image from "next/image";
-import { useModalState } from "@/store/modal";
 
-export default function Page() {
-  const { setModalName } = useModalState();
+const getNewsApiHandler = async () => {
+  const url = `${process.env.NEXT_PUBLIC_BASEURL}/today_rank`;
+  return await (await fetch(url, { cache: "no-store" })).json();
+};
+
+export default async function Page() {
+  const data = await getNewsApiHandler();
+
   return (
-    <section>
+    <section className="flex flex-col items-center">
       <section>
-        <section className="p-10 w-full flex flex-col gap-12 bg-[url('/img/BgImage.svg')]">
-          <section className="flex gap-14">
-            <GameInfo />
-            <Chatting />
-          </section>
-          <section className="flex gap-14">
-            <Shortcuts />
+        <section className="p-10 w-full flex flex-col gap-12 bg-[url('/img/BgImage.svg')] bg-cover items-center ">
+          {/* <section
+            className={`${
+              isShow ? "flex gap-14" : "w-full flex justify-center"
+            }`}
+          > */}
+          <GameInfo />
+          {/* <Chatting /> */}
+          {/* </CSSTransition> */}
+          {/* </section> */}
+          <section className="flex gap-14 w-3/4">
             <MatchBet />
+            <Shortcuts />
           </section>
         </section>
       </section>
       <WeekSchedule />
-      <LeagueRanking />
+      <LeagueRanking leagueRanking={data} />
       <Notice />
       <Sponsor />
       <Floating />

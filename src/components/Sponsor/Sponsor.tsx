@@ -32,8 +32,9 @@ const responsive = {
 };
 
 export default function Sponsor() {
+  const sponsorImageStyle = "w-40";
   return (
-    <section className="w-ful py-4">
+    <section className="w-full py-4">
       <Carousel
         swipeable={false}
         draggable={false}
@@ -52,22 +53,22 @@ export default function Sponsor() {
         customLeftArrow={<CustomLeftArrow />}
       >
         <section className="flex justify-center">
-          <Image src={sponsor} alt="sponsor" />
+          <Image src={sponsor} alt="sponsor" className={sponsorImageStyle} />
         </section>
         <section className="flex justify-center">
-          <Image src={sponsor2} alt="sponsor" />
+          <Image src={sponsor2} alt="sponsor" className={sponsorImageStyle} />
         </section>
         <section className="flex justify-center">
-          <Image src={sponsor3} alt="sponsor" />
+          <Image src={sponsor3} alt="sponsor" className={sponsorImageStyle} />
         </section>
         <section className="flex justify-center">
-          <Image src={sponsor4} alt="sponsor" />
+          <Image src={sponsor4} alt="sponsor" className={sponsorImageStyle} />
         </section>
         <section className="flex justify-center">
-          <Image src={sponsor5} alt="sponsor" />
+          <Image src={sponsor5} alt="sponsor" className={sponsorImageStyle} />
         </section>
         <section className="flex justify-center">
-          <Image src={sponsor6} alt="sponsor" />
+          <Image src={sponsor6} alt="sponsor" className={sponsorImageStyle} />
         </section>
       </Carousel>
     </section>

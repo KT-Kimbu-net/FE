@@ -37,7 +37,7 @@ const HighLightDummyData = [
 
 export default function HighLights() {
   return (
-    <section className="w-2/3 bg-white p-10">
+    <section className="w-2/3 bg-white bg-opacity-0 py-10">
       <section className="w-full flex items-center justify-between">
         <section className="flex gap-14 text-2xl">
           <span className="font-[Leferi]">HighLights</span>
@@ -46,7 +46,7 @@ export default function HighLights() {
         <Image src={seeMore} alt="더 보기" className="cursor-pointer" />
       </section>
       <section>
-        <ul className="grid grid-cols-4 gap-4 mt-11">
+        <ul className="grid grid-cols-4 gap-x-4 gap-y-10  mt-11">
           {HighLightDummyData.map((highLight, index) => (
             <li
               key={index}
