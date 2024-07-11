@@ -30,27 +30,31 @@ export default function Match() {
           <section className="text-center text-[#d6d6d6] w-fit py-1 px-3 rounded-xl bg-[#3a3a3a] font-[Pretendard-Bold]">
             2회말
           </section>
-          <section className="flex gap-2 w-full justify-between items-center">
+          <section className="flex gap-8 w-full justify-between items-center">
             <section className="flex items-center justify-between w-1/3">
-              <strong className="text-white text-lg">KT Wiz</strong>
+              <strong className="text-white text-lg font-[Pretendard-Bold]">
+                KT Wiz
+              </strong>
               <Image src={Kt} alt="Kt" />
             </section>
             <section className="w-1/3 text-center flex justify-between items-center text-white">
-              <span className="text-[2rem]">3</span>
+              <span className="text-[2rem] font-[Pretendard-ExtraBold]">3</span>
               <span className="text-lg">vs</span>
-              <span className="text-[2rem]">0</span>
+              <span className="text-[2rem] font-[Pretendard-ExtraBold]">0</span>
             </section>
             <section className="w-1/3 flex items-center justify-between">
               <Image src={Kia} alt="Kia" />
-              <strong className="text-white text-lg">Kia Tigers</strong>
+              <strong className="text-white text-lg font-[Pretendard-Bold]">
+                Kia Tigers
+              </strong>
             </section>
           </section>
         </section>
         <section className="w-full flex justify-between">
-          <section className="bg-main px-4 py-3 rounded-bl-xl text-white w-[64%]">
+          <section className="bg-main px-4 py-3 rounded-bl-xl text-white w-[64%] font-[Pretendard-ExtraBold]">
             64.6%
           </section>
-          <section className="bg-[#4b4b4b] px-4 py-3 rounded-br-xl text-white w-[36%] text-end">
+          <section className="bg-[#4b4b4b] px-4 py-3 rounded-br-xl text-white w-[36%] text-end font-[Pretendard-ExtraBold]">
             35.4%
           </section>
         </section>
