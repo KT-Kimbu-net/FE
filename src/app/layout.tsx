@@ -1,4 +1,4 @@
-import ModalContainer from "@/components/ModalContainer";
+import ModalContainer from "@/components/Container/ModalContainer";
 import Header from "@/components/Header/Header";
 import "./globals.css";
 import { Noto_Sans_KR } from "next/font/google";
@@ -22,7 +22,7 @@ export default function RootLayout({
         <div id="modalContent" />
         <Header />
         <main className="flex-grow flex flex-col">{children}</main>
-        <ModalContainer />
+        {/* <ModalContainer /> */}
         <Footer />
       </body>
     </html>

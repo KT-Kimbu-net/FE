@@ -1,49 +1,123 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+
 import { FaUserEdit } from "react-icons/fa";
 import { FcAddImage, FcVideoCall } from "react-icons/fc";
-import { FaArrowRightLong } from "react-icons/fa6";
+
+import { useChatState } from "@/store/chatting";
+import { chatSocket } from "@/socket/ChatSocket";
+
 import Message from "./Message";
+import MessageInput from "./MessageInput";
+import ChattingHeader from "./ChattingHeader";
 
 export default function Chatting() {
-  const iconStyle = "w-6 h-6";
+  const messageRef = useRef<HTMLTextAreaElement>(null);
+  const messageEndRef = useRef<HTMLLIElement>(null);
+
+  const { isShow, chatLog, setChatLog, setAllChatLog } = useChatState(
+    (state) => ({
+      isShow: state.isShow,
+      chatLog: state.chatLog,
+      setChatLog: state.setChatLog,
+      setAllChatLog: state.setAllChatLog,
+    })
+  );
+
+  const [isVisible, setIsVisible] = useState(isShow);
+  const [animate, setAnimate] = useState(false);
+
+  const iconStyle = "w-4 h-4";
+
+  const msgSubmitSocketHandler = async () => {
+    if (messageRef.current?.value) {
+      const trimmedMessage = messageRef.current?.value.trim();
+      if (trimmedMessage) {
+        const sendMessage = {
+          nickname: "홈런치는 강백호",
+          message: messageRef.current?.value,
+          time: "오후 11:09",
+          report: [],
+          msgId: "1",
+        };
+        chatSocket.emit("chatting", sendMessage);
+        messageRef.current.value = "";
+      }
+    }
+  };
+
+  const getChatLogs = async () => {
+    const data = await (await fetch("http://localhost:5000/chatLogs")).json();
+    setAllChatLog(data);
+  };
+
+  useEffect(() => {
+    getChatLogs();
+  }, []);
+
+  useEffect(() => {
+    messageEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [chatLog]);
+
+  useEffect(() => {
+    chatSocket.on("chatting", (message) => {
+      setChatLog(message);
+    });
+  }, []);
+
+  useEffect(() => {
+    if (isShow) {
+      setIsVisible(true);
+      setAnimate(true);
+    } else {
+      setAnimate(false);
+      setTimeout(() => setIsVisible(false), 500);
+    }
+  }, [isShow]);
+
   return (
-    <section className="bg-white w-1/3 flex flex-col rounded-2xl">
-      <section className="flex justify-between h-[10%]  py-5 px-8">
-        <section className="flex items-center justify-between w-full">
-          <strong className="font-[Pretendard-ExtraBold] text-[2rem]">
-            KT WIZ응원톡
-          </strong>
-          <span className="font-[Pretendard-Medium] text-gray-500">817명</span>
-        </section>
-      </section>
-      <ul className="h-4/5 text-white flex flex-col gap-2 overflow-y-auto  py-5 px-8">
-        <Message
-          content={
-            "말하는감자입니다!말하는감자입니다!말하는감자입니다!말하는감자입니다!말하는감자입니다!말하는감자입니다!말하는감자입니다!말하는감자입니다!말하는감자입니다!말하는감자입니다!말하는감자입니다!"
-          }
-        />
-        <Message content={"안녕하세요! 저도 감자에요!"} />
-        <Message content={"같은 감자시군요!"} />
-        <Message content={"같은 감자시군요!"} />
-        <Message content={"같은 감자시군요!"} />
-      </ul>
-      <section className="h-[15%] rounded-b-xl py-2.5 px-5 bg-[#eeeeee] flex flex-col justify-between">
-        <section className="flex gap-2 items-center justify-between">
-          <section className="flex">
-            <span className="text-gray-700 font-[Pretendard-Medium] mr-4">
-              홈런타자 강백호
-            </span>
-            <FaUserEdit className={iconStyle} />
+    <>
+      {isVisible && (
+        <section
+          className={`bg-black border-[2px] rounded-2xl flex flex-col w-1/5 fixed bottom-[3%] h-2/5 right-4 z-20 ${
+            animate ? "animate-fadeIn" : "animate-fadeOut"
+          }`}
+        >
+          <ChattingHeader />
+          <ul className="h-4/5 text-white flex flex-col gap-3 overflow-y-auto px-5 py-3">
+            {chatLog &&
+              chatLog.map((message, index) => (
+                <Message
+                  key={index} // 추가: 각 메시지에 키를 추가합니다.
+                  nickname={message.nickname}
+                  message={message.message}
+                  time={message.time}
+                  msgId={message.msgId}
+                />
+              ))}
+            <li ref={messageEndRef}></li>
+          </ul>
+          <section className="h-[20%] rounded-b-2xl bg-black flex flex-col gap-2 px-2 py-2 border-t-[1px] border-gray-700">
+            <section className="flex gap-2 items-center justify-between px-3">
+              <section className="flex items-center">
+                <span className="text-gray-500 font-[Pretendard-Medium] text-sm mr-4">
+                  홈런타자 강백호
+                </span>
+                <FaUserEdit className={`${iconStyle} text-white`} />
+              </section>
+              <section className="flex gap-2">
+                {/* <FcAddImage className={iconStyle} /> */}
+                {/* <FcVideoCall className={iconStyle} /> */}
+              </section>
+            </section>
+            <MessageInput
+              messageRef={messageRef}
+              msgSubmitSocketHandler={msgSubmitSocketHandler}
+            />
           </section>
-          <section className="flex gap-2">
-            <FcAddImage className={iconStyle} />
-            <FcVideoCall className={iconStyle} />
-          </section>
         </section>
-        <section className="flex justify-between items-center w-full gap-2">
-          <textarea className="w-full resize-none outline-none bg-[#eeeeee]" />
-          <FaArrowRightLong className={iconStyle} />
-        </section>
-      </section>
-    </section>
+      )}
+    </>
   );
 }

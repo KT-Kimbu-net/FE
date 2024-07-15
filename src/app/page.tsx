@@ -7,6 +7,7 @@ import MatchBet from "@/components/MatchBet/MatchBet";
 import Sponsor from "@/components/Sponsor/Sponsor";
 import Chatting from "@/components/Chatting/Chatting";
 import Floating from "@/components/Floating/Floating";
+import ChatSocketConnectHandler from "@/components/Socket/ChatSocketConnectHandler";
 
 const getNewsApiHandler = async () => {
   const url = `${process.env.NEXT_PUBLIC_BASEURL}/today_rank`;
@@ -18,17 +19,10 @@ export default async function Page() {
 
   return (
     <section className="flex flex-col items-center">
+      <ChatSocketConnectHandler />
       <section>
         <section className="p-10 w-full flex flex-col gap-12 bg-[url('/img/BgImage.svg')] bg-cover items-center ">
-          {/* <section
-            className={`${
-              isShow ? "flex gap-14" : "w-full flex justify-center"
-            }`}
-          > */}
           <GameInfo />
-          {/* <Chatting /> */}
-          {/* </CSSTransition> */}
-          {/* </section> */}
           <section className="flex gap-14 w-3/4">
             <MatchBet />
             <Shortcuts />
@@ -40,6 +34,7 @@ export default async function Page() {
       <Notice />
       <Sponsor />
       <Floating />
+      <Chatting />
     </section>
   );
 }

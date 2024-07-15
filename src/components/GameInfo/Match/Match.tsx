@@ -18,10 +18,12 @@ export default function Match() {
           <section className="text-base font-[Pretendard-ExtraBold]">
             06.25 ( 화 ) 18:30
           </section>
-          <span className="text-sm font-[Pretendard-SemiBold]">
+          <span className="text-sm font-[Pretendard-SemiBold] text-[#1B1B1B]">
             수원 Kt wiz 파크
           </span>
-          <section className="border-[1px]">60%</section>
+          <section className="border-[1px] rounded-md border-[#e0e0e0]">
+            60%
+          </section>
         </section>
         <Image src={subseArrow} alt="next game match" />
       </section>
@@ -39,7 +41,7 @@ export default function Match() {
             </section>
             <section className="w-1/3 text-center flex justify-between items-center text-white">
               <span className="text-[2rem] font-[Pretendard-ExtraBold]">3</span>
-              <span className="text-lg">vs</span>
+              <span className="text-lg font-[Leferi] text-gray-500">vs</span>
               <span className="text-[2rem] font-[Pretendard-ExtraBold]">0</span>
             </section>
             <section className="w-1/3 flex items-center justify-between">
@@ -200,23 +202,37 @@ export default function Match() {
               </td>
             </tr>
             <tr className="bg-[#f3f3f3]">
-              <td className="text-center py-2">33승 1무 43패</td>
+              <td className="text-center py-2 text-gray-700 font-[Pretendard-Medium]">
+                33승 1무 43패
+              </td>
               <th className="py-2">시즌 성적</th>
-              <td className="text-center py-2">45승 2무 30패</td>
+              <td className="text-center py-2 text-gray-700 font-[Pretendard-Medium]">
+                45승 2무 30패
+              </td>
             </tr>
             <tr className="bg-[#f3f3f3]">
-              <td className="text-center py-2">5승 2패</td>
+              <td className="text-center py-2 text-gray-700 font-[Pretendard-Medium]">
+                5승 2패
+              </td>
               <th className="py-2">상대 전적</th>
-              <td className="text-center py-2">2승 5패</td>
+              <td className="text-center py-2 text-gray-700 font-[Pretendard-Medium]">
+                2승 5패
+              </td>
             </tr>
             <tr className="bg-[#f3f3f3]">
-              <td className="text-center py-2">0.434</td>
+              <td className="text-center py-2 text-gray-700 font-[Pretendard-Medium]">
+                0.434
+              </td>
               <th className="py-2">승률</th>
-              <td className="text-center py-2">0.600</td>
+              <td className="text-center py-2 text-gray-700 font-[Pretendard-Medium]">
+                0.600
+              </td>
             </tr>
             <tr className="bg-[#f3f3f3]">
               <td className="text-center relative rounded-bl-xl">
-                <span>고영표</span>
+                <span className="font-[Pretendard-ExtraBold] text-gray-700">
+                  고영표
+                </span>
                 <Image
                   src={luck}
                   alt="luck"
@@ -230,7 +246,9 @@ export default function Match() {
                   alt="luck"
                   className="absolute left-8 top-1/2 translate-y-[-50%]"
                 />
-                <span>양현종</span>
+                <span className="font-[Pretendard-ExtraBold] text-gray-700">
+                  양현종
+                </span>
               </td>
             </tr>
           </tbody>

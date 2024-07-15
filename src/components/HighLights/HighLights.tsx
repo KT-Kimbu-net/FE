@@ -1,53 +1,52 @@
+"use client";
+
 import Image from "next/image";
 import seeMore from "@/img/seeMore.svg";
-import HighLight from "@/img/HighLight예시.svg";
-
-const HighLightDummyData = [
-  {
-    image: HighLight,
-    title: "7이닝 2피안타? 귀엽네... KT 종신할래요? [위즈덕후]",
-    date: "2024.06.26",
-  },
-  {
-    image: HighLight,
-    title: "7이닝 2피안타? 귀엽네... KT 종신할래요? [위즈덕후]",
-    date: "2024.06.26",
-  },
-  {
-    image: HighLight,
-    title: "7이닝 2피안타? 귀엽네... KT 종신할래요? [위즈덕후]",
-    date: "2024.06.26",
-  },
-  {
-    image: HighLight,
-    title: "7이닝 2피안타? 귀엽네... KT 종신할래요? [위즈덕후]",
-    date: "2024.06.26",
-  },
-  {
-    image: HighLight,
-    title: "7이닝 2피안타? 귀엽네... KT 종신할래요? [위즈덕후]",
-    date: "2024.06.26",
-  },
-  {
-    image: HighLight,
-    title: "7이닝 2피안타? 귀엽네... KT 종신할래요? [위즈덕후]",
-    date: "2024.06.26",
-  },
-];
+import { useHighLights } from "@/store/highLights";
+import { HighLightDummyData } from "@/data/highLights/highLightsDummy";
+import { PhotosDummyData } from "@/data/highLights/photosDummy";
 
 export default function HighLights() {
+  const { setSelectTitle, selectTitle } = useHighLights((state) => ({
+    selectTitle: state.selectTitle,
+    setSelectTitle: state.setSelectTitle,
+  }));
+
+  const selectTitleStyle = "font-[Leferi] cursor-pointer";
+
+  const dataToRender =
+    selectTitle === "HIGHLIGHTS" ? HighLightDummyData : PhotosDummyData;
+
   return (
     <section className="w-2/3 bg-white bg-opacity-0 py-10">
       <section className="w-full flex items-center justify-between">
         <section className="flex gap-14 text-2xl">
-          <span className="font-[Leferi]">HighLights</span>
-          <span className="font-[Leferi]">Photo</span>
+          <section
+            className={`${selectTitleStyle} ${
+              selectTitle === "HIGHLIGHTS" ? "border-main border-b-[4px]" : ""
+            }`}
+            onClick={() => {
+              setSelectTitle("HIGHLIGHTS");
+            }}
+          >
+            HighLights
+          </section>
+          <section
+            className={`${selectTitleStyle} ${
+              selectTitle === "PHOTOS" ? "border-main border-b-[4px]" : ""
+            }`}
+            onClick={() => {
+              setSelectTitle("PHOTOS");
+            }}
+          >
+            Photo
+          </section>
         </section>
         <Image src={seeMore} alt="더 보기" className="cursor-pointer" />
       </section>
       <section>
         <ul className="grid grid-cols-4 gap-x-4 gap-y-10  mt-11">
-          {HighLightDummyData.map((highLight, index) => (
+          {dataToRender.map((highLight, index) => (
             <li
               key={index}
               className={`flex flex-col ${

@@ -9,10 +9,12 @@ import { useModalState } from "@/store/modal";
 import { MdQuiz } from "react-icons/md";
 import Image from "next/image";
 import quizRank from "@/img/Floating/quizRank.svg";
-
+import { useChatState } from "@/store/chatting";
 import Tooltip from "../Layouts/Tooltip";
 
 export default function Floating() {
+  const { setIsShow } = useChatState();
+
   const listStyle =
     "h-1/5 flex flex-col items-center py-4 cursor-pointer hover:scale-110 duration-300 gap-2";
   const iconStyle = "w-8 h-8";
@@ -22,7 +24,7 @@ export default function Floating() {
   const titleStyle = "text-sm";
 
   return (
-    <section className="fixed top-[10%] right-0 px-2 h-fit bg-[rgba(0,0,0,0.7)] text-white">
+    <section className="fixed top-[10%] right-0 h-fit bg-[rgba(0,0,0,0.7)] text-white px-1">
       <ul className="flex flex-col justify-betweenitems-center h-full">
         <li className={listStyle}>
           <IoTicket className={iconStyle} />
@@ -35,9 +37,9 @@ export default function Floating() {
         <li className={listStyle}>
           <Image
             src={quizRank}
-            alt="quizRank"
+            alt="quiz and Rank"
             onClick={() => {
-              setModalName("quizRanking");
+              setModalName("quizStart");
             }}
             className={iconStyle}
           />
@@ -51,7 +53,12 @@ export default function Floating() {
           <SiShopee className={iconStyle} />
           <span className={titleStyle}>KT Wiz상점</span>
         </li>
-        <li className={listStyle}>
+        <li
+          className={listStyle}
+          onClick={() => {
+            setIsShow();
+          }}
+        >
           <IoChatbubbleSharp className={iconStyle} />
           <span className={titleStyle}>KT Wiz응원톡</span>
         </li>
