@@ -31,8 +31,6 @@ export default async function Page() {
       <LeagueRanking leagueRanking={data} />
       <Notice />
       <Sponsor />
-      <Floating />
-      <Chatting />
     </section>
   );
 }

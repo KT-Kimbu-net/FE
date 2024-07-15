@@ -4,6 +4,8 @@ import "./globals.css";
 import { Noto_Sans_KR } from "next/font/google";
 import Footer from "@/components/Footer/Footer";
 const notoSansKr = Noto_Sans_KR({ subsets: ["latin"] });
+import Floating from "@/components/Floating/Floating";
+import Chatting from "@/components/Chatting/Chatting";
 
 export const metadata = {
   title: "WINNING KT : WE ARE GREAT MAGIC",
@@ -23,6 +25,8 @@ export default function RootLayout({
         <Header />
         <main className="flex-grow flex flex-col">{children}</main>
         {/* <ModalContainer /> */}
+        <Floating />
+        <Chatting />
         <Footer />
       </body>
     </html>
