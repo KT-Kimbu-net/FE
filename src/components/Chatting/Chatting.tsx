@@ -57,7 +57,13 @@ export default function Chatting() {
   }, []);
 
   useEffect(() => {
-    messageEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    const scrollToEnd = () => {
+      messageEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    };
+    if (chatLog.length > 0) {
+      scrollToEnd();
+    }
+    // messageEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [chatLog]);
 
   useEffect(() => {

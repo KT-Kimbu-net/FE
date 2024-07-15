@@ -47,6 +47,14 @@ const ModalContent = ({
     quizRanking: <QuizRanking currentUser={currentUser} />,
   };
 
+  useEffect(() => {
+    if (modalName) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [modalName]);
+
   // 임시
   useEffect(() => {
     if (modalName === "quizStart" && !isLoggedIn) {
