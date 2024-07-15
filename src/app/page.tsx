@@ -7,13 +7,13 @@ import MatchBet from "@/components/MainPage/MatchBet/MatchBet";
 import Sponsor from "@/components/MainPage/Sponsor/Sponsor";
 import ChatSocketConnectHandler from "@/components/Socket/ChatSocketConnectHandler";
 
-const getNewsApiHandler = async () => {
+const getLeagueRankApiHandler = async () => {
   const url = `${process.env.NEXT_PUBLIC_BASEURL}/today_rank`;
   return await (await fetch(url, { cache: "no-store" })).json();
 };
 
 export default async function Page() {
-  const data = await getNewsApiHandler();
+  const data = await getLeagueRankApiHandler();
 
   return (
     <section className="flex flex-col items-center h-full">

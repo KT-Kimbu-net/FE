@@ -3,8 +3,27 @@ import prevArrow from "@/img/prevArrow.svg";
 import subseArrow from "@/img/subseArrow.svg";
 import Kt from "@/img/TeamLogo/Kt.svg";
 import Kia from "@/img/TeamLogo/Kia.svg";
+import rain from "@/img/rain.svg";
 
-export default function MatchScore() {
+// 기상청 api를 이용한 강수확률 가져오는 api핸들러
+const getWeatherApiHandler = async () => {
+  const apiKey = process.env.NEXT_PUBLIC_APP_WEATHER_API_KEY;
+  const baseDate = "20240715";
+  const baseTime = "0500";
+  const nx = 60;
+  const ny = 121;
+
+  const url = `https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=${apiKey}&pageNo=1&numOfRows=10&dataType=JSON&base_date=${baseDate}&base_time=${baseTime}&nx=${nx}&ny=${ny}`;
+
+  return await (await fetch(url, { cache: "no-store" })).json();
+};
+
+export default async function MatchScore() {
+  const data = await getWeatherApiHandler();
+  const popData = data.response.body.items.item.find(
+    (item: any) => item.category === "POP"
+  );
+
   return (
     <>
       <section className="text-xl font-[Leferi]">Match</section>
@@ -17,8 +36,9 @@ export default function MatchScore() {
           <span className="text-sm font-[Pretendard-SemiBold] text-[#1B1B1B]">
             수원 Kt wiz 파크
           </span>
-          <section className="border-[1px] rounded-md border-[#e0e0e0]">
-            60%
+          <section className="border-[1px] rounded-md border-[#e0e0e0] flex gap-2 py-1 px-2 text-gray-500">
+            <Image src={rain} alt="rain" />
+            {popData.fcstValue}%
           </section>
         </section>
         <Image src={subseArrow} alt="next game match" />
