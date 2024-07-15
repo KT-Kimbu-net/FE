@@ -18,15 +18,13 @@ export default async function Page() {
   const data = await getNewsApiHandler();
 
   return (
-    <section className="flex flex-col items-center">
+    <section className="flex flex-col items-center h-full">
       <ChatSocketConnectHandler />
-      <section>
-        <section className="p-10 w-full flex flex-col gap-12 bg-[url('/img/BgImage.svg')] bg-cover items-center ">
-          <GameInfo />
-          <section className="flex gap-14 w-3/4">
-            <MatchBet />
-            <Shortcuts />
-          </section>
+      <section className="p-10 w-full h-full flex flex-col gap-12 bg-[url('/img/BgImage.svg')] bg-cover items-center">
+        <GameInfo />
+        <section className="flex gap-14 w-3/4">
+          <MatchBet />
+          <Shortcuts />
         </section>
       </section>
       <WeekSchedule />
