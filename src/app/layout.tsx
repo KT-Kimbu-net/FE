@@ -4,8 +4,8 @@ import "./globals.css";
 import { Noto_Sans_KR } from "next/font/google";
 import Footer from "@/components/Footer/Footer";
 const notoSansKr = Noto_Sans_KR({ subsets: ["latin"] });
-import Floating from "@/components/Floating/Floating";
-import Chatting from "@/components/Chatting/Chatting";
+import Floating from "@/components/Layouts/Floating/Floating";
+import Chatting from "@/components/Layouts/Chatting/Chatting";
 
 export const metadata = {
   title: "WINNING KT : WE ARE GREAT MAGIC",
