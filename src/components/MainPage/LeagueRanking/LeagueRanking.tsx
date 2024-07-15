@@ -46,7 +46,6 @@ export default function LeagueRanking(props: TLeagueRanking) {
               ].map((team, index) => (
                 <RankingList
                   rank={team.순위}
-                  // teamLogo={team.teamLogo}
                   teamName={team.팀}
                   totalGames={team.G}
                   win={team.승}

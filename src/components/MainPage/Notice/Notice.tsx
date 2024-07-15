@@ -1,6 +1,7 @@
 import Image from "next/image";
 import seeMore from "@/img/seeMore.svg";
-import NoticeExam from "@/img/Notice예시.svg";
+import NoticeList from "./NoticeList";
+import { noticeDummyData } from "@/data/notice/notice";
 
 export default function Notice() {
   return (
@@ -14,24 +15,10 @@ export default function Notice() {
         />
       </section>
       <ul className="w-3/4 flex gap-10 justify-between mt-8 overflow-x-hidden">
-        <li className="bg-[#f1f1f1] w-fit py-12">
-          <Image src={NoticeExam} alt="notice" />
-        </li>
-        <li className="bg-[#f1f1f1] w-fit py-12">
-          <Image src={NoticeExam} alt="notice" />
-        </li>
-        <li className="bg-[#f1f1f1] w-fit py-12">
-          <Image src={NoticeExam} alt="notice" />
-        </li>
-        <li className="bg-[#f1f1f1] w-fit py-12">
-          <Image src={NoticeExam} alt="notice" />
-        </li>
-        <li className="bg-[#f1f1f1] w-fit py-12">
-          <Image src={NoticeExam} alt="notice" />
-        </li>
-        <li className="bg-[#f1f1f1] w-fit py-12">
-          <Image src={NoticeExam} alt="notice" />
-        </li>
+        {noticeDummyData &&
+          noticeDummyData.map((notice, index) => (
+            <NoticeList image={notice.noticeImage} key={index} />
+          ))}
       </ul>
     </section>
   );

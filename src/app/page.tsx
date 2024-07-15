@@ -5,8 +5,6 @@ import GameInfo from "@/components/MainPage/GameInfo/GameInfo";
 import Shortcuts from "@/components/MainPage/Shortcuts/Shortcuts";
 import MatchBet from "@/components/MainPage/MatchBet/MatchBet";
 import Sponsor from "@/components/MainPage/Sponsor/Sponsor";
-import Chatting from "@/components/Chatting/Chatting";
-import Floating from "@/components/Floating/Floating";
 import ChatSocketConnectHandler from "@/components/Socket/ChatSocketConnectHandler";
 
 const getNewsApiHandler = async () => {
