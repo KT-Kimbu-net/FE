@@ -1,5 +1,5 @@
 import RankingList from "./RankingList";
-import HighLights from "../HighLights/HighLights";
+import HighLights from "@/components/HighLights/HighLights";
 
 type TLeagueRankingInfo = {
   G: string;

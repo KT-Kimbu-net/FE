@@ -4,13 +4,10 @@ import { IoTicket, IoChatbubbleSharp } from "react-icons/io5";
 import { MdLocalParking } from "react-icons/md";
 import { TbBuildingStadium } from "react-icons/tb";
 import { SiShopee } from "react-icons/si";
-import { MdOutlineQuiz } from "react-icons/md";
 import { useModalState } from "@/store/modal";
-import { MdQuiz } from "react-icons/md";
 import Image from "next/image";
 import quizRank from "@/img/Floating/quizRank.svg";
 import { useChatState } from "@/store/chatting";
-import Tooltip from "../Layouts/Tooltip";
 
 export default function Floating() {
   const { setIsShow } = useChatState();

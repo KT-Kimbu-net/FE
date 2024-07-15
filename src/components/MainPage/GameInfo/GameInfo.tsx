@@ -1,6 +1,6 @@
 import Match from "./Match/Match";
 import Lineup from "./Lineup";
-import PHMatchPredict from "./PHMatchPredict";
+import PHMatchPredict from "./PHMatchPredict/PHMatchPredict";
 
 export default function GameInfo() {
   return (
