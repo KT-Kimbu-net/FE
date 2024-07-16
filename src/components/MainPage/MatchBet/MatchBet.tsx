@@ -5,10 +5,10 @@ import Image from "next/image";
 import Kt from "@/img/TeamLogo/Kt.svg";
 import Kia from "@/img/TeamLogo/Kia.svg";
 
-export type selectBet = "WIN" | "LOSE" | "DRAW";
+export type selectBet = "WIN" | "LOSE" | "DRAW" | null;
 
 export default function MatchBet() {
-  const [selectBet, setSelectBet] = useState<selectBet>("DRAW");
+  const [selectBet, setSelectBet] = useState<selectBet>(null);
 
   return (
     <section className="bg-white w-1/3 rounded-2xl flex flex-col items-center p-5">

@@ -63,13 +63,16 @@ export default function Chatting() {
     if (chatLog.length > 0) {
       scrollToEnd();
     }
-    // messageEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [chatLog]);
 
   useEffect(() => {
-    chatSocket.on("chatting", (message) => {
-      setChatLog(message);
-    });
+    // const chatMsgSocketHandler = (message: any) => {
+    //   setChatLog(message);
+    // };
+    // chatSocket.on("chatting", chatMsgSocketHandler);
+    // return () => {
+    //   chatSocket.off("chatting", chatMsgSocketHandler);
+    // };
   }, []);
 
   useEffect(() => {
@@ -91,7 +94,7 @@ export default function Chatting() {
           }`}
         >
           <ChattingHeader />
-          <ul className="h-4/5 text-white flex flex-col gap-3 overflow-y-auto px-5 py-3">
+          <ul className="h-4/5 text-white flex flex-col gap-3 overflow-y-auto px-5 py-3 scrollbar-hide">
             {chatLog &&
               chatLog.map((message, index) => (
                 <Message

@@ -6,6 +6,7 @@ import Footer from "@/components/Footer/Footer";
 const notoSansKr = Noto_Sans_KR({ subsets: ["latin"] });
 import Floating from "@/components/Layouts/Floating/Floating";
 import Chatting from "@/components/Layouts/Chatting/Chatting";
+import ChatSocketHandler from "@/components/Socket/ChatSocketHandler";
 
 export const metadata = {
   title: "WINNING KT : WE ARE GREAT MAGIC",
@@ -27,6 +28,7 @@ export default function RootLayout({
         {/* <ModalContainer /> */}
         <Floating />
         <Chatting />
+        <ChatSocketHandler />
         <Footer />
       </body>
     </html>

@@ -1,4 +1,4 @@
-import HighLight from "@/img/HighLight예시.svg";
+import HighLight from "@/img/HighLightsEx.png";
 
 export const HighLightDummyData = [
   {

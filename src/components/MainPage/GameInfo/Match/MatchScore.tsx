@@ -8,7 +8,7 @@ import rain from "@/img/rain.svg";
 // 기상청 api를 이용한 강수확률 가져오는 api핸들러
 const getWeatherApiHandler = async () => {
   const apiKey = process.env.NEXT_PUBLIC_APP_WEATHER_API_KEY;
-  const baseDate = "20240715";
+  const baseDate = "20240716";
   const baseTime = "0500";
   const nx = 60;
   const ny = 121;

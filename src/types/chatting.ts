@@ -14,6 +14,8 @@ export type TMessageType = {
 export type TUseChatState = {
   isShow: boolean;
   setIsShow: () => void;
+  userCount: string;
+  setUserCount: (v: string) => void;
   chatLog: TMessageType[];
   setChatLog: (v: TMessageType) => void;
   setAllChatLog: (v: TMessageType[]) => void;

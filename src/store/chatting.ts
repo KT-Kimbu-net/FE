@@ -3,6 +3,7 @@ import { TUseChatState } from "@/types/chatting";
 
 export const useChatState = create<TUseChatState>((set) => ({
   isShow: false,
+  userCount: "",
   chatLog: [],
   setIsShow: () => set((state) => ({ isShow: !state.isShow })),
   setChatLog: (newMessage) =>
@@ -14,4 +15,5 @@ export const useChatState = create<TUseChatState>((set) => ({
       return { chatLog: updatedChatLog };
     }),
   setAllChatLog: (allMessage) => set({ chatLog: allMessage }),
+  setUserCount: (changeUserCount) => set({ userCount: changeUserCount }),
 }));
