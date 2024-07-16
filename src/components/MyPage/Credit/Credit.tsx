@@ -1,8 +1,9 @@
+"use client";
 import SubMenu from "@/components/Layouts/SubMenu";
+import useSubMenu from "@/hooks/useSubMenu";
 import CreditGet from "./CreditGet";
 import CreditUsed from "./CreditUsed";
 import CreditDelete from "./CreditDelete";
-import useSubMenu from "@/hooks/useSubMenu";
 
 export default function Credit() {
   const { menuList, menuStatus, functionList } = useSubMenu([

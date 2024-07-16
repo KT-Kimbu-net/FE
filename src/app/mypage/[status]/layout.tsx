@@ -1,0 +1,35 @@
+import SideMenu from "@/components/Layouts/SideMenu";
+import SubHeader from "@/components/Layouts/SubHeader";
+import { mypageSideMenuData } from "@/data/sideMenu/dataMypage";
+
+type TPageProps = {
+  children: React.ReactNode;
+  params: {
+    status: string;
+  };
+};
+
+type TSubHeader = {
+  title: string;
+  subTitle: string;
+};
+
+export default function layout(props: TPageProps) {
+  const subHeaderontent: { [key: string]: TSubHeader } = {
+    editprofile: { title: "프로필 수정", subTitle: "나의 정보를 수정할수 있어요." },
+    credit: {
+      title: "크레딧 사용,적립 내역",
+      subTitle: "크레딧 사용 & 적립 내역 조회",
+    },
+  };
+  return (
+    <>
+      <SideMenu {...mypageSideMenuData} params={props.params.status} />
+      <SubHeader
+        title={subHeaderontent[props.params.status].title}
+        subTitle={subHeaderontent[props.params.status].subTitle}
+      />
+      <div>{props.children}</div>
+    </>
+  );
+}
