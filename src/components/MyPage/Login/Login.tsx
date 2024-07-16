@@ -1,4 +1,5 @@
 "use client";
+
 import Image from "next/image";
 import ktWizMiniLogo from "/public/img/ktWizMiniLogo.svg";
 import { useState } from "react";

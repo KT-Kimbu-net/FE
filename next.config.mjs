@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['https://wizzap.ktwiz.co.kr'],
+    domains: ["wizzap.ktwiz.co.kr"],
   },
 };
 

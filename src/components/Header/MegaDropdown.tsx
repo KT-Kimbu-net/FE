@@ -21,8 +21,8 @@ export default function MegaDropdown({
       >
         <div className="w-full m-auto">
           <div className="flex justify-center py-4">
-            {menus.map((submenu) => (
-              <ul className="text-center w-28 flex flex-col">
+            {menus.map((submenu, index) => (
+              <ul className="text-center w-28 flex flex-col" key={index}>
                 {submenu.items.map((item, itemIndex) => (
                   <li key={itemIndex} className="py-1">
                     <Link href={item.link}>

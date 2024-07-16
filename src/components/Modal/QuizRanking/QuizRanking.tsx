@@ -15,16 +15,15 @@ import {
 } from "@/utils/ranking";
 import TableHeader from "./TableHeader";
 import TableBody from "./TableBody";
-import { useUserStore } from "@/store/user";
+import { useUserState } from "@/store/user";
 
 export default function QuizRanking() {
   const { setModalName } = useModalState();
-  const { currentUser } = useUserStore(); // 전역 상태에서 currentUser 가져오기
+  const { userData } = useUserState(); // 전역 상태에서 currentUser 가져오기
   const [criteria, setCriteria] = useState<FilterCriteria>("Points");
 
   // 랭킹 데이터 가져오기
   const filteredRankingData = getTopRankingUsers(criteria);
-  console.log(currentUser);
   return (
     <>
       <div className="relative first-line:flex flex-col rounded-[12px] bg-opacity-100 bg-[#a42a2a] w-[500px] h-[670px] box-border">
