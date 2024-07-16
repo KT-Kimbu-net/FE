@@ -6,12 +6,7 @@ export const loginUserTest: UserData = {
   userId: "default123",
   password: "default123",
   nickname: "Guest",
-  credit: {
-    creditAmount: 100,
-    usedHistory: [],
-    deleteHistory: [],
-    getHistory: [],
-  },
+  creditAmount: 100,
   quiz: { isSolved: 0, amount: 0, sequenceDays: 0 },
   gamePredict: { sequenceDays: 0 },
   userUuid: "default-uuid",

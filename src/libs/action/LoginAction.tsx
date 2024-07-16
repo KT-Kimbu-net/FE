@@ -28,7 +28,6 @@ export async function joinUserAction(formData: FormData) {
     },
     body: JSON.stringify(userData),
   });
-  console.log(result, userData);
   if (result.status === 200) {
     return { redirect: "/login" };
   }
@@ -51,16 +50,10 @@ export async function loginAction(formData: FormData) {
     },
     body: JSON.stringify(userData),
   });
-  console.log(
-    "----------응답-------\n",
-    result,
-    "------------인풋----------\n",
-    userData
-  );
   if (!result.ok) {
     return { status: result.status };
   }
 
   const data = await result.json();
-  return { data, status: result.status };
+  return { data: data.userData, status: result.status };
 }

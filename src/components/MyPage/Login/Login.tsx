@@ -49,7 +49,6 @@ export default function Login() {
             className={`w-[300px] h-[40px] ${loginBtnStyle}  rounded-[5px]`}
             formAction={async (formData) => {
               const result = await loginAction(formData);
-
               if (result.status === 200) {
                 console.log("로그인 성공");
                 localStorage.setItem("token", result.data.token);

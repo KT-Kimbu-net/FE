@@ -20,7 +20,7 @@ export default function UserMenu({
         {user ? (
           <>
             <span className="text-gray-500 text-sm font-normal">
-              {user.credit.creditAmount} point
+              {user.creditAmount} point
             </span>
             <span className="hover:text-gray-800 text-gray-500">|</span>
             <span className="text-gray-500 text-sm font-normal">

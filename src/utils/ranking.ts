@@ -30,7 +30,7 @@ export const getTopRankingUsers = (criteria: FilterCriteria): UserData[] => {
   switch (criteria) {
     case "Points":
       sortedUserData = userDummyData.sort(
-        (a, b) => b.credit.creditAmount - a.credit.creditAmount
+        (a, b) => b.creditAmount - a.creditAmount
       );
       break;
     case "Quiz Correct Answers":
@@ -60,7 +60,7 @@ export const getTopRankingUsers = (criteria: FilterCriteria): UserData[] => {
 export const getScore = (data: UserData, criteria: FilterCriteria) => {
   switch (criteria) {
     case "Points":
-      return data.credit.creditAmount;
+      return data.creditAmount;
     case "Quiz Correct Answers":
       return data.quiz.amount;
     case "Consecutive Quiz Correct":
