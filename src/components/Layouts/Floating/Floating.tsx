@@ -32,15 +32,13 @@ export default function Floating() {
           <Image src={parking} alt="parking" className={iconStyle} />
           <span className={titleStyle}>주차안내</span>
         </li>
-        <li className={listStyle}>
-          <Image
-            src={quizRank}
-            alt="quiz and Rank"
-            onClick={() => {
-              setModalName("quizStart");
-            }}
-            className={iconStyle}
-          />
+        <li
+          className={listStyle}
+          onClick={() => {
+            setModalName("quizStart");
+          }}
+        >
+          <Image src={quizRank} alt="quiz and Rank" className={iconStyle} />
           <span className={titleStyle}>데일리퀴즈/랭킹</span>
         </li>
         <li className={listStyle}>

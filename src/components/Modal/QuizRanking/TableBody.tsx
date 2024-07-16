@@ -50,7 +50,7 @@ export default function TableBody({
           <p
             className={`text-sm font-medium ${
               index === 0 ? "text-red-500" : "text-navy-700"
-            } dark:text-white`}
+            }text-black`}
           >
             {data.nickname}
           </p>
@@ -61,7 +61,7 @@ export default function TableBody({
           <p
             className={`text-md font-medium ${
               index === 0 ? "text-green-500" : "text-gray-600"
-            } dark:text-white`}
+            }text-black`}
           >
             {getScore(data, criteria as FilterCriteria)}
           </p>

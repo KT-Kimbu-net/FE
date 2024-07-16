@@ -11,19 +11,21 @@ import { chatSocket } from "@/socket/ChatSocket";
 import Message from "./Message";
 import MessageInput from "./MessageInput";
 import ChattingHeader from "./ChattingHeader";
+import { useUserState } from "@/store/user";
 
 export default function Chatting() {
   const messageRef = useRef<HTMLTextAreaElement>(null);
   const messageEndRef = useRef<HTMLLIElement>(null);
 
-  const { isShow, chatLog, setChatLog, setAllChatLog } = useChatState(
-    (state) => ({
-      isShow: state.isShow,
-      chatLog: state.chatLog,
-      setChatLog: state.setChatLog,
-      setAllChatLog: state.setAllChatLog,
-    })
-  );
+  const { userData } = useUserState((state) => ({
+    userData: state.userData,
+  }));
+  const { isShow, chatLog, setAllChatLog } = useChatState((state) => ({
+    isShow: state.isShow,
+    chatLog: state.chatLog,
+    setChatLog: state.setChatLog,
+    setAllChatLog: state.setAllChatLog,
+  }));
 
   const [isVisible, setIsVisible] = useState(isShow);
   const [animate, setAnimate] = useState(false);
@@ -35,7 +37,7 @@ export default function Chatting() {
       const trimmedMessage = messageRef.current?.value.trim();
       if (trimmedMessage) {
         const sendMessage = {
-          nickname: "홈런치는 강백호",
+          nickname: userData?.nickname,
           message: messageRef.current?.value,
           time: "오후 11:09",
           report: [],
@@ -60,10 +62,8 @@ export default function Chatting() {
     const scrollToEnd = () => {
       messageEndRef.current?.scrollIntoView({ behavior: "smooth" });
     };
-    // if (chatLog.length > 0) {
     scrollToEnd();
-    // }
-  }, [chatLog]);
+  }, [chatLog, isShow]);
 
   useEffect(() => {
     if (isShow) {
@@ -88,7 +88,7 @@ export default function Chatting() {
             {chatLog &&
               chatLog.map((message, index) => (
                 <Message
-                  key={index} // 추가: 각 메시지에 키를 추가합니다.
+                  key={index}
                   nickname={message.nickname}
                   message={message.message}
                   time={message.time}
@@ -101,7 +101,7 @@ export default function Chatting() {
             <section className="flex gap-2 items-center justify-between px-3">
               <section className="flex items-center">
                 <span className="text-gray-500 font-[Pretendard-Medium] text-sm mr-4">
-                  홈런타자 강백호
+                  {userData?.nickname}
                 </span>
                 <Image
                   src={userSetting}

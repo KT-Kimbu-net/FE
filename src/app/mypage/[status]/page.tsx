@@ -15,7 +15,7 @@ export default function DynamicMyPage(props: TPageProps) {
   };
   return (
     <>
-      <div className="h-svh w-full flex items-center justify-start flex-col">
+      <div className="w-full flex items-center justify-start flex-col">
         {modalContent[props.params.status]}
       </div>
     </>
