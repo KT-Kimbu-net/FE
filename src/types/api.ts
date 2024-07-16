@@ -26,7 +26,7 @@ export type UserData = {
   userId: string;
   password: string;
   nickname: string;
-  credit: Credit; // 크레딧 정보
+  creditAmount: number; // 크레딧 정보
   quiz: Quiz; // 퀴즈 정보
   gamePredict: GamePredict; // 게임 예측 정보
   userUuid: string;

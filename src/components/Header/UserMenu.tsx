@@ -20,7 +20,7 @@ export default function UserMenu({
         {user ? (
           <>
             <span className="text-gray-500 text-sm font-normal">
-              {user.credit.creditAmount} point
+              {user.creditAmount} point
             </span>
             <span className="hover:text-gray-800 text-gray-500">|</span>
             <span className="text-gray-500 text-sm font-normal">
@@ -40,7 +40,10 @@ export default function UserMenu({
               로그인
             </Link>
             <span className="hover:text-gray-800 text-gray-500">|</span>
-            <Link href="/signup" className="text-gray-500 text-sm font-normal">
+            <Link
+              href="/login/signup"
+              className="text-gray-500 text-sm font-normal"
+            >
               회원가입
             </Link>
           </>

@@ -1,10 +1,30 @@
 "use server";
+import { v4 as uuidv4 } from "uuid";
 
 export async function joinUserAction(formData: FormData) {
   const userData = {
     userData: {
       userId: "",
       password: "",
+      credit: {
+        creditAmount: 1000,
+        creditHistory: {
+          usedHistory: [],
+          deleteHistory: [],
+          getHistory: [],
+        },
+      },
+      quiz: {
+        isSolved: 0,
+        amount: 0,
+        sequenceDays: 0,
+      },
+      gamePredict: {
+        choose: "",
+        sequenceDays: 0,
+      },
+      userUuid: uuidv4(),
+      nickname: "",
     },
   };
   const id = formData.get("id");
@@ -28,7 +48,6 @@ export async function joinUserAction(formData: FormData) {
     },
     body: JSON.stringify(userData),
   });
-  console.log(result, userData);
   if (result.status === 200) {
     return { redirect: "/login" };
   }
@@ -51,16 +70,10 @@ export async function loginAction(formData: FormData) {
     },
     body: JSON.stringify(userData),
   });
-  console.log(
-    "----------응답-------\n",
-    result,
-    "------------인풋----------\n",
-    userData
-  );
   if (!result.ok) {
     return { status: result.status };
   }
 
   const data = await result.json();
-  return { data, status: result.status };
+  return { data: data.userData, status: result.status };
 }
