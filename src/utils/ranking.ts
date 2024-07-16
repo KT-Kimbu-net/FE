@@ -1,4 +1,5 @@
 import { userDummyData } from "@/data/modal/usersDummy";
+import { useUserStore } from "@/store/user";
 import { UserData } from "@/types/api";
 
 export const rankImgSrc = [
@@ -21,37 +22,38 @@ export type FilterCriteria =
   | "Consecutive Quiz Correct";
 //   | "Win Rate Correct"; 일단 제외
 
-export const getTopRankingUsers = (
-  currentUser: UserData,
-  criteria: FilterCriteria
-): UserData[] => {
-  const userData = userDummyData;
+export const getTopRankingUsers = (criteria: FilterCriteria): UserData[] => {
+  const { currentUser } = useUserStore.getState(); // 전역 상태 currentUser 가져오기
 
   // 선택된 기준에 따라 사용자 데이터를 정렬
   let sortedUserData: UserData[];
   switch (criteria) {
     case "Points":
-      sortedUserData = userData.sort(
+      sortedUserData = userDummyData.sort(
         (a, b) => b.credit.creditAmount - a.credit.creditAmount
       );
       break;
     case "Quiz Correct Answers":
-      sortedUserData = userData.sort((a, b) => b.quiz.amount - a.quiz.amount);
+      sortedUserData = userDummyData.sort(
+        (a, b) => b.quiz.amount - a.quiz.amount
+      );
       break;
     case "Consecutive Quiz Correct":
-      sortedUserData = userData.sort(
+      sortedUserData = userDummyData.sort(
         (a, b) => b.quiz.sequenceDays - a.quiz.sequenceDays
       );
       break;
     default:
-      sortedUserData = userData;
+      sortedUserData = userDummyData;
       break;
   }
 
   // 상위 9명 필터링
   const topUsers = sortedUserData.slice(0, 9);
   // currentUser를 0번째 index에 추가
-  topUsers.unshift(currentUser);
+  if (currentUser) {
+    topUsers.unshift(currentUser);
+  }
 
   return topUsers;
 };
