@@ -7,6 +7,7 @@ import Link from "next/link";
 import { loginAction } from "@/libs/action/LoginAction";
 import { useUserState } from "@/store/user";
 import { useRouter } from "next/navigation";
+import { chatSocket } from "@/socket/ChatSocket";
 import InputBox from "@/libs/atomic/InputBox";
 
 export default function Login() {
@@ -50,6 +51,7 @@ export default function Login() {
             formAction={async (formData) => {
               const result = await loginAction(formData);
               if (result.status === 200) {
+                chatSocket.connect();
                 console.log("로그인 성공");
                 localStorage.setItem("token", result.data.token);
                 setUserData(result.data);
