@@ -4,11 +4,11 @@ import { useEffect, useState } from "react";
 import CloseButton from "./Common/CloseButton";
 import QuizProblemBody from "./QuizProblem/Body";
 import ModalLayout from "./Common/ModalLayout";
-import { useUserStore } from "@/store/user";
+import { useUserState } from "@/store/user";
 import { UserData } from "@/types/api";
 
 export default function QuizProblem() {
-  const { currentUser, setCurrentUser } = useUserStore(); // 전역 사용자 정보
+  const { userData, setUserData } = useUserState(); // 전역 사용자 정보
   const { setModalName, setPreviousModalType, problemIndex, setProblemIndex } =
     useModalState();
   const { setAnswer } = useUserQuizState();
@@ -37,16 +37,16 @@ export default function QuizProblem() {
         setProblem(data);
         console.log(data);
         // 유저 정보에서 quiz.isSolved를 1로 변경
-        if (currentUser) {
+        if (userData) {
           const updatedUser: UserData = {
-            ...currentUser,
+            ...userData,
             quiz: {
-              ...currentUser.quiz,
+              ...userData.quiz,
               isSolved: 1,
             },
           };
-          setCurrentUser(updatedUser);
-          console.log(currentUser.quiz);
+          setUserData(updatedUser);
+          console.log(userData.quiz);
         }
       } catch (error) {
         console.error("Failed to fetch problem", error);
@@ -56,7 +56,7 @@ export default function QuizProblem() {
     };
 
     fetchProblem();
-  }, [questionIndex, setCurrentUser]);
+  }, [questionIndex, setUserData]);
 
   const handleAnswer = (value: boolean) => {
     setAnswer(questionIndex, value);

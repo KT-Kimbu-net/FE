@@ -6,21 +6,21 @@ import HeaderMobile from "./HeaderMobile";
 import UserMenu from "./UserMenu";
 import MegaDropdown from "./MegaDropdown";
 import { menus } from "@/data/Header/menus";
-import { loginUserTest, useUserStore } from "@/store/user";
+import { loginUserTest, useUserState } from "@/store/user";
 
 export default function Header() {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
 
-  const { currentUser, setCurrentUser, resetCurrentUser } = useUserStore();
+  const { userData, setUserData, resetUserData } = useUserState();
 
   const handleLogin = () => {
-    setCurrentUser(loginUserTest); // 임시 사용자 정보
+    setUserData(loginUserTest); // 임시 사용자 정보
   };
 
   const handleLogout = () => {
-    resetCurrentUser(); // 로그아웃
+    resetUserData(); // 로그아웃
   };
 
   const handleMouseEnter = () => {
@@ -79,7 +79,7 @@ export default function Header() {
 
             {/* 우측 버튼들 */}
             <UserMenu
-              user={currentUser}
+              user={userData}
               handleLogin={handleLogin}
               handleLogout={handleLogout}
             />

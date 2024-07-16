@@ -12,7 +12,7 @@ import AlertRetry from "../AlertRetry";
 import AlertExit from "../AlertExit";
 import { UserData } from "@/types/api";
 import QuizRanking from "../QuizRanking/QuizRanking";
-import { useUserStore } from "@/store/user";
+import { useUserState } from "@/store/user";
 
 const ModalLayoutBackground = () => {
   const { modalName } = useModalState();
@@ -31,8 +31,8 @@ type ModalProps = {
 
 const ModalContent = (): JSX.Element => {
   const { modalName, setModalName } = useModalState();
-  const { currentUser } = useUserStore(); // 전역 상태에서 currentUser 가져오기
-  const isLoggedIn = currentUser !== null; // 로그인 여부 확인
+  const { userData } = useUserState(); // 전역 상태에서 currentUser 가져오기
+  const isLoggedIn = userData !== null; // 로그인 여부 확인
 
   const modalContent: { [key: string]: JSX.Element } = {
     quizStart: <QuizStart />,
@@ -52,10 +52,7 @@ const ModalContent = (): JSX.Element => {
       (modalName === "quizProblem" || modalName === "quizRanking")
     ) {
       setModalName("alertLogin");
-    } else if (
-      currentUser?.quiz.isSolved === 1 &&
-      modalName === "quizProblem"
-    ) {
+    } else if (userData?.quiz.isSolved === 1 && modalName === "quizProblem") {
       setModalName("alertRetry");
     } else if (modalName === "quizLoading") {
       const timer = setTimeout(() => {

@@ -4,12 +4,11 @@ import { SvgQuizResultCheck } from "@/utils/img/Svg";
 import ModalLayout from "./Common/ModalLayout";
 import CloseButton from "./Common/CloseButton";
 import Progressbar from "./Common/Progressbar";
-import { useUserStore } from "@/store/user";
+import { useUserState } from "@/store/user";
 
 export default function QuizResult() {
   const { setModalName } = useModalState();
-  const { answers } = useUserQuizState();
-  const { currentUser } = useUserStore();
+  const { userData } = useUserState();
   // console.log("User Quiz State:", answers);
   return (
     <>
@@ -23,11 +22,11 @@ export default function QuizResult() {
             <div className="mt-2 text-center text-base pt-2 bg-slate-200 rounded-2xl pl-2 pb-2">
               <div>
                 <span className="text-blue-500 font-bold">
-                  {currentUser?.nickname || "사용자 "} 님{" "}
+                  {userData?.nickname || "사용자 "} 님{" "}
                 </span>
                 의 현재 포인트는{" "}
                 <span className="text-red-500 font-bold">
-                  {currentUser?.credit?.creditAmount || 0} 포인트
+                  {userData?.credit?.creditAmount || 0} 포인트
                 </span>{" "}
                 입니다.
               </div>

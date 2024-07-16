@@ -18,15 +18,15 @@ export const loginUserTest: UserData = {
 };
 
 type UserState = {
-  currentUser: UserData | null;
-  setCurrentUser: (user: UserData) => void;
-  resetCurrentUser: () => void;
+  userData: UserData | null;
+  setUserData: (user: UserData) => void;
+  resetUserData: () => void;
 };
 
-export const useUserStore = create<UserState>((set) => ({
-  currentUser: null,
-  setCurrentUser: (user: UserData) => set({ currentUser: user }),
-  resetCurrentUser: () => set({ currentUser: null }), // 초기화
+export const useUserState = create<UserState>((set) => ({
+  userData: null,
+  setUserData: (user: UserData) => set({ userData: user }),
+  resetUserData: () => set({ userData: null }), // 초기화
   // import { TUseUserState } from "@/types/user";
   // import { create } from "zustand";
 
@@ -35,5 +35,4 @@ export const useUserStore = create<UserState>((set) => ({
   //   setUserData(userData) {
   //     set({ userData });
   //   },
-  // >>>>>>> 5cac95b58c33840fdbacd2553eb29fce94761505
 }));
