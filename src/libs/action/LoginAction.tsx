@@ -1,10 +1,30 @@
 "use server";
+import { v4 as uuidv4 } from "uuid";
 
 export async function joinUserAction(formData: FormData) {
   const userData = {
     userData: {
       userId: "",
       password: "",
+      credit: {
+        creditAmount: 1000,
+        creditHistory: {
+          usedHistory: [],
+          deleteHistory: [],
+          getHistory: [],
+        },
+      },
+      quiz: {
+        isSolved: 0,
+        amount: 0,
+        sequenceDays: 0,
+      },
+      gamePredict: {
+        choose: "",
+        sequenceDays: 0,
+      },
+      userUuid: uuidv4(),
+      nickname: "",
     },
   };
   const id = formData.get("id");

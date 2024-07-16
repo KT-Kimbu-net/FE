@@ -40,7 +40,10 @@ export default function UserMenu({
               로그인
             </Link>
             <span className="hover:text-gray-800 text-gray-500">|</span>
-            <Link href="/signup" className="text-gray-500 text-sm font-normal">
+            <Link
+              href="/login/signup"
+              className="text-gray-500 text-sm font-normal"
+            >
               회원가입
             </Link>
           </>
