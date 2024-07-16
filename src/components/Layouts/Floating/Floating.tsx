@@ -1,12 +1,13 @@
 "use client";
 
-import { IoTicket, IoChatbubbleSharp } from "react-icons/io5";
-import { MdLocalParking } from "react-icons/md";
-import { TbBuildingStadium } from "react-icons/tb";
-import { SiShopee } from "react-icons/si";
 import { useModalState } from "@/store/modal";
 import Image from "next/image";
 import quizRank from "@/img/Floating/quizRank.svg";
+import ticket from "@/img/Floating/ticket.svg";
+import parking from "@/img/Floating/parking.svg";
+import stadium from "@/img/Floating/stadium.svg";
+import shop from "@/img/Floating/shop.svg";
+import chat from "@/img/Floating/chat.svg";
 import { useChatState } from "@/store/chatting";
 
 export default function Floating() {
@@ -24,11 +25,11 @@ export default function Floating() {
     <section className="fixed top-[10%] right-0 h-fit bg-[rgba(0,0,0,0.7)] text-white px-1">
       <ul className="flex flex-col justify-betweenitems-center h-full">
         <li className={listStyle}>
-          <IoTicket className={iconStyle} />
+          <Image src={ticket} alt="ticket" className={iconStyle} />
           <span className={titleStyle}>티켓예매</span>
         </li>
         <li className={listStyle}>
-          <MdLocalParking className={iconStyle} />
+          <Image src={parking} alt="parking" className={iconStyle} />
           <span className={titleStyle}>주차안내</span>
         </li>
         <li className={listStyle}>
@@ -43,11 +44,11 @@ export default function Floating() {
           <span className={titleStyle}>데일리퀴즈/랭킹</span>
         </li>
         <li className={listStyle}>
-          <TbBuildingStadium className={iconStyle} />
+          <Image src={stadium} alt="stadium" className={iconStyle} />
           <span className={titleStyle}>구장 혼잡도</span>
         </li>
         <li className={listStyle}>
-          <SiShopee className={iconStyle} />
+          <Image src={shop} alt="kt wiz shop" className={iconStyle} />
           <span className={titleStyle}>KT Wiz상점</span>
         </li>
         <li
@@ -56,7 +57,7 @@ export default function Floating() {
             setIsShow();
           }}
         >
-          <IoChatbubbleSharp className={iconStyle} />
+          <Image src={chat} alt="kt wiz chatting" className={iconStyle} />
           <span className={titleStyle}>KT Wiz응원톡</span>
         </li>
       </ul>

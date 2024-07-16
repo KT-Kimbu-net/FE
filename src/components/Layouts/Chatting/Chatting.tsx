@@ -2,8 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 
-import { FaUserEdit } from "react-icons/fa";
-import { FcAddImage, FcVideoCall } from "react-icons/fc";
+import Image from "next/image";
+import userSetting from "@/img/Chatting/userSetting.svg";
 
 import { useChatState } from "@/store/chatting";
 import { chatSocket } from "@/socket/ChatSocket";
@@ -28,7 +28,7 @@ export default function Chatting() {
   const [isVisible, setIsVisible] = useState(isShow);
   const [animate, setAnimate] = useState(false);
 
-  const iconStyle = "w-4 h-4";
+  const iconStyle = "w-6 h-6";
 
   const msgSubmitSocketHandler = async () => {
     if (messageRef.current?.value) {
@@ -60,20 +60,10 @@ export default function Chatting() {
     const scrollToEnd = () => {
       messageEndRef.current?.scrollIntoView({ behavior: "smooth" });
     };
-    if (chatLog.length > 0) {
-      scrollToEnd();
-    }
+    // if (chatLog.length > 0) {
+    scrollToEnd();
+    // }
   }, [chatLog]);
-
-  useEffect(() => {
-    // const chatMsgSocketHandler = (message: any) => {
-    //   setChatLog(message);
-    // };
-    // chatSocket.on("chatting", chatMsgSocketHandler);
-    // return () => {
-    //   chatSocket.off("chatting", chatMsgSocketHandler);
-    // };
-  }, []);
 
   useEffect(() => {
     if (isShow) {
@@ -113,7 +103,11 @@ export default function Chatting() {
                 <span className="text-gray-500 font-[Pretendard-Medium] text-sm mr-4">
                   홈런타자 강백호
                 </span>
-                <FaUserEdit className={`${iconStyle} text-white`} />
+                <Image
+                  src={userSetting}
+                  alt="user nickname setting"
+                  className={`${iconStyle} text-white`}
+                />
               </section>
               <section className="flex gap-2">
                 {/* <FcAddImage className={iconStyle} /> */}
