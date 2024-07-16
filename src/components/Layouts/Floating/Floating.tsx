@@ -11,15 +11,23 @@ import chat from "@/img/Floating/chat.svg";
 import { useChatState } from "@/store/chatting";
 
 export default function Floating() {
-  const { setIsShow } = useChatState();
+  const { setIsShow } = useChatState((state) => ({
+    setIsShow: state.setIsShow,
+  }));
+  const { setModalName } = useModalState((state) => ({
+    setModalName: state.setModalName,
+  }));
 
   const listStyle =
     "h-1/5 flex flex-col items-center py-4 cursor-pointer hover:scale-110 duration-300 gap-2";
   const iconStyle = "w-8 h-8";
-
-  const { setModalName } = useModalState();
-
   const titleStyle = "text-sm";
+
+  //로그인 검증 로직??(1차 alert, 추후 모달 렌더링)
+  const isLoginCheckHandler = () => {
+    if (localStorage.getItem("token")) setIsShow();
+    else alert("로그인이 필요합니다!!!!!!!!!!!!!!!!!!!@!@!");
+  };
 
   return (
     <section className="fixed top-[10%] right-0 h-fit bg-[rgba(0,0,0,0.7)] text-white px-1">
@@ -49,12 +57,7 @@ export default function Floating() {
           <Image src={shop} alt="kt wiz shop" className={iconStyle} />
           <span className={titleStyle}>KT Wiz상점</span>
         </li>
-        <li
-          className={listStyle}
-          onClick={() => {
-            setIsShow();
-          }}
-        >
+        <li className={listStyle} onClick={isLoginCheckHandler}>
           <Image src={chat} alt="kt wiz chatting" className={iconStyle} />
           <span className={titleStyle}>KT Wiz응원톡</span>
         </li>

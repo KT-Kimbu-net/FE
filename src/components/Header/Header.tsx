@@ -7,6 +7,7 @@ import UserMenu from "./UserMenu";
 import MegaDropdown from "./MegaDropdown";
 import { menus } from "@/data/Header/menus";
 import { loginUserTest, useUserState } from "@/store/user";
+import { useChatState } from "@/store/chatting";
 
 export default function Header() {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
@@ -14,12 +15,18 @@ export default function Header() {
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
 
   const { userData, setUserData, resetUserData } = useUserState();
+  const { setIsShow, isShow } = useChatState((state) => ({
+    isShow: state.isShow,
+    setIsShow: state.setIsShow,
+  }));
 
   const handleLogin = () => {
     setUserData(loginUserTest); // 임시 사용자 정보
   };
 
   const handleLogout = () => {
+    if (isShow) setIsShow();
+    localStorage.clear();
     resetUserData(); // 로그아웃
   };
 
