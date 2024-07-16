@@ -1,9 +1,12 @@
-import ModalContainer from "@/components/Modal/Common/ModalContainer";
+import ModalContainer from "@/components/Container/ModalContainer";
 import Header from "@/components/Header/Header";
 import "./globals.css";
 import { Noto_Sans_KR } from "next/font/google";
 import Footer from "@/components/Footer/Footer";
 const notoSansKr = Noto_Sans_KR({ subsets: ["latin"] });
+import Floating from "@/components/Layouts/Floating/Floating";
+import Chatting from "@/components/Layouts/Chatting/Chatting";
+import ChatSocketHandler from "@/components/Socket/ChatSocketHandler";
 
 export const metadata = {
   title: "WINNING KT : WE ARE GREAT MAGIC",
@@ -23,6 +26,9 @@ export default function RootLayout({
         <Header />
         <main className="flex-grow flex flex-col">{children}</main>
         <ModalContainer />
+        <Floating />
+        <Chatting />
+        <ChatSocketHandler />
         <Footer />
       </body>
     </html>

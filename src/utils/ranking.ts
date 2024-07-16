@@ -1,5 +1,5 @@
 import { userDummyData } from "@/data/modal/usersDummy";
-import { useUserStore } from "@/store/user";
+import { useUserState } from "@/store/user";
 import { UserData } from "@/types/api";
 
 export const rankImgSrc = [
@@ -23,7 +23,7 @@ export type FilterCriteria =
 //   | "Win Rate Correct"; 일단 제외
 
 export const getTopRankingUsers = (criteria: FilterCriteria): UserData[] => {
-  const { currentUser } = useUserStore.getState(); // 전역 상태 currentUser 가져오기
+  const { userData } = useUserState.getState(); // 전역 상태 currentUser 가져오기
 
   // 선택된 기준에 따라 사용자 데이터를 정렬
   let sortedUserData: UserData[];
@@ -51,8 +51,8 @@ export const getTopRankingUsers = (criteria: FilterCriteria): UserData[] => {
   // 상위 9명 필터링
   const topUsers = sortedUserData.slice(0, 9);
   // currentUser를 0번째 index에 추가
-  if (currentUser) {
-    topUsers.unshift(currentUser);
+  if (userData) {
+    topUsers.unshift(userData);
   }
 
   return topUsers;

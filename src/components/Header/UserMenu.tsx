@@ -33,12 +33,6 @@ export default function UserMenu({
           </>
         ) : (
           <>
-            <button
-              onClick={handleLogin}
-              className="bg-blue-300 text-white mr-5"
-            >
-              test
-            </button>
             <Link
               href="/login"
               className="hover:text-gray-800 text-gray-500 text-sm font-normal"

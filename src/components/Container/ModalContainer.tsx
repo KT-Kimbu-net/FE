@@ -3,26 +3,15 @@
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { useModalState } from "@/store/modal";
-<<<<<<<< HEAD:src/components/Container/ModalContainer.tsx
-import QuizStart from "../Modal/QuizStart";
+import QuizStart from "../Modal/QuizStart/QuizStart";
 import QuizProblem from "../Modal/QuizProblem";
 import QuizLoading from "../Modal/QuizLoading";
 import QuizResult from "../Modal/QuizResult";
 import AlertLogin from "../Modal/AlertLogin";
 import AlertRetry from "../Modal/AlertRetry";
 import AlertExit from "../Modal/AlertExit";
-import QuizRanking from "../Modal/QuizRanking";
-========
-import QuizStart from "../QuizStart/QuizStart";
-import QuizProblem from "../QuizProblem";
-import QuizLoading from "../QuizLoading";
-import QuizResult from "../QuizResult";
-import AlertLogin from "../AlertLogin";
-import AlertRetry from "../AlertRetry";
-import AlertExit from "../AlertExit";
->>>>>>>> Develop:src/components/Modal/Common/ModalContainer.tsx
+import QuizRanking from "../Modal/QuizRanking/QuizRanking";
 import { UserData } from "@/types/api";
-import QuizRanking from "../QuizRanking/QuizRanking";
 import { useUserState } from "@/store/user";
 
 const ModalLayoutBackground = () => {
@@ -86,13 +75,11 @@ const ModalContent = (): JSX.Element => {
   return (
     <>
       {modalName && (
-<<<<<<<< HEAD:src/components/Container/ModalContainer.tsx
         <section className="z-40 flex w-screen-50 min-w-[325px] max-w-[700px] flex-col jusfify-content center fixed top-1/2 left-1/2 text-center -translate-x-1/2 -translate-y-1/2 rounded-[12px] bg-white text-xs sm:text-base md:text-lg lg:text-xl xl:text-2xl">
           {modalName ? modalContent[modalName] : null}
-========
-        <section className="z-20 flex w-screen-50 min-w-[325px] max-w-[700px] flex-col justify-center items-center fixed top-1/2 left-1/2 text-center -translate-x-1/2 -translate-y-1/2 rounded-[12px] bg-white text-xs sm:text-base md:text-lg lg:text-xl xl:text-2xl">
-          {modalContent[modalName]}
->>>>>>>> Develop:src/components/Modal/Common/ModalContainer.tsx
+          <section className="z-20 flex w-screen-50 min-w-[325px] max-w-[700px] flex-col justify-center items-center fixed top-1/2 left-1/2 text-center -translate-x-1/2 -translate-y-1/2 rounded-[12px] bg-white text-xs sm:text-base md:text-lg lg:text-xl xl:text-2xl">
+            {modalContent[modalName]}
+          </section>
         </section>
       )}
     </>
