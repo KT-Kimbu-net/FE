@@ -49,20 +49,27 @@ export default function Chatting() {
     }
   };
 
+  // 모든 채팅 메세지 get api 핸들러
   const getChatLogs = async () => {
     const data = await (await fetch("http://localhost:5000/chatLogs")).json();
     setAllChatLog(data);
+    setTimeout(() => {
+      messageEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    }, 0);
   };
 
   useEffect(() => {
     getChatLogs();
   }, []);
 
+  //
   useEffect(() => {
-    const scrollToEnd = () => {
+    const scrollToBottom = () => {
       messageEndRef.current?.scrollIntoView({ behavior: "smooth" });
     };
-    scrollToEnd();
+    const timeoutId = setTimeout(scrollToBottom, 0);
+
+    return () => clearTimeout(timeoutId);
   }, [chatLog, isShow]);
 
   useEffect(() => {
