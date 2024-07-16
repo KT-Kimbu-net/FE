@@ -1,7 +1,6 @@
 export type TSideMenu = {
   title: string;
   params?: string;
-  // menuList: TMenuList[];
   menuList: TSideMenuContent[];
 };
 
@@ -34,14 +33,5 @@ export const playerSideMenuData: TSideMenu = {
         },
       ],
     },
-  ],
-};
-
-
-export const mypageSideMenuData: TSideMenu = {
-  title: "Player",
-  menuList: [
-    { menuName: "개인정보수정", menuUrl: "/player/coach", keyword: "coach" },
-    { menuName: "크레딧 적립 사용 내역", menuUrl: "/player/pitcher", keyword: "pitcher" },
   ],
 };

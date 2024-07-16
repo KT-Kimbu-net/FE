@@ -27,4 +27,13 @@ export const useUserStore = create<UserState>((set) => ({
   currentUser: null,
   setCurrentUser: (user: UserData) => set({ currentUser: user }),
   resetCurrentUser: () => set({ currentUser: null }), // 초기화
+  // import { TUseUserState } from "@/types/user";
+  // import { create } from "zustand";
+
+  // export const useUserState = create<TUseUserState>((set) => ({
+  //   userData: null,
+  //   setUserData(userData) {
+  //     set({ userData });
+  //   },
+  // >>>>>>> 5cac95b58c33840fdbacd2553eb29fce94761505
 }));
