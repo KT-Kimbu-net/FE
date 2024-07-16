@@ -27,7 +27,7 @@ export default function Footer() {
             <ul className="flex flex-col items-center md:mb-10 md:items-start">
               <div className="flex justify-center mb-4">
                 <Image
-                  src="/img-logo-kr.svg"
+                  src="/img/img-logo-kr.svg"
                   alt="Logo"
                   width={150}
                   height={150}
