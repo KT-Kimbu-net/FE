@@ -1,47 +1,57 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 import { chatSocket } from "@/socket/ChatSocket";
 import { useChatState } from "@/store/chatting";
 import { TMessageType } from "@/types/chatting";
+import { getCookie } from "cookies-next";
 
 export default function ChatSocketHandler() {
-  const { setChatLog, setUserCount, cleanChat } = useChatState((state) => ({
-    setChatLog: state.setChatLog,
-    setUserCount: state.setUserCount,
-    cleanChat: state.cleanChat,
-  }));
+  const { setChatLog, setUserCount, cleanChat, getCleanChat } = useChatState(
+    (state) => ({
+      setChatLog: state.setChatLog,
+      setUserCount: state.setUserCount,
+      cleanChat: state.cleanChat,
+      getCleanChat: state.getCleanChat,
+    })
+  );
 
-  const chatMsgSocketHandler = async (message: TMessageType) => {
-    if (cleanChat) {
-      const filterMessage = {
-        chat_text: message.message,
-      };
+  const chatMsgSocketHandler = useCallback(
+    async (message: TMessageType) => {
+      if (getCleanChat()) {
+        const filterMessage = {
+          chat_text: message.message,
+        };
 
-      const result = await fetch(
-        `${process.env.NEXT_PUBLIC_BASEURL}/text_filtering`,
-        {
-          method: "post",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(filterMessage),
+        const token = getCookie("token");
+
+        const result = await fetch(
+          `${process.env.NEXT_PUBLIC_BASEURL}/text_filtering`,
+          {
+            method: "post",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `${token}`,
+            },
+            body: JSON.stringify(filterMessage),
+          }
+        );
+        if (result.ok) {
+          const data = await result.json();
+          setChatLog({
+            nickname: message.nickname,
+            message: data.filter_text,
+            time: message.time,
+            report: message.report,
+            msgId: message.msgId,
+          });
         }
-      );
-      if (result.ok) {
-        const data = await result.json();
-        setChatLog({
-          nickname: message.nickname,
-          message: data.filter_text,
-          time: message.time,
-          report: message.report,
-          msgId: message.msgId,
-        });
+      } else {
+        setChatLog(message);
       }
-    } else {
-      setChatLog(message);
-    }
-  };
+    },
+    [cleanChat, setChatLog]
+  );
 
   const clientsCountSocketHandler = (data: any) => {
     setUserCount(data.count);
