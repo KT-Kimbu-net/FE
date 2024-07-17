@@ -13,6 +13,7 @@ export default function ChattingHeader() {
         <strong className="font-[Pretendard-ExtraBold] text-2xl text-white flex items-center gap-2">
           <Image src={ddory} alt="ddory" className="w-8 h-8" />
           KT Wiz 응원톡
+          <section className="text-white">클린봇</section>
         </strong>
         <span className="font-[Pretendard-Medium] text-main text-sm">
           {userCount}명

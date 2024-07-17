@@ -1,26 +1,13 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-
-import Image from "next/image";
-import userSetting from "@/img/Chatting/userSetting.svg";
-
 import { useChatState } from "@/store/chatting";
-import { chatSocket } from "@/socket/ChatSocket";
-
 import Message from "./Message";
-import MessageInput from "./MessageInput";
 import ChattingHeader from "./ChattingHeader";
-import { useUserState } from "@/store/user";
-import { useModalState } from "@/store/modal";
+import ChattingFooter from "./ChattingFooter";
 
 export default function Chatting() {
-  const messageRef = useRef<HTMLTextAreaElement>(null);
   const messageEndRef = useRef<HTMLLIElement>(null);
-
-  const { userData } = useUserState((state) => ({
-    userData: state.userData,
-  }));
 
   const { isShow, chatLog, setAllChatLog } = useChatState((state) => ({
     isShow: state.isShow,
@@ -29,31 +16,8 @@ export default function Chatting() {
     setAllChatLog: state.setAllChatLog,
   }));
 
-  const { setModalName } = useModalState((state) => ({
-    setModalName: state.setModalName,
-  }));
-
   const [isVisible, setIsVisible] = useState(isShow);
   const [animate, setAnimate] = useState(false);
-
-  const iconStyle = "w-6 h-6";
-
-  const msgSubmitSocketHandler = async () => {
-    if (messageRef.current?.value) {
-      const trimmedMessage = messageRef.current?.value.trim();
-      if (trimmedMessage) {
-        const sendMessage = {
-          nickname: userData?.nickname,
-          message: messageRef.current?.value,
-          time: "오후 11:09",
-          report: [],
-          msgId: "1",
-        };
-        chatSocket.emit("chatting", sendMessage);
-        messageRef.current.value = "";
-      }
-    }
-  };
 
   // 모든 채팅 메세지 get api 핸들러
   const getChatLogs = async () => {
@@ -109,31 +73,7 @@ export default function Chatting() {
               ))}
             <li ref={messageEndRef}></li>
           </ul>
-          <section className="h-[20%] rounded-b-2xl bg-black flex flex-col gap-2 px-2 py-2 border-t-[1px] border-gray-700">
-            <section className="flex gap-2 items-center justify-between px-3">
-              <section className="flex items-center">
-                <span className="text-gray-500 font-[Pretendard-Medium] text-sm mr-4">
-                  {userData?.nickname}
-                </span>
-                <Image
-                  src={userSetting}
-                  alt="user nickname setting"
-                  className={`${iconStyle} text-white cursor-pointer`}
-                  onClick={() => {
-                    setModalName("nickChange");
-                  }}
-                />
-              </section>
-              <section className="flex gap-2">
-                {/* <FcAddImage className={iconStyle} /> */}
-                {/* <FcVideoCall className={iconStyle} /> */}
-              </section>
-            </section>
-            <MessageInput
-              messageRef={messageRef}
-              msgSubmitSocketHandler={msgSubmitSocketHandler}
-            />
-          </section>
+          <ChattingFooter />
         </section>
       )}
     </>
