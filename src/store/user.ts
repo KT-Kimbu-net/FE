@@ -21,13 +21,5 @@ type UserState = {
 export const useUserState = create<UserState>((set) => ({
   userData: null,
   setUserData: (user: UserData) => set({ userData: user }),
-  resetUserData: () => set({ userData: null }), // 초기화
-  // import { TUseUserState } from "@/types/user";
-  // import { create } from "zustand";
-
-  // export const useUserState = create<TUseUserState>((set) => ({
-  //   userData: null,
-  //   setUserData(userData) {
-  //     set({ userData });
-  //   },
+  resetUserData: () => set({ userData: null }), // 초기화, 로그아웃?
 }));
