@@ -85,7 +85,7 @@ const options = {
 export default function PlayerBox(props: TPlayer) {
   const getPlayerData = async () => {
     // const playerData = await fetch(
-    //   `http://3.35.50.52:5002/player_data?pcode=${props.pcode}`
+    //   `{process.env.NEXT_PUBLIC_BASEURL}/player_data?pcode=${props.pcode}`
     // )
     //   .then((response) => response.json())
     //   .then((data) => {
