@@ -16,42 +16,39 @@ export default function ChatSocketHandler() {
     })
   );
 
-  const chatMsgSocketHandler = useCallback(
-    async (message: TMessageType) => {
-      if (getCleanChat()) {
-        const filterMessage = {
-          chat_text: message.message,
-        };
+  const chatMsgSocketHandler = async (message: TMessageType) => {
+    if (getCleanChat()) {
+      const filterMessage = {
+        chat_text: message.message,
+      };
 
-        const token = getCookie("token");
+      const token = getCookie("token");
 
-        const result = await fetch(
-          `${process.env.NEXT_PUBLIC_BASEURL}/text_filtering`,
-          {
-            method: "post",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `${token}`,
-            },
-            body: JSON.stringify(filterMessage),
-          }
-        );
-        if (result.ok) {
-          const data = await result.json();
-          setChatLog({
-            nickname: message.nickname,
-            message: data.filter_text,
-            time: message.time,
-            report: message.report,
-            msgId: message.msgId,
-          });
+      const result = await fetch(
+        `${process.env.NEXT_PUBLIC_BASEURL}/text_filtering`,
+        {
+          method: "post",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `${token}`,
+          },
+          body: JSON.stringify(filterMessage),
         }
-      } else {
-        setChatLog(message);
+      );
+      if (result.ok) {
+        const data = await result.json();
+        setChatLog({
+          nickname: message.nickname,
+          message: data.filter_text,
+          time: message.time,
+          report: message.report,
+          msgId: message.msgId,
+        });
       }
-    },
-    [cleanChat, setChatLog]
-  );
+    } else {
+      setChatLog(message);
+    }
+  };
 
   const clientsCountSocketHandler = (data: any) => {
     setUserCount(data.count);
