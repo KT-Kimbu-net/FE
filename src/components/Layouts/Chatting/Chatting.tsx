@@ -12,6 +12,7 @@ import Message from "./Message";
 import MessageInput from "./MessageInput";
 import ChattingHeader from "./ChattingHeader";
 import { useUserState } from "@/store/user";
+import { useModalState } from "@/store/modal";
 
 export default function Chatting() {
   const messageRef = useRef<HTMLTextAreaElement>(null);
@@ -20,11 +21,16 @@ export default function Chatting() {
   const { userData } = useUserState((state) => ({
     userData: state.userData,
   }));
+
   const { isShow, chatLog, setAllChatLog } = useChatState((state) => ({
     isShow: state.isShow,
     chatLog: state.chatLog,
     setChatLog: state.setChatLog,
     setAllChatLog: state.setAllChatLog,
+  }));
+
+  const { setModalName } = useModalState((state) => ({
+    setModalName: state.setModalName,
   }));
 
   const [isVisible, setIsVisible] = useState(isShow);
@@ -62,7 +68,6 @@ export default function Chatting() {
     getChatLogs();
   }, []);
 
-  //
   useEffect(() => {
     const scrollToBottom = () => {
       messageEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -113,7 +118,10 @@ export default function Chatting() {
                 <Image
                   src={userSetting}
                   alt="user nickname setting"
-                  className={`${iconStyle} text-white`}
+                  className={`${iconStyle} text-white cursor-pointer`}
+                  onClick={() => {
+                    setModalName("nickChange");
+                  }}
                 />
               </section>
               <section className="flex gap-2">

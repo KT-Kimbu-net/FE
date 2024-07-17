@@ -9,6 +9,7 @@ import { useUserState } from "@/store/user";
 import { useRouter } from "next/navigation";
 import { chatSocket } from "@/socket/ChatSocket";
 import InputBox from "@/libs/atomic/InputBox";
+import { setCookie } from "cookies-next";
 
 export default function Login() {
   const router = useRouter();
@@ -53,7 +54,8 @@ export default function Login() {
               if (result.status === 200) {
                 chatSocket.connect();
                 console.log("로그인 성공");
-                localStorage.setItem("token", result.data.token);
+                // localStorage.setItem("token", result.data.token);
+                setCookie("token", result.data.token);
                 setUserData(result.data);
                 router.push("/");
               }

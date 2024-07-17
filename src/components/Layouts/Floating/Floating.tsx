@@ -9,6 +9,7 @@ import stadium from "@/img/Floating/stadium.svg";
 import shop from "@/img/Floating/shop.svg";
 import chat from "@/img/Floating/chat.svg";
 import { useChatState } from "@/store/chatting";
+import { getCookie } from "cookies-next";
 
 export default function Floating() {
   const { setIsShow } = useChatState((state) => ({
@@ -23,10 +24,9 @@ export default function Floating() {
   const iconStyle = "w-8 h-8";
   const titleStyle = "text-sm";
 
-  //로그인 검증 로직??(1차 alert, 추후 모달 렌더링)
   const isLoginCheckHandler = () => {
-    if (localStorage.getItem("token")) setIsShow();
-    else alert("로그인이 필요합니다!!!!!!!!!!!!!!!!!!!@!@!");
+    if (getCookie("token")) setIsShow();
+    else setModalName("alertLogin");
   };
 
   return (

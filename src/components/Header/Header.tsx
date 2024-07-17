@@ -9,6 +9,7 @@ import { menus } from "@/data/Header/menus";
 import { loginUserTest, useUserState } from "@/store/user";
 import { useChatState } from "@/store/chatting";
 import { chatSocket } from "@/socket/ChatSocket";
+import { deleteCookie } from "cookies-next";
 
 export default function Header() {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
@@ -27,7 +28,7 @@ export default function Header() {
 
   const handleLogout = () => {
     if (isShow) setIsShow();
-    localStorage.clear();
+    deleteCookie("token");
     chatSocket.disconnect();
     resetUserData(); // 로그아웃
   };

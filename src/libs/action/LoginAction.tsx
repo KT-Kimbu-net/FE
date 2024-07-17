@@ -41,7 +41,7 @@ export async function joinUserAction(formData: FormData) {
   }
   userData.userData.userId = id as string;
   userData.userData.password = password as string;
-  const result = await fetch("http://3.35.50.52:5002/insert_user", {
+  const result = await fetch(`${process.env.NEXT_PUBLIC_BASEURL}/insert_user`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -63,7 +63,7 @@ export async function loginAction(formData: FormData) {
 
   userData.userId = id as string;
   userData.password = password as string;
-  const result = await fetch("http://3.35.50.52:5002/user/login", {
+  const result = await fetch(`${process.env.NEXT_PUBLIC_BASEURL}/user/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
