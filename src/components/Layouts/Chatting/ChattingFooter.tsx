@@ -9,6 +9,7 @@ import MessageInput from "./MessageInput";
 import { useUserState } from "@/store/user";
 import { chatSocket } from "@/socket/ChatSocket";
 import { useChatState } from "@/store/chatting";
+import { nanoid } from "nanoid";
 
 export default function ChattingFooter() {
   const messageRef = useRef<HTMLTextAreaElement>(null);
@@ -30,13 +31,21 @@ export default function ChattingFooter() {
   const msgSubmitSocketHandler = async () => {
     if (messageRef.current?.value) {
       const trimmedMessage = messageRef.current?.value.trim();
+      const time = new Date();
+      const hour = String(time.getHours()).padStart(2, "0");
+      const minute = String(time.getMinutes()).padStart(2, "0");
+      const resultTime = `${Number(hour) < 12 ? "오전" : "오후"} ${
+        Number(hour) < 24 && Number(hour) > 12 ? Number(hour) - 12 : hour
+      }:${minute}`;
+
       if (trimmedMessage) {
         const sendMessage = {
           nickname: userData?.nickname,
           message: messageRef.current?.value,
-          time: "오후 11:09",
+          time: resultTime,
           report: [],
-          msgId: "1",
+          msgId: nanoid(),
+          userId: userData?.userId,
         };
         chatSocket.emit("chatting", sendMessage);
         messageRef.current.value = "";

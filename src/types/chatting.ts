@@ -9,6 +9,7 @@ export type TMessageType = {
   time: string;
   report: TReport[];
   msgId: string;
+  userId: string;
 };
 
 export type TUseChatState = {

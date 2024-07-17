@@ -1,14 +1,15 @@
+"use client";
+
 import Image from "next/image";
 import report from "@/img/Chatting/report.svg";
+import { TMessageType } from "@/types/chatting";
+import { useUserState } from "@/store/user";
 
-type TMessage = {
-  nickname: string;
-  message: string;
-  time: string;
-  msgId: string;
-};
+export default function Message(props: TMessageType) {
+  const { userData } = useUserState((state) => ({
+    userData: state.userData,
+  }));
 
-export default function Message(props: TMessage) {
   return (
     <li className="flex flex-col gap-1">
       <section className="font-[Pretendard-Medium] text-gray-500 text-xs">
@@ -20,11 +21,13 @@ export default function Message(props: TMessage) {
         </section>
         <section className="flex items-end gap-1">
           <span className="text-gray-500 text-xs">오후 10:59</span>
-          <Image
-            src={report}
-            alt="message report"
-            className="w-4 h-4 cursor-pointer duration-300 hover:scale-125"
-          />
+          {props.userId !== userData?.userId && (
+            <Image
+              src={report}
+              alt="message report"
+              className="w-4 h-4 cursor-pointer duration-300 hover:scale-125"
+            />
+          )}
         </section>
       </section>
     </li>

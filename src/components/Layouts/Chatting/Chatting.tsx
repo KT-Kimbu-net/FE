@@ -68,7 +68,9 @@ export default function Chatting() {
                   nickname={message.nickname}
                   message={message.message}
                   time={message.time}
+                  report={message.report}
                   msgId={message.msgId}
+                  userId={message.userId}
                 />
               ))}
             <li ref={messageEndRef}></li>
