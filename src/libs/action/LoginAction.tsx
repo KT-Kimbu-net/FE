@@ -40,8 +40,8 @@ export async function joinUserAction(formData: FormData) {
   }
   userData.userData.userId = id as string;
   userData.userData.password = password as string;
-  const url = `${process.env.NEXT_PUBLIC_BASEURL}/insert_user`;
-  const result = await fetch(url, {
+
+  const result = await fetch(`${process.env.NEXT_PUBLIC_BASEURL}/insert_user`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -64,9 +64,7 @@ export async function loginAction(formData: FormData) {
   userData.userId = id as string;
   userData.password = password as string;
 
-  const url = `${process.env.NEXT_PUBLIC_BASEURL}/user/login`;
-
-  const result = await fetch(url, {
+  const result = await fetch(`${process.env.NEXT_PUBLIC_BASEURL}/user/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

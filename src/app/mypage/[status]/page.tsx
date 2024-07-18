@@ -1,7 +1,5 @@
 import Credit from "@/components/MyPage/Credit/Credit";
 import EditProfile from "@/components/MyPage/EditProfile";
-import Login from "@/components/MyPage/Login/Login";
-
 type TPageProps = {
   params: {
     status: string;
@@ -15,7 +13,7 @@ export default function DynamicMyPage(props: TPageProps) {
   };
   return (
     <>
-      <div className="h-svh w-full flex items-center justify-start flex-col">
+      <div className="w-full flex items-center justify-start flex-col">
         {modalContent[props.params.status]}
       </div>
     </>
