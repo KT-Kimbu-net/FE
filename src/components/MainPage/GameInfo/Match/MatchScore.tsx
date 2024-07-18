@@ -19,10 +19,10 @@ const getWeatherApiHandler = async () => {
 };
 
 export default async function MatchScore() {
-  const data = await getWeatherApiHandler();
-  const popData = data.response.body.items.item.find(
-    (item: any) => item.category === "POP"
-  );
+  // const data = await getWeatherApiHandler();
+  // const popData = data.response.body.items.item.find(
+  //   (item: any) => item.category === "POP"
+  // );
 
   return (
     <>
@@ -38,7 +38,7 @@ export default async function MatchScore() {
           </span>
           <section className="border-[1px] rounded-md border-[#e0e0e0] flex gap-2 py-1 px-2 text-gray-500">
             <Image src={rain} alt="rain" />
-            {popData.fcstValue}%
+            {/* {popData.fcstValue}% */}
           </section>
         </section>
         <Image src={subseArrow} alt="next game match" />

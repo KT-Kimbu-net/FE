@@ -2,17 +2,16 @@
 
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
-import { useModalState } from "@/store/modal";
+import { useModalState, useUserQuizState } from "@/store/modal";
 import QuizStart from "../Modal/QuizStart/QuizStart";
-import QuizProblem from "../Modal/QuizProblem";
+import QuizProblem from "../Modal/QuizProblem/QuizProblem";
 import QuizLoading from "../Modal/QuizLoading";
 import QuizResult from "../Modal/QuizResult";
 import AlertLogin from "../Modal/AlertLogin";
 import AlertRetry from "../Modal/AlertRetry";
 import AlertExit from "../Modal/AlertExit";
 import QuizRanking from "../Modal/QuizRanking/QuizRanking";
-import { UserData } from "@/types/api";
-import { useUserState } from "@/store/user";
+import { loginUserTest, useUserState } from "@/store/user";
 
 const ModalLayoutBackground = () => {
   const { modalName } = useModalState();
@@ -25,15 +24,11 @@ const ModalLayoutBackground = () => {
   );
 };
 
-type ModalProps = {
-  currentUser: UserData;
-  isLoggedIn: boolean;
-};
-
 const ModalContent = (): JSX.Element => {
   const { modalName, setModalName } = useModalState();
   const { userData } = useUserState(); // 전역 상태에서 currentUser 가져오기
   const isLoggedIn = userData !== null; // 로그인 여부 확인
+  const { isQuizActive, setIsQuizActive } = useUserQuizState();
 
   const modalContent: { [key: string]: JSX.Element } = {
     quizStart: <QuizStart />,
@@ -54,23 +49,33 @@ const ModalContent = (): JSX.Element => {
     }
   }, [modalName]);
 
-  // 임시
   useEffect(() => {
     if (
-      !isLoggedIn &&
-      (modalName === "quizProblem" || modalName === "quizRanking")
+      userData?.quiz.isSolved === 1 &&
+      modalName === "quizProblem" &&
+      !isQuizActive
     ) {
-      setModalName("alertLogin");
-    } else if (userData?.quiz.isSolved === 1 && modalName === "quizProblem") {
       setModalName("alertRetry");
-    } else if (modalName === "quizLoading") {
+      return;
+    }
+
+    if (modalName === "quizLoading") {
       const timer = setTimeout(() => {
         setModalName("quizResult");
       }, 3000);
 
       return () => clearTimeout(timer);
     }
-  }, [modalName, setModalName, isLoggedIn]);
+
+    if (modalName === "quizResult") {
+      setIsQuizActive(false);
+      return;
+    }
+
+    if (modalName === "quizProblem") {
+      setIsQuizActive(true);
+    }
+  }, [modalName, isLoggedIn, isQuizActive]);
 
   return (
     <>

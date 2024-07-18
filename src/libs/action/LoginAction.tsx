@@ -34,13 +34,13 @@ export async function joinUserAction(formData: FormData) {
   try {
     if (password !== passwordCheck) {
       return { success: false, message: "비밀번호가 일치하지 않습니다." };
-      throw new Error("비밀번호가 일치하지 않습니다.");
     }
   } catch (error) {
     return { success: false };
   }
   userData.userData.userId = id as string;
   userData.userData.password = password as string;
+
   const result = await fetch(`${process.env.NEXT_PUBLIC_BASEURL}/insert_user`, {
     method: "POST",
     headers: {
@@ -63,6 +63,7 @@ export async function loginAction(formData: FormData) {
 
   userData.userId = id as string;
   userData.password = password as string;
+
   const result = await fetch(`${process.env.NEXT_PUBLIC_BASEURL}/user/login`, {
     method: "POST",
     headers: {
