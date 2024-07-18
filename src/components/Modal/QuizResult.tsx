@@ -26,7 +26,7 @@ export default function QuizResult() {
                 </span>
                 의 현재 포인트는{" "}
                 <span className="text-red-500 font-bold">
-                  {userData?.credit?.creditAmount || 0} 포인트
+                  {userData?.creditAmount || 0} 포인트
                 </span>{" "}
                 입니다.
               </div>

@@ -61,13 +61,15 @@ export default function Rank() {
   return (
     <>
       <div className="flex items-center w-full justify-center mt-20">
-        <Image
-          src={dorriImg}
-          width={500}
-          height={500}
-          alt="dorriImage"
-          className="md:block hidden"
-        />
+        <Tooltip tooltipContent={<div>asdfasdfasdasdf</div>} position="top">
+          <Image
+            src={dorriImg}
+            width={500}
+            height={500}
+            alt="dorriImage"
+            className="md:block hidden"
+          />
+        </Tooltip>
         {/* <Image src={dorriImg} width={500} height={500} alt="dorriImage" /> */}
         <ul className="items-center flex flex-col min-w-[350px] ">
           <li className="w-[100%] h-[50px] flex justify-between border-[1px] px-5 py-2 items-center border-[#ABABAB] text-[#737373] font-[600] bg-[#EFEFEF] mb-1">
