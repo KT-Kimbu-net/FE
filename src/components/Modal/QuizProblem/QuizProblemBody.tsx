@@ -2,6 +2,7 @@ import { SvgQuizProblemLoading } from "@/utils/img/Svg";
 import Image from "next/image";
 import Progressbar from "../Common/Progressbar";
 import React from "react";
+import { getRandomImage } from "@/utils/img/getRandomImage";
 
 type QuizProblemBodyProps = {
   problem: string;
@@ -32,9 +33,10 @@ function QuizProblemBody({
               <div className="relative flex items-center justify-center bg-gray-300 w-[80%] h-56 rounded-[12px] border border-black mt-4 overflow-hidden">
                 {/* 야구 이미지 todo */}
                 <Image
-                  src="/tmp.jpg"
-                  layout="fill"
-                  objectFit="cover"
+                  src={getRandomImage()}
+                  fill
+                  style={{ objectFit: "cover" }}
+                  sizes="(max-width: 500px) 100vw, 500px"
                   className="rounded-[12px] object-top"
                   alt="Problem illustration"
                 />

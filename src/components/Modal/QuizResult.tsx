@@ -5,14 +5,42 @@ import ModalLayout from "./Common/ModalLayout";
 import CloseButton from "./Common/CloseButton";
 import { useUserState } from "@/store/user";
 import Progressbar from "./Common/Progressbar";
+import { calculatePoints, getResults } from "@/utils/quiz/results";
+import { useEffect, useState } from "react";
+import { sendPoints } from "@/libs/quiz/sendPoints";
 
 export default function QuizResult() {
-  const { userData } = useUserState();
+  const { userData, setUserData } = useUserState();
   const { setModalName } = useModalState();
   const { answers } = useUserQuizState();
-  console.log("answers");
   console.log(answers);
-  console.log(answers.length);
+
+  const [pointsSent, setPointsSent] = useState(false);
+  const resultArr = getResults(answers);
+  if (userData) {
+    userData.creditAmount += calculatePoints(answers);
+  }
+  useEffect(() => {
+    if (!pointsSent && userData) {
+      const points = calculatePoints(answers);
+      const updatedUserData = {
+        ...userData,
+        creditAmount: (userData.creditAmount ?? 0) + points,
+      };
+      setUserData(updatedUserData);
+
+      sendPoints(points)
+        .then((response) => {
+          console.log("Points sent successfully:", response);
+          console.log(`Total points after update: ${response.pointAmount}`);
+          setPointsSent(true); // 포인트가 전송되었음을 표시
+        })
+        .catch((error) => {
+          console.error("Failed to send points:", error);
+        });
+    }
+  }, [pointsSent]);
+
   return (
     <>
       <ModalLayout className="bg-[#a42a2a] w-[500px] h-[500px]">
@@ -62,7 +90,13 @@ export default function QuizResult() {
                       {element.explanation}
                     </div>
                   </div>
-                  <div className="ml-auto font-bold text-red-500 pr-2">
+                  <div
+                    className={`ml-auto font-bold pr-2 ${
+                      resultArr[index + 1]
+                        ? "text-red-500"
+                        : "text-gray-500 line-through"
+                    }`}
+                  >
                     +{index === 0 ? "30" : "40"}
                   </div>
                 </div>

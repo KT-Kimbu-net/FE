@@ -12,7 +12,7 @@ export default function QuizProblem() {
   const {
     setModalName,
     setPreviousModalType,
-    problemIndex = 1,
+    problemIndex = 0,
     setProblemIndex,
   } = useModalState();
   const { answers, setAnswer } = useUserQuizState();
@@ -31,7 +31,7 @@ export default function QuizProblem() {
     console.log("hhh");
     console.log(problemIndex);
     if (answers[problemIndex]) {
-      // 사용자 입력 추가해서 전역 상태 저장
+      // 사용자 입력
       const problem = answers[problemIndex];
       setAnswer(
         problemIndex,
@@ -76,12 +76,12 @@ export default function QuizProblem() {
   // 퀴즈 완료 처리 함수
   const handleQuizCompletion = () => {
     if (answers.length >= 3 && userData) {
-      const updatedUser = {
-        ...userData,
-        quiz: { ...userData.quiz, isSolved: 1 },
-      };
-      setUserData(updatedUser);
-      console.log("퀴즈 완료! 전역상태 user는 변경 완료, todo > api 연결");
+      // const updatedUser = {
+      //   ...userData,
+      //   quiz: { ...userData.quiz, isSolved: 1 },
+      // };
+      // setUserData(updatedUser);
+      // console.log("퀴즈 완료! 전역상태 user는 변경 완료, todo > api 연결");
       setModalName("quizLoading");
     }
   };
