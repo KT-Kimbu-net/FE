@@ -12,6 +12,18 @@ export type TMessageType = {
   userId: string;
 };
 
+export type TReportMessageInfo = {
+  nickname: string;
+  message: string;
+  msgId: string;
+  userId: string | undefined;
+};
+
+export type TReportMessage = {
+  info: TReportMessageInfo;
+  setInfo: (v: TReportMessageInfo) => void;
+};
+
 export type TUseChatState = {
   isShow: boolean;
   setIsShow: () => void;

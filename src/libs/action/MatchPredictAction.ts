@@ -7,7 +7,7 @@ export async function matchPredictAction() {
       pastWinRate: "0.666",
       recentWinRate: "0.589",
       stadiumInformation: "수원구장 0.7",
-      startingPitcherInformation: "고영표 0.999",
+      startingPitcherInformation: "고영표 0.1",
       weather: "우천 0.7",
     },
   };

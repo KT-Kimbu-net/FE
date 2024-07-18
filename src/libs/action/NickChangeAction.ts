@@ -7,8 +7,7 @@ export async function nickChangeAction(formData: FormData) {
     nickname: "",
   };
 
-  const cookieStore = cookies();
-  const token = cookieStore.get("token")?.value;
+  const token = cookies().get("token")?.value;
 
   const changeNickname = formData.get("nickname");
   nickname.nickname = changeNickname as string;

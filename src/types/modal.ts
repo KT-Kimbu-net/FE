@@ -8,6 +8,7 @@ export type TModalTypes =
   | "alertExit"
   | "quizRanking"
   | "nickChange"
+  | "reportMessage"
   | null;
 
 export type TUseModalState = {

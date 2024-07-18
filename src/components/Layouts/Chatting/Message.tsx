@@ -4,10 +4,20 @@ import Image from "next/image";
 import report from "@/img/Chatting/report.svg";
 import { TMessageType } from "@/types/chatting";
 import { useUserState } from "@/store/user";
+import { useModalState } from "@/store/modal";
+import { useReportMsgState } from "@/store/chatting";
 
 export default function Message(props: TMessageType) {
   const { userData } = useUserState((state) => ({
     userData: state.userData,
+  }));
+
+  const { setModalName } = useModalState((state) => ({
+    setModalName: state.setModalName,
+  }));
+
+  const { setInfo } = useReportMsgState((state) => ({
+    setInfo: state.setInfo,
   }));
 
   return (
@@ -26,6 +36,15 @@ export default function Message(props: TMessageType) {
               src={report}
               alt="message report"
               className="w-4 h-4 cursor-pointer duration-300 hover:scale-125"
+              onClick={() => {
+                setModalName("reportMessage");
+                setInfo({
+                  nickname: props.nickname,
+                  message: props.message,
+                  msgId: props.msgId,
+                  userId: userData?.userId,
+                });
+              }}
             />
           )}
         </section>

@@ -5,6 +5,7 @@ import { useChatState } from "@/store/chatting";
 import Message from "./Message";
 import ChattingHeader from "./ChattingHeader";
 import ChattingFooter from "./ChattingFooter";
+import { useUserState } from "@/store/user";
 
 export default function Chatting() {
   const messageEndRef = useRef<HTMLLIElement>(null);
@@ -16,12 +17,18 @@ export default function Chatting() {
     setAllChatLog: state.setAllChatLog,
   }));
 
+  const { userData } = useUserState((state) => ({
+    userData: state.userData,
+  }));
+
   const [isVisible, setIsVisible] = useState(isShow);
   const [animate, setAnimate] = useState(false);
 
   // 모든 채팅 메세지 get api 핸들러
   const getChatLogs = async () => {
-    const data = await (await fetch("http://localhost:5000/chatLogs")).json();
+    const data = await (
+      await fetch(`${process.env.NEXT_PUBLIC_CHAT_BASEURL}/chatLogs`)
+    ).json();
     setAllChatLog(data);
     setTimeout(() => {
       messageEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -62,17 +69,23 @@ export default function Chatting() {
           <ChattingHeader />
           <ul className="h-4/5 text-white flex flex-col gap-3 overflow-y-auto px-5 py-3 scrollbar-hide">
             {chatLog &&
-              chatLog.map((message, index) => (
-                <Message
-                  key={index}
-                  nickname={message.nickname}
-                  message={message.message}
-                  time={message.time}
-                  report={message.report}
-                  msgId={message.msgId}
-                  userId={message.userId}
-                />
-              ))}
+              chatLog.map((message) => {
+                const isReportedByMe = message.report.some(
+                  (report) => report.userId === userData?.userId
+                );
+                if (isReportedByMe) return null;
+                return (
+                  <Message
+                    key={message.msgId}
+                    nickname={message.nickname}
+                    message={message.message}
+                    time={message.time}
+                    report={message.report}
+                    msgId={message.msgId}
+                    userId={message.userId}
+                  />
+                );
+              })}
             <li ref={messageEndRef}></li>
           </ul>
           <ChattingFooter />

@@ -12,6 +12,7 @@ import AlertRetry from "../Modal/AlertRetry";
 import AlertExit from "../Modal/AlertExit";
 import QuizRanking from "../Modal/QuizRanking/QuizRanking";
 import NickChange from "../Modal/Chatting/NickChange";
+import ReportMessage from "../Modal/Chatting/ReportMessage";
 import { UserData } from "@/types/api";
 import { useUserState } from "@/store/user";
 
@@ -46,6 +47,7 @@ const ModalContent = (): JSX.Element => {
     alertExit: <AlertExit />,
     quizRanking: <QuizRanking />,
     nickChange: <NickChange />,
+    reportMessage: <ReportMessage />,
   };
 
   useEffect(() => {
