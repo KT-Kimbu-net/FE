@@ -17,7 +17,7 @@ export default function Ethics({ onClose, content }: EthicsProps) {
         </div>
         <div className="text-gray-700">
           <p>
-            "사이버 신문고란" 건전한 기업윤리원칙에서 벗어나는 임직원 및 선수의
+            {`"사이버 신문고란" 건전한 기업윤리원칙에서 벗어나는 임직원 및 선수의`}
             부정, 부조리행위를 신고하거나,
             <br />
             윤리적인 측면에서 회사경영 등의 개선사항 및 제안사항을 접수하는

@@ -3,16 +3,47 @@ import { useModalState, useUserQuizState } from "@/store/modal";
 import { SvgQuizResultCheck } from "@/utils/img/Svg";
 import ModalLayout from "./Common/ModalLayout";
 import CloseButton from "./Common/CloseButton";
-import Progressbar from "./Common/Progressbar";
 import { useUserState } from "@/store/user";
+import Progressbar from "./Common/Progressbar";
+import { calculatePoints, getResults } from "@/utils/quiz/results";
+import { useEffect, useState } from "react";
+import { sendPoints } from "@/libs/quiz/sendPoints";
 
 export default function QuizResult() {
+  const { userData, setUserData } = useUserState();
   const { setModalName } = useModalState();
-  const { userData } = useUserState();
-  // console.log("User Quiz State:", answers);
+  const { answers } = useUserQuizState();
+  console.log(answers);
+
+  const [pointsSent, setPointsSent] = useState(false);
+  const resultArr = getResults(answers);
+  if (userData) {
+    userData.creditAmount += calculatePoints(answers);
+  }
+  useEffect(() => {
+    if (!pointsSent && userData) {
+      const points = calculatePoints(answers);
+      const updatedUserData = {
+        ...userData,
+        creditAmount: (userData.creditAmount ?? 0) + points,
+      };
+      setUserData(updatedUserData);
+
+      sendPoints(points)
+        .then((response) => {
+          console.log("Points sent successfully:", response);
+          console.log(`Total points after update: ${response.pointAmount}`);
+          setPointsSent(true); // 포인트가 전송되었음을 표시
+        })
+        .catch((error) => {
+          console.error("Failed to send points:", error);
+        });
+    }
+  }, [pointsSent]);
+
   return (
     <>
-      <ModalLayout className="bg-[#a42a2a] w-[500px] h-[480px]">
+      <ModalLayout className="bg-[#a42a2a] w-[500px] h-[500px]">
         <CloseButton />
         <div className="flex flex-col items-center justify-center relative bg-white w-full mt-9 h-full rounded-t-none rounded-b-[12px]">
           <div className="text-left w-[90%]">
@@ -26,7 +57,7 @@ export default function QuizResult() {
                 </span>
                 의 현재 포인트는{" "}
                 <span className="text-red-500 font-bold">
-                  {userData?.credit?.creditAmount || 0} 포인트
+                  {userData?.creditAmount || 0} 포인트
                 </span>{" "}
                 입니다.
               </div>
@@ -41,40 +72,39 @@ export default function QuizResult() {
                   내일도 참여하면 추가 포인트가 제공됩니다.
                 </div>
               </div>
-              <div className="ml-auto font-bold text-red-500 pr-2">
-                +30 포인트
-              </div>
+              <div className="ml-auto font-bold text-red-500 pr-2">+30</div>
             </div>
             <div className="mt-3 border-t border-gray-200 w-full"></div>
-            <div className="pt-3 flex items-center transform transition duration-500 ease-in-out hover:scale-105">
-              <SvgQuizResultCheck />
-              <div>
-                <div className="pl-5 text-lg font-bold">
-                  1번 정답은 O 입니다.
+            {answers.slice(1).map((element, index) => (
+              <div key={index}>
+                <div className="pt-3 flex items-center transform transition duration-500 ease-in-out hover:scale-105">
+                  <SvgQuizResultCheck />
+                  <div>
+                    <div className="pl-5 text-lg font-bold">
+                      {index + 1}번 정답은 {element.answer}입니다.
+                    </div>
+                    <div
+                      className="pl-5 text-sm overflow-hidden text-ellipsis whitespace-nowrap max-w-[40ch]"
+                      title={element.explanation}
+                    >
+                      {element.explanation}
+                    </div>
+                  </div>
+                  <div
+                    className={`ml-auto font-bold pr-2 ${
+                      resultArr[index + 1]
+                        ? "text-red-500"
+                        : "text-gray-500 line-through"
+                    }`}
+                  >
+                    +{index === 0 ? "30" : "40"}
+                  </div>
                 </div>
-                <div className="pl-5 text-sm">
-                  고의로 방해하면 추가진루가 허용됩니다.
-                </div>
+                {index < answers.length - 1 && (
+                  <div className="mt-3 border-t border-gray-200 w-full"></div>
+                )}
               </div>
-              <div className="ml-auto font-bold text-red-500 pr-2">
-                +30 포인트
-              </div>
-            </div>
-            <div className="mt-3 border-t border-gray-200 w-full"></div>
-            <div className="pt-3 flex items-center transform transition duration-500 ease-in-out hover:scale-105">
-              <SvgQuizResultCheck />
-              <div>
-                <div className="pl-5 text-lg font-bold">
-                  2번 정답은 X입니다.
-                </div>
-                <div className="pl-5 text-sm">
-                  고의로 방해하면 추가진루가 허용됩니다.
-                </div>
-              </div>
-              <div className="ml-auto font-bold text-red-500 pr-2">
-                +40 포인트
-              </div>
-            </div>
+            ))}
             <Progressbar stage="quizResult" />
             <div className="flex justify-center items-center">
               <button

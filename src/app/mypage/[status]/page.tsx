@@ -1,7 +1,5 @@
 import Credit from "@/components/MyPage/Credit/Credit";
 import EditProfile from "@/components/MyPage/EditProfile";
-import Login from "@/components/MyPage/Login/Login";
-
 type TPageProps = {
   params: {
     status: string;

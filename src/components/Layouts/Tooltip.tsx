@@ -12,7 +12,7 @@ type TTolltip = {
 
 export default function Tooltip(props: TTolltip) {
   const [isHovering, setIsHovering] = useState(false);
-
+  
   const handleMouseEnter = () => {
     setIsHovering(true);
     console.log("hovering");
