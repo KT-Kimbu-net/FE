@@ -1,3 +1,7 @@
+"use server";
+
+import { cookies } from "next/headers";
+
 export type PointsResponse = {
   pointAmount: number; // 변경된 포인트 총량
 };
@@ -6,7 +10,7 @@ export async function sendPoints(amount: number): Promise<PointsResponse> {
   const url = `${process.env.NEXT_PUBLIC_BASEURL}/user/edit_point`;
   console.log("Sending points to URL:", url); // URL 확인
 
-  const token = localStorage.getItem("token"); // 로컬 스토리지에서 토큰 가져오기
+  const token = cookies().get("token")?.value;
   if (!token) {
     throw new Error("Token is missing in localStorage");
   }

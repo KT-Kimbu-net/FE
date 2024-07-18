@@ -17,7 +17,6 @@ function QuizProblemBody({
   onAnswer,
   loading,
 }: QuizProblemBodyProps) {
-  console.log("QuizProblemBody rendered");
   return (
     <>
       <div className="flex flex-col items-center justify-center relative bg-white w-full mt-9 h-full rounded-t-none rounded-b-[12px]">
