@@ -6,7 +6,7 @@ import HeaderMobile from "./HeaderMobile";
 import UserMenu from "./UserMenu";
 import MegaDropdown from "./MegaDropdown";
 import { menus } from "@/data/Header/menus";
-import { loginUserTest, useUserState } from "@/store/user";
+import { useUserState } from "@/store/user";
 import { useChatState } from "@/store/chatting";
 import { chatSocket } from "@/socket/ChatSocket";
 import { deleteCookie } from "cookies-next";
@@ -16,15 +16,11 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
 
-  const { userData, setUserData, resetUserData } = useUserState();
+  const { userData, resetUserData } = useUserState();
   const { setIsShow, isShow } = useChatState((state) => ({
     isShow: state.isShow,
     setIsShow: state.setIsShow,
   }));
-
-  const handleLogin = () => {
-    setUserData(loginUserTest); // 임시 사용자 정보
-  };
 
   const handleLogout = () => {
     if (isShow) setIsShow();
@@ -88,11 +84,7 @@ export default function Header() {
             </nav>
 
             {/* 우측 버튼들 */}
-            <UserMenu
-              user={userData}
-              handleLogin={handleLogin}
-              handleLogout={handleLogout}
-            />
+            <UserMenu user={userData} handleLogout={handleLogout} />
           </div>
         </div>
         {/* 메가드롭다운 메뉴 */}

@@ -5,11 +5,15 @@ export type CreditHistory = {
   deleteDate?: string; // getHistory에만 존재
 };
 
-export type Credit = {
-  creditAmount: number;
+export type TCreditHistory = {
   usedHistory: CreditHistory[];
   deleteHistory: CreditHistory[];
   getHistory: CreditHistory[];
+};
+
+export type Credit = {
+  creditAmount: number;
+  creditHistory: TCreditHistory;
 };
 
 export type Quiz = {
@@ -18,7 +22,10 @@ export type Quiz = {
   sequenceDays: number;
 };
 
+export type GameChoose = "승" | "무" | "패" | "";
+
 export type GamePredict = {
+  choose: "";
   sequenceDays: number;
 };
 
@@ -26,7 +33,7 @@ export type UserData = {
   userId: string;
   password: string;
   nickname: string;
-  creditAmount: number; // 크레딧 정보
+  credit: Credit; // 크레딧 정보
   quiz: Quiz; // 퀴즈 정보
   gamePredict: GamePredict; // 게임 예측 정보
   userUuid: string;

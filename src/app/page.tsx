@@ -6,6 +6,7 @@ import Shortcuts from "@/components/MainPage/Shortcuts/Shortcuts";
 import MatchBet from "@/components/MainPage/MatchBet/MatchBet";
 import Sponsor from "@/components/MainPage/Sponsor/Sponsor";
 import ChatSocketConnectHandler from "@/components/Socket/ChatSocketConnectHandler";
+import "react-tooltip/dist/react-tooltip.css";
 
 const getLeagueRankApiHandler = async () => {
   const url = `${process.env.NEXT_PUBLIC_BASEURL}/today_rank`;

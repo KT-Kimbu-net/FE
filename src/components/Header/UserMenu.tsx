@@ -5,22 +5,17 @@ import Link from "next/link";
 
 type UserMenuProps = {
   user: UserData | null;
-  handleLogin: () => void;
   handleLogout: () => void;
 };
 
-export default function UserMenu({
-  user,
-  handleLogin,
-  handleLogout,
-}: UserMenuProps) {
+export default function UserMenu({ user, handleLogout }: UserMenuProps) {
   return (
     <>
       <div className="ml-auto flex items-center space-x-2 absolute right-0 top-1/2 translate-y-[-50%]">
         {user ? (
           <>
             <span className="text-gray-500 text-sm font-normal">
-              {user.creditAmount} point
+              {user.credit.creditAmount} point
             </span>
             <span className="hover:text-gray-800 text-gray-500">|</span>
             <span className="text-gray-500 text-sm font-normal">

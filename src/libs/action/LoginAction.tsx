@@ -1,4 +1,5 @@
 "use server";
+
 import { v4 as uuidv4 } from "uuid";
 
 export async function joinUserAction(formData: FormData) {
@@ -7,7 +8,7 @@ export async function joinUserAction(formData: FormData) {
       userId: "",
       password: "",
       credit: {
-        creditAmount: 1000,
+        creditAmount: 100,
         creditHistory: {
           usedHistory: [],
           deleteHistory: [],
