@@ -1,7 +1,10 @@
 import { io, Socket } from "socket.io-client";
 
-export const chatSocket: Socket = io("ws://localhost:5000", {
-  autoConnect: true,
-  reconnection: false,
-  randomizationFactor: 1,
-});
+export const chatSocket: Socket = io(
+  `${process.env.NEXT_PUBLIC_CHAT_SOCKETURL}`,
+  {
+    autoConnect: false,
+    reconnection: false,
+    randomizationFactor: 1,
+  }
+);

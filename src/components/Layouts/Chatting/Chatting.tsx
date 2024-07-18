@@ -1,55 +1,38 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-
-import { FaUserEdit } from "react-icons/fa";
-import { FcAddImage, FcVideoCall } from "react-icons/fc";
-
 import { useChatState } from "@/store/chatting";
-import { chatSocket } from "@/socket/ChatSocket";
-
 import Message from "./Message";
-import MessageInput from "./MessageInput";
 import ChattingHeader from "./ChattingHeader";
+import ChattingFooter from "./ChattingFooter";
+import { useUserState } from "@/store/user";
 
 export default function Chatting() {
-  const messageRef = useRef<HTMLTextAreaElement>(null);
   const messageEndRef = useRef<HTMLLIElement>(null);
 
-  const { isShow, chatLog, setChatLog, setAllChatLog } = useChatState(
-    (state) => ({
-      isShow: state.isShow,
-      chatLog: state.chatLog,
-      setChatLog: state.setChatLog,
-      setAllChatLog: state.setAllChatLog,
-    })
-  );
+  const { isShow, chatLog, setAllChatLog } = useChatState((state) => ({
+    isShow: state.isShow,
+    chatLog: state.chatLog,
+    setChatLog: state.setChatLog,
+    setAllChatLog: state.setAllChatLog,
+  }));
+
+  const { userData } = useUserState((state) => ({
+    userData: state.userData,
+  }));
 
   const [isVisible, setIsVisible] = useState(isShow);
   const [animate, setAnimate] = useState(false);
 
-  const iconStyle = "w-4 h-4";
-
-  const msgSubmitSocketHandler = async () => {
-    if (messageRef.current?.value) {
-      const trimmedMessage = messageRef.current?.value.trim();
-      if (trimmedMessage) {
-        const sendMessage = {
-          nickname: "홈런치는 강백호",
-          message: messageRef.current?.value,
-          time: "오후 11:09",
-          report: [],
-          msgId: "1",
-        };
-        chatSocket.emit("chatting", sendMessage);
-        messageRef.current.value = "";
-      }
-    }
-  };
-
+  // 모든 채팅 메세지 get api 핸들러
   const getChatLogs = async () => {
-    const data = await (await fetch("http://localhost:5000/chatLogs")).json();
+    const data = await (
+      await fetch(`${process.env.NEXT_PUBLIC_CHAT_BASEURL}/chatLogs`)
+    ).json();
     setAllChatLog(data);
+    setTimeout(() => {
+      messageEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    }, 0);
   };
 
   useEffect(() => {
@@ -57,23 +40,13 @@ export default function Chatting() {
   }, []);
 
   useEffect(() => {
-    const scrollToEnd = () => {
+    const scrollToBottom = () => {
       messageEndRef.current?.scrollIntoView({ behavior: "smooth" });
     };
-    if (chatLog.length > 0) {
-      scrollToEnd();
-    }
-  }, [chatLog]);
+    const timeoutId = setTimeout(scrollToBottom, 0);
 
-  useEffect(() => {
-    // const chatMsgSocketHandler = (message: any) => {
-    //   setChatLog(message);
-    // };
-    // chatSocket.on("chatting", chatMsgSocketHandler);
-    // return () => {
-    //   chatSocket.off("chatting", chatMsgSocketHandler);
-    // };
-  }, []);
+    return () => clearTimeout(timeoutId);
+  }, [chatLog, isShow]);
 
   useEffect(() => {
     if (isShow) {
@@ -96,35 +69,26 @@ export default function Chatting() {
           <ChattingHeader />
           <ul className="h-4/5 text-white flex flex-col gap-3 overflow-y-auto px-5 py-3 scrollbar-hide">
             {chatLog &&
-              chatLog.map((message, index) => (
-                <Message
-                  key={index} // 추가: 각 메시지에 키를 추가합니다.
-                  nickname={message.nickname}
-                  message={message.message}
-                  time={message.time}
-                  msgId={message.msgId}
-                />
-              ))}
+              chatLog.map((message) => {
+                const isReportedByMe = message.report.some(
+                  (report) => report.userId === userData?.userId
+                );
+                if (isReportedByMe) return null;
+                return (
+                  <Message
+                    key={message.msgId}
+                    nickname={message.nickname}
+                    message={message.message}
+                    time={message.time}
+                    report={message.report}
+                    msgId={message.msgId}
+                    userId={message.userId}
+                  />
+                );
+              })}
             <li ref={messageEndRef}></li>
           </ul>
-          <section className="h-[20%] rounded-b-2xl bg-black flex flex-col gap-2 px-2 py-2 border-t-[1px] border-gray-700">
-            <section className="flex gap-2 items-center justify-between px-3">
-              <section className="flex items-center">
-                <span className="text-gray-500 font-[Pretendard-Medium] text-sm mr-4">
-                  홈런타자 강백호
-                </span>
-                <FaUserEdit className={`${iconStyle} text-white`} />
-              </section>
-              <section className="flex gap-2">
-                {/* <FcAddImage className={iconStyle} /> */}
-                {/* <FcVideoCall className={iconStyle} /> */}
-              </section>
-            </section>
-            <MessageInput
-              messageRef={messageRef}
-              msgSubmitSocketHandler={msgSubmitSocketHandler}
-            />
-          </section>
+          <ChattingFooter />
         </section>
       )}
     </>

@@ -1,8 +1,13 @@
 import { create } from "zustand";
-import { TUseChatState } from "@/types/chatting";
+import {
+  TUseChatState,
+  TReportMessage,
+  TReportMessageInfo,
+} from "@/types/chatting";
 
-export const useChatState = create<TUseChatState>((set) => ({
+export const useChatState = create<TUseChatState>((set, get) => ({
   isShow: false,
+  cleanChat: false,
   userCount: "",
   chatLog: [],
   setIsShow: () => set((state) => ({ isShow: !state.isShow })),
@@ -16,4 +21,16 @@ export const useChatState = create<TUseChatState>((set) => ({
     }),
   setAllChatLog: (allMessage) => set({ chatLog: allMessage }),
   setUserCount: (changeUserCount) => set({ userCount: changeUserCount }),
+  setCleanChat: () => set((state) => ({ cleanChat: !state.cleanChat })),
+  getCleanChat: () => get().cleanChat,
+}));
+
+export const useReportMsgState = create<TReportMessage>((set) => ({
+  info: {
+    nickname: "",
+    message: "",
+    msgId: "",
+    userId: "",
+  },
+  setInfo: (info: TReportMessageInfo) => set({ info: info }),
 }));

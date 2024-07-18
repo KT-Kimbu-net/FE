@@ -11,6 +11,9 @@ import AlertLogin from "../Modal/AlertLogin";
 import AlertRetry from "../Modal/AlertRetry";
 import AlertExit from "../Modal/AlertExit";
 import QuizRanking from "../Modal/QuizRanking/QuizRanking";
+import NickChange from "../Modal/Chatting/NickChange";
+import ReportMessage from "../Modal/Chatting/ReportMessage";
+import { UserData } from "@/types/api";
 import { loginUserTest, useUserState } from "@/store/user";
 
 const ModalLayoutBackground = () => {
@@ -39,6 +42,8 @@ const ModalContent = (): JSX.Element => {
     alertRetry: <AlertRetry />,
     alertExit: <AlertExit />,
     quizRanking: <QuizRanking />,
+    nickChange: <NickChange />,
+    reportMessage: <ReportMessage />,
   };
 
   useEffect(() => {

@@ -4,6 +4,7 @@ import subseArrow from "@/img/subseArrow.svg";
 import Kt from "@/img/TeamLogo/Kt.svg";
 import Kia from "@/img/TeamLogo/Kia.svg";
 import rain from "@/img/rain.svg";
+import MatchPredict from "./MatchPredict";
 
 // 기상청 api를 이용한 강수확률 가져오는 api핸들러
 const getWeatherApiHandler = async () => {
@@ -39,6 +40,7 @@ export default async function MatchScore() {
           <section className="border-[1px] rounded-md border-[#e0e0e0] flex gap-2 py-1 px-2 text-gray-500">
             <Image src={rain} alt="rain" />
             {/* {popData.fcstValue}% */}
+            60%
           </section>
         </section>
         <Image src={subseArrow} alt="next game match" />
@@ -68,14 +70,7 @@ export default async function MatchScore() {
             </section>
           </section>
         </section>
-        <section className="w-full flex justify-between">
-          <section className="bg-main px-4 py-3 rounded-bl-xl text-white w-[64%] font-[Pretendard-ExtraBold]">
-            64.6%
-          </section>
-          <section className="bg-[#4b4b4b] px-4 py-3 rounded-br-xl text-white w-[36%] text-end font-[Pretendard-ExtraBold]">
-            35.4%
-          </section>
-        </section>
+        <MatchPredict />
       </section>
     </>
   );

@@ -7,6 +7,8 @@ export type TModalTypes =
   | "alertRetry"
   | "alertExit"
   | "quizRanking"
+  | "nickChange"
+  | "reportMessage"
   | null;
 
 export type TUseModalState = {
