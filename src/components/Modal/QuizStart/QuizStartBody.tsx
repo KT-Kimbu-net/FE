@@ -1,12 +1,40 @@
 import { useModalState, useUserQuizState } from "@/store/modal";
 import Progressbar from "../Common/Progressbar";
 import { useUserState } from "@/store/user";
+import { sendIsSolved } from "@/libs/quiz/sendIsSolved";
+import { useEffect } from "react";
 
 export default function QuizStartBody() {
   const { setModalName } = useModalState();
-  const { userData } = useUserState(); // 전역 상태에서 userData 가져오기
+  const { userData, setUserData } = useUserState(); // 전역 상태에서 userData 가져오기
   const isLoggedIn = userData !== null; // 로그인 여부 확인
   const { reset } = useUserQuizState(); // 임시 리셋 추가
+
+  const handleStart = () => {
+    setModalName(isLoggedIn ? "quizProblem" : "alertLogin");
+    reset();
+    console.log("answers reset");
+    // if (isLoggedIn && userData) {
+    //   const updatedUser = {
+    //     ...userData,
+    //     quiz: { ...userData.quiz, isSolved: 1 },
+    //   };
+    //   setUserData(updatedUser);
+    //   sendIsSolved(userData.userId);
+    //   console.log("isSolved sent");
+    // }
+  };
+  // useEffect(() => {
+  //   if (userData) {
+  //     const updatedUser = {
+  //       ...userData,
+  //       quiz: { ...userData.quiz, isSolved: 1 },
+  //     };
+  //     setUserData(updatedUser);
+  //     sendIsSolved(userData.userId);
+  //     console.log("isSolved sent");
+  //   }
+  // }, [handleStart]);
   return (
     <>
       <div className="flex flex-col items-center justify-center relative bg-white w-full mt-9 h-full rounded-t-none rounded-b-[12px]">
@@ -31,9 +59,7 @@ export default function QuizStartBody() {
         <div className="flex justify-center mt-8 gap-x-4 w-full">
           <button
             onClick={() => {
-              setModalName(isLoggedIn ? "quizProblem" : "alertLogin");
-              reset();
-              console.log("answers reset");
+              handleStart();
             }}
             className="text-xl font-bold bg-[#a42a2a] text-white rounded-[12px] w-[40%] h-14 hover:bg-gray-700 hover:text-white hover:border-transparent transition duration-300 ease-in-out"
           >

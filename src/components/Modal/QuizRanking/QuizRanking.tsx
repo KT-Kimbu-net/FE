@@ -1,29 +1,50 @@
 "use client";
-
 import { useModalState } from "@/store/modal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoIosClose } from "react-icons/io";
-
 import {
-  criteriaDescriptions,
   FilterCriteria,
-  getRating,
-  getScore,
-  getTopRankingUsers,
-  rankImgSrc,
-  rankSelect,
+  criteriaSelect,
+  sortRanking,
+  rankParameters,
+  TResponse,
 } from "@/utils/ranking";
 import TableHeader from "./TableHeader";
 import TableBody from "./TableBody";
 import { useUserState } from "@/store/user";
+import { getRanking } from "@/libs/quiz/getRanking";
 
 export default function QuizRanking() {
   const { setModalName } = useModalState();
-  const { userData } = useUserState(); // 전역 상태에서 currentUser 가져오기
   const [criteria, setCriteria] = useState<FilterCriteria>("Points");
+  const { userData } = useUserState();
+  const [filteredRankingData, setFilteredRankingData] = useState<any[]>([]);
+  const [myRank, setMyRank] = useState<number>(0);
+  const [loading, setLoading] = useState(true); // 아..
 
-  // 랭킹 데이터 가져오기
-  const filteredRankingData = getTopRankingUsers(criteria);
+  const myRankData: TResponse = {
+    nickname: userData?.nickname || "",
+    sequenceDays: userData?.quiz.sequenceDays || 0,
+    userId: userData?.userId || "",
+    amount: userData?.quiz.amount || 0,
+    creditAmount: userData?.creditAmount || 0,
+  };
+
+  useEffect(() => {
+    setFilteredRankingData([]); // 초기화
+    setLoading(true);
+    getRanking(userData?.userId || "", rankParameters[criteria]).then(
+      (data) => {
+        console.log(rankParameters[criteria]);
+        setFilteredRankingData(
+          sortRanking(myRankData, data, rankParameters[criteria])
+        );
+        setMyRank(data.myrank);
+        setLoading(false);
+      }
+    );
+  }, [criteria]);
+
   return (
     <>
       <div className="relative first-line:flex flex-col rounded-[12px] bg-opacity-100 bg-[#a42a2a] w-[500px] h-[670px] box-border">
@@ -51,7 +72,7 @@ export default function QuizRanking() {
                     setCriteria(e.target.value as FilterCriteria)
                   }
                 >
-                  {rankSelect.map((item, i) => (
+                  {criteriaSelect.map((item, i) => (
                     <option value={item} key={i}>
                       {item}
                     </option>
@@ -61,27 +82,21 @@ export default function QuizRanking() {
               <div className="w-full pl-2 overflow-hidden">
                 <table role="table" className="w-full min-w-[480px]">
                   <thead>
-                    {/* 컴포넌트화 */}
                     <tr role="row">
                       <TableHeader title="Rank" />
                       <TableHeader title="Score" />
-                      <TableHeader
-                        title="Rating"
-                        criteriaDescription={criteriaDescriptions[criteria]}
-                      />
+                      <TableHeader title="Rating" criteria={criteria} />
                     </tr>
                   </thead>
                   <tbody role="rowgroup" className="px-4">
-                    {/* 컴포넌트화...음... */}
                     {filteredRankingData.map((data, index) => (
                       <TableBody
                         key={data.userId}
                         data={data}
                         index={index}
                         criteria={criteria}
-                        rankImgSrc={rankImgSrc}
-                        getScore={getScore}
-                        getRating={getRating}
+                        myRank={myRank}
+                        loading={loading}
                       />
                     ))}
                   </tbody>
