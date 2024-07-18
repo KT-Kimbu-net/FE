@@ -1,4 +1,5 @@
 "use client";
+
 import { useModalState, useUserQuizState } from "@/store/modal";
 import { useCallback, useEffect, useState } from "react";
 import CloseButton from "../Common/CloseButton";
@@ -8,7 +9,7 @@ import { useUserState } from "@/store/user";
 import { getQuizData } from "@/libs/quiz/getQuizData";
 
 export default function QuizProblem() {
-  const { userData, setUserData } = useUserState(); // 전역 사용자 정보
+  const { userData } = useUserState(); // 전역 사용자 정보
   const {
     setModalName,
     setPreviousModalType,
@@ -55,7 +56,7 @@ export default function QuizProblem() {
     setLoading(true);
     try {
       const data = await getQuizData();
-      console.log("Fetched Quiz Data:", data);
+      console.log(data);
       setAnswer(problemIndex, data.answer, false, data.quiz, data.explanation);
     } catch (error) {
       console.error("Failed to fetch quiz data", error);
@@ -71,7 +72,7 @@ export default function QuizProblem() {
     } else {
       setLoading(false);
     }
-  }, [problemIndex, answers, fetchQuizData]);
+  }, [fetchQuizData]);
 
   // 퀴즈 완료 처리 함수
   const handleQuizCompletion = () => {
@@ -85,7 +86,6 @@ export default function QuizProblem() {
       setModalName("quizLoading");
     }
   };
-
   return (
     <>
       <ModalLayout className="bg-[#a42a2a] w-[500px] h-[580px]">

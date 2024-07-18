@@ -8,6 +8,5 @@ const imageFiles = [
 
 export function getRandomImage(): string {
   const randomIndex = Math.floor(Math.random() * imageFiles.length);
-  console.log(imageFiles[randomIndex]);
   return imageFiles[randomIndex];
 }
