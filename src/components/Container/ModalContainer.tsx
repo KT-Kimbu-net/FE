@@ -13,8 +13,7 @@ import AlertExit from "../Modal/AlertExit";
 import QuizRanking from "../Modal/QuizRanking/QuizRanking";
 import NickChange from "../Modal/Chatting/NickChange";
 import ReportMessage from "../Modal/Chatting/ReportMessage";
-import { UserData } from "@/types/api";
-import { loginUserTest, useUserState } from "@/store/user";
+import { useUserState } from "@/store/user";
 
 const ModalLayoutBackground = () => {
   const { modalName } = useModalState();
@@ -30,7 +29,6 @@ const ModalLayoutBackground = () => {
 const ModalContent = (): JSX.Element => {
   const { modalName, setModalName } = useModalState();
   const { userData } = useUserState(); // 전역 상태에서 currentUser 가져오기
-  const isLoggedIn = userData !== null; // 로그인 여부 확인
   const { isQuizActive, setIsQuizActive } = useUserQuizState();
 
   const modalContent: { [key: string]: JSX.Element } = {
@@ -80,16 +78,13 @@ const ModalContent = (): JSX.Element => {
     if (modalName === "quizProblem") {
       setIsQuizActive(true);
     }
-  }, [modalName, isLoggedIn, isQuizActive]);
+  }, [modalName, userData?.userId, isQuizActive]);
 
   return (
     <>
       {modalName && (
         <section className="z-40 flex w-screen-50 min-w-[325px] max-w-[700px] flex-col jusfify-content center fixed top-1/2 left-1/2 text-center -translate-x-1/2 -translate-y-1/2 rounded-[12px] bg-white text-xs sm:text-base md:text-lg lg:text-xl xl:text-2xl">
           {modalName ? modalContent[modalName] : null}
-          <section className="z-20 flex w-screen-50 min-w-[325px] max-w-[700px] flex-col justify-center items-center fixed top-1/2 left-1/2 text-center -translate-x-1/2 -translate-y-1/2 rounded-[12px] bg-white text-xs sm:text-base md:text-lg lg:text-xl xl:text-2xl">
-            {modalContent[modalName]}
-          </section>
         </section>
       )}
     </>

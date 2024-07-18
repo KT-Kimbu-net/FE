@@ -43,6 +43,7 @@ export default function ChatSocketHandler() {
           time: message.time,
           report: message.report,
           msgId: message.msgId,
+          userId: message.userId,
         });
       }
     } else {

@@ -1,4 +1,5 @@
 "use client";
+
 import { useModalState, useUserQuizState } from "@/store/modal";
 import { SvgQuizResultCheck } from "@/utils/img/Svg";
 import ModalLayout from "./Common/ModalLayout";
@@ -13,33 +14,30 @@ export default function QuizResult() {
   const { userData, setUserData } = useUserState();
   const { setModalName } = useModalState();
   const { answers } = useUserQuizState();
-  console.log(answers);
 
   const [pointsSent, setPointsSent] = useState(false);
   const resultArr = getResults(answers);
-  if (userData) {
-    userData.creditAmount += calculatePoints(answers);
-  }
+
   useEffect(() => {
-    if (!pointsSent && userData) {
+    if (userData && !pointsSent) {
       const points = calculatePoints(answers);
       const updatedUserData = {
         ...userData,
         creditAmount: (userData.creditAmount ?? 0) + points,
       };
       setUserData(updatedUserData);
-
+      console.log(pointsSent);
       sendPoints(points)
         .then((response) => {
           console.log("Points sent successfully:", response);
           console.log(`Total points after update: ${response.pointAmount}`);
-          setPointsSent(true); // 포인트가 전송되었음을 표시
+          setPointsSent(true); // 포인트가 전송되었음을 표시x
         })
         .catch((error) => {
           console.error("Failed to send points:", error);
         });
     }
-  }, [pointsSent]);
+  }, []);
 
   return (
     <>
