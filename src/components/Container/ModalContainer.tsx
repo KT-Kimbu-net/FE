@@ -14,7 +14,6 @@ import QuizRanking from "../Modal/QuizRanking/QuizRanking";
 import NickChange from "../Modal/Chatting/NickChange";
 import ReportMessage from "../Modal/Chatting/ReportMessage";
 import { UserData } from "@/types/api";
-import { useUserState } from "@/store/user";
 import { loginUserTest, useUserState } from "@/store/user";
 
 const ModalLayoutBackground = () => {
