@@ -1,7 +1,7 @@
 import { TSideMenu, TSideMenuContent } from "@/data/sideMenu/dataPlayer";
 import Link from "next/link";
 
-const marginClasses = ["ml-0", "ml-4", "ml-8", "ml-12", "ml-16", "ml-20"];
+const marginClasses = ["ml-0", "ml-2", "ml-4", "ml-6", "ml-8", "ml-10"];
 
 export default function SideMenu(props: TSideMenu) {
   const selectStyle = "font-[500] text-[#EC1C23]";
@@ -28,11 +28,11 @@ export default function SideMenu(props: TSideMenu) {
   };
 
   return (
-    <div className="fixed top-[30%] left-10 h-[10%] w-[20%] min-h-[300px] max-h-[400px] min-w-[230px] max-w-[270px] border-[1px] border-[#EFEFEF] rounded-[10px] items-center flex-col justify-start p-3 pl-1 hidden md:flex">
-      <h4 className="w-[90%] font-[700]  border-b-[1px] pb-2 text-left text-[20px]">
+    <div className="fixed md:top-[16.5em]  xl:top-[18.5em] 2xl:top-[20em]  left-[5%]  max-h-[400px] md:w-[150px] xl:w-[150px] max-w-[270px] border-[2px] border-[#CCCCCC] rounded-[10px] items-center flex-col justify-start p-3 pl-1 hidden lg:flex ">
+      <h4 className="w-[90%] font-[700] xl:text-[16px]  border-b-[1px] pb-2 text-left text-[20px]">
         {props.title}
       </h4>
-      <ul className="w-[90%] font-[300] mt-2 flex flex-col items-start justify-start gap-2 text-[16px]">
+      <ul className="w-[90%] font-[300] mt-2 flex flex-col items-start justify-start gap-2 text-[12px]">
         {renderMenuItems(props.menuList)}
       </ul>
     </div>
