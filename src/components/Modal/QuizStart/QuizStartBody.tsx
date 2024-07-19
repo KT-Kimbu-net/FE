@@ -1,40 +1,18 @@
 import { useModalState, useUserQuizState } from "@/store/modal";
 import Progressbar from "../Common/Progressbar";
 import { useUserState } from "@/store/user";
-import { sendIsSolved } from "@/libs/quiz/sendIsSolved";
-import { useEffect } from "react";
 
 export default function QuizStartBody() {
-  const { setModalName } = useModalState();
-  const { userData, setUserData } = useUserState(); // 전역 상태에서 userData 가져오기
-  const isLoggedIn = userData !== null; // 로그인 여부 확인
-  const { reset } = useUserQuizState(); // 임시 리셋 추가
+  const { setModalName, setProblemIndex } = useModalState();
+  const { userData } = useUserState();
+  const { reset } = useUserQuizState();
 
   const handleStart = () => {
-    setModalName(isLoggedIn ? "quizProblem" : "alertLogin");
+    setModalName(userData !== null ? "quizProblem" : "alertLogin");
     reset();
+    setProblemIndex(1);
     console.log("answers reset");
-    // if (isLoggedIn && userData) {
-    //   const updatedUser = {
-    //     ...userData,
-    //     quiz: { ...userData.quiz, isSolved: 1 },
-    //   };
-    //   setUserData(updatedUser);
-    //   sendIsSolved(userData.userId);
-    //   console.log("isSolved sent");
-    // }
   };
-  // useEffect(() => {
-  //   if (userData) {
-  //     const updatedUser = {
-  //       ...userData,
-  //       quiz: { ...userData.quiz, isSolved: 1 },
-  //     };
-  //     setUserData(updatedUser);
-  //     sendIsSolved(userData.userId);
-  //     console.log("isSolved sent");
-  //   }
-  // }, [handleStart]);
   return (
     <>
       <div className="flex flex-col items-center justify-center relative bg-white w-full mt-9 h-full rounded-t-none rounded-b-[12px]">
@@ -67,7 +45,7 @@ export default function QuizStartBody() {
           </button>
           <button
             onClick={() => {
-              setModalName(isLoggedIn ? "quizRanking" : "alertLogin");
+              setModalName(userData !== null ? "quizRanking" : "alertLogin");
             }}
             className="text-xl font-bold bg-gray-500 text-white border border-gray-400 rounded-[12px] w-[40%] h-14 hover:bg-gray-700 hover:text-white hover:border-transparent transition duration-300 ease-in-out"
           >

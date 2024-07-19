@@ -13,7 +13,7 @@ import { setCookie } from "cookies-next";
 
 export default function Login() {
   const router = useRouter();
-  const { userData, setUserData } = useUserState();
+  const { setUserData } = useUserState();
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
   let loginBtnStyle =
@@ -58,6 +58,12 @@ export default function Login() {
                 setCookie("token", result.data.token);
                 setUserData(result.data);
                 router.push("/");
+              } else {
+                console.log(result);
+                //login 실패
+                alert(`로그인 실패. ${result.status} 에러가 발생했습니다.`);
+                setId("");
+                setPassword("");
               }
             }}
           >

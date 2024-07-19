@@ -20,7 +20,7 @@ export default function QuizRanking() {
   const { userData } = useUserState();
   const [filteredRankingData, setFilteredRankingData] = useState<any[]>([]);
   const [myRank, setMyRank] = useState<number>(0);
-  const [loading, setLoading] = useState(true); // 아..
+  const [loading, setLoading] = useState(true);
 
   const myRankData: TResponse = {
     nickname: userData?.nickname || "",
@@ -31,23 +31,25 @@ export default function QuizRanking() {
   };
 
   useEffect(() => {
-    setFilteredRankingData([]); // 초기화
     setLoading(true);
+    console.log("loading " + loading);
     getRanking(userData?.userId || "", rankParameters[criteria]).then(
       (data) => {
-        console.log(rankParameters[criteria]);
         setFilteredRankingData(
           sortRanking(myRankData, data, rankParameters[criteria])
         );
         setMyRank(data.myrank);
-        setLoading(false);
+        setTimeout(() => {
+          setLoading(false);
+        }, 1000);
       }
     );
   }, [criteria]);
 
+  console.log("tablebody renadering");
   return (
     <>
-      <div className="relative first-line:flex flex-col rounded-[12px] bg-opacity-100 bg-[#a42a2a] w-[500px] h-[670px] box-border">
+      <div className="relative first-line:flex flex-col rounded-[12px] bg-opacity-100 bg-[#a42a2a] w-[500px] box-border">
         {/* X button */}
         <div className="absolute right-0 top-0">
           <IoIosClose
@@ -58,8 +60,8 @@ export default function QuizRanking() {
         {/* White section */}
         <div className="flex flex-col items-center justify-center relative bg-white w-full mt-9 h-full rounded-t-none rounded-b-[12px]">
           {/* 테이블 추가 */}
-          <div className="flex flex-col justify-center items-center">
-            <div className="relative flex max-w-[500px] h-full w-full flex-col rounded-[10px] border-[1px] border-gray-200 bg-white bg-clip-border shadow-sm shadow-[#dcd7d7] -mt-3">
+          <div className="mt-3 flex flex-col justify-center items-center">
+            <div className="relative flex max-w-[500px] w-full flex-col rounded-[10px] border-[1px] border-gray-200 bg-white bg-clip-border shadow-sm shadow-[#dcd7d7] -mt-3">
               <div className="flex h-fit w-full items-center justify-between rounded-t-2xl bg-white px-4 pb-[13px] pt-4 shadow-2xl shadow-gray-200">
                 <h4 className="text-lg font-bold text-navy-700 dark:text-white">
                   Quiz Ranking
@@ -89,16 +91,18 @@ export default function QuizRanking() {
                     </tr>
                   </thead>
                   <tbody role="rowgroup" className="px-4">
-                    {filteredRankingData.map((data, index) => (
-                      <TableBody
-                        key={data.userId}
-                        data={data}
-                        index={index}
-                        criteria={criteria}
-                        myRank={myRank}
-                        loading={loading}
-                      />
-                    ))}
+                    {(loading ? Array(10).fill({}) : filteredRankingData).map(
+                      (data, index) => (
+                        <TableBody
+                          key={index}
+                          data={data}
+                          index={index}
+                          criteria={criteria}
+                          myRank={myRank}
+                          loading={loading}
+                        />
+                      )
+                    )}
                   </tbody>
                 </table>
               </div>

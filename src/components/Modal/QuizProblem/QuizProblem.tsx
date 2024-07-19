@@ -14,7 +14,7 @@ export default function QuizProblem() {
   const {
     setModalName,
     setPreviousModalType,
-    problemIndex = 0,
+    problemIndex = 1,
     setProblemIndex,
   } = useModalState();
   const { answers, setAnswer } = useUserQuizState();
@@ -27,8 +27,6 @@ export default function QuizProblem() {
   };
 
   const handleAnswer = (value: boolean) => {
-    console.log("hhh");
-    console.log(problemIndex);
     if (answers[problemIndex]) {
       // 사용자 입력
       const problem = answers[problemIndex];
@@ -43,8 +41,6 @@ export default function QuizProblem() {
         setProblemIndex(2);
       } else {
         handleQuizCompletion();
-        console.log("@");
-        console.log(problemIndex);
       }
     }
   };
@@ -54,7 +50,6 @@ export default function QuizProblem() {
     setLoading(true);
     try {
       const data = await getQuizData();
-      console.log(data);
       setAnswer(problemIndex, data.answer, false, data.quiz, data.explanation);
     } catch (error) {
       console.error("Failed to fetch quiz data", error);
@@ -81,7 +76,6 @@ export default function QuizProblem() {
       };
       setUserData(updatedUser);
       sendIsSolved(userData.userId);
-      console.log("isSolved sent");
       setModalName("quizLoading");
     }
   };

@@ -11,7 +11,7 @@ export default function AlertExit() {
           <div className="-mt-4 flex flex-col items-center justify-center">
             <SvgAlertExitAlert />
             <div className="text-lg font-extrabold">
-              중도 퇴장시 퀴즈에 다시 참여할 수 없습니다.
+              문제를 전부 풀지 않으면 포인트를 받을 수 없습니다.
             </div>
             <div className="text-base">
               계속해서 나가시려면 그만하기를 눌러주세요.
