@@ -3,10 +3,16 @@ import Progressbar from "../Common/Progressbar";
 import { useUserState } from "@/store/user";
 
 export default function QuizStartBody() {
-  const { setModalName } = useModalState();
-  const { userData } = useUserState(); // 전역 상태에서 userData 가져오기
-  const isLoggedIn = userData !== null; // 로그인 여부 확인
-  const { reset } = useUserQuizState(); // 임시 리셋 추가
+  const { setModalName, setProblemIndex } = useModalState();
+  const { userData } = useUserState();
+  const { reset } = useUserQuizState();
+
+  const handleStart = () => {
+    setModalName(userData !== null ? "quizProblem" : "alertLogin");
+    reset();
+    setProblemIndex(1);
+    console.log("answers reset");
+  };
   return (
     <>
       <div className="flex flex-col items-center justify-center relative bg-white w-full mt-9 h-full rounded-t-none rounded-b-[12px]">
@@ -31,9 +37,7 @@ export default function QuizStartBody() {
         <div className="flex justify-center mt-8 gap-x-4 w-full">
           <button
             onClick={() => {
-              setModalName(isLoggedIn ? "quizProblem" : "alertLogin");
-              reset();
-              console.log("answers reset");
+              handleStart();
             }}
             className="text-xl font-bold bg-[#a42a2a] text-white rounded-[12px] w-[40%] h-14 hover:bg-gray-700 hover:text-white hover:border-transparent transition duration-300 ease-in-out"
           >
@@ -41,7 +45,7 @@ export default function QuizStartBody() {
           </button>
           <button
             onClick={() => {
-              setModalName(isLoggedIn ? "quizRanking" : "alertLogin");
+              setModalName(userData !== null ? "quizRanking" : "alertLogin");
             }}
             className="text-xl font-bold bg-gray-500 text-white border border-gray-400 rounded-[12px] w-[40%] h-14 hover:bg-gray-700 hover:text-white hover:border-transparent transition duration-300 ease-in-out"
           >

@@ -7,13 +7,14 @@ import QuizProblemBody from "./QuizProblemBody";
 import ModalLayout from "../Common/ModalLayout";
 import { useUserState } from "@/store/user";
 import { getQuizData } from "@/libs/quiz/getQuizData";
+import { sendIsSolved } from "@/libs/quiz/sendIsSolved";
 
 export default function QuizProblem() {
-  const { userData } = useUserState(); // 전역 사용자 정보
+  const { userData, setUserData } = useUserState(); // 전역 사용자 정보
   const {
     setModalName,
     setPreviousModalType,
-    problemIndex = 0,
+    problemIndex = 1,
     setProblemIndex,
   } = useModalState();
   const { answers, setAnswer } = useUserQuizState();
@@ -22,15 +23,10 @@ export default function QuizProblem() {
   // 핸들러 함수들
   const handleProblemExit = () => {
     setPreviousModalType("quizProblem");
-    // setProblemIndex(
-    //   problemIndex === 1 || problemIndex === 2 ? problemIndex : 0
-    // );
     setModalName("alertExit");
   };
 
   const handleAnswer = (value: boolean) => {
-    console.log("hhh");
-    console.log(problemIndex);
     if (answers[problemIndex]) {
       // 사용자 입력
       const problem = answers[problemIndex];
@@ -45,8 +41,6 @@ export default function QuizProblem() {
         setProblemIndex(2);
       } else {
         handleQuizCompletion();
-        console.log("@");
-        console.log(problemIndex);
       }
     }
   };
@@ -56,7 +50,6 @@ export default function QuizProblem() {
     setLoading(true);
     try {
       const data = await getQuizData();
-      console.log(data);
       setAnswer(problemIndex, data.answer, false, data.quiz, data.explanation);
     } catch (error) {
       console.error("Failed to fetch quiz data", error);
@@ -77,12 +70,12 @@ export default function QuizProblem() {
   // 퀴즈 완료 처리 함수
   const handleQuizCompletion = () => {
     if (answers.length >= 3 && userData) {
-      // const updatedUser = {
-      //   ...userData,
-      //   quiz: { ...userData.quiz, isSolved: 1 },
-      // };
-      // setUserData(updatedUser);
-      // console.log("퀴즈 완료! 전역상태 user는 변경 완료, todo > api 연결");
+      const updatedUser = {
+        ...userData,
+        quiz: { ...userData.quiz, isSolved: 1 },
+      };
+      setUserData(updatedUser);
+      sendIsSolved(userData.userId);
       setModalName("quizLoading");
     }
   };

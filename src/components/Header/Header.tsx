@@ -6,10 +6,10 @@ import HeaderMobile from "./HeaderMobile";
 import UserMenu from "./UserMenu";
 import MegaDropdown from "./MegaDropdown";
 import { menus } from "@/data/Header/menus";
-import { useUserState } from "@/store/user";
 import { useChatState } from "@/store/chatting";
 import { chatSocket } from "@/socket/ChatSocket";
 import { deleteCookie } from "cookies-next";
+import { useUserState } from "@/store/user";
 
 export default function Header() {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
