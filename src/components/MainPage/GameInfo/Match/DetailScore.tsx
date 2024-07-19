@@ -68,8 +68,8 @@ export default function DetailScore() {
         <tbody>
           <tr className="bg-[#f3f3f3]">
             <td className="px-2 border-r-[1px] border-white">KT</td>
-            <td className={inningTdStyle}>2</td>
-            <td className={inningTdStyle}>10</td>
+            <td className={inningTdStyle}></td>
+            <td className={inningTdStyle}></td>
             <td className={inningTdStyle}></td>
             <td className={inningTdStyle}></td>
             <td className={inningTdStyle}></td>
@@ -90,8 +90,8 @@ export default function DetailScore() {
             <td className="px-2 rounded-bl-xl border-r-[1px] border-white">
               Kia
             </td>
-            <td className={inningTdStyle}>2</td>
-            <td className={inningTdStyle}>1</td>
+            <td className={inningTdStyle}></td>
+            <td className={inningTdStyle}></td>
             <td className={inningTdStyle}></td>
             <td className={inningTdStyle}></td>
             <td className={inningTdStyle}></td>

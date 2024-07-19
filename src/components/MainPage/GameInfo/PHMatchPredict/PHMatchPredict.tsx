@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Kia from "@/img/TeamLogo/Kia.svg";
 import Kt from "@/img/TeamLogo/Kt.svg";
-import player2 from "@/img/Player/player2.svg";
+import { ktPicther, opponentPicther } from "@/data/gameInfo/pictherDummy";
 import ddory from "@/img/ddory.svg";
 import { Pie } from "react-chartjs-2";
 import {
@@ -78,14 +78,26 @@ export default function PHMatchPredict() {
         </section>
         <section className="relative flex w-full pt-5">
           <section className="bg-main w-[100%] flex items-center rounded-2xl px-4 py-3">
-            <Image src={player2} alt="picther" className="mr-2" />
-            <strong className="text-white">고영표</strong>
+            <Image
+              src={ktPicther.image}
+              alt="picther"
+              className="mr-2"
+              width={40}
+              height={40}
+            />
+            <strong className="text-white">{ktPicther.name}</strong>
             <span className="text-[#FFBEC1]">35%</span>
           </section>
           <section className="absolute right-0 bg-[#242424] w-[65%] flex items-center justify-end rounded-r-2xl [clip-path:polygon(0_0,100%_0,100%_100%,20%_100%)] px-4 py-3 ">
             <span className="text-[#ABABAB]">65%</span>
             <strong className="text-white">고영표</strong>
-            <Image src={player2} alt="picther" className="rounded-ful ml-2" />
+            <Image
+              src={opponentPicther.image}
+              alt="picther"
+              className="rounded-ful ml-2"
+              width={40}
+              height={40}
+            />
           </section>
         </section>
       </section>

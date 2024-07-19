@@ -5,7 +5,7 @@ const nextConfig = {
   },
   reactStrictMode: false,
   images: {
-    domains: ["wizzap.ktwiz.co.kr"],
+    domains: ["wizzap.ktwiz.co.kr", "statiz.sporki.com"],
   },
 };
 

@@ -48,7 +48,7 @@ export default async function MatchScore() {
       <section className="w-full">
         <section className="w-full bg-[#1b1b1b] rounded-t-xl p-4 flex flex-col items-center">
           <section className="text-center text-[#d6d6d6] w-fit py-1 px-3 rounded-xl bg-[#3a3a3a] font-[Pretendard-Bold]">
-            2회말
+            경기전
           </section>
           <section className="flex gap-8 w-full justify-between items-center">
             <section className="flex items-center justify-between w-1/3">
@@ -58,7 +58,7 @@ export default async function MatchScore() {
               <Image src={Kt} alt="Kt" />
             </section>
             <section className="w-1/3 text-center flex justify-between items-center text-white">
-              <span className="text-[2rem] font-[Pretendard-ExtraBold]">3</span>
+              <span className="text-[2rem] font-[Pretendard-ExtraBold]">0</span>
               <span className="text-lg font-[Leferi] text-gray-500">vs</span>
               <span className="text-[2rem] font-[Pretendard-ExtraBold]">0</span>
             </section>
