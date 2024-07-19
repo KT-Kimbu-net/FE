@@ -25,7 +25,7 @@ export type Quiz = {
 export type GameChoose = "승" | "무" | "패" | "";
 
 export type GamePredict = {
-  choose: "";
+  choose: GameChoose;
   sequenceDays: number;
 };
 

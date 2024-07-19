@@ -8,7 +8,7 @@ export type TUserDataType = {
     sequenceDays: number; // 연속으로 맞춘 일자
   };
   gamePredict: {
-    choose: "승" | "무" | "패" | "" | null; // 예측한 결과
+    choose: "승" | "무" | "패" | ""; // 예측한 결과
     sequenceDays: number; // 연속으로 맞춘 일자
   };
   token: string; // 토큰

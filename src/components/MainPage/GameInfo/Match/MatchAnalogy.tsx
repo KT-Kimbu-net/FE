@@ -77,7 +77,7 @@ export default function MatchAnalogy(props: any) {
                 alt="luck"
                 className="absolute right-8 top-1/2 translate-y-[-50%]"
                 data-tooltip-id="kt-pitcher-tooltip"
-                data-tooltip-content={props.luck.text}
+                data-tooltip-content={props.kt.text}
               />
               <Tooltip
                 id="kt-pitcher-tooltip"
@@ -92,7 +92,7 @@ export default function MatchAnalogy(props: any) {
                 alt="luck"
                 className="absolute left-8 top-1/2 translate-y-[-50%]"
                 data-tooltip-id="kia-pitcher-tooltip"
-                data-tooltip-content={props.luck.text}
+                data-tooltip-content={props.opponent.text}
               />
               <Tooltip
                 id="kia-pitcher-tooltip"
