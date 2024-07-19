@@ -25,6 +25,7 @@ export const menus: Menu[] = [
       { name: "야구장", link: "/wizpark/intro" },
       { name: "주차 예약", link: "/wizpark/parking" },
       { name: "찾아오기", link: "/wizpark/location" },
+      { name: "실시간 혼잡도", link: "/wizpark/congestion" },
     ],
   },
   {

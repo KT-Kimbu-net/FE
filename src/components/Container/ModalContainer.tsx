@@ -28,7 +28,7 @@ const ModalLayoutBackground = () => {
 
 const ModalContent = (): JSX.Element => {
   const { modalName, setModalName } = useModalState();
-  const { userData } = useUserState(); // 전역 상태에서 currentUser 가져오기
+  const { userData } = useUserState();
   const { isQuizActive, setIsQuizActive } = useUserQuizState();
 
   const modalContent: { [key: string]: JSX.Element } = {
