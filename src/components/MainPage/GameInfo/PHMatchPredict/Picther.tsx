@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { ktPicther } from "@/data/gameInfo/pictherDummy";
+import { ktPicther, opponentPicther } from "@/data/gameInfo/pictherDummy";
 import { useSelectPictherRecord } from "@/store/gameInfo";
+import { useSelectHitterState } from "@/store/hitterSelect";
 
 export default function Picther() {
   const { selectPictherRecord, setSelectPitcherRecord } =
@@ -11,11 +12,23 @@ export default function Picther() {
       setSelectPitcherRecord: state.setSelectPitcherRecord,
     }));
 
+  const { select } = useSelectHitterState((state) => ({
+    select: state.select,
+  }));
+
+  const player = select.selectTeam === "KT" ? opponentPicther : ktPicther;
+
   return (
     <section className="w-1/2 bg-[#FFF4F4] rounded-2xl flex flex-col items-center py-6 px-5 before:content-['등판투수기록'] before:font-[Pretendard-Bold] before:border-[1px] before:py-3 before:px-8 before:rounded-xl before:text-[#242424] before:bg-white before:absolute before:top-[-2rem]">
       <section className="flex gap-4 items-center">
-        <Image src={ktPicther.image} alt="pitcher" className="w-10 h-12" />
-        <strong className="text-2xl">{ktPicther.name}</strong>
+        <Image
+          src={player.image}
+          alt="pitcher"
+          width={48}
+          height={64}
+          style={{ width: 48, height: 64 }}
+        />
+        <strong className="text-2xl">{player.name}</strong>
       </section>
       <ul className="flex gap-8 mt-4">
         <li

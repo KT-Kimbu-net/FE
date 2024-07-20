@@ -69,7 +69,7 @@ export function sortRanking(
 export const getScore = (data: TResponse, criteria: FilterCriteria) => {
   switch (criteria) {
     case "Points":
-      return data.credit.creditAmount;
+      return data.creditAmount;
     case "Quiz Correct Answers":
       return data.amount;
     case "Consecutive Quiz Correct":

@@ -1,9 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import Kia from "@/img/TeamLogo/Kia.svg";
-import Kt from "@/img/TeamLogo/Kt.svg";
+import Kt from "@/img/TeamLogo/kt.png";
+import Kia from "@/img/TeamLogo/kia.png";
 import { ktPicther, opponentPicther } from "@/data/gameInfo/pictherDummy";
+import { ktHitters, opponentHitter } from "@/data/gameInfo/HitterDummy";
+import { useSelectHitterState } from "@/store/hitterSelect";
 import ddory from "@/img/ddory.svg";
 import { Pie } from "react-chartjs-2";
 import {
@@ -61,6 +63,14 @@ const data = {
 };
 
 export default function PHMatchPredict() {
+  const { select } = useSelectHitterState((state) => ({
+    select: state.select,
+  }));
+
+  const player = (select.selectTeam === "KT" ? ktHitters : opponentHitter).find(
+    (hitter) => hitter.name === select.selectHitter
+  );
+
   return (
     <section className="flex flex-col w-2/5 items-center">
       <section className="font-[Leferi] text-lg">투수 vs 타자 예측</section>
@@ -68,35 +78,49 @@ export default function PHMatchPredict() {
         <section className="relative w-full flex justify-center">
           <section className="absolute left-0 flex items-center">
             <strong className="font-[Pretendard-Bold]">KT Wiz</strong>
-            <Image src={Kt} alt="Kt" className="ml-5" />
+            <Image src={Kt} alt="Kt" className="ml-5" width={40} height={40} />
           </section>
           <section className="font-[Leferi] text-lg text-gray-500">vs</section>
           <section className="absolute right-0 flex items-center">
-            <Image src={Kia} alt="Kia" className="mr-5" />
+            <Image
+              src={Kia}
+              alt="Kia"
+              className="mr-5"
+              width={40}
+              height={40}
+            />
             <strong className="font-[Pretendard-Bold]">Kia Tigers</strong>
           </section>
         </section>
         <section className="relative flex w-full pt-5">
           <section className="bg-main w-[100%] flex items-center rounded-2xl px-4 py-3">
             <Image
-              src={ktPicther.image}
+              src={
+                select.selectTeam === "OPPONENT"
+                  ? ktPicther.image
+                  : opponentPicther.image
+              }
               alt="picther"
-              className="mr-2"
               width={40}
-              height={40}
+              height={52}
+              className="mr-2 w-10 h-13"
             />
-            <strong className="text-white">{ktPicther.name}</strong>
+            <strong className="text-white">
+              {select.selectTeam === "OPPONENT"
+                ? ktPicther.name
+                : opponentPicther.name}
+            </strong>
             <span className="text-[#FFBEC1]">35%</span>
           </section>
           <section className="absolute right-0 bg-[#242424] w-[65%] flex items-center justify-end rounded-r-2xl [clip-path:polygon(0_0,100%_0,100%_100%,20%_100%)] px-4 py-3 ">
             <span className="text-[#ABABAB]">65%</span>
-            <strong className="text-white">고영표</strong>
+            <strong className="text-white">{player?.name}</strong>
             <Image
-              src={opponentPicther.image}
+              src={player?.image!}
               alt="picther"
-              className="rounded-ful ml-2"
               width={40}
-              height={40}
+              height={52}
+              className="ml-2 w-10 h-13"
             />
           </section>
         </section>

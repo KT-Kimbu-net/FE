@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import Kt from "@/img/TeamLogo/Kt.svg";
-import Kia from "@/img/TeamLogo/Kia.svg";
+import Kt from "@/img/TeamLogo/kt.png";
+import Kia from "@/img/TeamLogo/kia.png";
 import luck from "@/img/luck.svg";
 import { Tooltip } from "react-tooltip";
 

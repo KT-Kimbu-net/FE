@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import Kt from "@/img/TeamLogo/Kt.svg";
-import Kia from "@/img/TeamLogo/Kia.svg";
+import Kt from "@/img/TeamLogo/kt.png";
+import Kia from "@/img/TeamLogo/kia.png";
 import { getCookie } from "cookies-next";
 import { GameChoose } from "@/types/api";
 import { useGameBetState } from "@/store/resultBet";
@@ -79,7 +79,7 @@ export default function MatchBet() {
             selectBetApiHandler("승");
           }}
         >
-          <Image src={Kt} alt="kt" />
+          <Image src={Kt} alt="kt" width={40} height={40} />
           <section className="flex flex-col font-[Pretendard-Bold]">
             <strong className="font-[Pretendard-SemiBold]">KT</strong>
           </section>
@@ -115,7 +115,7 @@ export default function MatchBet() {
           <section className="flex flex-col">
             <strong className="font-[Pretendard-SemiBold]">KIA</strong>
           </section>
-          <Image src={Kia} alt="kia" />
+          <Image src={Kia} alt="kia" width={40} height={40} />
         </section>
       </section>
     </section>

@@ -1,8 +1,11 @@
-import { weekScheduleDummyData } from "@/data/weekSchedule/weekSchedule";
 import { TDaySchedule } from "@/types/weekSchdule";
 import DaySchedule from "./DaySchedule";
 
-export default function WeekSchedule() {
+export type TWeekSchedule = {
+  currentWeekSchedule: TDaySchedule[] | undefined;
+};
+
+export default function WeekSchedule(props: TWeekSchedule) {
   return (
     <section className="w-full p-10 bg-black flex flex-col items-center">
       <section className="w-3/4 flexjustify-between items-center">
@@ -10,16 +13,30 @@ export default function WeekSchedule() {
           Weekend Schedule
         </section>
         <ul className="w-full flex [&>:first-child]:rounded-tl-xl [&>:first-child]:rounded-bl-xl  [&>:last-child]:rounded-br-xl [&>:last-child]:rounded-tr-xl mt-8">
-          {weekScheduleDummyData &&
-            weekScheduleDummyData.map((daySchedule: TDaySchedule, index) => (
-              <DaySchedule
-                date={daySchedule.date}
-                location={daySchedule.location}
-                teamLogo={daySchedule.teamLogo}
-                result={daySchedule.result}
-                key={index}
-              />
-            ))}
+          {props.currentWeekSchedule &&
+            props.currentWeekSchedule.map(
+              (daySchedule: TDaySchedule, index) => (
+                <DaySchedule
+                  key={index}
+                  displayDate={daySchedule.displayDate}
+                  gameDate={daySchedule.gameDate}
+                  gmkey={daySchedule.gmkey}
+                  gtime={daySchedule.gtime}
+                  home={daySchedule.home}
+                  homeKey={daySchedule.homeKey}
+                  homeScore={daySchedule.homeScore}
+                  matchTeamCode={daySchedule.matchTeamCode}
+                  matchTeamName={daySchedule.matchTeamName}
+                  outcome={daySchedule.outcome}
+                  stadium={daySchedule.stadium}
+                  stadiumKey={daySchedule.stadiumKey}
+                  status={daySchedule.status}
+                  visit={daySchedule.visit}
+                  visitKey={daySchedule.visitKey}
+                  visitScore={daySchedule.visitScore}
+                />
+              )
+            )}
         </ul>
       </section>
     </section>

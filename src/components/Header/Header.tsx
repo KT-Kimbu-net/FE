@@ -10,6 +10,7 @@ import { useChatState } from "@/store/chatting";
 import { chatSocket } from "@/socket/ChatSocket";
 import { deleteCookie } from "cookies-next";
 import { useUserState } from "@/store/user";
+import imgLogoBlack from "@/img/img-logo-black.svg";
 
 export default function Header() {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
@@ -53,12 +54,7 @@ export default function Header() {
             {/* 좌측 로고 */}
             <div className="absolute left-0 top-1/2 translate-y-[-50%]">
               <Link href="/">
-                <Image
-                  src="/img/img-logo-black.svg"
-                  alt="Logo"
-                  width={100}
-                  height={100}
-                />
+                <Image src={imgLogoBlack} alt="Logo" width={100} height={100} />
               </Link>
             </div>
 
