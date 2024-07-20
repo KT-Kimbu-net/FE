@@ -4,10 +4,11 @@ import ModalLayout from "../Common/ModalLayout";
 import CloseButton from "../Common/CloseButton";
 import CustomButton from "@/libs/atomic/CustomButton";
 import Image from "next/image";
-import ddory from "@/img/ddory.svg";
+import report from "@/img/Chatting/report.svg";
 import { useReportMsgState } from "@/store/chatting";
 import messageReportAction from "@/libs/action/MessageReportAction";
 import { useModalState } from "@/store/modal";
+import { useChatState } from "@/store/chatting";
 
 export default function ReportMessage() {
   const { info } = useReportMsgState((state) => ({
@@ -22,11 +23,32 @@ export default function ReportMessage() {
     <ModalLayout className="bg-white w-[430px] flex flex-col">
       <CloseButton textColor="text-black" />
       <section className="flex flex-col justify-center items-center p-6 gap-5">
-        <Image src={ddory} alt="nick change" width={80} height={80} />
         <section className="flex flex-col gap-2">
-          <h1 className="font-[Pretendard-Bold]">메세지 신고</h1>
-          <span className="text-base">{info.nickname}</span>
-          <span className="text-sm">{info.message}</span>
+          <div className="flex gap-3 items-center justify-center">
+            <h1 className="font-[Pretendard-Bold] text-xl">메세지 신고</h1>
+            <Image
+              src={report}
+              alt="report message"
+              width={24}
+              height={24}
+              className="w-6 h-6"
+            />
+          </div>
+          <span className="text-2xl font-[Pretendard-SemiBold]">
+            {info.nickname}
+          </span>
+          <span className="text-sm border-[1px] border-[#939393] rounded-xl p-3">
+            {info.type === "MESSAGE" ? (
+              info.message
+            ) : (
+              <Image
+                src={info.message}
+                alt="report message image"
+                width={120}
+                height={120}
+              />
+            )}
+          </span>
         </section>
         <form className="flex flex-col items-center gap-5">
           <label className="text-base font-[Pretendard-ExtraBold]">
@@ -44,8 +66,14 @@ export default function ReportMessage() {
               formData.append("msgId", info.msgId);
               formData.append("userId", info.userId!);
               const result = await messageReportAction(formData);
-              console.log(result);
-              if (result?.status === 200) setModalName(null);
+              if (result?.status === 200) {
+                info.setIsShow();
+                // const updatedChatLog = chatLog.filter(
+                // (message) => message.msgId !== info.msgId
+                // );
+                // setAllChatLog(updatedChatLog);
+                setModalName(null);
+              }
             }}
           >
             신고

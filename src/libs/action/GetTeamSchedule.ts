@@ -1,4 +1,5 @@
 import { TDaySchedule } from "@/types/weekSchdule";
+import { getCurrentDay } from "@/utils/date";
 
 export async function getTeamSchedule() {
   const now = new Date();
@@ -45,6 +46,7 @@ export async function getTeamSchedule() {
     const hasMondayGame = games.some((game) => game.displayDate === monday);
     if (!hasMondayGame) {
       const emptyMondayData: TDaySchedule = {
+        currentDay: getCurrentDay(),
         broadcast: "",
         displayDate: monday,
         gameDate: parseInt(monday),

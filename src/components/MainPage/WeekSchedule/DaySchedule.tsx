@@ -8,15 +8,13 @@ import ssg from "@/img/TeamLogo/ssg.png";
 import doosan from "@/img/TeamLogo/doosan.png";
 import hanwha from "@/img/TeamLogo/hanwha.png";
 import lotte from "@/img/TeamLogo/lotte.png";
-
 import { TDaySchedule } from "@/types/weekSchdule";
+import { formatDate, getCurrentDay } from "@/utils/date";
 
 export default function DaySchedule(props: TDaySchedule) {
-  const scheduleListStyle =
-    "px-3 py-4 bg-white h-52 w-[15%] flex flex-col justify-between gap-4 items-center border-r-2 border-black";
-  const teamLogoStyle = "w-1/4";
-  const dateStyle = "font-[Leferi] text-2xl";
+  const teamLogoStyle = "w-14 h-12";
   const locationStyle = "font-[Pretendard-SemiBold] text-lg text-gray-600";
+  const dateStyle = `font-[Leferi] text-2xl`;
 
   const teamLogos: { [key: string]: any } = {
     LG: lg,
@@ -49,12 +47,19 @@ export default function DaySchedule(props: TDaySchedule) {
     }
   };
 
+  const currentDateCheck =
+    formatDate(props.displayDate) === formatDate(getCurrentDay());
+
+  const scheduleListStyle = `
+    px-3 py-4 bg-white h-52 w-[15%] flex flex-col justify-between gap-4 items-center 
+    transition-transform duration-300 transform origin-center
+    ${currentDateCheck ? "scale-y-110 border-main border-[1px]" : ""}
+  `;
+
   return (
     <li className={scheduleListStyle}>
       <section className="flex w-full justify-between">
-        <span className={dateStyle}>
-          {props.displayDate.slice(4, 6)}.{props.displayDate.slice(6, 8)}
-        </span>
+        <span className={dateStyle}>{formatDate(props.displayDate)}</span>
         <span className={locationStyle}>{props.stadium}</span>
       </section>
       {props.status !== "monday" && (
@@ -62,6 +67,8 @@ export default function DaySchedule(props: TDaySchedule) {
           src={getTeamLogo()}
           alt={"team logo"}
           className={teamLogoStyle}
+          width={48}
+          height={40}
         />
       )}
       {props.status === "3" && (
@@ -76,14 +83,10 @@ export default function DaySchedule(props: TDaySchedule) {
         </section>
       )}
       {props.status === "4" && (
-        <section className="font-[Pretendard-ExtraBold] text-3xl">
-          <span>우천취소</span>
-        </section>
+        <section className="font-[Pretendard-Bold] text-2xl">우천취소</section>
       )}
       {props.status === "2" && (
-        <section className="font-[Pretendard-ExtraBold] text-2xl">
-          경기중
-        </section>
+        <section className="font-[Pretendard-Bold] text-2xl">경기중</section>
       )}
       {!props.status && (
         <button className="w-full bg-[#f3f3f3] py-3 font-[Pretendard-SemiBold] text-sm rounded-[10px] shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)]">

@@ -54,13 +54,27 @@ export default function Login() {
               if (result.status === 200) {
                 chatSocket.connect();
                 console.log("로그인 성공");
-                // localStorage.setItem("token", result.data.token);
                 setCookie("token", result.data.token);
-                setUserData(result.data);
+                const newUserData = {
+                  userId: result.data.userId,
+                  nickname: result.data.nickname,
+                  credit: {
+                    creditAmount: result.data.creditAmount,
+                    creditHistory: userData?.credit?.creditHistory || {
+                      usedHistory: [],
+                      deleteHistory: [],
+                      getHistory: [],
+                    },
+                  },
+                  quiz: result.data.quiz,
+                  gamePredict: result.data.gamePredict,
+                  password: userData?.password || "",
+                  userUuid: userData?.userUuid || "",
+                };
+                setUserData(newUserData);
                 router.push("/");
               } else {
                 console.log(result);
-                //login 실패
                 alert(`로그인 실패. ${result.status} 에러가 발생했습니다.`);
                 setId("");
                 setPassword("");

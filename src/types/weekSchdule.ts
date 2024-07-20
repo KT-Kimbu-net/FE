@@ -1,6 +1,7 @@
 import { StaticImageData } from "next/image";
 
 export type TDaySchedule = {
+  currentDay: string;
   broadcast?: string;
   displayDate: string;
   gameDate: number;

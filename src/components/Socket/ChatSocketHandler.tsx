@@ -44,6 +44,7 @@ export default function ChatSocketHandler() {
           report: message.report,
           msgId: message.msgId,
           userId: message.userId,
+          type: message.type,
         });
       }
     } else {

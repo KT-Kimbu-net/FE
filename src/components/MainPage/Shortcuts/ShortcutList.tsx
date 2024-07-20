@@ -5,7 +5,7 @@ export default function ShortcutList(props: {
   title: string;
 }) {
   return (
-    <li className="relative p-2 bg-white rounded-3xl cursor-pointer w-fit shadow-[0_4px_4px_0px_rgba(255,255,255,0.25)]">
+    <li className="relative p-2 bg-white hover:bg-[#605f5f] duration-300 rounded-3xl cursor-pointer w-fit shadow-[0_4px_4px_0px_rgba(255,255,255,0.25)]">
       <Image
         src={props.shortcutImage}
         alt="shortcut shop"
