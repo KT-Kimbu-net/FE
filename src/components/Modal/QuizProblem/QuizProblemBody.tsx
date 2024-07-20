@@ -20,12 +20,16 @@ function QuizProblemBody({
   return (
     <>
       <div className="flex flex-col items-center justify-center relative bg-white w-full mt-9 h-full rounded-t-none rounded-b-[12px]">
-        <div className="flex flex-col items-center justify-center">
+        <div
+          className={`flex flex-col items-center h-full ${
+            loading ? "justify-center mb-20" : "mt-8"
+          }`}
+        >
           {loading ? (
             <SvgQuizProblemLoading />
           ) : (
             <>
-              <div className="tracking-wider text-3xl font-bold -mt-3">
+              <div className="tracking-wider text-3xl font-bold">
                 Q{problemIndex}.
               </div>
               <div className="text-base pt-2 pl-10 pr-10">{problem}</div>
@@ -42,31 +46,35 @@ function QuizProblemBody({
               </div>
             </>
           )}
-          <Progressbar stage="quizProblem" questionIndex={problemIndex} />
         </div>
-        <div className="flex justify-center mt-8 gap-x-4 w-full">
-          <button
-            onClick={() => onAnswer(true)}
-            className={`text-3xl font-bold bg-white text-black border border-gray-400 rounded-[12px] w-[40%] h-14 ${
-              loading
-                ? "cursor-not-allowed bg-gray-300 text-gray-500"
-                : "hover:bg-[#a42a2a] hover:text-white hover:border-transparent transition duration-300 ease-in-out"
-            }`}
-            disabled={loading}
-          >
-            O
-          </button>
-          <button
-            onClick={() => onAnswer(false)}
-            className={`text-3xl font-bold bg-white text-black border border-gray-400 rounded-[12px] w-[40%] h-14 ${
-              loading
-                ? "cursor-not-allowed bg-gray-300 text-gray-500"
-                : "hover:bg-[#a42a2a] hover:text-white hover:border-transparent transition duration-300 ease-in-out"
-            }`}
-            disabled={loading}
-          >
-            X
-          </button>
+        <div className="absolute flex flex-col items-center bottom-5 gap-4">
+          <div className="flex z-10">
+            <Progressbar stage="quizProblem" questionIndex={problemIndex} />
+          </div>
+          <div className="relative flex justify-between gap-4">
+            <button
+              onClick={() => onAnswer(true)}
+              className={`text-3xl font-bold bg-white text-black border border-gray-400 rounded-[12px] w-[199px] h-14 ${
+                loading
+                  ? "cursor-not-allowed bg-gray-300 text-gray-500"
+                  : "hover:bg-[#a42a2a] hover:text-white hover:border-transparent transition duration-300 ease-in-out"
+              }`}
+              disabled={loading}
+            >
+              O
+            </button>
+            <button
+              onClick={() => onAnswer(false)}
+              className={`text-3xl font-bold bg-white text-black border border-gray-400 rounded-[12px] w-[199px] h-14 ${
+                loading
+                  ? "cursor-not-allowed bg-gray-300 text-gray-500"
+                  : "hover:bg-[#a42a2a] hover:text-white hover:border-transparent transition duration-300 ease-in-out"
+              }`}
+              disabled={loading}
+            >
+              X
+            </button>
+          </div>
         </div>
       </div>
     </>
