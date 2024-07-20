@@ -18,7 +18,6 @@ export default async function Page() {
   const data = await getLeagueRankApiHandler();
   const weekSchedule = await getTeamSchedule();
 
-  console.log(weekSchedule?.weekData.currentWeekGames);
   return (
     <section className="flex flex-col items-center h-full">
       <ChatSocketConnectHandler />

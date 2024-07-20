@@ -3,8 +3,9 @@
 import Image from "next/image";
 import kt from "@/img/TeamLogo/kt.png";
 import nc from "@/img/TeamLogo/nc.png";
-import { ktHitters, opponentHitter } from "@/data/gameInfo/HitterDummy";
 import { useSelectHitterState } from "@/store/hitterSelect";
+import ktHitterPlayer from "#/data/gameInfo/ktPlayer/hitterData.json";
+import ncHitterPlayer from "#/data/gameInfo/ncPlayer/hitterData.json";
 
 export default function Lineup() {
   const { setSelectHitter } = useSelectHitterState((state) => ({
@@ -20,7 +21,7 @@ export default function Lineup() {
             <li className="absolute top-1/2 left-0 translate-x-[-50%] translate-y-[-50%] z-10">
               <Image src={kt} alt="kt" width={48} height={40} />
             </li>
-            {ktHitters.map((hitter: any, index) => (
+            {ktHitterPlayer.data.map((hitter: any, index) => (
               <li
                 className="relative flex py-2 px-3.5 cursor-pointer w-full"
                 key={index}
@@ -50,7 +51,7 @@ export default function Lineup() {
             <li className="absolute top-1/2 left-0 translate-x-[-50%] translate-y-[-50%] z-10">
               <Image src={nc} alt="nc" width={48} height={40} />
             </li>
-            {opponentHitter.map((hitter: any, index) => (
+            {ncHitterPlayer.data.map((hitter: any, index) => (
               <li
                 className="relative flex py-2 px-3.5 cursor-pointer w-full"
                 key={index}

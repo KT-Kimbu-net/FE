@@ -3,8 +3,10 @@
 import Image from "next/image";
 import Kt from "@/img/TeamLogo/kt.png";
 import Kia from "@/img/TeamLogo/kia.png";
-import { ktPicther, opponentPicther } from "@/data/gameInfo/pictherDummy";
-import { ktHitters, opponentHitter } from "@/data/gameInfo/HitterDummy";
+import ktHitterPlayer from "#/data/gameInfo/ktPlayer/hitterData.json";
+import ncHitterPlayer from "#/data/gameInfo/ncPlayer/hitterData.json";
+import ktPitcher from "#/data/gameInfo/ktPlayer/pictherData.json";
+import ncPitcher from "#/data/gameInfo/ncPlayer/pictherData.json";
 import { useSelectHitterState } from "@/store/hitterSelect";
 import ddory from "@/img/ddory.svg";
 import { Pie } from "react-chartjs-2";
@@ -67,9 +69,9 @@ export default function PHMatchPredict() {
     select: state.select,
   }));
 
-  const player = (select.selectTeam === "KT" ? ktHitters : opponentHitter).find(
-    (hitter) => hitter.name === select.selectHitter
-  );
+  const player = (
+    select.selectTeam === "KT" ? ktHitterPlayer.data : ncHitterPlayer.data
+  ).find((hitter: any) => hitter.name === select.selectHitter);
 
   return (
     <section className="flex flex-col w-2/5 items-center">
@@ -97,8 +99,8 @@ export default function PHMatchPredict() {
             <Image
               src={
                 select.selectTeam === "OPPONENT"
-                  ? ktPicther.image
-                  : opponentPicther.image
+                  ? ktPitcher.data.image
+                  : ncPitcher.data.image
               }
               alt="picther"
               width={40}
@@ -107,8 +109,8 @@ export default function PHMatchPredict() {
             />
             <strong className="text-white">
               {select.selectTeam === "OPPONENT"
-                ? ktPicther.name
-                : opponentPicther.name}
+                ? ktPitcher.data.name
+                : ncPitcher.data.name}
             </strong>
             <span className="text-[#FFBEC1]">35%</span>
           </section>
