@@ -37,7 +37,7 @@ export default function DaySchedule(props: TDaySchedule) {
     대구: samsung,
     고척: kiwoom,
     문학: ssg,
-    모르: doosan,
+    서울: doosan,
     대전: hanwha,
     사직: lotte,
   };
@@ -76,12 +76,12 @@ export default function DaySchedule(props: TDaySchedule) {
         </section>
       )}
       {props.status === "4" && (
-        <section className="font-[Pretendard-ExtraBold] text-3xl py-3">
+        <section className="font-[Pretendard-ExtraBold] text-3xl">
           <span>우천취소</span>
         </section>
       )}
       {props.status === "2" && (
-        <section className="font-[Pretendard-ExtraBold] text-2xl py-3 ">
+        <section className="font-[Pretendard-ExtraBold] text-2xl">
           경기중
         </section>
       )}

@@ -1,5 +1,5 @@
 import Match from "./Match/Match";
-import Lineup from "./Lineup";
+import Lineup from "./Lineup/Lineup";
 import PHMatchPredict from "./PHMatchPredict/PHMatchPredict";
 
 export default async function GameInfo() {
