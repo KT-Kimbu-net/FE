@@ -3,7 +3,8 @@
 import Image from "next/image";
 import ktPitcher from "#/data/gameInfo/ktPlayer/pictherData.json";
 import ncPitcher from "#/data/gameInfo/ncPlayer/pictherData.json";
-
+import { AiOutlineExclamationCircle } from "react-icons/ai";
+import { Tooltip } from "react-tooltip";
 import { useSelectPictherRecord } from "@/store/gameInfo";
 import { useSelectHitterState } from "@/store/hitterSelect";
 
@@ -78,21 +79,45 @@ export default function Picther() {
           <span className={indicatorContentStyle}>{player.data.AVG}</span>
         </li>
         <li className={indicatorStyle}>
-          <span className={indicatorTitleStyle}>WHIP</span>
-          <span className={indicatorContentStyle}>{player.data.WHIP}</span>
-        </li>
-        <li className={indicatorStyle}>
-          <span className={indicatorTitleStyle}>탈삼진/볼넷</span>
-          <span className={indicatorContentStyle}>
-            {player.data.SO}/{player.data.BB}
-          </span>
-        </li>
-        <li className={indicatorStyle}>
           <span className={indicatorTitleStyle}>이닝소화</span>
           <span className={indicatorContentStyle}>{player.data.IP}</span>
         </li>
         <li className={indicatorStyle}>
-          <span className={indicatorTitleStyle}>WAR</span>
+          <div className="flex gap-2 items-center">
+            <span className={indicatorTitleStyle}>FIP</span>
+            <AiOutlineExclamationCircle
+              data-tooltip-id="fip-tooltip"
+              data-tooltip-html={`FIP (Fielding Independent Pitching)는 투수가 직접적으로 제어할 수 있는 요소, 즉 삼진, 볼넷, 그리고 홈런 허용을 기반으로 하여 투수의 실력을 평가하는 지표입니다.<br/>FIP는 투수의 실제 성과를 측정하려고 하며, 수비의 영향을 배제합니다.<br/>FIP 2.50: 엘리트 수준의 투구
+<br/>FIP 3.50: 평균적인 투수<br/>
+FIP 4.50: 평균 이하
+`}
+            />
+            <Tooltip id="fip-tooltip" place="top" style={{ width: "20rem" }} />
+          </div>
+          <span className={indicatorContentStyle}>{player.data.FIP}</span>
+        </li>
+        <li className={indicatorStyle}>
+          <div className="flex gap-2 items-center">
+            <span className={indicatorTitleStyle}>WHIP</span>
+            <AiOutlineExclamationCircle
+              data-tooltip-id="whip-tooltip"
+              data-tooltip-html={`WHIP (Walks plus Hits per Inning Pitched)는 투수가 이닝당 허용한 볼넷과 피안타의 합계를 나타냅니다.<br/>WHIP 1.00: 매우 우수한 성과, 매우 효과적으로 이닝을 소화하는 투수<br/>
+WHIP 1.20: 평균적인 성과, 안정적인 투구를 보이는 투수<br/>
+WHIP 1.40: 평균 이하, 많은 출루를 허용하는 투수`}
+            />
+            <Tooltip id="whip-tooltip" place="top" style={{ width: "20rem" }} />
+          </div>
+          <span className={indicatorContentStyle}>{player.data.WHIP}</span>
+        </li>
+        <li className={indicatorStyle}>
+          <div className="flex gap-2 items-center">
+            <span className={indicatorTitleStyle}>WAR</span>
+            <AiOutlineExclamationCircle
+              data-tooltip-id="war-tooltip"
+              data-tooltip-html={`WAR은 Wins Above Replacement의 약자로 대체 선수 대비 승리 기여도입니다. 대체선수에 비해 얼마나 많은 승리에 기여했는가를 나타내는 수치입니다.<br/> 예를 들어 2010년 이대호의 WAR은 8.76이었는데 이는 2010년 이대호가 대체선수에 비해 팀에 8.76승을 더 안겨주었다는 뜻입니다.`}
+            />
+            <Tooltip id="war-tooltip" place="top" style={{ width: "20rem" }} />
+          </div>
           <span className={indicatorContentStyle}>{player.data.WAR}</span>
         </li>
       </ul>

@@ -35,7 +35,6 @@ export default function HitterList(props: THitterListProps) {
         TBF: props.pData.TBF,
       },
     };
-    console.log(sendData);
     try {
       const result = await fetch(
         `${process.env.NEXT_PUBLIC_BASEURL}/vs_predict`,
@@ -85,7 +84,7 @@ export default function HitterList(props: THitterListProps) {
         width={32}
         height={32}
       />
-      <section className="py-3 pl-4 pr-8 bg-[#F3F3F3] text-sm font-[Pretendard-SemiBold] flex-1">
+      <section className="py-3 pl-4 pr-8 bg-[#F3F3F3] bg-opacity-50 text-sm font-[Pretendard-SemiBold] flex-1">
         {props.hData.order}. {props.hData.name}
       </section>
     </li>

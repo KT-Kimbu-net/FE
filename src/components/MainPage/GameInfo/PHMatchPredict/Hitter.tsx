@@ -1,9 +1,10 @@
 import Image from "next/image";
-import player2 from "@/img/Player/player2.svg";
 import { useSelectHitterRecord } from "@/store/gameInfo";
 import { useSelectHitterState } from "@/store/hitterSelect";
 import ktHitters from "#/data/gameInfo/ktPlayer/hitterData.json";
 import ncHitters from "#/data/gameInfo/ncPlayer/hitterData.json";
+import { AiOutlineExclamationCircle } from "react-icons/ai";
+import { Tooltip } from "react-tooltip";
 
 export default function Hitter() {
   const { selectHitterRecord, setSelectHitterRecord } = useSelectHitterRecord(
@@ -81,15 +82,43 @@ export default function Hitter() {
           <span className={indicatorContentStyle}>{player?.R}</span>
         </li>
         <li className={indicatorStyle}>
-          <span className={indicatorTitleStyle}>OPS</span>
+          <div className="flex gap-2 items-center">
+            <span className={indicatorTitleStyle}>OPS</span>
+            <AiOutlineExclamationCircle
+              className="text-gray"
+              data-tooltip-id="ops-tooltip"
+              data-tooltip-html={`OPS (On-base Plus Slugging)는 타자의 출루율(OBP)과 장타율(SLG)을 합산한 값입니다.<br/> 
+                     1.000 이상은 엘리트 타자(배리 본즈, 마이크 트라웃, 미구엘 카브레라),<br/>
+                     0.900-0.999는 올스타급 타자,<br/>
+                     0.800-0.899는 좋은 타자,<br/>
+                     0.700-0.799는 평균 이상의 타자를 의미하며, 타자의 전반적인 타격 능력을 평가하는 지표입니다.`}
+            />
+            <Tooltip id="ops-tooltip" place="top" style={{ width: "20rem" }} />
+          </div>
           <span className={indicatorContentStyle}>{player?.OPS}</span>
         </li>
         <li className={indicatorStyle}>
-          <span className={indicatorTitleStyle}>WRC+</span>
+          <div className="flex gap-2 items-center">
+            <span className={indicatorTitleStyle}>WRC+</span>
+            <AiOutlineExclamationCircle
+              className="text-gray"
+              data-tooltip-id="wrc-tooltip"
+              data-tooltip-html={`wRC+ (Weighted Runs Created Plus)는 OPS+와 유사한 스탯으로, wOBA에 파크팩터(구장의 특성)를 적용하고 리그평균을 100에 맞춰 조정한 스탯입니다.<br/> wRC+가 150이면 리그평균보다 50%더 득점을 얻어냈다는 뜻입니다.`}
+            />
+            <Tooltip id="wrc-tooltip" place="top" style={{ width: "20rem" }} />
+          </div>
           <span className={indicatorContentStyle}>{player?.["WRC+"]}</span>
         </li>
         <li className={indicatorStyle}>
-          <span className={indicatorTitleStyle}>WAR</span>
+          <div className="flex gap-2 items-center">
+            <span className={indicatorTitleStyle}>WAR</span>
+            <AiOutlineExclamationCircle
+              className="text-gray"
+              data-tooltip-id="war-tooltip"
+              data-tooltip-html={`WAR은 Wins Above Replacement의 약자로 대체 선수 대비 승리 기여도입니다. 대체선수에 비해 얼마나 많은 승리에 기여했는가를 나타내는 수치입니다.<br/> 예를 들어 2010년 이대호의 WAR은 8.76이었는데 이는 2010년 이대호가 대체선수에 비해 팀에 8.76승을 더 안겨주었다는 뜻입니다.`}
+            />
+            <Tooltip id="war-tooltip" place="top" style={{ width: "20rem" }} />
+          </div>
           <span className={indicatorContentStyle}>{player?.WAR}</span>
         </li>
       </ul>
