@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import Image from "next/image";
 import ktPitcher from "#/data/gameInfo/ktPlayer/pictherData.json";
 import ncPitcher from "#/data/gameInfo/ncPlayer/pictherData.json";
@@ -7,8 +8,14 @@ import { AiOutlineExclamationCircle } from "react-icons/ai";
 import { Tooltip } from "react-tooltip";
 import { useSelectPictherRecord } from "@/store/gameInfo";
 import { useSelectHitterState } from "@/store/hitterSelect";
+import { useLiveScoreState } from "@/store/liveScore";
 
-export default function Picther() {
+type TPitcher = {
+  ktPitcher: string;
+  opponentPitcher: string;
+};
+
+export default function Picther(props: TPitcher) {
   const { selectPictherRecord, setSelectPitcherRecord } =
     useSelectPictherRecord((state) => ({
       selectPictherRecord: state.selectPitcherRecord,
@@ -19,23 +26,35 @@ export default function Picther() {
     select: state.select,
   }));
 
-  const player = select.selectTeam === "KT" ? ncPitcher : ktPitcher;
+  const { setKtPitcher, setOpponentPitcher } = useLiveScoreState();
+
+  const player =
+    select.selectTeam === "KT"
+      ? ncPitcher.data.find((pitcher) => pitcher.name === props.opponentPitcher)
+      : ktPitcher.data.find((pitcher) => pitcher.name === props.ktPitcher);
 
   const indicatorStyle = "w-full flex items-center justify-between px-4";
   const indicatorTitleStyle = "text-sm font-[Pretendard-SemiBold]";
   const indicatorContentStyle = "font-[Pretendard-SemiBold]";
 
+  useEffect(() => {
+    setKtPitcher(props.ktPitcher);
+    setOpponentPitcher(props.opponentPitcher);
+  }, []);
+
   return (
     <section className="w-1/2 bg-[#FFF4F4] rounded-2xl flex flex-col items-center py-6 px-5 before:content-['등판투수기록'] before:font-[Pretendard-Bold] before:border-[1px] before:py-3 before:px-8 before:rounded-xl before:text-[#242424] before:bg-white before:absolute before:top-[-2rem] before:shadow-md">
       <section className="flex gap-4 items-center">
-        <Image
-          src={player.data.image}
-          alt="pitcher"
-          width={48}
-          height={64}
-          style={{ width: 48, height: 64 }}
-        />
-        <strong className="text-2xl">{player.data.name}</strong>
+        {player && (
+          <Image
+            src={player.image}
+            alt="pitcher"
+            width={48}
+            height={64}
+            className="w-12 h-auto"
+          />
+        )}
+        <strong className="text-2xl">{player && player.name}</strong>
       </section>
       <ul className="flex gap-8 mt-4">
         <li
@@ -62,25 +81,25 @@ export default function Picther() {
       <ul className="w-full mt-2 flex flex-col gap-2">
         <li className={indicatorStyle}>
           <span className={indicatorTitleStyle}>등판횟수</span>
-          <span className={indicatorContentStyle}>{player.data.G}</span>
+          <span className={indicatorContentStyle}>{player && player.G}</span>
         </li>
         <li className={indicatorStyle}>
           <span className={indicatorTitleStyle}>시즌성적</span>
           <span className={indicatorContentStyle}>
-            {player.data.W}승 {player.data.L}패
+            {player && player.W}승 {player && player.L}패
           </span>
         </li>
         <li className={indicatorStyle}>
           <span className={indicatorTitleStyle}>방어율</span>
-          <span className={indicatorContentStyle}>{player.data.ERA}</span>
+          <span className={indicatorContentStyle}>{player && player.ERA}</span>
         </li>
         <li className={indicatorStyle}>
           <span className={indicatorTitleStyle}>피안타율</span>
-          <span className={indicatorContentStyle}>{player.data.AVG}</span>
+          <span className={indicatorContentStyle}>{player && player.AVG}</span>
         </li>
         <li className={indicatorStyle}>
           <span className={indicatorTitleStyle}>이닝소화</span>
-          <span className={indicatorContentStyle}>{player.data.IP}</span>
+          <span className={indicatorContentStyle}>{player && player.IP}</span>
         </li>
         <li className={indicatorStyle}>
           <div className="flex gap-2 items-center">
@@ -94,7 +113,7 @@ FIP 4.50: 평균 이하
             />
             <Tooltip id="fip-tooltip" place="top" style={{ width: "20rem" }} />
           </div>
-          <span className={indicatorContentStyle}>{player.data.FIP}</span>
+          <span className={indicatorContentStyle}>{player && player.FIP}</span>
         </li>
         <li className={indicatorStyle}>
           <div className="flex gap-2 items-center">
@@ -107,7 +126,7 @@ WHIP 1.40: 평균 이하, 많은 출루를 허용하는 투수`}
             />
             <Tooltip id="whip-tooltip" place="top" style={{ width: "20rem" }} />
           </div>
-          <span className={indicatorContentStyle}>{player.data.WHIP}</span>
+          <span className={indicatorContentStyle}>{player && player.WHIP}</span>
         </li>
         <li className={indicatorStyle}>
           <div className="flex gap-2 items-center">
@@ -118,7 +137,7 @@ WHIP 1.40: 평균 이하, 많은 출루를 허용하는 투수`}
             />
             <Tooltip id="war-tooltip" place="top" style={{ width: "20rem" }} />
           </div>
-          <span className={indicatorContentStyle}>{player.data.WAR}</span>
+          <span className={indicatorContentStyle}>{player && player.WAR}</span>
         </li>
       </ul>
     </section>

@@ -34,7 +34,7 @@ export default function Hitter() {
           alt="pitcher"
           width={48}
           height={64}
-          className="w-12 h-16"
+          className="w-12 h-auto"
         />
         <strong className="text-2xl">{player!.name}</strong>
       </section>

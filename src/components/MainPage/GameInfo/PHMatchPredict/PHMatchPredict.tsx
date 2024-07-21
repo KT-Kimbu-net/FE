@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import Image from "next/image";
 import PHWinRate from "./PHWinRate";
 import ddory from "@/img/ddory.svg";
@@ -18,6 +18,8 @@ import {
 } from "chart.js";
 import Picther from "./Picther";
 import Hitter from "./Hitter";
+import { TLiveInfo } from "@/types/liveScore";
+import { useLiveScoreState } from "@/store/liveScore";
 
 ChartJS.register(
   CategoryScale,
@@ -43,10 +45,15 @@ const options = {
   },
 };
 
-export default function PHMatchPredict() {
+type TPHMatchPredictProps = {
+  data: TLiveInfo;
+};
+export default function PHMatchPredict(props: TPHMatchPredictProps) {
   const { select } = useSelectHitterState((state) => ({
     select: state.select,
   }));
+
+  const { kt, opponent } = useLiveScoreState();
 
   const generateArray = useCallback((): number[] => {
     const first = Math.floor(Math.random() * 10) + 1;
@@ -74,13 +81,22 @@ export default function PHMatchPredict() {
       },
     ],
   };
-
   return (
     <section className="flex flex-col w-2/5 items-center">
       <section className="font-[Leferi] text-lg">투수 vs 타자 예측</section>
-      <PHWinRate />
+      <PHWinRate
+        ktPitcher={kt.pitcher ? kt.pitcher : props.data.kt.pitcher}
+        opponentPitcher={
+          opponent.pitcher ? opponent.pitcher : props.data.opponent.pitcher
+        }
+      />
       <section className="relative flex mt-10 w-full gap-2.5">
-        <Picther />
+        <Picther
+          ktPitcher={kt.pitcher ? kt.pitcher : props.data.kt.pitcher}
+          opponentPitcher={
+            opponent.pitcher ? opponent.pitcher : props.data.opponent.pitcher
+          }
+        />
         <span className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] font-[Pretendard-Bold] text-[#3e3e3e] text-2xl">
           vs
         </span>
@@ -88,7 +104,13 @@ export default function PHMatchPredict() {
       </section>
       <section className="relative mt-3 w-full h-full rounded-xl flex">
         <section className="flex items-center ml-5 top-[-0.5rem] self-start">
-          <Image src={ddory} alt="ddory" width={40} height={40} />
+          <Image
+            src={ddory}
+            alt="ddory"
+            width={40}
+            height={40}
+            className="h-auto"
+          />
           <span className="text-main font-[Pretendard-Bold]">
             선택타자 예측
           </span>

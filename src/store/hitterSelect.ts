@@ -7,7 +7,7 @@ export const useSelectHitterState = create<TUseSelectHitterState>((set) => ({
   select: {
     selectTeam: "KT",
     selectHitter: ktHitters.data[0],
-    selectPitcher: ncPitcher.data,
+    selectPitcher: ncPitcher.data[0],
   },
   setSelectHitter: (selectHitter: TselectHitter) =>
     set({ select: selectHitter }),

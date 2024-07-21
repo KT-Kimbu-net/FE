@@ -11,7 +11,19 @@ import ncPitcherPlayer from "#/data/gameInfo/ncPlayer/pictherData.json";
 import HitterList from "./HitterList";
 import { THitterInfo } from "@/types/selectHitter";
 
-export default function Lineup() {
+type TLineup = {
+  ktPitcher: string;
+  opponentPitcher: string;
+};
+
+export default function Lineup(props: TLineup) {
+  const ktPitcher = ktPitcherPlayer.data.find(
+    (pitcher) => props.ktPitcher === pitcher.name
+  );
+  const opponentPitcher = ncPitcherPlayer.data.find(
+    (pitcher) => props.opponentPitcher === pitcher.name
+  );
+
   return (
     <section className="relative flex flex-col items-center h-[45rem]">
       <section className="font-[Leferi] text-lg">LineUp</section>
@@ -22,11 +34,7 @@ export default function Lineup() {
               <Image src={kt} alt="kt" width={48} height={40} />
             </li>
             {ktHitterPlayer.data.map((hitter: THitterInfo, index) => (
-              <HitterList
-                key={index}
-                hData={hitter}
-                pData={ncPitcherPlayer.data}
-              />
+              <HitterList key={index} hData={hitter} pData={ktPitcher!} />
             ))}
           </ul>
         </section>
@@ -36,11 +44,7 @@ export default function Lineup() {
               <Image src={nc} alt="nc" width={48} height={40} />
             </li>
             {ncHitterPlayer.data.map((hitter: THitterInfo, index) => (
-              <HitterList
-                key={index}
-                hData={hitter}
-                pData={ktPitcherPlayer.data}
-              />
+              <HitterList key={index} hData={hitter} pData={opponentPitcher!} />
             ))}
           </ul>
         </section>
