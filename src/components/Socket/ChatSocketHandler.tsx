@@ -7,14 +7,12 @@ import { TMessageType } from "@/types/chatting";
 import { getCookie } from "cookies-next";
 
 export default function ChatSocketHandler() {
-  const { setChatLog, setUserCount, cleanChat, getCleanChat } = useChatState(
-    (state) => ({
-      setChatLog: state.setChatLog,
-      setUserCount: state.setUserCount,
-      cleanChat: state.cleanChat,
-      getCleanChat: state.getCleanChat,
-    })
-  );
+  const { setChatLog, setUserCount, getCleanChat } = useChatState((state) => ({
+    setChatLog: state.setChatLog,
+    setUserCount: state.setUserCount,
+    cleanChat: state.cleanChat,
+    getCleanChat: state.getCleanChat,
+  }));
 
   const chatMsgSocketHandler = async (message: TMessageType) => {
     if (getCleanChat()) {
@@ -56,12 +54,23 @@ export default function ChatSocketHandler() {
     setUserCount(data.count);
   };
 
+  const gameScoreSocketHandler = (data: any) => {
+    console.log(data);
+  };
+  const pitcherChangeSocketHandler = (data: any) => {
+    console.log(data);
+  };
+
   useEffect(() => {
     chatSocket.on("chatting", chatMsgSocketHandler);
     chatSocket.on("peoples", clientsCountSocketHandler);
+    chatSocket.on("changeScore", gameScoreSocketHandler);
+    chatSocket.on("changePitcher", pitcherChangeSocketHandler);
     return () => {
       chatSocket.off("chatting", chatMsgSocketHandler);
       chatSocket.off("peoples", clientsCountSocketHandler);
+      chatSocket.off("changeScore", gameScoreSocketHandler);
+      chatSocket.off("changePitcher", pitcherChangeSocketHandler);
     };
   }, []);
 

@@ -1,5 +1,3 @@
-import { TUserDataType } from "@/types/user";
-
 export const rankImgSrc = [
   "/img/user.svg",
   "/img/rankOne.svg",

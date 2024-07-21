@@ -31,6 +31,7 @@ export const useReportMsgState = create<TReportMessage>((set) => ({
     message: "",
     msgId: "",
     userId: "",
+    type: "",
     setIsShow: () => {},
   },
   setInfo: (info: TReportMessageInfo) => set({ info: info }),
