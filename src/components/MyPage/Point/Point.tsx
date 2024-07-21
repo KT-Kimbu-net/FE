@@ -1,12 +1,8 @@
 "use client";
 import SubMenu from "@/components/Layouts/SubMenu";
 import useSubMenu from "@/hooks/useSubMenu";
-import CreditGet from "./CreditList";
-import CreditUsed from "./CreditUsed";
-import CreditDelete from "./CreditDelete";
 import { useEffect, useState } from "react";
-import { Pagination } from "antd";
-import CreditList from "./CreditList";
+import CreditList from "./PointList";
 import InputDate from "./InputDate";
 
 export type THistory = {
@@ -22,11 +18,9 @@ const getDate = (minusNum: number) => {
   return currentDate.toISOString().split("T")[0];
 };
 
-export default function Credit() {
+export default function Point() {
   const [startDate, setStartDate] = useState<string>(getDate(7));
   const [endDate, setEndDate] = useState<string>(getDate(0));
-  const [token, setToken] = useState<string>("");
-  const [page, setPage] = useState<number>(1);
   const [historys, setHistorys] = useState<THistory[]>([]);
 
   const { menuList, menuStatus, functionList } = useSubMenu([

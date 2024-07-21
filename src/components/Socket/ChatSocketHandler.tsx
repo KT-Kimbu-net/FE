@@ -76,11 +76,17 @@ export default function ChatSocketHandler() {
     else setOpponentPitcher(data.pitcher);
   };
 
+  const disconnectSocketHandler = () => {
+    console.log("disconnect");
+  
+  }
+
   useEffect(() => {
     chatSocket.on("chatting", chatMsgSocketHandler);
     chatSocket.on("peoples", clientsCountSocketHandler);
     chatSocket.on("changeScore", gameScoreSocketHandler);
     chatSocket.on("changePitcher", pitcherChangeSocketHandler);
+    chatSocket.on("disconnect", disconnectSocketHandler);
     return () => {
       chatSocket.off("chatting", chatMsgSocketHandler);
       chatSocket.off("peoples", clientsCountSocketHandler);

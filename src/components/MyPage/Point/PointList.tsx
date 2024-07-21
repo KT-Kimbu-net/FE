@@ -1,9 +1,9 @@
 "use client";
 import { Pagination } from "antd";
 import { useEffect, useState } from "react";
-import { THistory } from "./Credit";
+import { THistory } from "./Point";
 import { nanoid } from "nanoid";
-import CreditContent from "./CreditContent";
+import CreditContent from "./PointContent";
 
 type TMenuStatus = "적립내역" | "사용내역" | "소멸내역";
 
@@ -18,7 +18,7 @@ const menuList: { [key: string]: string[] } = {
   소멸내역: ["소멸일자", "상세내용", "포인트"],
 };
 
-export default function CreditList(props: TProps) {
+export default function PointtList(props: TProps) {
   const [historys, setHistorys] = useState<THistory[][]>([]);
   const [page, setPage] = useState<number>(1);
   function chunkArray(arr: THistory[], size: number): THistory[][] {
@@ -45,7 +45,7 @@ export default function CreditList(props: TProps) {
               <th className="w-[200px] text-center">
                 {menuList[props.menuStatus][0]}
               </th>
-              
+
               <th className="w-[200px] text-center">
                 {menuList[props.menuStatus][1]}
               </th>
@@ -60,9 +60,13 @@ export default function CreditList(props: TProps) {
             </tr>
             {historys[page - 1]?.map((item) => (
               <CreditContent
-                date={props.menuStatus === "소멸내역" ? item.deleteDate : item.date}
+                date={
+                  props.menuStatus === "소멸내역" ? item.deleteDate : item.date
+                }
                 content={item.content}
-                deleteDate={props.menuStatus === "소멸내역" ? undefined :item.deleteDate}
+                deleteDate={
+                  props.menuStatus === "소멸내역" ? undefined : item.deleteDate
+                }
                 amount={item.amount}
                 key={nanoid()}
               />

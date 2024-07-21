@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import { getCookie } from "cookies-next";
 import { useUserState } from "@/store/user";
 import { getMyDataAction } from "@/libs/action/GetMyDataAction";
@@ -20,7 +20,7 @@ export default function LoginCheck() {
     }
   };
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (getCookie("token")) {
       getMyDataApiHandler();
     }

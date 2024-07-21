@@ -25,7 +25,7 @@ export default function RootLayout({
       <body className={`${notoSansKr.className} min-h-svh flex flex-col`}>
         <div id="modalLayout" />
         <div id="modalContent" />
-        <LoginCheck />
+        {/* <LoginCheck /> */}
         <Header />
         <main className="flex-grow flex flex-col">{children}</main>
         <ModalContainer />
