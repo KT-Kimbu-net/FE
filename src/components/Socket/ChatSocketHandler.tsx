@@ -55,6 +55,7 @@ export default function ChatSocketHandler() {
   };
 
   const gameScoreSocketHandler = (data: any) => {
+    console.log("active..........");
     console.log(data);
   };
   const pitcherChangeSocketHandler = (data: any) => {
