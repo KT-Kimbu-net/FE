@@ -74,7 +74,13 @@ export default function Header() {
             {/* 좌측 로고 */}
             <div className="absolute left-0 top-1/2 translate-y-[-50%]">
               <Link href="/">
-                <Image src={imgLogoBlack} alt="Logo" width={100} height={100} />
+                <Image
+                  src={imgLogoBlack}
+                  alt="Logo"
+                  width={100}
+                  height={100}
+                  className="h-auto"
+                />
               </Link>
             </div>
 
@@ -100,7 +106,13 @@ export default function Header() {
             </nav>
 
             {/* 우측 버튼들 */}
-            {!isLoading && <UserMenu user={userData} handleLogout={handleLogout} isLoading={isLoading}/>}
+            {!isLoading && (
+              <UserMenu
+                user={userData}
+                handleLogout={handleLogout}
+                isLoading={isLoading}
+              />
+            )}
           </div>
         </div>
         {/* 메가드롭다운 메뉴 */}

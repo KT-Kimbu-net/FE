@@ -69,7 +69,7 @@ export default function HitterList(props: THitterListProps) {
 
   return (
     <li
-      className="relative flex py-2 px-3.5 cursor-pointer w-full"
+      className="relative flex py-2 px-3.5 cursor-pointer w-full z-10"
       onClick={() => {
         changePlayer();
         phPredictApiHandler();

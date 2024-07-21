@@ -27,10 +27,16 @@ export type TLiveInfo = {
 export type TUseLiveScoreState = {
   kt: TKtScoreInfo;
   setKtScore: (v: number[]) => void;
-  addKtScore: (score: number) => void; // 추가된 함수
+  addKtScore: (score: number) => void;
   setKtPitcher: (v: string) => void;
   opponent: TOpponentScoreInfo;
   setOpponentScore: (v: number[]) => void;
-  addOpponentScore: (score: number) => void; // 추가된 함수
+  addOpponentScore: (score: number) => void;
   setOpponentPitcher: (v: string) => void;
+  gameState: string;
+  setGameState: (v: string) => void;
+  ktWinPercent: number;
+  opponentWinPercent: number;
+  setKtWinPercent: (v: number) => void;
+  setOpponentWinPercent: (v: number) => void;
 };

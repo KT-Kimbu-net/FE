@@ -41,6 +41,23 @@ export default function ChangeScore() {
     setScore(0);
     setIsKtwiz(true);
   };
+
+  const deleteDataApiHandler = async () => {
+    try {
+      const result = await fetch(
+        `${process.env.NEXT_PUBLIC_CHAT_BASEURL}/deleteLiveInfo`,
+        {
+          method: "delete",
+        }
+      );
+      if (result.ok) {
+        console.log("firestore data delete success!!!!");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="flex flex-col gap-3 border-gray-700 border-[2px] p-5 w-[30%] items-center justify-center">
       <label
@@ -97,6 +114,9 @@ export default function ChangeScore() {
         className="bg-red-400 text-white p-3 rounded-[10px]"
       >
         점수 변경하기
+      </button>
+      <button onClick={deleteDataApiHandler} className="w-100 h-100">
+        데이터 초기화
       </button>
     </div>
   );

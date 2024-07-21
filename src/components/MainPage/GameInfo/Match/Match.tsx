@@ -25,8 +25,8 @@ export default async function Match(props: TMatchProps) {
         opponentScore={props.data.opponent.score}
       />
       <DetailScore
-        ktScore={props.data.kt.score}
-        opponentScore={props.data.opponent.score}
+      // ktScore={props.data.kt.score}
+      // opponentScore={props.data.opponent.score}
       />
       {/* <MatchAnalogy kt={kt?.data} opponent={opponent?.data} /> */}
     </section>

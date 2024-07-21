@@ -60,6 +60,8 @@ export default function RankingList(props: TRankingList) {
         <Image
           src={teamLogo(props.teamName)}
           alt={props.teamName}
+          width={40}
+          height={40}
           className={teamLogoStyle}
         />
         {props.teamName}

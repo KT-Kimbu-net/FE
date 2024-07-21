@@ -15,7 +15,7 @@ export default function MegaDropdown({
   return (
     <>
       <div
-        className="absolute left-1/2 transform -translate-x-1/2 top-full w-full bg-white shadow-lg z-40"
+        className="absolute left-1/2 transform -translate-x-1/2 top-full w-full bg-white shadow-lg z-50"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >

@@ -34,4 +34,10 @@ export const useLiveScoreState = create<TUseLiveScoreState>((set) => ({
     set((state) => ({
       opponent: { ...state.opponent, pitcher: v },
     })),
+  gameState: "경기전",
+  setGameState: (v: string) => set({ gameState: v }),
+  ktWinPercent: 50,
+  opponentWinPercent: 50,
+  setKtWinPercent: (v: number) => set({ ktWinPercent: v }),
+  setOpponentWinPercent: (v: number) => set({ opponentWinPercent: v }),
 }));

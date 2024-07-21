@@ -6,10 +6,11 @@ import Message from "./Message";
 import ChattingHeader from "./ChattingHeader";
 import ChattingFooter from "./ChattingFooter";
 import { useUserState } from "@/store/user";
+import { FaBaseballBall } from "react-icons/fa";
 
 export default function Chatting() {
   const messageEndRef = useRef<HTMLLIElement>(null);
-
+  const [isLoading, setIsLoading] = useState(false);
   const { isShow, chatLog, setAllChatLog } = useChatState((state) => ({
     isShow: state.isShow,
     chatLog: state.chatLog,
@@ -26,10 +27,12 @@ export default function Chatting() {
 
   // 모든 채팅 메세지 get api 핸들러
   const getChatLogs = async () => {
+    setIsLoading(true);
     const data = await (
       await fetch(`${process.env.NEXT_PUBLIC_CHAT_BASEURL}/chatLogs`)
     ).json();
     setAllChatLog(data);
+    setIsLoading(false);
     setTimeout(() => {
       messageEndRef.current?.scrollIntoView({ behavior: "smooth" });
     }, 0);
@@ -67,28 +70,34 @@ export default function Chatting() {
           }`}
         >
           <ChattingHeader />
-          <ul className="h-4/5 text-white flex flex-col gap-3 overflow-y-auto px-5 py-3 scrollbar-hide">
-            {chatLog &&
-              chatLog.map((message) => {
-                const isReportedByMe = message.report.some(
-                  (report) => report.userId === userData?.userId
-                );
-                if (isReportedByMe) return null;
-                return (
-                  <Message
-                    key={message.msgId}
-                    nickname={message.nickname}
-                    message={message.message}
-                    time={message.time}
-                    report={message.report}
-                    msgId={message.msgId}
-                    userId={message.userId}
-                    type={message.type}
-                  />
-                );
-              })}
-            <li ref={messageEndRef}></li>
-          </ul>
+          {!isLoading ? (
+            <ul className="h-4/5 text-white flex flex-col gap-3 overflow-y-auto px-5 py-3 scrollbar-hide">
+              {chatLog &&
+                chatLog.map((message) => {
+                  const isReportedByMe = message.report.some(
+                    (report) => report.userId === userData?.userId
+                  );
+                  if (isReportedByMe) return null;
+                  return (
+                    <Message
+                      key={message.msgId}
+                      nickname={message.nickname}
+                      message={message.message}
+                      time={message.time}
+                      report={message.report}
+                      msgId={message.msgId}
+                      userId={message.userId}
+                      type={message.type}
+                    />
+                  );
+                })}
+              <li ref={messageEndRef}></li>
+            </ul>
+          ) : (
+            <section className="text-white h-full flex items-center justify-center animate-spin">
+              <FaBaseballBall />
+            </section>
+          )}
           <ChattingFooter />
         </section>
       )}

@@ -33,6 +33,22 @@ export default function ChangePlayer() {
     setPitcher("우규민");
   };
 
+  const deleteDataApiHandler = async () => {
+    try {
+      const result = await fetch(
+        `${process.env.NEXT_PUBLIC_CHAT_BASEURL}/deleteLiveInfo`,
+        {
+          method: "delete",
+        }
+      );
+      if (result.ok) {
+        console.log("firestore data delete success!!!!");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="flex flex-col gap-3 border-gray-700 border-[2px] p-5 w-[30%] items-center justify-center mt-3">
       <h1 className="text-xl"> 투수 변경</h1>
@@ -76,6 +92,12 @@ export default function ChangePlayer() {
         className="bg-red-400 text-white p-3 rounded-[10px]"
       >
         선수 변경하기
+      </button>
+      <button
+        onClick={deleteDataApiHandler}
+        className="w-100 h-100 bg-black text-white rounded-xl px-3 py-1"
+      >
+        데이터 초기화
       </button>
     </div>
   );

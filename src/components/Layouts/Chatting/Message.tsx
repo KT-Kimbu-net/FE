@@ -42,11 +42,11 @@ export default function Message(props: TMessageType) {
       </section>
       <section className="flex gap-2">
         <section
-          className={`text-xs rounded-[5px] py-2 px-3 ${
+          className={`rounded-[5px] py-2 px-3 ${
             userData?.userId === props.userId
               ? "bg-[#e3e3e3] text-gray-800"
               : "bg-[#71717a] text-white"
-          } font-[Pretendard-Medium] text-left break-words whitespace-pre-line max-w-[60%] ${
+          } font-[Pretendard-Medium] text-sm text-left break-words whitespace-pre-line max-w-[60%] ${
             props.type === "IMAGE" ? "cursor-pointer" : ""
           }`}
         >
