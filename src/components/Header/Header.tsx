@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import HeaderMobile from "./HeaderMobile";
@@ -8,20 +8,32 @@ import MegaDropdown from "./MegaDropdown";
 import { menus } from "@/data/Header/menus";
 import { useChatState } from "@/store/chatting";
 import { chatSocket } from "@/socket/ChatSocket";
-import { deleteCookie } from "cookies-next";
+import { deleteCookie, getCookie } from "cookies-next";
 import { useUserState } from "@/store/user";
 import imgLogoBlack from "@/img/img-logo-black.svg";
+import { useGameBetState } from "@/store/resultBet";
+import { getMyDataAction } from "@/libs/action/GetMyDataAction";
 
 export default function Header() {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const { userData, resetUserData } = useUserState();
+  const { userData, resetUserData, setUserData } = useUserState();
+  const { setSelectBet } = useGameBetState();
   const { setIsShow, isShow } = useChatState((state) => ({
     isShow: state.isShow,
     setIsShow: state.setIsShow,
   }));
+  const getMyDataApiHandler = async () => {
+    const data = await getMyDataAction();
+    if (data?.status === 200) {
+      chatSocket.connect();
+      setUserData(data.data);
+      setSelectBet(data?.data.gamePredict.choose);
+    }
+  };
 
   const handleLogout = () => {
     if (isShow) setIsShow();
@@ -45,6 +57,14 @@ export default function Header() {
   const toggleUserMenu = () => {
     setIsUserMenuOpen(!isUserMenuOpen);
   };
+
+  useEffect(() => {
+    setIsLoading(true);
+    if (getCookie("token")) {
+      getMyDataApiHandler();
+    }
+    setIsLoading(false);
+  }, []);
 
   return (
     <>
@@ -80,7 +100,7 @@ export default function Header() {
             </nav>
 
             {/* 우측 버튼들 */}
-            <UserMenu user={userData} handleLogout={handleLogout} />
+            {!isLoading && <UserMenu user={userData} handleLogout={handleLogout} isLoading={isLoading}/>}
           </div>
         </div>
         {/* 메가드롭다운 메뉴 */}

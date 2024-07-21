@@ -34,9 +34,16 @@ export default function ChangePlayer() {
   };
 
   return (
-    <>
-      <label id="isKtwiz" className="flex ">
-        teamName : <p>{isKtwiz ? "Ktiwz" : "Nc"}</p>
+    <div className="flex flex-col gap-3 border-gray-700 border-[2px] p-5 w-[30%] items-center justify-center mt-3">
+      <h1 className="text-xl"> 투수 변경</h1>
+      <label
+        id="isKtwiz"
+        className="flex items-center justify-center gap-3 cursor-pointer"
+      >
+        teamName :{" "}
+        <p className=" border-black border-[1px] p-1 rounded-[5px]">
+          {isKtwiz ? "Ktiwz" : "Nc"}
+        </p>
         <input
           type="checkBox"
           className="hidden"
@@ -47,17 +54,29 @@ export default function ChangePlayer() {
       </label>
       <label>
         pitcher :
-        <select value={pitcher} onChange={pitcherHandler} className="w-28">
+        <select
+          value={pitcher}
+          onChange={pitcherHandler}
+          className="cursor-pointer text-right w-28"
+        >
           {pitcherList[isKtwiz ? 1 : 0].map((player, i) => (
             <option key={i} value={player}>
+              {isKtwiz ? "kt " : "nc "}
               {player}
             </option>
           ))}
         </select>
       </label>
-      <p>Selected Team: {isKtwiz ? "Ktwiz" : "NC"}</p>
-      <p>Selected Pitcher: {pitcher}</p>
-      <button onClick={submitHandler}>선수 변경</button>
-    </>
+      <div className="flex gap-4 bg-green-200">
+        <p>Team: {isKtwiz ? "Ktwiz" : "NC"}</p>
+        <p>Pitcher: {pitcher}</p>
+      </div>
+      <button
+        onClick={submitHandler}
+        className="bg-red-400 text-white p-3 rounded-[10px]"
+      >
+        선수 변경하기
+      </button>
+    </div>
   );
 }

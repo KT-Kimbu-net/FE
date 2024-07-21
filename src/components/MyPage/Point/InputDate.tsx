@@ -14,6 +14,10 @@ export default function InputDate(props: TProps) {
         type="date"
         value={props.startDate}
         onChange={(e) => {
+          if (e.target.value > props.endDate) {
+            alert("시작일은 종료일보다 클 수 없습니다.");
+            return;
+          }
           props.setStartDate(e.target.value);
           console.log(e.target.value);
         }}
@@ -23,7 +27,12 @@ export default function InputDate(props: TProps) {
       <input
         type="date"
         value={props.endDate}
-        onChange={(e) => props.setEndDate(e.target.value)}
+        onChange={(e) => {
+          if (e.target.value < props.startDate) {
+            alert("종료일은 시작일보다 작을 수 없습니다.");
+            return;
+          }
+          props.setEndDate(e.target.value)}}
         className=" h-[45px] px-2 border-[#DDDDDD] border-[1px]"
       />
       <button

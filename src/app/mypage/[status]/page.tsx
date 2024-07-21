@@ -1,4 +1,4 @@
-import Credit from "@/components/MyPage/Credit/Credit";
+import Point from "@/components/MyPage/Point/Point";
 import EditProfile from "@/components/MyPage/EditProfile";
 type TPageProps = {
   params: {
@@ -8,8 +8,8 @@ type TPageProps = {
 
 export default function DynamicMyPage(props: TPageProps) {
   const modalContent: { [key: string]: JSX.Element } = {
-    editProfile: <EditProfile />,
-    credit: <Credit />,
+    editprofile: <EditProfile />,
+    point: <Point />,
   };
   return (
     <>

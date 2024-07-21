@@ -46,29 +46,48 @@ export default function SubMenu(props: TSubMenu) {
     <div className="w-full flex items-center justify-center relative">
       <ul
         ref={ulRef}
-        className="flex items-center justify-center text-[16px] sm:text-[18px] md:text-[20px] text-[#6D758F] text-center w-full max-w-[1200px]"
+        className="flex items-center justify-center text-[16px] sm:text-[18px] md:text-[20px] text-[#6D758F] text-center w-full max-w-[600px] relative"
       >
         {props.menuList.map((menu, index) => (
+          // <li
+          //   key={index}
+          //   onClick={props.functionList[index]}
+          //   className={`px-2 sm:px-3 md:px-5 py-2 cursor-pointer relative flex items-center justify-center ${
+          //     menu === props.menuStatus ? selectStyle : "border-b-[2px]"
+          //   }`}
+          //   style={{ width: `${itemWidth}px`, height: "60px" }}
+          // >
+          //   {menu}
+          // </li>
           <li
             key={index}
             onClick={props.functionList[index]}
-            className={`px-2 sm:px-3 md:px-5 py-2 cursor-pointer relative flex items-center justify-center ${
-              menu === props.menuStatus ? selectStyle : "border-b-[2px]"
-            }`}
-            style={{ width: `${itemWidth}px`, height: "60px" }}
+            className={`px-2 sm:px-3 md:px-5 py-2 cursor-pointer  flex items-center justify-center
+              h-[60px] w-full
+              ${menu === props.menuStatus ? selectStyle : "border-b-[2px]"}`}
           >
             {menu}
+            <div
+              className={`absolute w-1/3 bg-gray-400 bottom-[-2%] border-red-500 h-[4px] transition-all duration-300 ${
+                props.menuStatus === "적립내역" && "left-0"
+              } ${props.menuStatus === "사용내역" && "left-1/3"} ${
+                props.menuStatus === "소멸내역" && "left-2/3"
+              }  transform origin-left scale-x-100`}
+            />
           </li>
         ))}
       </ul>
-      <div
+      {/* <div
+      "적립내역",
+    "사용내역",
+    "소멸내역"
         className="absolute bottom-0 h-[4px] bg-black transition-all duration-300 ease-in-out"
         style={{
           left: `${selectedPosition}px`,
           width: `${itemWidth}px`,
           transform: "translateX(-50%)",
         }}
-      />
+      /> */}
     </div>
   );
 }
