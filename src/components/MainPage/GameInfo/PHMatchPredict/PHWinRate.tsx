@@ -40,7 +40,7 @@ export default function PHWinRate(props: TPHWinRate) {
             alt="picther"
             width={40}
             height={52}
-            className="mr-2 w-10 h-13"
+            className="mr-2 w-10 h-auto"
           />
           <strong className="text-white">{pitcherPlayer?.name}</strong>
           <span className="text-[#FFBEC1] ml-2">{pWinPercent}%</span>
@@ -56,7 +56,7 @@ export default function PHWinRate(props: TPHWinRate) {
             alt="picther"
             width={40}
             height={52}
-            className="ml-2 w-10 h-13"
+            className="ml-2 w-10 h-auto"
           />
         </section>
       </section>

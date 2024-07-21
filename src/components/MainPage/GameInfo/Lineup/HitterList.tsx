@@ -1,8 +1,6 @@
 import Image from "next/image";
 import { THitterInfo, TPitcherInfo } from "@/types/selectHitter";
 import { useSelectHitterState } from "@/store/hitterSelect";
-import ncPitcherPlayer from "#/data/gameInfo/ncPlayer/pictherData.json";
-import ktPitcherPlayer from "#/data/gameInfo/ktPlayer/pictherData.json";
 import { getCookie } from "cookies-next";
 import { usePHPredictState } from "@/store/phPredict";
 
@@ -48,6 +46,7 @@ export default function HitterList(props: THitterListProps) {
         }
       );
       if (result.ok) {
+        console.log("active!!!!");
         const data = await result.json();
         const barWidth = Math.floor(data["타자가 공을 칠 확률"] * 100);
         setPWinPercent(100 - barWidth);
@@ -60,12 +59,11 @@ export default function HitterList(props: THitterListProps) {
 
   const changePlayer = () => {
     const selectTeam = props.hData.팀명 === "KT" ? "KT" : "OPPONENT";
-    const selectPitcher =
-      props.hData.팀명 === "NC" ? ktPitcherPlayer.data : ncPitcherPlayer.data;
+
     setSelectHitter({
       selectTeam,
       selectHitter: props.hData,
-      selectPitcher,
+      selectPitcher: props.pData,
     });
   };
 
@@ -80,9 +78,9 @@ export default function HitterList(props: THitterListProps) {
       <Image
         src={props.hData.image}
         alt="player"
-        className="relative left-2 w-9 h-12 shadow-md"
         width={32}
         height={32}
+        className="relative left-2 w-9 shadow-md h-auto"
       />
       <section className="py-3 pl-4 pr-8 bg-[#F3F3F3] bg-opacity-50 text-sm font-[Pretendard-SemiBold] flex-1">
         {props.hData.order}. {props.hData.name}

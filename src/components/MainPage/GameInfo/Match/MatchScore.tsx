@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import prevArrow from "@/img/prevArrow.svg";
 import subseArrow from "@/img/subseArrow.svg";
@@ -5,6 +7,8 @@ import Kt from "@/img/TeamLogo/kt.png";
 import Kia from "@/img/TeamLogo/kia.png";
 import rain from "@/img/rain.svg";
 import MatchPredict from "./MatchPredict";
+import { useLiveScoreState } from "@/store/liveScore";
+import { useEffect } from "react";
 
 type TMatchScoreProps = {
   ktScore: number[];
@@ -23,18 +27,24 @@ const getWeatherApiHandler = async () => {
   return await (await fetch(url, { cache: "no-store" })).json();
 };
 
-export default async function MatchScore(props: TMatchScoreProps) {
+export default function MatchScore(props: TMatchScoreProps) {
   // const data = await getWeatherApiHandler();
   // const popData = data.response.body.items.item.find(
   //   (item: any) => item.category === "POP"
   // );
+  const { setKtScore, setOpponentScore, kt, opponent } = useLiveScoreState();
 
   const sumScore = (score: number[]) => {
     return score.reduce((sum, current) => sum + current, 0);
   };
 
-  const ktScore = sumScore(props.ktScore);
-  const opponentScore = sumScore(props.opponentScore);
+  const ktScore = sumScore(kt.score);
+  const opponentScore = sumScore(opponent.score);
+
+  useEffect(() => {
+    setKtScore(props.ktScore);
+    setOpponentScore(props.opponentScore);
+  }, []);
 
   return (
     <>

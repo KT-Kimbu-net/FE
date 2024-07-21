@@ -1,19 +1,21 @@
+"use client";
+
+import { useLiveScoreState } from "@/store/liveScore";
+
 type TDetailScoreProps = {
   ktScore: number[];
   opponentScore: number[];
 };
 
 export default function DetailScore(props: TDetailScoreProps) {
+  const { kt, opponent } = useLiveScoreState();
   const inningThStyle = "w-10 font-medium";
   const inningTdStyle = "px-2 text-center";
 
-  const fullKtScore = Array.from(
-    { length: 17 },
-    (_, i) => props.ktScore[i] ?? ""
-  );
+  const fullKtScore = Array.from({ length: 17 }, (_, i) => kt.score[i] ?? "");
   const fullOpponentScore = Array.from(
     { length: 17 },
-    (_, i) => props.opponentScore[i] ?? ""
+    (_, i) => opponent.score[i] ?? ""
   );
 
   return (

@@ -1,11 +1,11 @@
 export type TChangeScore = {
-  isKtWiz: boolean;
+  isKtwiz: boolean;
   inning: number;
   score: number;
 };
 
 export type TChangePitcher = {
-  isKtWiz: boolean;
+  isKtwiz: boolean;
   pitcher: string;
 };
 
@@ -27,8 +27,10 @@ export type TLiveInfo = {
 export type TUseLiveScoreState = {
   kt: TKtScoreInfo;
   setKtScore: (v: number[]) => void;
+  addKtScore: (score: number) => void; // 추가된 함수
   setKtPitcher: (v: string) => void;
   opponent: TOpponentScoreInfo;
   setOpponentScore: (v: number[]) => void;
+  addOpponentScore: (score: number) => void; // 추가된 함수
   setOpponentPitcher: (v: string) => void;
 };

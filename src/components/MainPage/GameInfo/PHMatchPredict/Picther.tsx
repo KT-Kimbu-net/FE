@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import Image from "next/image";
 import ktPitcher from "#/data/gameInfo/ktPlayer/pictherData.json";
 import ncPitcher from "#/data/gameInfo/ncPlayer/pictherData.json";
@@ -7,6 +8,7 @@ import { AiOutlineExclamationCircle } from "react-icons/ai";
 import { Tooltip } from "react-tooltip";
 import { useSelectPictherRecord } from "@/store/gameInfo";
 import { useSelectHitterState } from "@/store/hitterSelect";
+import { useLiveScoreState } from "@/store/liveScore";
 
 type TPitcher = {
   ktPitcher: string;
@@ -24,6 +26,8 @@ export default function Picther(props: TPitcher) {
     select: state.select,
   }));
 
+  const { setKtPitcher, setOpponentPitcher } = useLiveScoreState();
+
   const player =
     select.selectTeam === "KT"
       ? ncPitcher.data.find((pitcher) => pitcher.name === props.opponentPitcher)
@@ -32,6 +36,11 @@ export default function Picther(props: TPitcher) {
   const indicatorStyle = "w-full flex items-center justify-between px-4";
   const indicatorTitleStyle = "text-sm font-[Pretendard-SemiBold]";
   const indicatorContentStyle = "font-[Pretendard-SemiBold]";
+
+  useEffect(() => {
+    setKtPitcher(props.ktPitcher);
+    setOpponentPitcher(props.opponentPitcher);
+  }, []);
 
   return (
     <section className="w-1/2 bg-[#FFF4F4] rounded-2xl flex flex-col items-center py-6 px-5 before:content-['등판투수기록'] before:font-[Pretendard-Bold] before:border-[1px] before:py-3 before:px-8 before:rounded-xl before:text-[#242424] before:bg-white before:absolute before:top-[-2rem] before:shadow-md">
@@ -42,7 +51,7 @@ export default function Picther(props: TPitcher) {
             alt="pitcher"
             width={48}
             height={64}
-            style={{ width: 48, height: 64 }}
+            className="w-12 h-auto"
           />
         )}
         <strong className="text-2xl">{player && player.name}</strong>

@@ -16,12 +16,14 @@ export default function ChatSocketHandler() {
     getCleanChat: state.getCleanChat,
   }));
 
-  const { setKtPitcher, setKtScore, setOpponentPitcher, setOpponentScore } =
+  const { setKtPitcher, setOpponentPitcher, addKtScore, addOpponentScore } =
     useLiveScoreState((state) => ({
       setKtPitcher: state.setKtPitcher,
       setKtScore: state.setKtScore,
       setOpponentPitcher: state.setOpponentPitcher,
       setOpponentScore: state.setOpponentScore,
+      addKtScore: state.addKtScore,
+      addOpponentScore: state.addOpponentScore,
     }));
 
   const chatMsgSocketHandler = async (message: TMessageType) => {
@@ -64,8 +66,15 @@ export default function ChatSocketHandler() {
     setUserCount(data.count);
   };
 
-  const gameScoreSocketHandler = (data: TChangeScore) => {};
-  const pitcherChangeSocketHandler = (data: TChangePitcher) => {};
+  const gameScoreSocketHandler = (data: TChangeScore) => {
+    if (data.isKtwiz) addKtScore(data.score);
+    else addOpponentScore(data.score);
+  };
+
+  const pitcherChangeSocketHandler = (data: TChangePitcher) => {
+    if (data.isKtwiz) setKtPitcher(data.pitcher);
+    else setOpponentPitcher(data.pitcher);
+  };
 
   useEffect(() => {
     chatSocket.on("chatting", chatMsgSocketHandler);
