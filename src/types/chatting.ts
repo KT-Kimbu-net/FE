@@ -1,3 +1,5 @@
+export type TMessageSendType = "MESSAGE" | "IMAGE" | "";
+
 export type TReport = {
   type: string;
   userId: string;
@@ -10,6 +12,7 @@ export type TMessageType = {
   report: TReport[];
   msgId: string;
   userId: string;
+  type: TMessageSendType;
 };
 
 export type TReportMessageInfo = {
@@ -17,6 +20,8 @@ export type TReportMessageInfo = {
   message: string;
   msgId: string;
   userId: string | undefined;
+  type: TMessageSendType;
+  setIsShow: () => void;
 };
 
 export type TReportMessage = {

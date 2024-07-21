@@ -1,11 +1,19 @@
+"use client";
+
 import Image from "next/image";
 import prevArrow from "@/img/prevArrow.svg";
 import subseArrow from "@/img/subseArrow.svg";
-import Kt from "@/img/TeamLogo/Kt.svg";
-import Kia from "@/img/TeamLogo/Kia.svg";
+import Kt from "@/img/TeamLogo/kt.png";
+import Kia from "@/img/TeamLogo/kia.png";
 import rain from "@/img/rain.svg";
 import MatchPredict from "./MatchPredict";
+import { useLiveScoreState } from "@/store/liveScore";
+import { useEffect } from "react";
 
+type TMatchScoreProps = {
+  ktScore: number[];
+  opponentScore: number[];
+};
 // 기상청 api를 이용한 강수확률 가져오는 api핸들러
 const getWeatherApiHandler = async () => {
   const apiKey = process.env.NEXT_PUBLIC_APP_WEATHER_API_KEY;
@@ -19,17 +27,30 @@ const getWeatherApiHandler = async () => {
   return await (await fetch(url, { cache: "no-store" })).json();
 };
 
-export default async function MatchScore() {
+export default function MatchScore(props: TMatchScoreProps) {
   // const data = await getWeatherApiHandler();
   // const popData = data.response.body.items.item.find(
   //   (item: any) => item.category === "POP"
   // );
+  const { setKtScore, setOpponentScore, kt, opponent } = useLiveScoreState();
+
+  const sumScore = (score: number[]) => {
+    return score.reduce((sum, current) => sum + current, 0);
+  };
+
+  const ktScore = sumScore(kt.score);
+  const opponentScore = sumScore(opponent.score);
+
+  useEffect(() => {
+    setKtScore(props.ktScore);
+    setOpponentScore(props.opponentScore);
+  }, []);
 
   return (
     <>
       <section className="text-xl font-[Leferi]">Match</section>
       <section className="w-full flex justify-between">
-        <Image src={prevArrow} alt="prev game match" />
+        <Image src={prevArrow} alt="prev game match" width={40} height={40} />
         <section className="flex gap-2 items-center">
           <section className="text-base font-[Pretendard-ExtraBold]">
             06.25 ( 화 ) 18:30
@@ -43,27 +64,31 @@ export default async function MatchScore() {
             60%
           </section>
         </section>
-        <Image src={subseArrow} alt="next game match" />
+        <Image src={subseArrow} alt="next game match" width={40} height={40} />
       </section>
       <section className="w-full">
         <section className="w-full bg-[#1b1b1b] rounded-t-xl p-4 flex flex-col items-center">
           <section className="text-center text-[#d6d6d6] w-fit py-1 px-3 rounded-xl bg-[#3a3a3a] font-[Pretendard-Bold]">
-            2회말
+            경기전
           </section>
           <section className="flex gap-8 w-full justify-between items-center">
             <section className="flex items-center justify-between w-1/3">
               <strong className="text-white text-lg font-[Pretendard-Bold]">
                 KT Wiz
               </strong>
-              <Image src={Kt} alt="Kt" />
+              <Image src={Kt} alt="Kt" width={40} height={40} />
             </section>
             <section className="w-1/3 text-center flex justify-between items-center text-white">
-              <span className="text-[2rem] font-[Pretendard-ExtraBold]">3</span>
+              <span className="text-[2rem] font-[Pretendard-ExtraBold]">
+                {ktScore}
+              </span>
               <span className="text-lg font-[Leferi] text-gray-500">vs</span>
-              <span className="text-[2rem] font-[Pretendard-ExtraBold]">0</span>
+              <span className="text-[2rem] font-[Pretendard-ExtraBold]">
+                {opponentScore}
+              </span>
             </section>
             <section className="w-1/3 flex items-center justify-between">
-              <Image src={Kia} alt="Kia" />
+              <Image src={Kia} alt="Kia" width={40} height={40} />
               <strong className="text-white text-lg font-[Pretendard-Bold]">
                 Kia Tigers
               </strong>

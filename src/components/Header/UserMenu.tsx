@@ -2,35 +2,41 @@ import React from "react";
 import { BiLogOut } from "react-icons/bi"; // 로그아웃
 import { UserData } from "@/types/api";
 import Link from "next/link";
+import { getCookie } from "cookies-next";
 
 type UserMenuProps = {
   user: UserData | null;
-  handleLogin: () => void;
   handleLogout: () => void;
+  isLoading: boolean;
 };
 
 export default function UserMenu({
   user,
-  handleLogin,
   handleLogout,
+  isLoading,
 }: UserMenuProps) {
+  const token = getCookie("token");
   return (
     <>
       <div className="ml-auto flex items-center space-x-2 absolute right-0 top-1/2 translate-y-[-50%]">
-        {user ? (
-          <>
-            <span className="text-gray-500 text-sm font-normal">
-              {user.creditAmount} point
-            </span>
-            <span className="hover:text-gray-800 text-gray-500">|</span>
-            <span className="text-gray-500 text-sm font-normal">
-              {user.userId}
-            </span>
-            <BiLogOut
-              onClick={handleLogout}
-              className="text-gray-500 text-lg cursor-pointer"
-            />
-          </>
+        {token ? (
+          user && (
+            <>
+              <span className="text-gray-500 text-sm font-normal">
+                <Link href="/mypage/point">
+                  {user && user?.credit.creditAmount + " point"}
+                </Link>
+              </span>
+              <span className="hover:text-gray-800 text-gray-500">|</span>
+              <span className="text-gray-500 text-sm font-normal">
+                <Link href="/mypage/editprofile">{user.userId}</Link>
+              </span>
+              <BiLogOut
+                onClick={handleLogout}
+                className="text-gray-500 text-lg cursor-pointer"
+              />
+            </>
+          )
         ) : (
           <>
             <Link

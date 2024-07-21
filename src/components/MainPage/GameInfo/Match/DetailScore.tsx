@@ -1,6 +1,22 @@
-export default function DetailScore() {
+"use client";
+
+import { useLiveScoreState } from "@/store/liveScore";
+
+type TDetailScoreProps = {
+  ktScore: number[];
+  opponentScore: number[];
+};
+
+export default function DetailScore(props: TDetailScoreProps) {
+  const { kt, opponent } = useLiveScoreState();
   const inningThStyle = "w-10 font-medium";
   const inningTdStyle = "px-2 text-center";
+
+  const fullKtScore = Array.from({ length: 17 }, (_, i) => kt.score[i] ?? "");
+  const fullOpponentScore = Array.from(
+    { length: 17 },
+    (_, i) => opponent.score[i] ?? ""
+  );
 
   return (
     <section className="w-full flex flex-col gap-6 justify-center mt-4">
@@ -9,47 +25,15 @@ export default function DetailScore() {
           스코어
         </span>
       </section>
-      {/* 라이브스코어 컴포넌트화 필수 */}
       <table className="border-collapse w-full">
         <thead className="bg-gray-800">
           <tr className="text-white">
             <th scope="col" className="rounded-tl-xl w-20"></th>
-            <th scope="col" className={inningThStyle}>
-              1
-            </th>
-            <th scope="col" className={inningThStyle}>
-              2
-            </th>
-            <th scope="col" className={inningThStyle}>
-              3
-            </th>
-            <th scope="col" className={inningThStyle}>
-              4
-            </th>
-            <th scope="col" className={inningThStyle}>
-              5
-            </th>
-            <th scope="col" className={inningThStyle}>
-              6
-            </th>
-            <th scope="col" className={inningThStyle}>
-              7
-            </th>
-            <th scope="col" className={inningThStyle}>
-              8
-            </th>
-            <th scope="col" className={inningThStyle}>
-              9
-            </th>
-            <th scope="col" className={inningThStyle}>
-              <span>10</span>
-            </th>
-            <th scope="col" className={inningThStyle}>
-              <span>11</span>
-            </th>
-            <th scope="col" className={inningThStyle}>
-              <span>12</span>
-            </th>
+            {Array.from({ length: 12 }, (_, i) => (
+              <th scope="col" className={inningThStyle} key={i + 1}>
+                {i + 1}
+              </th>
+            ))}
             <th scope="col" className="w-10">
               <span>R</span>
             </th>
@@ -68,45 +52,26 @@ export default function DetailScore() {
         <tbody>
           <tr className="bg-[#f3f3f3]">
             <td className="px-2 border-r-[1px] border-white">KT</td>
-            <td className={inningTdStyle}>2</td>
-            <td className={inningTdStyle}>10</td>
-            <td className={inningTdStyle}></td>
-            <td className={inningTdStyle}></td>
-            <td className={inningTdStyle}></td>
-            <td className={inningTdStyle}></td>
-            <td className={inningTdStyle}></td>
-            <td className={inningTdStyle}></td>
-            <td className={inningTdStyle}></td>
-            <td className={inningTdStyle}></td>
-            <td className={inningTdStyle}></td>
-            <td className={inningTdStyle}></td>
-            <td className={inningTdStyle}></td>
-            <td className={inningTdStyle}></td>
-            <td className={inningTdStyle}></td>
-            <td className={inningTdStyle}></td>
-            <td className={inningTdStyle}></td>
+            {fullKtScore.map((score, index) => (
+              <td className={inningTdStyle} key={index}>
+                {score}
+              </td>
+            ))}
           </tr>
           <tr className="bg-[#f3f3f3] border-t-[1px] border-white">
             <td className="px-2 rounded-bl-xl border-r-[1px] border-white">
               Kia
             </td>
-            <td className={inningTdStyle}>2</td>
-            <td className={inningTdStyle}>1</td>
-            <td className={inningTdStyle}></td>
-            <td className={inningTdStyle}></td>
-            <td className={inningTdStyle}></td>
-            <td className={inningTdStyle}></td>
-            <td className={inningTdStyle}></td>
-            <td className={inningTdStyle}></td>
-            <td className={inningTdStyle}></td>
-            <td className={inningTdStyle}></td>
-            <td className={inningTdStyle}></td>
-            <td className={inningTdStyle}></td>
-            <td className={inningTdStyle}></td>
-            <td className={inningTdStyle}></td>
-            <td className={inningTdStyle}></td>
-            <td className={inningTdStyle}></td>
-            <td className="px-2 rounded-br-xl"></td>
+            {fullOpponentScore.map((score, index) => (
+              <td
+                className={`${inningTdStyle} ${
+                  index === fullOpponentScore.length - 1 ? "rounded-br-xl" : ""
+                }`}
+                key={index}
+              >
+                {score}
+              </td>
+            ))}
           </tr>
         </tbody>
       </table>

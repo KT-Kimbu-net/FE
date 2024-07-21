@@ -10,8 +10,12 @@ import { useUserState } from "@/store/user";
 import { chatSocket } from "@/socket/ChatSocket";
 import { useChatState } from "@/store/chatting";
 import { nanoid } from "nanoid";
+import { formatMessageDate } from "@/utils/date";
+import { resizeImageFile } from "@/utils/img/imgResizer";
+import { imageResizerSocketHandler } from "@/utils/socketHandler";
 
 export default function ChattingFooter() {
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const messageRef = useRef<HTMLTextAreaElement>(null);
   const { setModalName } = useModalState((state) => ({
     setModalName: state.setModalName,
@@ -31,13 +35,7 @@ export default function ChattingFooter() {
   const msgSubmitSocketHandler = async () => {
     if (messageRef.current?.value) {
       const trimmedMessage = messageRef.current?.value.trim();
-      const time = new Date();
-      const hour = String(time.getHours()).padStart(2, "0");
-      const minute = String(time.getMinutes()).padStart(2, "0");
-      const resultTime = `${Number(hour) < 12 ? "오전" : "오후"} ${
-        Number(hour) < 24 && Number(hour) > 12 ? Number(hour) - 12 : hour
-      }:${minute}`;
-
+      const resultTime = formatMessageDate();
       if (trimmedMessage) {
         const sendMessage = {
           nickname: userData?.nickname,
@@ -46,11 +44,22 @@ export default function ChattingFooter() {
           report: [],
           msgId: nanoid(),
           userId: userData?.userId,
+          type: "MESSAGE",
         };
         chatSocket.emit("chatting", sendMessage);
         messageRef.current.value = "";
       }
     }
+  };
+
+  const handleImageClick = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  };
+
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (userData) await imageResizerSocketHandler(e, userData);
   };
 
   return (
@@ -73,6 +82,15 @@ export default function ChattingFooter() {
               src={image}
               alt="image send"
               className={`${iconStyle} text-white cursor-pointer`}
+              onClick={handleImageClick}
+            />
+            <input
+              ref={fileInputRef}
+              type="file"
+              id="profileImage"
+              className="hidden"
+              accept="image/*"
+              onChange={handleFileChange}
             />
           </section>
         </section>

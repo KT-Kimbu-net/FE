@@ -16,8 +16,11 @@ type TSubHeader = {
 
 export default function layout(props: TPageProps) {
   const subHeaderontent: { [key: string]: TSubHeader } = {
-    editprofile: { title: "프로필 수정", subTitle: "나의 정보를 수정할수 있어요." },
-    credit: {
+    editprofile: {
+      title: "마이 프로필",
+      subTitle: "나의 정보를 확인할 수 있어요.",
+    },
+    point: {
       title: "크레딧 사용,적립 내역",
       subTitle: "크레딧 사용 & 적립 내역 조회",
     },
