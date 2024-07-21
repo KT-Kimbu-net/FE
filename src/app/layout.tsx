@@ -26,7 +26,7 @@ export default function RootLayout({
         <Header />
         <main className="flex-grow flex flex-col">{children}</main>
         <ModalContainer />
-        <Floating />
+        {/* <Floating /> */}
         <Chatting />
         <ChatSocketHandler />
         <Footer />

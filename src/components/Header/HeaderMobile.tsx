@@ -74,7 +74,12 @@ export default function HeaderMobile({
           )}
         </button>
         <Link href="/" className="text-black font-bold">
-          <img src="/img-logo-black.svg" alt="Logo" width={100} height={100} />
+          <img
+            src="/img/img-logo-black.svg"
+            alt="Logo"
+            width={100}
+            height={100}
+          />
         </Link>
         <button
           className="inline-flex items-center justify-center p-2 rounded-md text-black hover:text-black focus:outline-none focus:ring-2 focus:ring-inset focus:ring-black"
