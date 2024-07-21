@@ -43,31 +43,29 @@ export default function Sponsor() {
         infinite={true}
         autoPlay={true}
         autoPlaySpeed={1000}
-        // keyBoardControl={true}
         customTransition="transform 1000ms linear"
         transitionDuration={1000}
         containerClass="carousel-container"
         removeArrowOnDeviceType={["tablet", "mobile"]}
-        // deviceType={this.props.deviceType}
         customRightArrow={<CustomRightArrow />}
         customLeftArrow={<CustomLeftArrow />}
       >
-        <section className="flex justify-center">
+        <section className="flex justify-center cursor-pointer">
           <Image src={sponsor} alt="sponsor" className={sponsorImageStyle} />
         </section>
-        <section className="flex justify-center">
+        <section className="flex justify-center cursor-pointer">
           <Image src={sponsor2} alt="sponsor" className={sponsorImageStyle} />
         </section>
-        <section className="flex justify-center">
+        <section className="flex justify-center cursor-pointer">
           <Image src={sponsor3} alt="sponsor" className={sponsorImageStyle} />
         </section>
-        <section className="flex justify-center">
+        <section className="flex justify-center cursor-pointer">
           <Image src={sponsor4} alt="sponsor" className={sponsorImageStyle} />
         </section>
-        <section className="flex justify-center">
+        <section className="flex justify-center cursor-pointer">
           <Image src={sponsor5} alt="sponsor" className={sponsorImageStyle} />
         </section>
-        <section className="flex justify-center">
+        <section className="flex justify-center cursor-pointer">
           <Image src={sponsor6} alt="sponsor" className={sponsorImageStyle} />
         </section>
       </Carousel>

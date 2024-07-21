@@ -3,10 +3,12 @@ import Header from "@/components/Header/Header";
 import "./globals.css";
 import { Noto_Sans_KR } from "next/font/google";
 import Footer from "@/components/Footer/Footer";
-const notoSansKr = Noto_Sans_KR({ subsets: ["latin"] });
 import Floating from "@/components/Layouts/Floating/Floating";
 import Chatting from "@/components/Layouts/Chatting/Chatting";
 import ChatSocketHandler from "@/components/Socket/ChatSocketHandler";
+import LoginCheck from "@/components/util/LoginCheck";
+
+const notoSansKr = Noto_Sans_KR({ subsets: ["latin"] });
 
 export const metadata = {
   title: "WINNING KT : WE ARE GREAT MAGIC",
@@ -23,6 +25,7 @@ export default function RootLayout({
       <body className={`${notoSansKr.className} min-h-svh flex flex-col`}>
         <div id="modalLayout" />
         <div id="modalContent" />
+        <LoginCheck />
         <Header />
         <main className="flex-grow flex flex-col">{children}</main>
         <ModalContainer />

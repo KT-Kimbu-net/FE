@@ -23,7 +23,7 @@ export default function QuizResult() {
       const points = calculatePoints(answers);
       const updatedUserData = {
         ...userData,
-        creditAmount: (userData.creditAmount ?? 0) + points,
+        creditAmount: (userData.credit.creditAmount ?? 0) + points,
       };
       setUserData(updatedUserData);
       console.log(pointsSent);
@@ -55,7 +55,7 @@ export default function QuizResult() {
                 </span>
                 의 현재 포인트는{" "}
                 <span className="text-red-500 font-bold">
-                  {userData?.creditAmount || 0} 포인트
+                  {userData?.credit.creditAmount || 0} 포인트
                 </span>{" "}
                 입니다.
               </div>

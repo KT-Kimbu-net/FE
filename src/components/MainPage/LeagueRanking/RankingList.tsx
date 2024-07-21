@@ -1,14 +1,14 @@
 import Image, { StaticImageData } from "next/image";
-import Kt from "@/img/TeamLogo/Kt.svg";
-import Kia from "@/img/TeamLogo/Kia.svg";
-import Lg from "@/img/TeamLogo/Lg.svg";
-import Samsung from "@/img/TeamLogo/Samsung.svg";
-import Doosan from "@/img/TeamLogo/Doosan.svg";
-import Ssg from "@/img/TeamLogo/ssg.svg";
-import Nc from "@/img/TeamLogo/nc.svg";
-import Hanwha from "@/img/TeamLogo/Hanwha.svg";
-import Lotte from "@/img/TeamLogo/Lotte.svg";
-import Kiwoom from "@/img/TeamLogo/Kiwoom.svg";
+import Kt from "@/img/TeamLogo/kt.png";
+import Kia from "@/img/TeamLogo/kia.png";
+import Lg from "@/img/TeamLogo/lg.png";
+import Samsung from "@/img/TeamLogo/samsung.png";
+import Doosan from "@/img/TeamLogo/doosan.png";
+import Ssg from "@/img/TeamLogo/ssg.png";
+import Nc from "@/img/TeamLogo/nc.png";
+import Hanwha from "@/img/TeamLogo/hanwha.png";
+import Lotte from "@/img/TeamLogo/lotte.png";
+import Kiwoom from "@/img/TeamLogo/kiwoom.png";
 
 type TRankingList = {
   rank: string;

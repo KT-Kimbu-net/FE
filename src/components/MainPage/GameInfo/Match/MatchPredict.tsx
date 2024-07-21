@@ -8,16 +8,18 @@ export default function MatchPredict() {
   const [opponentWinPercent, setOpponentWinPercent] = useState(50);
   const [showText, setShowText] = useState(false);
 
+  // const fetchPredictData = async () => {
+  //   const predictData = await matchPredictAction();
+  //   const parsePredictData = Number(predictData?.predictData.substring(0, 2));
+
+  //   setTimeout(() => {
+  //     setKtWinPercent(parsePredictData);
+  //     setOpponentWinPercent(100 - parsePredictData);
+  //     setShowText(true);
+  //   }, 100);
+  // };
+
   useEffect(() => {
-    // const fetchPredictData = async () => {
-    //   const predictData = await matchPredictAction();
-    //   const parsePredictData = Number(predictData?.predictData.substring(0, 2));
-    //   setTimeout(() => {
-    //     setKtWinPercent(parsePredictData);
-    //     setOpponentWinPercent(100 - parsePredictData);
-    //     setShowText(true);
-    //   }, 100);
-    // };
     // fetchPredictData();
   }, []);
 

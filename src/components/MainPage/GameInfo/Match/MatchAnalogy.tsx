@@ -1,9 +1,12 @@
-import Image from "next/image";
-import Kt from "@/img/TeamLogo/Kt.svg";
-import Kia from "@/img/TeamLogo/Kia.svg";
-import luck from "@/img/luck.svg";
+"use client";
 
-export default function MatchAnalogy() {
+import Image from "next/image";
+import Kt from "@/img/TeamLogo/kt.png";
+import Kia from "@/img/TeamLogo/kia.png";
+import luck from "@/img/luck.svg";
+import { Tooltip } from "react-tooltip";
+
+export default function MatchAnalogy(props: any) {
   return (
     <section className="w-full flex justify-center mt-4 flex-col">
       <section className="relative border-t-[2px] border-black w-full">
@@ -73,6 +76,13 @@ export default function MatchAnalogy() {
                 src={luck}
                 alt="luck"
                 className="absolute right-8 top-1/2 translate-y-[-50%]"
+                data-tooltip-id="kt-pitcher-tooltip"
+                data-tooltip-content={props.kt.text}
+              />
+              <Tooltip
+                id="kt-pitcher-tooltip"
+                place="top"
+                style={{ width: "20rem" }}
               />
             </td>
             <th className="py-2">선발투수</th>
@@ -81,6 +91,14 @@ export default function MatchAnalogy() {
                 src={luck}
                 alt="luck"
                 className="absolute left-8 top-1/2 translate-y-[-50%]"
+                data-tooltip-id="kia-pitcher-tooltip"
+                data-tooltip-content={props.opponent.text}
+              />
+              <Tooltip
+                id="kia-pitcher-tooltip"
+                place="top"
+                className="example"
+                style={{ width: "20rem" }}
               />
               <span className="font-[Pretendard-ExtraBold] text-gray-700">
                 양현종

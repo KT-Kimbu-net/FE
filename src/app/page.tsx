@@ -6,6 +6,8 @@ import Shortcuts from "@/components/MainPage/Shortcuts/Shortcuts";
 import MatchBet from "@/components/MainPage/MatchBet/MatchBet";
 import Sponsor from "@/components/MainPage/Sponsor/Sponsor";
 import ChatSocketConnectHandler from "@/components/Socket/ChatSocketConnectHandler";
+import "react-tooltip/dist/react-tooltip.css";
+import { getTeamSchedule } from "@/libs/action/GetTeamSchedule";
 
 const getLeagueRankApiHandler = async () => {
   const url = `${process.env.NEXT_PUBLIC_BASEURL}/today_rank`;
@@ -14,6 +16,7 @@ const getLeagueRankApiHandler = async () => {
 
 export default async function Page() {
   const data = await getLeagueRankApiHandler();
+  const weekSchedule = await getTeamSchedule();
 
   return (
     <section className="flex flex-col items-center h-full">
@@ -25,7 +28,9 @@ export default async function Page() {
           <Shortcuts />
         </section>
       </section>
-      <WeekSchedule />
+      <WeekSchedule
+        currentWeekSchedule={weekSchedule?.weekData.currentWeekGames}
+      />
       <LeagueRanking leagueRanking={data} />
       <Notice />
       <Sponsor />

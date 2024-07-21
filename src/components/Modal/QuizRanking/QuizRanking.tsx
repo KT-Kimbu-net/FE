@@ -27,7 +27,7 @@ export default function QuizRanking() {
     sequenceDays: userData?.quiz.sequenceDays || 0,
     userId: userData?.userId || "",
     amount: userData?.quiz.amount || 0,
-    creditAmount: userData?.creditAmount || 0,
+    creditAmount: userData?.credit.creditAmount || 0,
   };
 
   useEffect(() => {

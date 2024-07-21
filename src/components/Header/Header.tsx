@@ -10,23 +10,18 @@ import { useChatState } from "@/store/chatting";
 import { chatSocket } from "@/socket/ChatSocket";
 import { deleteCookie } from "cookies-next";
 import { useUserState } from "@/store/user";
+import imgLogoBlack from "@/img/img-logo-black.svg";
 
 export default function Header() {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
 
-  const { userData, setUserData, resetUserData } = useUserState();
+  const { userData, resetUserData } = useUserState();
   const { setIsShow, isShow } = useChatState((state) => ({
     isShow: state.isShow,
     setIsShow: state.setIsShow,
   }));
-
-  const handleLogin = () => {
-    if (userData) {
-      setUserData(userData); // 임시 사용자 정보
-    }
-  };
 
   const handleLogout = () => {
     if (isShow) setIsShow();
@@ -59,12 +54,7 @@ export default function Header() {
             {/* 좌측 로고 */}
             <div className="absolute left-0 top-1/2 translate-y-[-50%]">
               <Link href="/">
-                <Image
-                  src="/img/img-logo-black.svg"
-                  alt="Logo"
-                  width={100}
-                  height={100}
-                />
+                <Image src={imgLogoBlack} alt="Logo" width={100} height={100} />
               </Link>
             </div>
 
@@ -90,11 +80,7 @@ export default function Header() {
             </nav>
 
             {/* 우측 버튼들 */}
-            <UserMenu
-              user={userData}
-              handleLogin={handleLogin}
-              handleLogout={handleLogout}
-            />
+            <UserMenu user={userData} handleLogout={handleLogout} />
           </div>
         </div>
         {/* 메가드롭다운 메뉴 */}

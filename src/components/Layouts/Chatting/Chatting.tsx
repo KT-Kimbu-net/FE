@@ -36,8 +36,8 @@ export default function Chatting() {
   };
 
   useEffect(() => {
-    getChatLogs();
-  }, []);
+    if (isShow) getChatLogs();
+  }, [isShow]);
 
   useEffect(() => {
     const scrollToBottom = () => {
@@ -83,6 +83,7 @@ export default function Chatting() {
                     report={message.report}
                     msgId={message.msgId}
                     userId={message.userId}
+                    type={message.type}
                   />
                 );
               })}

@@ -31,8 +31,7 @@ export default async function messageReportAction(formData: FormData) {
       }
     );
     if (result.ok) {
-      const data = await result.json();
-      return { status: data.status };
+      return { status: result.status };
     }
   } catch (error) {
     console.log(error);

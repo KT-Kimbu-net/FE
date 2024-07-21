@@ -49,7 +49,7 @@ export default function HighLights() {
           {dataToRender.map((highLight, index) => (
             <li
               key={index}
-              className={`flex flex-col ${
+              className={`flex flex-col cursor-pointer ${
                 index < 2 ? "col-span-2 w-full" : "col-span-1"
               }`}
             >

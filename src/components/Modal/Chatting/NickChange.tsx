@@ -41,7 +41,12 @@ export default function NickChange() {
                 {userData?.nickname}
               </strong>
             </section>
-            <Image src={nickChange} alt="nick change icon" />
+            <Image
+              src={nickChange}
+              alt="nick change icon"
+              width={40}
+              height={40}
+            />
             <InputBox
               type="text"
               name="nickname"
