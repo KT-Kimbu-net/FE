@@ -5,6 +5,8 @@ import { chatSocket } from "@/socket/ChatSocket";
 import { useChatState } from "@/store/chatting";
 import { TMessageType } from "@/types/chatting";
 import { getCookie } from "cookies-next";
+import { useLiveScoreState } from "@/store/liveScore";
+import { TChangeScore, TChangePitcher } from "@/types/liveScore";
 
 export default function ChatSocketHandler() {
   const { setChatLog, setUserCount, getCleanChat } = useChatState((state) => ({
@@ -13,6 +15,14 @@ export default function ChatSocketHandler() {
     cleanChat: state.cleanChat,
     getCleanChat: state.getCleanChat,
   }));
+
+  const { setKtPitcher, setKtScore, setOpponentPitcher, setOpponentScore } =
+    useLiveScoreState((state) => ({
+      setKtPitcher: state.setKtPitcher,
+      setKtScore: state.setKtScore,
+      setOpponentPitcher: state.setOpponentPitcher,
+      setOpponentScore: state.setOpponentScore,
+    }));
 
   const chatMsgSocketHandler = async (message: TMessageType) => {
     if (getCleanChat()) {
@@ -54,13 +64,8 @@ export default function ChatSocketHandler() {
     setUserCount(data.count);
   };
 
-  const gameScoreSocketHandler = (data: any) => {
-    console.log("active..........");
-    console.log(data);
-  };
-  const pitcherChangeSocketHandler = (data: any) => {
-    console.log(data);
-  };
+  const gameScoreSocketHandler = (data: TChangeScore) => {};
+  const pitcherChangeSocketHandler = (data: TChangePitcher) => {};
 
   useEffect(() => {
     chatSocket.on("chatting", chatMsgSocketHandler);

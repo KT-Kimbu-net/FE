@@ -1,13 +1,18 @@
 import MatchScore from "./MatchScore";
 import DetailScore from "./DetailScore";
 import MatchAnalogy from "./MatchAnalogy";
+import { TLiveInfo } from "@/types/liveScore";
 // import { playerLuck } from "@/libs/action/PlayerLuck";
 // import {
 //   ktPlayerDummy,
 //   opponentTeamPlayerDummy,
 // } from "@/data/gameInfo/playerLuckDummy";
 
-export default async function Match() {
+type TMatchProps = {
+  data: TLiveInfo;
+};
+
+export default async function Match(props: TMatchProps) {
   // const [kt, opponent] = await Promise.all([
   //   playerLuck(ktPlayerDummy),
   //   playerLuck(opponentTeamPlayerDummy),
@@ -15,8 +20,14 @@ export default async function Match() {
 
   return (
     <section className="flex flex-col w-2/5 items-center gap-6">
-      <MatchScore />
-      <DetailScore />
+      <MatchScore
+        ktScore={props.data.kt.score}
+        opponentScore={props.data.opponent.score}
+      />
+      <DetailScore
+        ktScore={props.data.kt.score}
+        opponentScore={props.data.opponent.score}
+      />
       {/* <MatchAnalogy kt={kt?.data} opponent={opponent?.data} /> */}
     </section>
   );

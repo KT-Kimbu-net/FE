@@ -18,6 +18,7 @@ import {
 } from "chart.js";
 import Picther from "./Picther";
 import Hitter from "./Hitter";
+import { TLiveInfo } from "@/types/liveScore";
 
 ChartJS.register(
   CategoryScale,
@@ -43,7 +44,10 @@ const options = {
   },
 };
 
-export default function PHMatchPredict() {
+type TPHMatchPredictProps = {
+  data: TLiveInfo;
+};
+export default function PHMatchPredict(props: TPHMatchPredictProps) {
   const { select } = useSelectHitterState((state) => ({
     select: state.select,
   }));
@@ -78,9 +82,15 @@ export default function PHMatchPredict() {
   return (
     <section className="flex flex-col w-2/5 items-center">
       <section className="font-[Leferi] text-lg">투수 vs 타자 예측</section>
-      <PHWinRate />
+      <PHWinRate
+        ktPitcher={props.data.kt.pitcher}
+        opponentPitcher={props.data.opponent.pitcher}
+      />
       <section className="relative flex mt-10 w-full gap-2.5">
-        <Picther />
+        <Picther
+          ktPitcher={props.data.kt.pitcher}
+          opponentPitcher={props.data.opponent.pitcher}
+        />
         <span className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] font-[Pretendard-Bold] text-[#3e3e3e] text-2xl">
           vs
         </span>

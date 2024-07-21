@@ -6,6 +6,10 @@ import Kia from "@/img/TeamLogo/kia.png";
 import rain from "@/img/rain.svg";
 import MatchPredict from "./MatchPredict";
 
+type TMatchScoreProps = {
+  ktScore: number[];
+  opponentScore: number[];
+};
 // 기상청 api를 이용한 강수확률 가져오는 api핸들러
 const getWeatherApiHandler = async () => {
   const apiKey = process.env.NEXT_PUBLIC_APP_WEATHER_API_KEY;
@@ -19,11 +23,18 @@ const getWeatherApiHandler = async () => {
   return await (await fetch(url, { cache: "no-store" })).json();
 };
 
-export default async function MatchScore() {
+export default async function MatchScore(props: TMatchScoreProps) {
   // const data = await getWeatherApiHandler();
   // const popData = data.response.body.items.item.find(
   //   (item: any) => item.category === "POP"
   // );
+
+  const sumScore = (score: number[]) => {
+    return score.reduce((sum, current) => sum + current, 0);
+  };
+
+  const ktScore = sumScore(props.ktScore);
+  const opponentScore = sumScore(props.opponentScore);
 
   return (
     <>
@@ -58,9 +69,13 @@ export default async function MatchScore() {
               <Image src={Kt} alt="Kt" width={40} height={40} />
             </section>
             <section className="w-1/3 text-center flex justify-between items-center text-white">
-              <span className="text-[2rem] font-[Pretendard-ExtraBold]">0</span>
+              <span className="text-[2rem] font-[Pretendard-ExtraBold]">
+                {ktScore}
+              </span>
               <span className="text-lg font-[Leferi] text-gray-500">vs</span>
-              <span className="text-[2rem] font-[Pretendard-ExtraBold]">0</span>
+              <span className="text-[2rem] font-[Pretendard-ExtraBold]">
+                {opponentScore}
+              </span>
             </section>
             <section className="w-1/3 flex items-center justify-between">
               <Image src={Kia} alt="Kia" width={40} height={40} />
