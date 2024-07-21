@@ -1,6 +1,6 @@
-import { THistory } from "./Credit";
+import { THistory } from "./Point";
 
-export default function CreditContent(props: THistory) {
+export default function PointContent(props: THistory) {
   return (
     <tr className="border-[#EEEEEE] border-y-[1px] h-[50px] font-[300]">
       <th className="font-[400]">{props.date}</th>

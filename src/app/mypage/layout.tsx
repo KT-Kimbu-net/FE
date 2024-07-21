@@ -5,9 +5,7 @@ export default function layout({
 }>) {
   return (
     <>
-      <div className=" relative">
-        {children}
-      </div>
+      <div className=" relative">{children}</div>
     </>
   );
 }

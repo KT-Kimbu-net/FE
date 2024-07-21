@@ -33,11 +33,11 @@ export default function Floating() {
     <section className="fixed top-[10%] right-0 h-fit bg-[rgba(0,0,0,0.7)] text-white px-1">
       <ul className="flex flex-col justify-betweenitems-center h-full">
         <li className={listStyle}>
-          <Image src={ticket} alt="ticket" className={iconStyle} />
+          <Image src={ticket} alt="ticket" className={iconStyle} width={15} height={15}/>
           <span className={titleStyle}>티켓예매</span>
         </li>
         <li className={listStyle}>
-          <Image src={parking} alt="parking" className={iconStyle} />
+          <Image src={parking} alt="parking" className={iconStyle} width={15} height={15}/>
           <span className={titleStyle}>주차안내</span>
         </li>
         <li
@@ -46,19 +46,19 @@ export default function Floating() {
             setModalName("quizStart");
           }}
         >
-          <Image src={quizRank} alt="quiz and Rank" className={iconStyle} />
+          <Image src={quizRank} alt="quiz and Rank" className={iconStyle} width={15} height={15}/>
           <span className={titleStyle}>데일리퀴즈/랭킹</span>
         </li>
         <li className={listStyle}>
-          <Image src={stadium} alt="stadium" className={iconStyle} />
+          <Image src={stadium} alt="stadium" className={iconStyle} width={15} height={15}/>
           <span className={titleStyle}>구장 혼잡도</span>
         </li>
         <li className={listStyle}>
-          <Image src={shop} alt="kt wiz shop" className={iconStyle} />
+          <Image src={shop} alt="kt wiz shop" className={iconStyle} width={15} height={15}/>
           <span className={titleStyle}>KT Wiz상점</span>
         </li>
         <li className={listStyle} onClick={isLoginCheckHandler}>
-          <Image src={chat} alt="kt wiz chatting" className={iconStyle} />
+          <Image src={chat} alt="kt wiz chatting" className={iconStyle} width={15} height={15}/>
           <span className={titleStyle}>KT Wiz응원톡</span>
         </li>
       </ul>

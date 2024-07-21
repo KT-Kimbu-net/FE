@@ -9,7 +9,7 @@ export async function getMyDataAction() {
     const result = await fetch(
       `${process.env.NEXT_PUBLIC_BASEURL}/user/my_data`,
       {
-        method: "get",
+        method: "GET",
         headers: {
           "Content-Type": "application/json",
           Authorization: `${token}`,
