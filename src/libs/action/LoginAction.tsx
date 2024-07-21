@@ -9,9 +9,234 @@ export async function joinUserAction(formData: FormData) {
       credit: {
         creditAmount: 1000,
         creditHistory: {
-          usedHistory: [],
-          deleteHistory: [],
-          getHistory: [],
+          usedHistory: [
+            {
+              date: "2024-07-14",
+              content: "퀴즈 정답",
+              amount: 100,
+            },
+            {
+              date: "2024-07-14",
+              content: "퀴즈 정답",
+              amount: 100,
+            },
+            {
+              date: "2024-07-14",
+              content: "퀴즈 정답",
+              amount: 100,
+            },
+            {
+              date: "2024-07-14",
+              content: "퀴즈 정답",
+              amount: 100,
+            },
+            {
+              date: "2024-07-14",
+              content: "퀴즈 정답",
+              amount: 100,
+            },
+            {
+              date: "2024-07-14",
+              content: "퀴즈 정답",
+              amount: 100,
+            },
+            {
+              date: "2024-07-14",
+              content: "퀴즈 정답",
+              amount: 100,
+            },
+            {
+              date: "2024-07-14",
+              content: "퀴즈 정답",
+              amount: 100,
+            },
+          ],
+          deleteHistory: [
+            {
+              deleteDate: "2024-07-14",
+              content: "퀴즈 정답",
+              amount: 100,
+            },
+            {
+              deleteDate: "2024-07-14",
+              content: "퀴즈 정답",
+              amount: 100,
+            },
+            {
+              deleteDate: "2024-07-14",
+              content: "퀴즈 정답",
+              amount: 100,
+            },
+            {
+              deleteDate: "2024-07-14",
+              content: "퀴즈 정답",
+              amount: 100,
+            },
+            {
+              deleteDate: "2024-07-14",
+              content: "퀴즈 정답",
+              amount: 100,
+            },
+            {
+              deleteDate: "2024-07-14",
+              content: "퀴즈 정답",
+              amount: 100,
+            },
+            {
+              deleteDate: "2024-07-14",
+              content: "퀴즈 정답",
+              amount: 100,
+            },
+            {
+              deleteDate: "2024-07-14",
+              content: "퀴즈 정답",
+              amount: 100,
+            },
+            {
+              deleteDate: "2024-07-14",
+              content: "퀴즈 정답",
+              amount: 100,
+            },
+            {
+              deleteDate: "2024-07-14",
+              content: "퀴즈 정답",
+              amount: 100,
+            },
+          ],
+          getHistory: [
+            {
+              date: "2024-07-14",
+              content: "퀴즈 정답",
+              deleteDate: "2024-08-14",
+              amount: 100,
+            },
+            {
+              date: "2024-07-14",
+              content: "퀴즈 정답",
+              deleteDate: "2024-08-14",
+              amount: 100,
+            },
+            {
+              date: "2024-07-14",
+              content: "퀴즈 정답",
+              deleteDate: "2024-08-14",
+              amount: 100,
+            },
+            {
+              date: "2024-07-14",
+              content: "퀴즈 정답",
+              deleteDate: "2024-08-14",
+              amount: 100,
+            },
+            {
+              date: "2024-07-14",
+              content: "퀴즈 정답",
+              deleteDate: "2024-08-14",
+              amount: 100,
+            },
+            {
+              date: "2024-07-14",
+              content: "퀴즈 정답",
+              deleteDate: "2024-08-14",
+              amount: 100,
+            },
+            {
+              date: "2024-07-14",
+              content: "퀴즈 정답",
+              deleteDate: "2024-08-14",
+              amount: 100,
+            },
+            {
+              date: "2024-07-14",
+              content: "퀴즈 정답",
+              deleteDate: "2024-08-14",
+              amount: 100,
+            },
+            {
+              date: "2024-07-14",
+              content: "퀴즈 정답",
+              deleteDate: "2024-08-14",
+              amount: 100,
+            },
+            {
+              date: "2024-07-14",
+              content: "퀴즈 정답",
+              deleteDate: "2024-08-14",
+              amount: 100,
+            },
+            {
+              date: "2024-07-14",
+              content: "퀴즈 정답",
+              deleteDate: "2024-08-14",
+              amount: 100,
+            },
+            {
+              date: "2024-07-14",
+              content: "퀴즈 정답",
+              deleteDate: "2024-08-14",
+              amount: 100,
+            },
+            {
+              date: "2024-07-14",
+              content: "퀴즈 정답",
+              deleteDate: "2024-08-14",
+              amount: 100,
+            },
+            {
+              date: "2024-07-14",
+              content: "퀴즈 정답",
+              deleteDate: "2024-08-14",
+              amount: 100,
+            },
+            {
+              date: "2024-07-14",
+              content: "퀴즈 정답",
+              deleteDate: "2024-08-14",
+              amount: 100,
+            },
+            {
+              date: "2024-07-14",
+              content: "퀴즈 정답",
+              deleteDate: "2024-08-14",
+              amount: 100,
+            },
+            {
+              date: "2024-07-14",
+              content: "퀴즈 정답",
+              deleteDate: "2024-08-14",
+              amount: 100,
+            },
+            {
+              date: "2024-07-14",
+              content: "퀴즈 정답",
+              deleteDate: "2024-08-14",
+              amount: 100,
+            },
+            {
+              date: "2024-07-14",
+              content: "퀴즈 정답",
+              deleteDate: "2024-08-14",
+              amount: 100,
+            },
+            {
+              date: "2024-07-14",
+              content: "퀴즈 정답",
+              deleteDate: "2024-08-14",
+              amount: 100,
+            },
+            {
+              date: "2024-07-14",
+              content: "퀴즈 정답",
+              deleteDate: "2024-08-14",
+              amount: 100,
+            },
+            {
+              date: "2024-07-14",
+              content: "퀴즈 정답",
+              deleteDate: "2024-08-14",
+              amount: 100,
+            },
+          ],
         },
       },
       quiz: {
