@@ -10,8 +10,8 @@ export default function FloatingToggle({
   return (
     <div className="pt-1 px-2 pb-5 text-base">
       <button
-        className={`tracking-wider border border-slate-500 border-opacity-50 px-4 py-2 rounded-tl-3xl rounded-bl-3xl focus:outline-none transition-colors duration-500 ${
-          isCongestion ? "bg-slate-500 text-white" : "bg-white text-slate-500"
+        className={`font-[Pretendard-Medium] tracking-wider border border-blue-500 border-opacity-50 px-2 py-2 rounded-tl-3xl rounded-bl-3xl focus:outline-none transition-colors duration-500 ${
+          isCongestion ? "bg-blue-500 text-white" : "bg-white text-blue-500"
         }`}
         onClick={() => {
           if (!isCongestion) handleToggle();
@@ -20,8 +20,8 @@ export default function FloatingToggle({
         혼잡도
       </button>
       <button
-        className={`px-4 py-2 border border-slate-500 border-opacity-50 rounded-tr-3xl rounded-br-3xl focus:outline-none transition-colors duration-500 ${
-          isCongestion ? "bg-white text-slate-500" : "bg-slate-500 text-white"
+        className={`font-[Pretendard-Medium] px-2 py-2 border border-blue-500 border-opacity-50 rounded-tr-3xl rounded-br-3xl focus:outline-none transition-colors duration-500 ${
+          isCongestion ? "bg-white text-blue-500" : "bg-blue-500 text-white"
         }`}
         onClick={() => {
           if (isCongestion) handleToggle();

@@ -1,7 +1,9 @@
 import Image from "next/image";
-import { TItem } from "./FloatingList";
+import { TItem } from "@/types/congestion";
 interface FloatingItemProps extends TItem {
   isCongestion: boolean;
+  checked: boolean;
+  onChange: () => void;
 }
 
 export default function FloatingItem({
@@ -10,10 +12,17 @@ export default function FloatingItem({
   label,
   isCongestion,
   color,
-}: FloatingItemProps): JSX.Element {
+  checked,
+  onChange,
+}: FloatingItemProps) {
   return (
-    <li className="flex items-center justify-center gap-x-5 pr-2 text-base text-gray-600 tracking-wider">
-      <input type="checkbox" className="form-checkbox h-5 w-5" />
+    <li className="flex items-center justify-start gap-x-3 pl-4 text-base text-gray-500">
+      <input
+        type="checkbox"
+        checked={checked}
+        onChange={onChange}
+        className="form-checkbox h-5 w-5"
+      />
       {!isCongestion ? (
         <Image src={src} alt={alt} className="w-8 h-8" />
       ) : (
@@ -30,7 +39,7 @@ export default function FloatingItem({
           />
         </svg>
       )}
-      <span>{label}</span>
+      <span className="font-[Pretendard-Regular]">{label}</span>
     </li>
   );
 }
