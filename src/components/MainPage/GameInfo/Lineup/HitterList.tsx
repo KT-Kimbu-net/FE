@@ -46,7 +46,6 @@ export default function HitterList(props: THitterListProps) {
         }
       );
       if (result.ok) {
-        console.log("active!!!!");
         const data = await result.json();
         const barWidth = Math.floor(data["타자가 공을 칠 확률"] * 100);
         setPWinPercent(100 - barWidth);

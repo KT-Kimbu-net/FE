@@ -31,7 +31,7 @@ export default function Footer() {
                   alt="Logo"
                   width={150}
                   height={150}
-                  className="h-auto"
+                  className="w-auto h-auto"
                 />
               </div>
               <div className="flex gap-6 pb-10 py-5">

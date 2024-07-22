@@ -37,7 +37,4 @@ export type TUseChatState = {
   chatLog: TMessageType[];
   setChatLog: (v: TMessageType) => void;
   setAllChatLog: (v: TMessageType[]) => void;
-  cleanChat: boolean;
-  setCleanChat: () => void;
-  getCleanChat: () => boolean;
 };

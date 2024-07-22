@@ -9,11 +9,9 @@ import { useLiveScoreState } from "@/store/liveScore";
 import { TChangeScore, TChangePitcher } from "@/types/liveScore";
 
 export default function ChatSocketHandler() {
-  const { setChatLog, setUserCount, getCleanChat } = useChatState((state) => ({
+  const { setChatLog, setUserCount } = useChatState((state) => ({
     setChatLog: state.setChatLog,
     setUserCount: state.setUserCount,
-    cleanChat: state.cleanChat,
-    getCleanChat: state.getCleanChat,
   }));
 
   const { setKtPitcher, setOpponentPitcher, addKtScore, addOpponentScore } =
@@ -27,7 +25,7 @@ export default function ChatSocketHandler() {
     }));
 
   const chatMsgSocketHandler = async (message: TMessageType) => {
-    if (getCleanChat()) {
+    if (localStorage.getItem("cleanChat") === "1") {
       const filterMessage = {
         chat_text: message.message,
       };
@@ -78,8 +76,7 @@ export default function ChatSocketHandler() {
 
   const disconnectSocketHandler = () => {
     console.log("disconnect");
-  
-  }
+  };
 
   useEffect(() => {
     chatSocket.on("chatting", chatMsgSocketHandler);

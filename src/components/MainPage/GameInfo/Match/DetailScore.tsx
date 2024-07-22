@@ -47,7 +47,6 @@ export default function DetailScore() {
         Number(newInning.slice(0, 1)),
         ktWinPercent
       );
-      console.log(changeRate);
       setKtWinPercent(changeRate);
       setOpponentWinPercent(100 - changeRate);
     }

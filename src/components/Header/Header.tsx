@@ -29,7 +29,7 @@ export default function Header() {
   const getMyDataApiHandler = async () => {
     const data = await getMyDataAction();
     if (data?.status === 200) {
-      chatSocket.connect();
+      // chatSocket.connect();
       setUserData(data.data);
       setSelectBet(data?.data.gamePredict.choose);
     }
@@ -79,7 +79,7 @@ export default function Header() {
                   alt="Logo"
                   width={100}
                   height={100}
-                  className="h-auto"
+                  className="w-auto h-auto"
                 />
               </Link>
             </div>

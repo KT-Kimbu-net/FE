@@ -58,11 +58,12 @@ export default function Message(props: TMessageType) {
               alt="chat message imgae"
               width={180}
               height={160}
+              className="h-auto w-auto"
             />
           )}
         </section>
         <section className="flex items-end gap-1">
-          <span className="text-gray-500 text-xs">오후 10:59</span>
+          <span className="text-gray-500 text-xs">{props.time}</span>
           {props.userId !== userData?.userId && (
             <Image
               src={report}

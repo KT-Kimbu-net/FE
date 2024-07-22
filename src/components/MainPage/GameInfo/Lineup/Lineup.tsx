@@ -36,7 +36,7 @@ export default function Lineup(props: TLineup) {
                 alt="kt"
                 width={48}
                 height={40}
-                className="h-auto"
+                className="w-auto h-auto"
               />
             </li>
             {ktHitterPlayer.data.map((hitter: THitterInfo, index) => (
@@ -52,7 +52,7 @@ export default function Lineup(props: TLineup) {
                 alt="nc"
                 width={48}
                 height={40}
-                className="h-auto"
+                className="w-auto h-auto"
               />
             </li>
             {ncHitterPlayer.data.map((hitter: THitterInfo, index) => (

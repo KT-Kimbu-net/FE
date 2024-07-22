@@ -20,7 +20,6 @@ export default function MatchPredict() {
 
   const fetchPredictData = async () => {
     const predictData = await matchPredictAction();
-    console.log(predictData);
     const parsePredictData = predictData
       ? Number(predictData?.predictData.substring(0, 2))
       : 50;
@@ -33,7 +32,7 @@ export default function MatchPredict() {
   };
 
   useEffect(() => {
-    fetchPredictData();
+    // fetchPredictData();
   }, []);
 
   const ktWinBarStyle =

@@ -109,7 +109,7 @@ export default function PHMatchPredict(props: TPHMatchPredictProps) {
             alt="ddory"
             width={40}
             height={40}
-            className="h-auto"
+            className="w-auto h-auto"
           />
           <span className="text-main font-[Pretendard-Bold]">
             선택타자 예측
