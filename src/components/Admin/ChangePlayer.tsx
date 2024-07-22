@@ -24,7 +24,9 @@ export default function ChangePlayer() {
   };
 
   const submitHandler = () => {
-    console.log("submit");
+    if (gameSocket.disconnected) {
+      gameSocket.connect();
+    }
     gameSocket.emit("changePitcher", {
       isKtwiz: isKtwiz,
       pitcher: pitcher,

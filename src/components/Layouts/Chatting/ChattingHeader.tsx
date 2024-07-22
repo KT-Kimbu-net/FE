@@ -3,7 +3,7 @@
 import Image from "next/image";
 import ddory from "@/img/ddory.svg";
 import { useChatState } from "@/store/chatting";
-import { IoCloseSharp } from "react-icons/io5";
+import closeButton from "@/img/Chatting/closeBtn.svg";
 
 export default function ChattingHeader() {
   const { userCount, setIsShow } = useChatState((state) => ({
@@ -22,8 +22,12 @@ export default function ChattingHeader() {
           <span className="font-[Pretendard-Medium] text-main text-sm">
             {userCount}명
           </span>
-          <IoCloseSharp
-            className="text-white w-6 h-6 cursor-pointer duration-300 hover:scale-125"
+          <Image
+            src={closeButton}
+            alt="chat close btn"
+            width={24}
+            height={24}
+            className="w-6 h-6 cursor-pointer duration-300 hover:scale-125"
             onClick={() => {
               setIsShow();
             }}

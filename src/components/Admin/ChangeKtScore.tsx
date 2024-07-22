@@ -14,8 +14,7 @@ export default function ChangeKtScore() {
 
   const submitHandler = () => {
     if (gameSocket.disconnected) {
-      console.log("disconnected");
-      return;
+      gameSocket.connect();
     }
     console.log("submit", true, score);
     gameSocket.emit(

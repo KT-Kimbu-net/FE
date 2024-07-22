@@ -111,7 +111,11 @@ export default function Picther(props: TPitcher) {
 FIP 4.50: 평균 이하
 `}
             />
-            <Tooltip id="fip-tooltip" place="top" style={{ width: "20rem" }} />
+            <Tooltip
+              id="fip-tooltip"
+              place="top"
+              style={{ width: "20rem", zIndex: "10" }}
+            />
           </div>
           <span className={indicatorContentStyle}>{player && player.FIP}</span>
         </li>
@@ -124,7 +128,11 @@ FIP 4.50: 평균 이하
 WHIP 1.20: 평균적인 성과, 안정적인 투구를 보이는 투수<br/>
 WHIP 1.40: 평균 이하, 많은 출루를 허용하는 투수`}
             />
-            <Tooltip id="whip-tooltip" place="top" style={{ width: "20rem" }} />
+            <Tooltip
+              id="whip-tooltip"
+              place="top"
+              style={{ width: "20rem", zIndex: "10" }}
+            />
           </div>
           <span className={indicatorContentStyle}>{player && player.WHIP}</span>
         </li>
@@ -135,7 +143,11 @@ WHIP 1.40: 평균 이하, 많은 출루를 허용하는 투수`}
               data-tooltip-id="war-tooltip"
               data-tooltip-html={`WAR은 Wins Above Replacement의 약자로 대체 선수 대비 승리 기여도입니다. 대체선수에 비해 얼마나 많은 승리에 기여했는가를 나타내는 수치입니다.<br/> 예를 들어 2010년 이대호의 WAR은 8.76이었는데 이는 2010년 이대호가 대체선수에 비해 팀에 8.76승을 더 안겨주었다는 뜻입니다.`}
             />
-            <Tooltip id="war-tooltip" place="top" style={{ width: "20rem" }} />
+            <Tooltip
+              id="war-tooltip"
+              place="top"
+              style={{ width: "20rem", zIndex: "10" }}
+            />
           </div>
           <span className={indicatorContentStyle}>{player && player.WAR}</span>
         </li>

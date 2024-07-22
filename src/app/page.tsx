@@ -5,7 +5,6 @@ import GameInfo from "@/components/MainPage/GameInfo/GameInfo";
 import Shortcuts from "@/components/MainPage/Shortcuts/Shortcuts";
 import MatchBet from "@/components/MainPage/MatchBet/MatchBet";
 import Sponsor from "@/components/MainPage/Sponsor/Sponsor";
-import ChatSocketConnectHandler from "@/components/Socket/ChatSocketConnectHandler";
 import "react-tooltip/dist/react-tooltip.css";
 import { getTeamSchedule } from "@/libs/action/GetTeamSchedule";
 
@@ -20,7 +19,6 @@ export default async function Page() {
 
   return (
     <section className="flex flex-col items-center h-full">
-      <ChatSocketConnectHandler />
       <section className="p-10 w-full h-full flex flex-col gap-12 bg-[url('/img/BgImage.svg')] bg-cover items-center">
         <GameInfo />
         <section className="flex gap-14 w-3/4">

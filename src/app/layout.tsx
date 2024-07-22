@@ -5,9 +5,8 @@ import { Noto_Sans_KR } from "next/font/google";
 import Footer from "@/components/Footer/Footer";
 import Floating from "@/components/Layouts/Floating/Floating";
 import Chatting from "@/components/Layouts/Chatting/Chatting";
-import ChatSocketHandler from "@/components/Socket/ChatSocketHandler";
-import LoginCheck from "@/components/util/LoginCheck";
 import { Metadata } from "next";
+import SocketConnectHandler from "@/components/Socket/SocketConnectHandler";
 
 const notoSansKr = Noto_Sans_KR({ subsets: ["latin"] });
 
@@ -32,13 +31,12 @@ export default function RootLayout({
       <body className={`${notoSansKr.className} min-h-svh flex flex-col`}>
         <div id="modalLayout" />
         <div id="modalContent" />
-        {/* <LoginCheck /> */}
         <Header />
         <main className="flex-grow flex flex-col">{children}</main>
         <ModalContainer />
         <Floating />
         <Chatting />
-        <ChatSocketHandler />
+        <SocketConnectHandler />
         <Footer />
       </body>
     </html>
