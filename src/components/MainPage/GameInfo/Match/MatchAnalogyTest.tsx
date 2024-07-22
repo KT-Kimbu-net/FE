@@ -1,17 +1,12 @@
 "use client";
 
 import Image from "next/image";
+import Kt from "@/img/TeamLogo/kt.png";
+import Nc from "@/img/TeamLogo/nc.png";
 import luck from "@/img/luck.svg";
 import { Tooltip } from "react-tooltip";
-import { getTeamLogo } from "@/utils/gameInfo";
-import { TLeagueRankingInfo } from "@/types/teams";
 
-type TMatchAnalogy = {
-  vsTeamData?: TLeagueRankingInfo;
-  ktTeamData?: TLeagueRankingInfo;
-};
-
-export default function MatchAnalogy(props: TMatchAnalogy) {
+export default function MatchAnalogyTest(props: any) {
   return (
     <section className="w-full flex justify-center mt-4 flex-col">
       <section className="relative border-t-[2px] border-black w-full">
@@ -25,49 +20,33 @@ export default function MatchAnalogy(props: TMatchAnalogy) {
         <tbody>
           <tr>
             <td className="flex items-center flex-col">
-              {props.ktTeamData && (
-                <Image
-                  src={getTeamLogo(props.ktTeamData.팀)}
-                  alt="kt"
-                  width={40}
-                  height={40}
-                />
-              )}
-              <strong className="text-lg mt-2">{props.ktTeamData?.팀}</strong>
+              <Image src={Kt} alt="kt" width={40} height={40} />
+              <strong className="text-lg mt-2">KT Wiz</strong>
             </td>
             <th className="align-bottom font-[Leferi] text-gray-500 text-lg">
               vs
             </th>
             <td className="flex items-center flex-col">
-              {props.vsTeamData?.팀 && (
-                <Image
-                  src={getTeamLogo(props.vsTeamData?.팀)}
-                  alt="nc"
-                  width={40}
-                  height={40}
-                />
-              )}
-              <strong className="text-lg mt-2">{props.vsTeamData?.팀}</strong>
+              <Image src={Nc} alt="nc" width={40} height={40} />
+              <strong className="text-lg mt-2">Nc Dinos</strong>
             </td>
           </tr>
           <tr className="bg-[#f3f3f3]">
-            <td className="text-center py-2 font-[Pretendard-SemiBold] bg-[#f3f3f3] text-lg rounded-tl-xl  text-main">
-              {props.ktTeamData?.순위}
+            <td className="text-center py-2 font-[Pretendard-SemiBold] bg-[#f3f3f3] text-lg rounded-tl-xl">
+              9
             </td>
             <th className="py-2">현재순위</th>
-            <td className="text-center py-2 font-[Pretendard-SemiBold] text-lg rounded-tr-xl">
-              {props.vsTeamData?.순위}
+            <td className="text-center py-2 font-[Pretendard-SemiBold] text-lg text-main rounded-tr-xl">
+              1
             </td>
           </tr>
           <tr className="bg-[#f3f3f3]">
             <td className="text-center py-2 text-gray-700 font-[Pretendard-Medium]">
-              {props.ktTeamData?.승}승 {props.ktTeamData?.무}무{" "}
-              {props.ktTeamData?.패}패
+              33승 1무 43패
             </td>
             <th className="py-2">시즌 성적</th>
             <td className="text-center py-2 text-gray-700 font-[Pretendard-Medium]">
-              {props.vsTeamData?.승}승 {props.vsTeamData?.무}무{" "}
-              {props.vsTeamData?.패}패
+              45승 2무 30패
             </td>
           </tr>
           <tr className="bg-[#f3f3f3]">
@@ -81,11 +60,11 @@ export default function MatchAnalogy(props: TMatchAnalogy) {
           </tr>
           <tr className="bg-[#f3f3f3]">
             <td className="text-center py-2 text-gray-700 font-[Pretendard-Medium]">
-              {props.ktTeamData?.승률}
+              0.434
             </td>
             <th className="py-2">승률</th>
             <td className="text-center py-2 text-gray-700 font-[Pretendard-Medium]">
-              {props.vsTeamData?.승률}
+              0.600
             </td>
           </tr>
           <tr className="bg-[#f3f3f3]">

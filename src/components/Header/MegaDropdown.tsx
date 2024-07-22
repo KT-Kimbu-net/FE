@@ -25,7 +25,7 @@ export default function MegaDropdown({
               <ul className="text-center w-28 flex flex-col" key={index}>
                 {submenu.items.map((item, itemIndex) => (
                   <li key={itemIndex} className="py-1">
-                    <Link href={item.link}>
+                    <Link prefetch={false} href={item.link}>
                       <div className="text-black hover:bg-gray-200 block py-1">
                         {item.name}
                       </div>

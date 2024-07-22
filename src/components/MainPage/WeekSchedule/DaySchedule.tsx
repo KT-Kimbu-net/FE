@@ -1,49 +1,18 @@
 import Image from "next/image";
-import lg from "@/img/TeamLogo/lg.png";
-import kia from "@/img/TeamLogo/kia.png";
-import nc from "@/img/TeamLogo/nc.png";
-import samsung from "@/img/TeamLogo/samsung.png";
-import kiwoom from "@/img/TeamLogo/kiwoom.png";
-import ssg from "@/img/TeamLogo/ssg.png";
-import doosan from "@/img/TeamLogo/doosan.png";
-import hanwha from "@/img/TeamLogo/hanwha.png";
-import lotte from "@/img/TeamLogo/lotte.png";
 import { TDaySchedule } from "@/types/weekSchdule";
 import { formatDate, getCurrentDay } from "@/utils/date";
+import { getTeamLogo } from "@/utils/gameInfo";
 
 export default function DaySchedule(props: TDaySchedule) {
   const teamLogoStyle = "w-14 h-12";
   const locationStyle = "font-[Pretendard-SemiBold] text-lg text-gray-600";
   const dateStyle = `font-[Leferi] text-2xl`;
 
-  const teamLogos: { [key: string]: any } = {
-    LG: lg,
-    KIA: kia,
-    NC: nc,
-    Samsung: samsung,
-    Kiwoom: kiwoom,
-    SSG: ssg,
-    Doosan: doosan,
-    Hanwha: hanwha,
-    Lotte: lotte,
-  };
-
-  const teamLogosHome: { [key: string]: any } = {
-    잠실: lg,
-    광주: kia,
-    창원: nc,
-    대구: samsung,
-    고척: kiwoom,
-    문학: ssg,
-    서울: doosan,
-    대전: hanwha,
-    사직: lotte,
-  };
-  const getTeamLogo = () => {
+  const getTeamLogoHandler = () => {
     if (props.stadium === "수원") {
-      return teamLogos[props.visit] || "";
+      return getTeamLogo(props.visit);
     } else {
-      return teamLogosHome[props.stadium] || "";
+      return getTeamLogo(props.stadium);
     }
   };
 
@@ -64,7 +33,7 @@ export default function DaySchedule(props: TDaySchedule) {
       </section>
       {props.status !== "monday" && (
         <Image
-          src={getTeamLogo()}
+          src={getTeamLogoHandler()}
           alt={"team logo"}
           className={teamLogoStyle}
           width={48}

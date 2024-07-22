@@ -15,7 +15,13 @@ export default function ChattingHeader() {
     <header className="flex justify-between h-[10%] w-full border-b-[1px] border-gray-700 py-5 px-2">
       <section className="flex items-center justify-between w-full">
         <strong className="font-[Pretendard-ExtraBold] text-2xl text-white flex items-center gap-2">
-          <Image src={ddory} alt="ddory" className="w-8 h-8" />
+          <Image
+            src={ddory}
+            alt="ddory"
+            width={32}
+            height={24}
+            className="h-auto"
+          />
           KT Wiz 응원톡
         </strong>
         <div className="flex items-center gap-2">

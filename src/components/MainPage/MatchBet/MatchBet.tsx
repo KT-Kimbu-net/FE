@@ -73,13 +73,13 @@ export default function MatchBet() {
             selectBet === "승"
               ? "bg-main text-white"
               : "bg-[#ffd0d0] text-black"
-          } p-1 rounded-l-2xl flex items-center gap-2 px-3 cursor-pointer h-full`}
+          } p-1 rounded-l-2xl flex items-center gap-2 px-3 cursor-pointer h-full overflow-hidden`}
           onClick={() => {
             setSelectBet("승");
             selectBetApiHandler("승");
           }}
         >
-          <Image src={Kt} alt="kt" width={36} height={36} />
+          <Image src={Kt} alt="kt" width={32} height={24} className="w-auto" />
           <section className="flex flex-col font-[Pretendard-Bold]">
             <strong className="font-[Pretendard-SemiBold]">KT</strong>
           </section>
@@ -87,7 +87,7 @@ export default function MatchBet() {
 
         {/* 무 */}
         <section
-          className={`absolute right-0 h-full left-1/2 translate-x-[-50%] [clip-path:polygon(0_0,80%_0%,100%_100%,20%_100%)] p-1 translate-y-[-50%] top-1/2 w-1/3 cursor-pointer ${
+          className={`flex items-center justify-center absolute right-0 h-full left-1/2 translate-x-[-50%] [clip-path:polygon(0_0,80%_0%,100%_100%,20%_100%)] p-1 translate-y-[-50%] top-1/2 w-1/3 cursor-pointer ${
             selectBet === "무"
               ? "bg-black text-white"
               : "bg-[#EFECEC] text-[#242424]"
@@ -104,7 +104,7 @@ export default function MatchBet() {
 
         {/* 패 */}
         <section
-          className={`bg-[#B8B2B2] w-1/2 p-1 h-full rounded-r-2xl text-end text-white flex items-center gap-2 px-3 justify-end cursor-pointer ${
+          className={`bg-[#B8B2B2] w-1/2  py-3 rounded-r-2xl text-end text-white flex items-center gap-2 px-3 justify-end cursor-pointer ${
             selectBet === "패"
               ? "bg-black text-white"
               : "bg-[#b8b2b2] text-white"
@@ -117,13 +117,7 @@ export default function MatchBet() {
           <section className="flex flex-col">
             <strong className="font-[Pretendard-SemiBold]">NC</strong>
           </section>
-          <Image
-            src={Nc}
-            alt="nc"
-            width={36}
-            height={36}
-            // className="w-auto h-auto"
-          />
+          <Image src={Nc} alt="nc" width={24} height={24} className="w-auto" />
         </section>
       </section>
     </section>

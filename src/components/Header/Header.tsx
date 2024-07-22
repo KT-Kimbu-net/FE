@@ -92,6 +92,7 @@ export default function Header() {
               {menus.map((menu, index) => (
                 <div key={index} className="flex items-center text-center">
                   <Link
+                    prefetch={false}
                     href={menu.title === "Shop" ? "/shop" : "#"}
                     className={`font-semibold hover:bg-gray-200 rounded-lg p-2 w-28 ${
                       menu.title === "Ticket" || menu.title === "Shop"

@@ -6,27 +6,25 @@ import Shortcuts from "@/components/MainPage/Shortcuts/Shortcuts";
 import MatchBet from "@/components/MainPage/MatchBet/MatchBet";
 import Sponsor from "@/components/MainPage/Sponsor/Sponsor";
 import "react-tooltip/dist/react-tooltip.css";
-import { getTeamSchedule } from "@/libs/action/GetTeamSchedule";
+import { getWeekSchedule } from "@/libs/action/GetTeamSchedule";
 import { getLeagueRanking } from "@/libs/action/GetLeagueRanking";
 import GameInfoTest from "@/components/MainPage/GameInfo/GameInfoTest";
 
 export default async function Page() {
-  const weekSchedule = await getTeamSchedule();
+  const weekSchedule = await getWeekSchedule();
   const leagueRanking = await getLeagueRanking();
 
   return (
     <section className="flex flex-col items-center h-full">
       <section className="p-10 w-full h-full flex flex-col gap-12 bg-[url('/img/BgImage.svg')] bg-cover items-center">
-        <GameInfo />
+        <GameInfo teamsData={leagueRanking?.data} weekSchedule={weekSchedule} />
         {/* <GameInfoTest /> */}
         <section className="flex gap-14 w-3/4">
           <MatchBet />
           <Shortcuts />
         </section>
       </section>
-      <WeekSchedule
-        currentWeekSchedule={weekSchedule?.weekData.currentWeekGames}
-      />
+      <WeekSchedule currentWeekSchedule={weekSchedule} />
       <LeagueRanking leagueRanking={leagueRanking?.data} />
       <Notice />
       <Sponsor />
