@@ -52,7 +52,7 @@ export default function Login() {
             formAction={async (formData) => {
               const result = await loginAction(formData);
               if (result.status === 200) {
-                // chatSocket.connect();
+                chatSocket.connect();
                 setCookie("token", result.data.token);
                 localStorage.setItem("cleanChat", "0");
                 const newUserData = {

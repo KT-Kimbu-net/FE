@@ -14,7 +14,7 @@ export default function LoginCheck() {
   const getMyDataApiHandler = async () => {
     const data = await getMyDataAction();
     if (data?.status === 200) {
-      // chatSocket.connect();
+      chatSocket.connect();
       setUserData(data.data);
       setSelectBet(data?.data.gamePredict.choose);
     }

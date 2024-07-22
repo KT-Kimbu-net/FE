@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { matchPredictAction } from "@/libs/action/MatchPredictAction";
+// import { matchPredictAction } from "@/libs/action/MatchPredictAction";
 import { useLiveScoreState } from "@/store/liveScore";
 
 export default function MatchPredict() {
@@ -18,18 +18,18 @@ export default function MatchPredict() {
     setOpponentWinPercent: state.setOpponentWinPercent,
   }));
 
-  const fetchPredictData = async () => {
-    const predictData = await matchPredictAction();
-    const parsePredictData = predictData
-      ? Number(predictData?.predictData.substring(0, 2))
-      : 50;
+  // const fetchPredictData = async () => {
+  //   const predictData = await matchPredictAction();
+  //   const parsePredictData = predictData
+  //     ? Number(predictData?.predictData.substring(0, 2))
+  //     : 50;
 
-    setTimeout(() => {
-      setKtWinPercent(100 - parsePredictData);
-      setOpponentWinPercent(parsePredictData);
-      setShowText(true);
-    }, 100);
-  };
+  //   setTimeout(() => {
+  //     setKtWinPercent(100 - parsePredictData);
+  //     setOpponentWinPercent(parsePredictData);
+  //     setShowText(true);
+  //   }, 100);
+  // };
 
   useEffect(() => {
     // fetchPredictData();

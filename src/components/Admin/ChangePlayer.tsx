@@ -1,6 +1,6 @@
 "use client";
 
-import { chatSocket } from "@/socket/ChatSocket";
+import { gameSocket } from "@/socket/GameSocket";
 import { useState } from "react";
 const pitcherList: string[][] = [
   ["배재환", "이재학", "송명기"], //nc
@@ -25,7 +25,7 @@ export default function ChangePlayer() {
 
   const submitHandler = () => {
     console.log("submit");
-    chatSocket.emit("changePitcher", {
+    gameSocket.emit("changePitcher", {
       isKtwiz: isKtwiz,
       pitcher: pitcher,
     });

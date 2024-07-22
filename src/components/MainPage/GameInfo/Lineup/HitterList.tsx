@@ -19,41 +19,49 @@ export default function HitterList(props: THitterListProps) {
     setSelectHitter: state.setSelectHitter,
   }));
 
-  const phPredictApiHandler = async () => {
-    const token = getCookie("token");
-    const sendData = {
-      batter: {
-        name: props.hData.name,
-        H: props.hData.H,
-        AB: props.hData.AB,
-      },
-      pitcher: {
-        name: props.pData.name,
-        SO: props.pData.SO,
-        TBF: props.pData.TBF,
-      },
-    };
-    try {
-      const result = await fetch(
-        `${process.env.NEXT_PUBLIC_BASEURL}/vs_predict`,
-        {
-          method: "post",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `${token}`,
-          },
-          body: JSON.stringify(sendData),
-        }
-      );
-      if (result.ok) {
-        const data = await result.json();
-        const barWidth = Math.floor(data["타자가 공을 칠 확률"] * 100);
-        setPWinPercent(100 - barWidth);
-        setTWinPercent(barWidth);
-      }
-    } catch (error) {
-      console.log(error);
-    }
+  // const phPredictApiHandler = async () => {
+  //   const token = getCookie("token");
+  //   const sendData = {
+  //     batter: {
+  //       name: props.hData.name,
+  //       H: props.hData.H,
+  //       AB: props.hData.AB,
+  //     },
+  //     pitcher: {
+  //       name: props.pData.name,
+  //       SO: props.pData.SO,
+  //       TBF: props.pData.TBF,
+  //     },
+  //   };
+  //   try {
+  //     const result = await fetch(
+  //       `${process.env.NEXT_PUBLIC_BASEURL}/vs_predict`,
+  //       {
+  //         method: "post",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           Authorization: `${token}`,
+  //         },
+  //         body: JSON.stringify(sendData),
+  //       }
+  //     );
+  //     if (result.ok) {
+  //       console.log("active!!!!");
+  //       const data = await result.json();
+  //       const barWidth = Math.floor(data["타자가 공을 칠 확률"] * 100);
+  //       setPWinPercent(100 - barWidth);
+  //       setTWinPercent(barWidth);
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
+  const testHandler = () => {
+    const randomNumber = Math.floor(Math.random() * (60 - 50)) + 50;
+    const barWidth = Math.floor(randomNumber);
+    setPWinPercent(100 - barWidth);
+    setTWinPercent(barWidth);
   };
 
   const changePlayer = () => {
@@ -71,7 +79,8 @@ export default function HitterList(props: THitterListProps) {
       className="relative flex py-2 px-3.5 cursor-pointer w-full z-10"
       onClick={() => {
         changePlayer();
-        phPredictApiHandler();
+        // phPredictApiHandler();
+        testHandler();
       }}
     >
       <Image

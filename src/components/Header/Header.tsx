@@ -29,7 +29,7 @@ export default function Header() {
   const getMyDataApiHandler = async () => {
     const data = await getMyDataAction();
     if (data?.status === 200) {
-      // chatSocket.connect();
+      chatSocket.connect();
       setUserData(data.data);
       setSelectBet(data?.data.gamePredict.choose);
     }
@@ -39,7 +39,7 @@ export default function Header() {
     if (isShow) setIsShow();
     deleteCookie("token");
     chatSocket.disconnect();
-    resetUserData(); // 로그아웃
+    resetUserData();
   };
 
   const handleMouseEnter = () => {

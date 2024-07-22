@@ -1,5 +1,5 @@
 "use client";
-import { chatSocket } from "@/socket/ChatSocket";
+import { gameSocket } from "@/socket/GameSocket";
 import { useState } from "react";
 
 export default function ChangeScore() {
@@ -18,11 +18,11 @@ export default function ChangeScore() {
   };
 
   const submitHandler = () => {
-    if (chatSocket.disconnected) {
+    if (gameSocket.disconnected) {
       console.log("disconnected");
     }
     console.log("submit", isKtwiz, inning, score);
-    chatSocket.emit(
+    gameSocket.emit(
       "changeScore",
       {
         isKtwiz: isKtwiz,

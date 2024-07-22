@@ -1,9 +1,9 @@
 import { io, Socket } from "socket.io-client";
 
-export const chatSocket: Socket = io(
-  `${process.env.NEXT_PUBLIC_CHAT_SOCKETURL}`,
+export const gameSocket: Socket = io(
+  `${process.env.NEXT_PUBLIC_GAME_SOCKETURL}`,
   {
-    autoConnect: false,
+    autoConnect: true,
     reconnection: false,
     randomizationFactor: 1,
   }

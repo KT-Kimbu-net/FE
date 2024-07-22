@@ -2,6 +2,7 @@
 
 import { useEffect, useCallback } from "react";
 import { chatSocket } from "@/socket/ChatSocket";
+import { gameSocket } from "@/socket/GameSocket";
 import { useChatState } from "@/store/chatting";
 import { TMessageType } from "@/types/chatting";
 import { getCookie } from "cookies-next";
@@ -81,14 +82,14 @@ export default function ChatSocketHandler() {
   useEffect(() => {
     chatSocket.on("chatting", chatMsgSocketHandler);
     chatSocket.on("peoples", clientsCountSocketHandler);
-    chatSocket.on("changeScore", gameScoreSocketHandler);
-    chatSocket.on("changePitcher", pitcherChangeSocketHandler);
+    gameSocket.on("changeScore", gameScoreSocketHandler);
+    gameSocket.on("changePitcher", pitcherChangeSocketHandler);
     chatSocket.on("disconnect", disconnectSocketHandler);
     return () => {
       chatSocket.off("chatting", chatMsgSocketHandler);
       chatSocket.off("peoples", clientsCountSocketHandler);
-      chatSocket.off("changeScore", gameScoreSocketHandler);
-      chatSocket.off("changePitcher", pitcherChangeSocketHandler);
+      gameSocket.off("changeScore", gameScoreSocketHandler);
+      gameSocket.off("changePitcher", pitcherChangeSocketHandler);
     };
   }, []);
 
