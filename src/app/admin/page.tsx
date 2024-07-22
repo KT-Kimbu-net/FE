@@ -6,7 +6,7 @@ import ChangeScore from "@/components/Admin/ChangeScore";
 export default function page() {
   return (
     <>
-      <div className="flex flex-col items-center justify-center gpa-5">
+      <div className="flex flex-col items-center justify-center gap-5">
         {/* <ChangeScore /> */}
         <div className="w-full flex gap-5 items-center justify-center">
           <ChangeKtScore />

@@ -7,13 +7,8 @@ import {
   calculateInningAndHalf,
   calculateWinProbability,
 } from "@/utils/match/WinningPercentage";
-import { TLeagueRankingInfo } from "@/types/teams";
 
-type TDetailScore = {
-  vsTeamData?: TLeagueRankingInfo;
-  ktTeamData?: TLeagueRankingInfo;
-};
-export default function DetailScore(props: TDetailScore) {
+export default function DetailScoreTest() {
   const [currentInning, setCurrentInning] = useState("");
   const {
     kt,
@@ -100,7 +95,7 @@ export default function DetailScore(props: TDetailScore) {
         <tbody>
           <tr className="bg-[#f3f3f3]">
             <td className="px-2 border-r-[1px] border-white font-[Pretendard-SemiBold] text-center">
-              {props.ktTeamData?.팀}
+              KT
             </td>
             {ktRow.map((score, index) => (
               <td className={inningTdStyle} key={index}>
@@ -110,7 +105,7 @@ export default function DetailScore(props: TDetailScore) {
           </tr>
           <tr className="bg-[#f3f3f3] border-t-[1px] border-white">
             <td className="px-2 rounded-bl-xl border-r-[1px] border-white font-[Pretendard-SemiBold] text-center">
-              {props.vsTeamData?.팀}
+              Nc
             </td>
             {opponentRow.map((score, index) => (
               <td

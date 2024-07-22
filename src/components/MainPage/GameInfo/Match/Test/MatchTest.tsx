@@ -2,6 +2,7 @@ import MatchScoreTest from "./MatchScoreTest";
 import DetailScore from "../DetailScore";
 import MatchAnalogyTest from "../MatchAnalogyTest";
 import { TLiveInfo } from "@/types/liveScore";
+import DetailScoreTest from "./DetailScoreTest";
 // import { playerLuck } from "@/libs/action/PlayerLuck";
 // import {
 //   ktPlayerDummy,
@@ -24,7 +25,7 @@ export default async function MatchTest(props: TMatchProps) {
         ktScore={props.data.kt.score}
         opponentScore={props.data.opponent.score}
       />
-      <DetailScore
+      <DetailScoreTest
       // ktScore={props.data.kt.score}
       // opponentScore={props.data.opponent.score}
       />

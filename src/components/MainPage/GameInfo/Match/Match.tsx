@@ -33,14 +33,22 @@ export default async function Match(props: TMatchProps) {
         location={props.location}
         gtime={props.gtime}
       />
-      <DetailScore
-      // ktScore={props.data.kt.score}
-      // opponentScore={props.data.opponent.score}
-      />
-      <MatchAnalogy
-        vsTeamData={props.vsTeamData}
-        ktTeamData={props.ktTeamData}
-      />
+      {!props.vsTeamData ? (
+        <section className="flex h-full items-center justify-center font-[Pretendard-ExtraBold]">
+          오늘의 경기가 없어요!
+        </section>
+      ) : (
+        <>
+          <DetailScore
+            ktTeamData={props.ktTeamData}
+            vsTeamData={props.vsTeamData}
+          />
+          <MatchAnalogy
+            vsTeamData={props.vsTeamData}
+            ktTeamData={props.ktTeamData}
+          />
+        </>
+      )}
     </section>
   );
 }
