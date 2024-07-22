@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Kt from "@/img/TeamLogo/kt.png";
-import Kia from "@/img/TeamLogo/kia.png";
+import Nc from "@/img/TeamLogo/nc.png";
 import luck from "@/img/luck.svg";
 import { Tooltip } from "react-tooltip";
 
@@ -20,15 +20,15 @@ export default function MatchAnalogy(props: any) {
         <tbody>
           <tr>
             <td className="flex items-center flex-col">
-              <Image src={Kt} alt="kt" />
+              <Image src={Kt} alt="kt" width={40} height={40} />
               <strong className="text-lg mt-2">KT Wiz</strong>
             </td>
             <th className="align-bottom font-[Leferi] text-gray-500 text-lg">
               vs
             </th>
             <td className="flex items-center flex-col">
-              <Image src={Kia} alt="kia" />
-              <strong className="text-lg mt-2">Kia Tigers</strong>
+              <Image src={Nc} alt="nc" width={40} height={40} />
+              <strong className="text-lg mt-2">Nc Dinos</strong>
             </td>
           </tr>
           <tr className="bg-[#f3f3f3]">
@@ -77,7 +77,7 @@ export default function MatchAnalogy(props: any) {
                 alt="luck"
                 className="absolute right-8 top-1/2 translate-y-[-50%]"
                 data-tooltip-id="kt-pitcher-tooltip"
-                data-tooltip-content={props.kt.text}
+                data-tooltip-content={"테스트"}
               />
               <Tooltip
                 id="kt-pitcher-tooltip"
@@ -92,7 +92,7 @@ export default function MatchAnalogy(props: any) {
                 alt="luck"
                 className="absolute left-8 top-1/2 translate-y-[-50%]"
                 data-tooltip-id="kia-pitcher-tooltip"
-                data-tooltip-content={props.opponent.text}
+                data-tooltip-content={"테스트"}
               />
               <Tooltip
                 id="kia-pitcher-tooltip"

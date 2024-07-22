@@ -7,15 +7,11 @@ import MatchBet from "@/components/MainPage/MatchBet/MatchBet";
 import Sponsor from "@/components/MainPage/Sponsor/Sponsor";
 import "react-tooltip/dist/react-tooltip.css";
 import { getTeamSchedule } from "@/libs/action/GetTeamSchedule";
-
-const getLeagueRankApiHandler = async () => {
-  const url = `${process.env.NEXT_PUBLIC_BASEURL}/today_rank`;
-  return await (await fetch(url, { cache: "no-store" })).json();
-};
+import { getLeagueRanking } from "@/libs/action/GetLeagueRanking";
 
 export default async function Page() {
-  const data = await getLeagueRankApiHandler();
   const weekSchedule = await getTeamSchedule();
+  const leagueRanking = await getLeagueRanking();
 
   return (
     <section className="flex flex-col items-center h-full">
@@ -29,7 +25,7 @@ export default async function Page() {
       <WeekSchedule
         currentWeekSchedule={weekSchedule?.weekData.currentWeekGames}
       />
-      <LeagueRanking leagueRanking={data} />
+      <LeagueRanking leagueRanking={leagueRanking?.data} />
       <Notice />
       <Sponsor />
     </section>
