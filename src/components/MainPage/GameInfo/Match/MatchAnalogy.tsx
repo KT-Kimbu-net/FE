@@ -1,12 +1,17 @@
 "use client";
 
 import Image from "next/image";
-import Kt from "@/img/TeamLogo/kt.png";
-import Kia from "@/img/TeamLogo/kia.png";
 import luck from "@/img/luck.svg";
 import { Tooltip } from "react-tooltip";
+import { getTeamLogo } from "@/utils/gameInfo";
+import { TLeagueRankingInfo } from "@/types/teams";
 
-export default function MatchAnalogy(props: any) {
+type TMatchAnalogy = {
+  vsTeamData?: TLeagueRankingInfo;
+  ktTeamData?: TLeagueRankingInfo;
+};
+
+export default function MatchAnalogy(props: TMatchAnalogy) {
   return (
     <section className="w-full flex justify-center mt-4 flex-col">
       <section className="relative border-t-[2px] border-black w-full">
@@ -20,33 +25,49 @@ export default function MatchAnalogy(props: any) {
         <tbody>
           <tr>
             <td className="flex items-center flex-col">
-              <Image src={Kt} alt="kt" />
-              <strong className="text-lg mt-2">KT Wiz</strong>
+              {props.ktTeamData && (
+                <Image
+                  src={getTeamLogo(props.ktTeamData.팀)}
+                  alt="kt"
+                  width={40}
+                  height={40}
+                />
+              )}
+              <strong className="text-lg mt-2">{props.ktTeamData?.팀}</strong>
             </td>
             <th className="align-bottom font-[Leferi] text-gray-500 text-lg">
               vs
             </th>
             <td className="flex items-center flex-col">
-              <Image src={Kia} alt="kia" />
-              <strong className="text-lg mt-2">Kia Tigers</strong>
+              {props.vsTeamData?.팀 && (
+                <Image
+                  src={getTeamLogo(props.vsTeamData?.팀)}
+                  alt="nc"
+                  width={40}
+                  height={40}
+                />
+              )}
+              <strong className="text-lg mt-2">{props.vsTeamData?.팀}</strong>
             </td>
           </tr>
           <tr className="bg-[#f3f3f3]">
-            <td className="text-center py-2 font-[Pretendard-SemiBold] bg-[#f3f3f3] text-lg rounded-tl-xl">
-              9
+            <td className="text-center py-2 font-[Pretendard-SemiBold] bg-[#f3f3f3] text-lg rounded-tl-xl  text-main">
+              {props.ktTeamData?.순위}
             </td>
             <th className="py-2">현재순위</th>
-            <td className="text-center py-2 font-[Pretendard-SemiBold] text-lg text-main rounded-tr-xl">
-              1
+            <td className="text-center py-2 font-[Pretendard-SemiBold] text-lg rounded-tr-xl">
+              {props.vsTeamData?.순위}
             </td>
           </tr>
           <tr className="bg-[#f3f3f3]">
             <td className="text-center py-2 text-gray-700 font-[Pretendard-Medium]">
-              33승 1무 43패
+              {props.ktTeamData?.승}승 {props.ktTeamData?.무}무{" "}
+              {props.ktTeamData?.패}패
             </td>
             <th className="py-2">시즌 성적</th>
             <td className="text-center py-2 text-gray-700 font-[Pretendard-Medium]">
-              45승 2무 30패
+              {props.vsTeamData?.승}승 {props.vsTeamData?.무}무{" "}
+              {props.vsTeamData?.패}패
             </td>
           </tr>
           <tr className="bg-[#f3f3f3]">
@@ -60,11 +81,11 @@ export default function MatchAnalogy(props: any) {
           </tr>
           <tr className="bg-[#f3f3f3]">
             <td className="text-center py-2 text-gray-700 font-[Pretendard-Medium]">
-              0.434
+              {props.ktTeamData?.승률}
             </td>
             <th className="py-2">승률</th>
             <td className="text-center py-2 text-gray-700 font-[Pretendard-Medium]">
-              0.600
+              {props.vsTeamData?.승률}
             </td>
           </tr>
           <tr className="bg-[#f3f3f3]">
@@ -77,7 +98,7 @@ export default function MatchAnalogy(props: any) {
                 alt="luck"
                 className="absolute right-8 top-1/2 translate-y-[-50%]"
                 data-tooltip-id="kt-pitcher-tooltip"
-                data-tooltip-content={props.kt.text}
+                data-tooltip-content={"테스트"}
               />
               <Tooltip
                 id="kt-pitcher-tooltip"
@@ -92,7 +113,7 @@ export default function MatchAnalogy(props: any) {
                 alt="luck"
                 className="absolute left-8 top-1/2 translate-y-[-50%]"
                 data-tooltip-id="kia-pitcher-tooltip"
-                data-tooltip-content={props.opponent.text}
+                data-tooltip-content={"테스트"}
               />
               <Tooltip
                 id="kia-pitcher-tooltip"

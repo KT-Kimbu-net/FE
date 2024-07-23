@@ -7,7 +7,6 @@ import {
 
 export const useChatState = create<TUseChatState>((set, get) => ({
   isShow: false,
-  cleanChat: false,
   userCount: "",
   chatLog: [],
   setIsShow: () => set((state) => ({ isShow: !state.isShow })),
@@ -21,8 +20,6 @@ export const useChatState = create<TUseChatState>((set, get) => ({
     }),
   setAllChatLog: (allMessage) => set({ chatLog: allMessage }),
   setUserCount: (changeUserCount) => set({ userCount: changeUserCount }),
-  setCleanChat: () => set((state) => ({ cleanChat: !state.cleanChat })),
-  getCleanChat: () => get().cleanChat,
 }));
 
 export const useReportMsgState = create<TReportMessage>((set) => ({

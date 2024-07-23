@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Kt from "@/img/TeamLogo/kt.png";
-import Kia from "@/img/TeamLogo/kia.png";
+import Nc from "@/img/TeamLogo/nc.png";
 import { getCookie } from "cookies-next";
 import { GameChoose } from "@/types/api";
 import { useGameBetState } from "@/store/resultBet";
@@ -53,7 +53,7 @@ export default function MatchBet() {
       <section className="bg-white w-1/3 rounded-2xl flex flex-col items-center p-5 animate-pulse">
         <section className="h-6 bg-gray-200 rounded w-3/4 mb-2"></section>
         <section className="h-4 bg-gray-200 rounded w-1/2 mb-5"></section>
-        <section className="w-full h-20 bg-gray-200 rounded-2xl"></section>
+        <section className="w-full h-18 bg-gray-200 rounded-2xl"></section>
       </section>
     );
   }
@@ -66,27 +66,28 @@ export default function MatchBet() {
       <section className="font-[Pretendard-SemiBold] text-[#8a8a8a]">
         경기 시작 10분전 마감됩니다.
       </section>
-      <section className="relative w-full p-5 h-fit mt-5 flex justify-between items-center">
+      <section className="relative w-full h-fit mt-5 flex justify-between items-stretch">
         {/* 승 */}
         <section
           className={`w-1/2 ${
             selectBet === "승"
               ? "bg-main text-white"
               : "bg-[#ffd0d0] text-black"
-          } p-1 rounded-l-2xl flex items-center gap-2 px-3 cursor-pointer`}
+          } p-1 rounded-l-2xl flex items-center gap-2 px-3 cursor-pointer h-full overflow-hidden`}
           onClick={() => {
             setSelectBet("승");
             selectBetApiHandler("승");
           }}
         >
-          <Image src={Kt} alt="kt" width={40} height={40} />
+          <Image src={Kt} alt="kt" width={32} height={24} className="w-auto" />
           <section className="flex flex-col font-[Pretendard-Bold]">
             <strong className="font-[Pretendard-SemiBold]">KT</strong>
           </section>
         </section>
+
         {/* 무 */}
         <section
-          className={`absolute right-0 left-1/2 translate-x-[-50%] [clip-path:polygon(0_0,80%_0%,100%_100%,20%_100%)] p-1 translate-y-[-50%] top-1/2 w-1/3 cursor-pointer ${
+          className={`flex items-center justify-center absolute right-0 h-full left-1/2 translate-x-[-50%] [clip-path:polygon(0_0,80%_0%,100%_100%,20%_100%)] p-1 translate-y-[-50%] top-1/2 w-1/3 cursor-pointer ${
             selectBet === "무"
               ? "bg-black text-white"
               : "bg-[#EFECEC] text-[#242424]"
@@ -100,9 +101,10 @@ export default function MatchBet() {
             <strong className="font-[Pretendard-SemiBold]">무</strong>
           </section>
         </section>
+
         {/* 패 */}
         <section
-          className={`bg-[#B8B2B2] w-1/2 p-1 rounded-r-2xl text-end text-white flex items-center gap-2 px-3 justify-end cursor-pointer ${
+          className={`bg-[#B8B2B2] w-1/2  py-3 rounded-r-2xl text-end text-white flex items-center gap-2 px-3 justify-end cursor-pointer ${
             selectBet === "패"
               ? "bg-black text-white"
               : "bg-[#b8b2b2] text-white"
@@ -113,9 +115,9 @@ export default function MatchBet() {
           }}
         >
           <section className="flex flex-col">
-            <strong className="font-[Pretendard-SemiBold]">KIA</strong>
+            <strong className="font-[Pretendard-SemiBold]">NC</strong>
           </section>
-          <Image src={Kia} alt="kia" width={40} height={40} />
+          <Image src={Nc} alt="nc" width={24} height={24} className="w-auto" />
         </section>
       </section>
     </section>

@@ -38,10 +38,12 @@ const playerSubHeaderData: { [key: string]: TPlayerSubHeaderData } = {
 };
 
 export default function layout(props: TPageProps) {
-
   return (
     <>
-      <SubHeader title={playerSubHeaderData[props.params.position].title} subTitle={playerSubHeaderData[props.params.position].subTitle} />
+      <SubHeader
+        title={playerSubHeaderData[props.params.position].title}
+        subTitle={playerSubHeaderData[props.params.position].subTitle}
+      />
       <SideMenu {...playerSideMenuData} params={props.params.position} />
       <div className="mt-3">{props.children}</div>
     </>

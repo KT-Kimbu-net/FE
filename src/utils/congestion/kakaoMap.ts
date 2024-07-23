@@ -7,7 +7,7 @@ declare global {
 export function createKakaoMap(markersData: any[]) {
   const kakaoMapScript = document.createElement("script");
   kakaoMapScript.async = false;
-  kakaoMapScript.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=7febf72e32596d10375fb284d60c16f1&autoload=false`;
+  kakaoMapScript.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_MAP_KEY}&autoload=false`;
   document.head.appendChild(kakaoMapScript);
 
   const onLoadKakaoAPI = () => {

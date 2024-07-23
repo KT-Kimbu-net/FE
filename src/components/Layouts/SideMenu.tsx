@@ -13,6 +13,7 @@ export default function SideMenu(props: TSideMenu) {
         key={`${menu.keyword}-${depth}`}
       >
         <Link
+          prefetch={false}
           href={menu.menuUrl}
           className={`w-full ${marginClasses[depth]} ${
             menu.keyword === props.params && selectStyle

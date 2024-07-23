@@ -74,9 +74,9 @@ export default function HeaderMobile({
             </svg>
           )}
         </button>
-        <Link href="/" className="text-black font-bold">
+        {/* <Link href="/" className="text-black font-bold">
           <img src={imgLogoBlack} alt="Logo" width={100} height={100} />
-        </Link>
+        </Link> */}
         <button
           className="inline-flex items-center justify-center p-2 rounded-md text-black hover:text-black focus:outline-none focus:ring-2 focus:ring-inset focus:ring-black"
           onClick={toggleUserMenu}
@@ -159,6 +159,7 @@ export default function HeaderMobile({
                   {menu.items.map((item, idx) => (
                     <li key={idx}>
                       <Link
+                        prefetch={false}
                         href={item.link}
                         className="text-black block hover:bg-gray-200 rounded-lg p-2"
                       >

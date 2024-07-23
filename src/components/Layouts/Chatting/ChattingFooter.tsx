@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useModalState } from "@/store/modal";
 import Image from "next/image";
 import image from "@/img/Chatting/image.svg";
@@ -8,13 +8,12 @@ import userSetting from "@/img/Chatting/userSetting.svg";
 import MessageInput from "./MessageInput";
 import { useUserState } from "@/store/user";
 import { chatSocket } from "@/socket/ChatSocket";
-import { useChatState } from "@/store/chatting";
 import { nanoid } from "nanoid";
 import { formatMessageDate } from "@/utils/date";
-import { resizeImageFile } from "@/utils/img/imgResizer";
 import { imageResizerSocketHandler } from "@/utils/socketHandler";
 
 export default function ChattingFooter() {
+  const [isClean, setIsClean] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const messageRef = useRef<HTMLTextAreaElement>(null);
   const { setModalName } = useModalState((state) => ({
@@ -23,11 +22,6 @@ export default function ChattingFooter() {
 
   const { userData } = useUserState((state) => ({
     userData: state.userData,
-  }));
-
-  const { cleanChat, setCleanChat } = useChatState((state) => ({
-    cleanChat: state.cleanChat,
-    setCleanChat: state.setCleanChat,
   }));
 
   const iconStyle = "w-6 h-6";
@@ -94,19 +88,24 @@ export default function ChattingFooter() {
             />
           </section>
         </section>
-        <section className="text-white text-sm flex gap-2">
-          <span>클린봇</span>
+        <section className="text-white text-sm flex gap-2 items-center">
+          <span className="text-xs">클린봇</span>
           <section
-            className={`relative w-[3rem] rounded-xl flex items-center px-1 cursor-pointer ${
-              cleanChat ? "bg-[#25ff71]" : "bg-white"
+            className={`relative h-[1.5rem] w-[3rem] rounded-xl flex items-center py-2 px-1 cursor-pointer ${
+              localStorage.getItem("cleanChat") === "1"
+                ? "bg-[#25ff71]"
+                : "bg-white"
             }`}
             onClick={() => {
-              setCleanChat();
+              setIsClean((prevState) => !prevState);
+              if (localStorage.getItem("cleanChat") === "1")
+                localStorage.setItem("cleanChat", "0");
+              else localStorage.setItem("cleanChat", "1");
             }}
           >
             <section
-              className={`w-[1rem] h-[1rem] rounded-full absolute duration-300 ${
-                cleanChat ? "bg-white right-1" : "bg-black left-1"
+              className={`w-[1rem] h-[1rem] rounded-full absolute duration-300 bg-black ${
+                localStorage.getItem("cleanChat") === "1" ? "right-1" : "left-1"
               }`}
             />
           </section>

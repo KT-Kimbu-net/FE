@@ -39,7 +39,7 @@ export default function Header() {
     if (isShow) setIsShow();
     deleteCookie("token");
     chatSocket.disconnect();
-    resetUserData(); // 로그아웃
+    resetUserData();
   };
 
   const handleMouseEnter = () => {
@@ -74,7 +74,13 @@ export default function Header() {
             {/* 좌측 로고 */}
             <div className="absolute left-0 top-1/2 translate-y-[-50%]">
               <Link href="/">
-                <Image src={imgLogoBlack} alt="Logo" width={100} height={100} />
+                <Image
+                  src={imgLogoBlack}
+                  alt="Logo"
+                  width={100}
+                  height={100}
+                  className="w-auto h-auto"
+                />
               </Link>
             </div>
 
@@ -86,6 +92,7 @@ export default function Header() {
               {menus.map((menu, index) => (
                 <div key={index} className="flex items-center text-center">
                   <Link
+                    prefetch={false}
                     href={menu.title === "Shop" ? "/shop" : "#"}
                     className={`font-semibold hover:bg-gray-200 rounded-lg p-2 w-28 ${
                       menu.title === "Ticket" || menu.title === "Shop"
@@ -100,7 +107,13 @@ export default function Header() {
             </nav>
 
             {/* 우측 버튼들 */}
-            {!isLoading && <UserMenu user={userData} handleLogout={handleLogout} isLoading={isLoading}/>}
+            {!isLoading && (
+              <UserMenu
+                user={userData}
+                handleLogout={handleLogout}
+                isLoading={isLoading}
+              />
+            )}
           </div>
         </div>
         {/* 메가드롭다운 메뉴 */}

@@ -46,8 +46,8 @@ export default function PHWinRate(props: TPHWinRate) {
           <span className="text-[#FFBEC1] ml-2">{pWinPercent}%</span>
         </section>
         <section
-          className="absolute right-0 bg-[#242424] w-[55%] flex items-center justify-end rounded-r-2xl [clip-path:polygon(0_0,100%_0,100%_100%,20%_100%)] px-4 py-3 duration-500 ease-in-out"
-          style={{ width: `${tWinPercent}%` }}
+          className="absolute right-0 bg-[#242424] w-[60%] flex items-center justify-end rounded-r-2xl [clip-path:polygon(0_0,100%_0,100%_100%,20%_100%)] px-4 py-3 duration-500 ease-in-out"
+          style={{ width: `${tWinPercent + 5}%` }}
         >
           <span className="text-[#ABABAB] mr-2">{tWinPercent}%</span>
           <strong className="text-white">{hitterPlayer?.name}</strong>

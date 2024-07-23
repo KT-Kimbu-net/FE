@@ -5,33 +5,27 @@ import GameInfo from "@/components/MainPage/GameInfo/GameInfo";
 import Shortcuts from "@/components/MainPage/Shortcuts/Shortcuts";
 import MatchBet from "@/components/MainPage/MatchBet/MatchBet";
 import Sponsor from "@/components/MainPage/Sponsor/Sponsor";
-import ChatSocketConnectHandler from "@/components/Socket/ChatSocketConnectHandler";
 import "react-tooltip/dist/react-tooltip.css";
-import { getTeamSchedule } from "@/libs/action/GetTeamSchedule";
-
-const getLeagueRankApiHandler = async () => {
-  const url = `${process.env.NEXT_PUBLIC_BASEURL}/today_rank`;
-  return await (await fetch(url, { cache: "no-store" })).json();
-};
+import { getWeekSchedule } from "@/libs/action/GetTeamSchedule";
+import { getLeagueRanking } from "@/libs/action/GetLeagueRanking";
+import GameInfoTest from "@/components/MainPage/GameInfo/GameInfoTest";
 
 export default async function Page() {
-  const data = await getLeagueRankApiHandler();
-  const weekSchedule = await getTeamSchedule();
+  const weekSchedule = await getWeekSchedule();
+  const leagueRanking = await getLeagueRanking();
 
   return (
     <section className="flex flex-col items-center h-full">
-      <ChatSocketConnectHandler />
       <section className="p-10 w-full h-full flex flex-col gap-12 bg-[url('/img/BgImage.svg')] bg-cover items-center">
-        <GameInfo />
+        <GameInfo teamsData={leagueRanking?.data} weekSchedule={weekSchedule} />
+        {/* <GameInfoTest /> */}
         <section className="flex gap-14 w-3/4">
           <MatchBet />
           <Shortcuts />
         </section>
       </section>
-      <WeekSchedule
-        currentWeekSchedule={weekSchedule?.weekData.currentWeekGames}
-      />
-      <LeagueRanking leagueRanking={data} />
+      <WeekSchedule currentWeekSchedule={weekSchedule} />
+      <LeagueRanking leagueRanking={leagueRanking?.data} />
       <Notice />
       <Sponsor />
     </section>

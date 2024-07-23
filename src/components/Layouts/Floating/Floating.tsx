@@ -44,14 +44,20 @@ export default function Floating() {
           <span className={titleStyle}>티켓예매</span>
         </li>
         <li className={listStyle}>
-          <Image
-            src={parking}
-            alt="parking"
-            className={iconStyle}
-            width={15}
-            height={15}
-          />
-          <span className={titleStyle}>주차안내</span>
+          <Link
+            href="https://www.ktwiz.co.kr/wizpark/parking"
+            target="_blank"
+            className="flex flex-col items-center gap-2"
+          >
+            <Image
+              src={parking}
+              alt="parking"
+              className={iconStyle}
+              width={15}
+              height={15}
+            />
+            <span className={titleStyle}>주차안내</span>
+          </Link>
         </li>
         <li
           className={listStyle}
@@ -81,14 +87,20 @@ export default function Floating() {
           </Link>
         </li>
         <li className={listStyle}>
-          <Image
-            src={shop}
-            alt="kt wiz shop"
-            className={iconStyle}
-            width={15}
-            height={15}
-          />
-          <span className={titleStyle}>KT Wiz상점</span>
+          <Link
+            href="https://www.ktwizstore.co.kr/"
+            target="_blank"
+            className="flex flex-col items-center gap-2"
+          >
+            <Image
+              src={shop}
+              alt="kt wiz shop"
+              className={iconStyle}
+              width={15}
+              height={15}
+            />
+            <span className={titleStyle}>KT Wiz상점</span>
+          </Link>
         </li>
         <li className={listStyle} onClick={isLoginCheckHandler}>
           <Image

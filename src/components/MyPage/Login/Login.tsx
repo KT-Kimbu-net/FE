@@ -53,8 +53,8 @@ export default function Login() {
               const result = await loginAction(formData);
               if (result.status === 200) {
                 chatSocket.connect();
-                console.log("로그인 성공");
                 setCookie("token", result.data.token);
+                localStorage.setItem("cleanChat", "0");
                 const newUserData = {
                   userId: result.data.userId,
                   nickname: result.data.nickname,

@@ -1,6 +1,6 @@
 "use client";
 
-import { chatSocket } from "@/socket/ChatSocket";
+import { gameSocket } from "@/socket/GameSocket";
 import { useState } from "react";
 const pitcherList: string[][] = [
   ["배재환", "이재학", "송명기"], //nc
@@ -24,13 +24,31 @@ export default function ChangePlayer() {
   };
 
   const submitHandler = () => {
-    console.log("submit");
-    chatSocket.emit("changePitcher", {
+    if (gameSocket.disconnected) {
+      gameSocket.connect();
+    }
+    gameSocket.emit("changePitcher", {
       isKtwiz: isKtwiz,
       pitcher: pitcher,
     });
     setIsKtwiz(true);
     setPitcher("우규민");
+  };
+
+  const deleteDataApiHandler = async () => {
+    try {
+      const result = await fetch(
+        `${process.env.NEXT_PUBLIC_CHAT_BASEURL}/deleteLiveInfo`,
+        {
+          method: "delete",
+        }
+      );
+      if (result.ok) {
+        console.log("firestore data delete success!!!!");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -76,6 +94,12 @@ export default function ChangePlayer() {
         className="bg-red-400 text-white p-3 rounded-[10px]"
       >
         선수 변경하기
+      </button>
+      <button
+        onClick={deleteDataApiHandler}
+        className="w-100 h-100 bg-black text-white rounded-xl px-3 py-1"
+      >
+        데이터 초기화
       </button>
     </div>
   );
