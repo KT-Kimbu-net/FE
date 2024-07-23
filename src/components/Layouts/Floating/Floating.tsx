@@ -31,7 +31,7 @@ export default function Floating() {
   };
 
   return (
-    <section className="fixed top-[10%] right-0 h-fit bg-[rgba(0,0,0,0.7)] text-white px-1">
+    <section className="fixed top-[10%] right-0 h-fit bg-[rgba(0,0,0,0.7)] text-white px-1 z-20">
       <ul className="flex flex-col justify-betweenitems-center h-full">
         <li className={listStyle}>
           <Image
@@ -75,14 +75,16 @@ export default function Floating() {
           <span className={titleStyle}>데일리퀴즈/랭킹</span>
         </li>
         <li className={listStyle}>
-          <Image
-            src={stadium}
-            alt="stadium"
-            className={iconStyle}
-            width={15}
-            height={15}
-          />
-          <span className={titleStyle}>구장 혼잡도</span>
+          <Link href="/wizpark/congestion">
+            <Image
+              src={stadium}
+              alt="stadium"
+              className={iconStyle}
+              width={15}
+              height={15}
+            />
+            <span className={titleStyle}>구장 혼잡도</span>
+          </Link>
         </li>
         <li className={listStyle}>
           <Link

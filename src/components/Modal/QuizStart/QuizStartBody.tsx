@@ -9,6 +9,7 @@ export default function QuizStartBody() {
 
   const handleStart = () => {
     setModalName(userData !== null ? "quizProblem" : "alertLogin");
+    setModalName("quizProblem");
     reset();
     setProblemIndex(1);
     console.log("answers reset");
