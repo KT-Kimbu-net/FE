@@ -26,12 +26,9 @@ export default function QuizResult() {
         creditAmount: (userData.credit.creditAmount ?? 0) + points,
       };
       setUserData(updatedUserData);
-      console.log(pointsSent);
       sendPoints(points)
         .then((response) => {
-          console.log("Points sent successfully:", response);
-          console.log(`Total points after update: ${response.pointAmount}`);
-          setPointsSent(true); // 포인트가 전송되었음을 표시x
+          setPointsSent(true);
         })
         .catch((error) => {
           console.error("Failed to send points:", error);

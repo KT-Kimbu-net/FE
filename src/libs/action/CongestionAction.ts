@@ -21,7 +21,6 @@ export default async function congestionAction() {
     });
     if (result.ok) {
       const responseData = await result.json();
-      console.log(responseData);
       return updateMarkersData(markersData, responseData);
     } else {
       console.error("Failed to fetch data:", result.status);

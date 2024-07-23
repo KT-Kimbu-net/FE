@@ -25,7 +25,6 @@ export default function TableBody({
   const score = getScore(data, criteria as FilterCriteria);
   const rate = getRating(criteria as FilterCriteria);
   const width = score ?? 0 > rate ? rate : (score ?? 0 / rate) * 100;
-  console.log("tablebody > " + loading);
   return (
     <>
       <tr

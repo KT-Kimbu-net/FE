@@ -19,7 +19,6 @@ export default function InputDate(props: TProps) {
             return;
           }
           props.setStartDate(e.target.value);
-          console.log(e.target.value);
         }}
         className=" h-[45px] px-2 border-[#DDDDDD] border-[1px]"
       />
@@ -32,7 +31,8 @@ export default function InputDate(props: TProps) {
             alert("종료일은 시작일보다 작을 수 없습니다.");
             return;
           }
-          props.setEndDate(e.target.value)}}
+          props.setEndDate(e.target.value);
+        }}
         className=" h-[45px] px-2 border-[#DDDDDD] border-[1px]"
       />
       <button

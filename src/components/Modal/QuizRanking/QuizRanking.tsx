@@ -32,7 +32,6 @@ export default function QuizRanking() {
 
   useEffect(() => {
     setLoading(true);
-    console.log("loading " + loading);
     getRanking(userData?.userId || "", rankParameters[criteria]).then(
       (data) => {
         setFilteredRankingData(
@@ -46,7 +45,6 @@ export default function QuizRanking() {
     );
   }, [criteria]);
 
-  console.log("tablebody renadering");
   return (
     <>
       <div className="relative first-line:flex flex-col rounded-[12px] bg-opacity-100 bg-[#a42a2a] w-[500px] box-border">

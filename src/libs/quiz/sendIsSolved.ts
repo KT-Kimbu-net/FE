@@ -7,7 +7,6 @@ export type isSolvedRequest = {
 
 export async function sendIsSolved(userId: string): Promise<isSolvedRequest> {
   const url = `${process.env.NEXT_PUBLIC_BASEURL}/event/solved`;
-  console.log("Sending isSolved to URL:", url); // URL 확인
 
   const token = cookies().get("token")?.value;
   if (!token) {

@@ -49,8 +49,6 @@ export default function Point() {
       }
     );
     const data = await result.json();
-    console.log(data);
-
     setHistorys(data[menuStatusApi[menuStatus][1]]);
   };
   useEffect(() => {

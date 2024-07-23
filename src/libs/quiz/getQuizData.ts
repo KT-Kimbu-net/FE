@@ -4,9 +4,7 @@ import { cookies } from "next/headers";
 
 export async function getQuizData() {
   const url = `${process.env.NEXT_PUBLIC_BASEURL}/event/today_quiz`;
-  console.log("Fetching URL:", url); // URL 확인
 
-  // const token = localStorage.getItem("token"); // 로컬 스토리지에서 토큰 가져오기
   const token = cookies().get("token")?.value;
 
   if (!token) {

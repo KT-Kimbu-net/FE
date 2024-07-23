@@ -33,7 +33,6 @@ export default function PointtList(props: TProps) {
   }
   useEffect(() => {
     setHistorys(chunkArray(props.historys, 10));
-    console.log(props.historys);
   }, [props.historys]);
 
   return (

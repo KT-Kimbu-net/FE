@@ -12,7 +12,6 @@ export default function QuizStartBody() {
     setModalName("quizProblem");
     reset();
     setProblemIndex(1);
-    console.log("answers reset");
   };
   return (
     <>

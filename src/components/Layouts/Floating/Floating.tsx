@@ -75,7 +75,10 @@ export default function Floating() {
           <span className={titleStyle}>데일리퀴즈/랭킹</span>
         </li>
         <li className={listStyle}>
-          <Link href="/wizpark/congestion">
+          <Link
+            href="/wizpark/congestion"
+            className="flex flex-col items-center gap-2"
+          >
             <Image
               src={stadium}
               alt="stadium"

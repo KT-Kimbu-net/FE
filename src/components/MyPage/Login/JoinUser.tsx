@@ -14,7 +14,6 @@ export default function JoinUser() {
         className="flex flex-col w-full h-full items-center justify-between"
         action={async (formData) => {
           const result = await joinUserAction(formData);
-          console.log(result);
           if (!result?.success) {
             alert(result?.message);
           }

@@ -18,11 +18,9 @@ export default function EditProfile() {
         body: JSON.stringify({}),
       }
     );
-    console.log(result);
   };
   useEffect(() => {
     const cookie = document.cookie.split("token=")[1];
-    console.log(cookie);
 
     if (token) {
       getHisoryHandler();
@@ -34,8 +32,12 @@ export default function EditProfile() {
     <>
       <section className="flex items-center justify-center">
         <div>
-          <p className="h-[50px]  font-[600] text-center flex justify-center flex-col">아이디 : {userData?.userId}</p>
-          <p className="h-[50px]  font-[600] text-center flex justify-center flex-col">닉네임 : {userData?.nickname}</p>
+          <p className="h-[50px]  font-[600] text-center flex justify-center flex-col">
+            아이디 : {userData?.userId}
+          </p>
+          <p className="h-[50px]  font-[600] text-center flex justify-center flex-col">
+            닉네임 : {userData?.nickname}
+          </p>
           <p className="h-[50px]  font-[600] text-center flex justify-center flex-col">
             {userData?.gamePredict &&
               `오늘의 예측 : ${
@@ -44,7 +46,9 @@ export default function EditProfile() {
                   : userData.gamePredict.choose
               }`}
           </p>
-          <p className="h-[50px]  font-[600] text-center flex justify-center flex-col">오늘의 퀴즈 : {userData?.quiz.isSolved ? "참여완료" : "미참여"}</p>
+          <p className="h-[50px]  font-[600] text-center flex justify-center flex-col">
+            오늘의 퀴즈 : {userData?.quiz.isSolved ? "참여완료" : "미참여"}
+          </p>
         </div>
       </section>
     </>
