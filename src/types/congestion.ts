@@ -18,9 +18,9 @@ export const categoryItems: TItem[] = [
   { src: toilet, alt: "toilet icon", label: "화장실" },
 ];
 export const congestionItems: TItem[] = [
-  { src: marker, alt: "", label: "혼잡", color: "text-red-600" },
-  { src: marker, alt: "", label: "보통", color: "text-yellow-600" },
-  { src: marker, alt: "", label: "여유", color: "text-green-500" },
+  { src: marker, alt: "", label: "혼잡", color: "red" },
+  { src: marker, alt: "", label: "보통", color: "#EAB308" },
+  { src: marker, alt: "", label: "여유", color: "green" },
 ];
 export type Marker = {
   x: number;

@@ -25,6 +25,7 @@ export function createKakaoMap(markersData: any[]) {
 
       window.kakao.maps.Tileset.add(
         "PLAN",
+        // new window.kakao.maps.Tileset(512, 512, plan, "", false, 0, 2)
         new window.kakao.maps.Tileset(512, 512, plan, "", false, 0)
       );
 
@@ -52,10 +53,6 @@ export function createKakaoMap(markersData: any[]) {
         });
         marker.setMap(map);
 
-        // const infowindow = new window.kakao.maps.InfoWindow({
-        //   content: markerData.content,
-        // });
-        // infowindow.open(map, marker);
         const content =
           '<div class="customoverlay">' +
           '    <span class="title">' +

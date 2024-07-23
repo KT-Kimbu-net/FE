@@ -1,6 +1,7 @@
 "use server";
 
-import { markersData, updateMarkersData } from "@/data/congesion/markerData";
+import { markersData } from "@/data/congesion/markerData";
+import { updateMarkersData } from "@/utils/congestion/updateMarkerData";
 
 export default async function congestionAction() {
   const reportInfo = {
