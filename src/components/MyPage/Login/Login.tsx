@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import ktWizMiniLogo from "/public/img/ktWizMiniLogo.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { loginAction } from "@/libs/action/LoginAction";
 import { useUserState } from "@/store/user";
@@ -25,6 +25,12 @@ export default function Login() {
   const handlePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
   };
+
+  useEffect(()=>{
+    if (userData) {
+      router.push("/mypage/editprofile");
+    }
+  },[])
 
   return (
     <>

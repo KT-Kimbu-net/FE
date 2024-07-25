@@ -6,5 +6,6 @@ export const gameSocket: Socket = io(
     autoConnect: true,
     reconnection: false,
     randomizationFactor: 1,
+    transports: ["websocket"]
   }
 );
