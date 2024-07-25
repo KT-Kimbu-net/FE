@@ -5,6 +5,7 @@ import ktHitters from "#/data/gameInfo/ktPlayer/hitterData.json";
 import ncHitters from "#/data/gameInfo/ncPlayer/hitterData.json";
 import { AiOutlineExclamationCircle } from "react-icons/ai";
 import { Tooltip } from "react-tooltip";
+import { usePHPredictState } from "@/store/phPredict";
 
 export default function Hitter() {
   const { selectHitterRecord, setSelectHitterRecord } = useSelectHitterRecord(
@@ -13,6 +14,11 @@ export default function Hitter() {
       setSelectHitterRecord: state.setSelectHitterRecord,
     })
   );
+
+  const { pWinPercent, tWinPercent } = usePHPredictState((state) => ({
+    pWinPercent: state.pWinPercent,
+    tWinPercent: state.tWinPercent,
+  }));
 
   const { select } = useSelectHitterState((state) => ({
     select: state.select,
@@ -26,8 +32,14 @@ export default function Hitter() {
   const indicatorTitleStyle = "text-sm font-[Pretendard-SemiBold]";
   const indicatorContentStyle = "font-[Pretendard-SemiBold]";
 
+  const animateStyle = `w-1/2 bg-[#D4D4D4] rounded-2xl flex flex-col items-center py-6 px-5 before:content-['선택타자기록'] before:font-[Pretendard-Bold] before:border-[1px] before:py-3 before:px-8 before:rounded-xl before:text-[#242424] before:bg-white before:absolute before:top-[-2rem] before:shadow-md ${
+    tWinPercent > pWinPercent
+      ? "animate-winScale border-[1px] border-black"
+      : ""
+  }`;
+
   return (
-    <section className="w-1/2 bg-[#D4D4D4] rounded-2xl flex flex-col items-center py-6 px-5 before:content-['선택타자기록'] before:font-[Pretendard-Bold] before:border-[1px] before:py-3 before:px-8 before:rounded-xl before:text-[#242424] before:bg-white before:absolute before:top-[-2rem] before:shadow-md">
+    <section className={animateStyle}>
       <section className="flex gap-4 items-center">
         <Image
           src={player!.image}
@@ -117,7 +129,6 @@ export default function Hitter() {
               data-tooltip-id="war-tooltip"
               data-tooltip-html={`WAR은 Wins Above Replacement의 약자로 대체 선수 대비 승리 기여도입니다. 대체선수에 비해 얼마나 많은 승리에 기여했는가를 나타내는 수치입니다.<br/> 예를 들어 2010년 이대호의 WAR은 8.76이었는데 이는 2010년 이대호가 대체선수에 비해 팀에 8.76승을 더 안겨주었다는 뜻입니다.`}
             />
-            <Tooltip id="war-tooltip" place="top" style={{ width: "20rem" }} />
           </div>
           <span className={indicatorContentStyle}>{player?.WAR}</span>
         </li>

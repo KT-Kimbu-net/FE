@@ -9,6 +9,7 @@ import { Tooltip } from "react-tooltip";
 import { useSelectPictherRecord } from "@/store/gameInfo";
 import { useSelectHitterState } from "@/store/hitterSelect";
 import { useLiveScoreState } from "@/store/liveScore";
+import { usePHPredictState } from "@/store/phPredict";
 
 type TPitcher = {
   ktPitcher: string;
@@ -21,6 +22,11 @@ export default function Picther(props: TPitcher) {
       selectPictherRecord: state.selectPitcherRecord,
       setSelectPitcherRecord: state.setSelectPitcherRecord,
     }));
+
+  const { pWinPercent, tWinPercent } = usePHPredictState((state) => ({
+    pWinPercent: state.pWinPercent,
+    tWinPercent: state.tWinPercent,
+  }));
 
   const { select } = useSelectHitterState((state) => ({
     select: state.select,
@@ -37,13 +43,17 @@ export default function Picther(props: TPitcher) {
   const indicatorTitleStyle = "text-sm font-[Pretendard-SemiBold]";
   const indicatorContentStyle = "font-[Pretendard-SemiBold]";
 
+  const animateStyle = `w-1/2 bg-[#FFF4F4] rounded-2xl flex flex-col items-center py-6 px-5 before:content-['선택타자기록'] before:font-[Pretendard-Bold] before:border-[1px] before:py-3 before:px-8 before:rounded-xl before:text-[#242424] before:bg-white before:absolute before:top-[-2rem] before:shadow-md ${
+    tWinPercent < pWinPercent ? "animate-winScale border-[1px] border-main" : ""
+  }`;
+
   useEffect(() => {
     setKtPitcher(props.ktPitcher);
     setOpponentPitcher(props.opponentPitcher);
   }, []);
 
   return (
-    <section className="w-1/2 bg-[#FFF4F4] rounded-2xl flex flex-col items-center py-6 px-5 before:content-['등판투수기록'] before:font-[Pretendard-Bold] before:border-[1px] before:py-3 before:px-8 before:rounded-xl before:text-[#242424] before:bg-white before:absolute before:top-[-2rem] before:shadow-md">
+    <section className={animateStyle}>
       <section className="flex gap-4 items-center">
         {player && (
           <Image

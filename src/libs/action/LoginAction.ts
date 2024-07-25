@@ -290,7 +290,6 @@ export async function loginAction(formData: FormData) {
   userData.userId = id as string;
   userData.password = password as string;
 
-  console.log(">>>" + userData);
   const result = await fetch(`${process.env.NEXT_PUBLIC_BASEURL}/user/login`, {
     method: "POST",
     headers: {

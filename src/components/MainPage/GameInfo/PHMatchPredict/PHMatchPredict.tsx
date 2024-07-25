@@ -51,7 +51,7 @@ export default function PHMatchPredict(props: TPHMatchPredictProps) {
             opponent.pitcher ? opponent.pitcher : props.data.opponent.pitcher
           }
         />
-        <span className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] font-[Pretendard-Bold] text-[#3e3e3e] text-2xl">
+        <span className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] font-[Pretendard-Bold] text-[#3e3e3e] text-3xl z-[1]">
           vs
         </span>
         <Hitter />

@@ -4,7 +4,6 @@ import { cookies } from "next/headers";
 
 export async function getRanking(userId: string, rankType: string) {
   const url = `${process.env.NEXT_PUBLIC_BASEURL}/event/rank/${rankType}?userId=${userId}`;
-  console.log("Fetching URL:", url); // URL 확인
 
   const token = cookies().get("token")?.value;
 

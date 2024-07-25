@@ -80,7 +80,6 @@ export default function Login() {
                 setUserData(newUserData);
                 router.push("/");
               } else {
-                console.log(result);
                 alert(`로그인 실패. ${result.status} 에러가 발생했습니다.`);
                 setId("");
                 setPassword("");

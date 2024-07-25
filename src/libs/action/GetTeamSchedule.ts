@@ -1,5 +1,6 @@
 import dayjs from "dayjs";
 import { TDaySchedule } from "@/types/weekSchdule";
+import next from "next";
 
 const getCurrentDay = (): string => {
   return dayjs().format("YYYYMMDD");
@@ -28,7 +29,10 @@ const getEmptyMondayData = (date: string): TDaySchedule => ({
 
 const getScheduleData = async (yearMonth: string): Promise<TDaySchedule[]> => {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BASEURL}/get_schedule?yearMonth=${yearMonth}`
+    `${process.env.NEXT_PUBLIC_BASEURL}/get_schedule?yearMonth=${yearMonth}`,
+    {
+      next: { revalidate: 0 },
+    }
   );
   const data = await response.json();
   return data.data.list.filter(

@@ -41,6 +41,14 @@ const config: Config = {
           "0%": { transform: "scale(1.3)" },
           "100%": { transform: "scale(1)" },
         },
+        winScale: {
+          "0%, 100%": { transform: "scale(1)" },
+          "50%": { transform: "scale(1.05)" },
+        },
+        expandBackground: {
+          "0%": { width: "0%" },
+          "100%": { width: "100%" },
+        },
       },
       animation: {
         fadeIn: "fadeIn 0.5s ease-out",
@@ -49,6 +57,8 @@ const config: Config = {
         slideOutRight: "slideOutRight 0.3s ease-out",
         slideInLeft: "slideInLeft 0.3s ease-out",
         scaleDown: "scaleDown 0.5s ease-in-out",
+        winScale: "winScale 2s infinite",
+        expandBackground: "expandBackground 0.5s ease-out forwards",
       },
       colors: {
         main: "#EC1C23",

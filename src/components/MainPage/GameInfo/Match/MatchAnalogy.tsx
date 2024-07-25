@@ -96,7 +96,7 @@ export default function MatchAnalogy(props: TMatchAnalogy) {
               <Image
                 src={luck}
                 alt="luck"
-                className="absolute right-8 top-1/2 translate-y-[-50%]"
+                className="absolute right-8 top-1/2 translate-y-[-50%] w-8 h-8"
                 data-tooltip-id="kt-pitcher-tooltip"
                 data-tooltip-content={"테스트"}
               />
@@ -111,7 +111,7 @@ export default function MatchAnalogy(props: TMatchAnalogy) {
               <Image
                 src={luck}
                 alt="luck"
-                className="absolute left-8 top-1/2 translate-y-[-50%]"
+                className="absolute left-8 top-1/2 translate-y-[-50%] w-8 h-8"
                 data-tooltip-id="kia-pitcher-tooltip"
                 data-tooltip-content={"테스트"}
               />

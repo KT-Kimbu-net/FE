@@ -8,7 +8,6 @@ export type PointsResponse = {
 
 export async function sendPoints(amount: number): Promise<PointsResponse> {
   const url = `${process.env.NEXT_PUBLIC_BASEURL}/user/edit_point`;
-  console.log("Sending points to URL:", url); // URL 확인
 
   const token = cookies().get("token")?.value;
   if (!token) {
