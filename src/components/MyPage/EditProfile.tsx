@@ -4,30 +4,23 @@ import { useUserState } from "@/store/user";
 import { useEffect, useState } from "react";
 
 export default function EditProfile() {
-  const [token, setToken] = useState<string>();
   const { userData } = useUserState();
   const getHisoryHandler = async () => {
     const result = await fetch(
       `${process.env.NEXT_PUBLIC_BASEURL}/user/my_data`,
       {
-        method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `${token}`,
+          Authorization: `${document.cookie.split("token=")[1]}`,
         },
-        body: JSON.stringify({}),
       }
     );
   };
   useEffect(() => {
-    const cookie = document.cookie.split("token=")[1];
 
-    if (token) {
       getHisoryHandler();
-    } else {
-      setToken(cookie);
-    }
-  }, [token]);
+
+  }, []);
   return (
     <>
       <section className="flex items-center justify-center">

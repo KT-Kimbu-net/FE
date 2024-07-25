@@ -1,6 +1,7 @@
 import SideMenu from "@/components/Layouts/SideMenu";
 import SubHeader from "@/components/Layouts/SubHeader";
 import { mypageSideMenuData } from "@/data/sideMenu/dataMypage";
+import { redirect } from "next/navigation";
 
 type TPageProps = {
   children: React.ReactNode;
@@ -25,6 +26,9 @@ export default function layout(props: TPageProps) {
       subTitle: "크레딧 사용 & 적립 내역 조회",
     },
   };
+  if (!subHeaderontent[props.params.status]) {
+      return redirect("/");
+  }
   return (
     <>
       <SideMenu {...mypageSideMenuData} params={props.params.status} />
