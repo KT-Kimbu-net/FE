@@ -1,3 +1,5 @@
+"use client";
+
 import { useCallback } from "react";
 import { Pie } from "react-chartjs-2";
 import {
@@ -13,6 +15,7 @@ import {
 import ddory from "@/img/ddory.svg";
 import Image from "next/image";
 import { useSelectHitterState } from "@/store/hitterSelect";
+import { usePHPredictState } from "@/store/phPredict";
 
 ChartJS.register(
   CategoryScale,
@@ -29,15 +32,23 @@ export default function SelectHitterPredict() {
     select: state.select,
   }));
 
-  const generateArray = useCallback((): number[] => {
-    const first = Math.floor(Math.random() * 10) + 1;
-    const remainSum = 100 - first;
-    const second = Math.floor(Math.random() * (remainSum - 30)) + 15;
-    const third = Math.floor(Math.random() * (remainSum - second - 15)) + 15;
-    const fourth = remainSum - second - third;
+  const { pWinPercent, tWinPercent } = usePHPredictState((state) => ({
+    pWinPercent: state.pWinPercent,
+    tWinPercent: state.tWinPercent,
+  }));
 
-    return [first, second, third, fourth];
-  }, [select]);
+  const generateArray = useCallback((): number[] => {
+    const getRandomInt = (min: number, max: number) =>
+      Math.floor(Math.random() * (max - min + 1)) + min;
+
+    const homeRun = getRandomInt(1, 10);
+    const remainingPPercent = tWinPercent - homeRun;
+
+    const hit = getRandomInt(10, remainingPPercent);
+    const baseOnBalls = remainingPPercent - hit;
+
+    return [homeRun, hit, pWinPercent, baseOnBalls];
+  }, [select, tWinPercent, pWinPercent]);
 
   const options = {
     responsive: false,
@@ -57,7 +68,7 @@ export default function SelectHitterPredict() {
     labels: ["홈런", "안타", "아웃", "볼넷"],
     datasets: [
       {
-        label: "pitcher vs hitter",
+        label: "타자 예측",
         data: generateArray(),
         backgroundColor: [
           "rgb(30, 0, 255)",
