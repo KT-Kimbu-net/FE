@@ -12,7 +12,7 @@ export default function ChattingHeader() {
   }));
 
   return (
-    <header className="flex justify-between h-[10%] w-full border-b-[1px] border-gray-700 py-5 px-2">
+    <header className="flex justify-between h-[10%] w-full border-b-[1px] border-gray-700 py-7 px-2">
       <section className="flex items-center justify-between w-full">
         <strong className="font-[Pretendard-ExtraBold] text-2xl text-white flex items-center gap-2">
           <Image

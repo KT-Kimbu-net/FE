@@ -31,34 +31,40 @@ export default function PHWinRate(props: TPHWinRate) {
       ? ncPitcher.data.find((pitcher) => pitcher.name === props.opponentPitcher)
       : ktPitcher.data.find((pitcher) => pitcher.name === props.ktPitcher);
 
+  const pitcherPercentStyle = `text-white ml-2 duration-300 ${
+    pWinPercent > tWinPercent ? "scale-110" : ""
+  }`;
+
+  const hitterPercentStyle = `text-[#ABABAB] mr-2 duration-300 ${
+    pWinPercent < tWinPercent ? "scale-110" : ""
+  }`;
+
   return (
-    <section className="flex flex-col items-center mt-3.5 w-full">
-      <section className="relative flex w-full pt-5">
-        <section className="bg-main w-[100%] flex items-center rounded-2xl px-4 py-3 duration-500 ease-in-out">
-          <Image
-            src={pitcherPlayer?.image!}
-            alt="picther"
-            width={40}
-            height={52}
-            className="mr-2 w-10 h-auto"
-          />
-          <strong className="text-white">{pitcherPlayer?.name}</strong>
-          <span className="text-[#FFBEC1] ml-2">{pWinPercent}%</span>
-        </section>
-        <section
-          className="absolute right-0 bg-[#242424] w-[60%] flex items-center justify-end rounded-r-2xl [clip-path:polygon(0_0,100%_0,100%_100%,20%_100%)] px-4 py-3 duration-500 ease-in-out"
-          style={{ width: `${tWinPercent + 5}%` }}
-        >
-          <span className="text-[#ABABAB] mr-2">{tWinPercent}%</span>
-          <strong className="text-white">{hitterPlayer?.name}</strong>
-          <Image
-            src={hitterPlayer?.image!}
-            alt="picther"
-            width={40}
-            height={52}
-            className="ml-2 w-10 h-auto"
-          />
-        </section>
+    <section className="flex flex-col items-center mt-3.5 w-full relative pt-5">
+      <section className="bg-main w-full flex items-center rounded-2xl px-4 py-3 duration-500 ease-in-out">
+        <Image
+          src={pitcherPlayer?.image!}
+          alt="picther"
+          width={40}
+          height={52}
+          className="mr-2 w-10 h-auto"
+        />
+        <strong className="text-white">{pitcherPlayer?.name}</strong>
+        <span className={pitcherPercentStyle}>{pWinPercent}%</span>
+      </section>
+      <section
+        className="absolute right-0 bg-[#242424] w-[60%] flex items-center justify-end rounded-r-2xl [clip-path:polygon(0_0,100%_0,100%_100%,20%_100%)] px-4 py-3 duration-500 ease-in-out"
+        style={{ width: `${tWinPercent + 5}%` }}
+      >
+        <span className={hitterPercentStyle}>{tWinPercent}%</span>
+        <strong className="text-white">{hitterPlayer?.name}</strong>
+        <Image
+          src={hitterPlayer?.image!}
+          alt="picther"
+          width={40}
+          height={52}
+          className="ml-2 w-10 h-auto"
+        />
       </section>
     </section>
   );

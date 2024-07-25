@@ -57,7 +57,7 @@ export default function ChattingFooter() {
   };
 
   return (
-    <section className="relative h-[20%] rounded-b-2xl bg-black flex flex-col gap-2 px-2 py-2 border-t-[1px] border-gray-700">
+    <section className="relative h-1/5 rounded-b-2xl bg-black flex flex-col gap-2 px-2 py-2 border-t-[1px] border-gray-700">
       <section className="flex gap-2 items-center justify-between px-3 w-5/6">
         <section className="flex items-center">
           <span className="text-gray-500 font-[Pretendard-Medium] text-sm mr-4">

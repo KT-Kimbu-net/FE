@@ -65,7 +65,7 @@ export default function Chatting() {
     <>
       {isVisible && (
         <section
-          className={`bg-black border-[2px] rounded-2xl flex flex-col 2xl:w-[24%] 3xl:w-1/5 fixed bottom-[3%] h-2/5 right-4 z-20 ${
+          className={`bg-black border-[2px] rounded-2xl flex flex-col 2xl:w-[24%] 3xl:w-1/5 fixed bottom-[3%] h-1/2 xl:h-2/5 right-4 z-20 ${
             animate ? "animate-fadeIn" : "animate-fadeOut"
           }`}
         >

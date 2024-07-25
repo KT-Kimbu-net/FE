@@ -6,5 +6,6 @@ export const chatSocket: Socket = io(
     autoConnect: false,
     reconnection: false,
     randomizationFactor: 1,
+    transports: ["websocket"],
   }
 );

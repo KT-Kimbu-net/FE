@@ -54,16 +54,16 @@ export default function SelectHitterPredict() {
   };
 
   const data = {
-    labels: ["홈런", "안타", "삼진", "볼넷"],
+    labels: ["홈런", "안타", "아웃", "볼넷"],
     datasets: [
       {
         label: "pitcher vs hitter",
         data: generateArray(),
         backgroundColor: [
-          "rgb(255, 242, 155)",
-          "rgb(255, 99, 132)",
+          "rgb(30, 0, 255)",
           "rgb(54, 162, 235)",
-          "rgb(255, 205, 86)",
+          "rgb(255, 0, 0)",
+          "rgb(0, 129, 2)",
         ],
         hoverOffset: 4,
       },

@@ -15,8 +15,9 @@ export default function HitterList(props: THitterListProps) {
     setTWinPercent: state.setTWinPercent,
   }));
 
-  const { setSelectHitter } = useSelectHitterState((state) => ({
+  const { setSelectHitter, select } = useSelectHitterState((state) => ({
     setSelectHitter: state.setSelectHitter,
+    select: state.select,
   }));
 
   // const phPredictApiHandler = async () => {
@@ -57,7 +58,7 @@ export default function HitterList(props: THitterListProps) {
   // };
 
   const testHandler = () => {
-    const randomNumber = Math.floor(Math.random() * (60 - 50)) + 50;
+    const randomNumber = Math.floor(Math.random() * (60 - 40 + 1)) + 40;
     const barWidth = Math.floor(randomNumber);
     setPWinPercent(100 - barWidth);
     setTWinPercent(barWidth);
@@ -73,12 +74,22 @@ export default function HitterList(props: THitterListProps) {
     });
   };
 
+  const selectHitterStyle = `relative flex py-2 px-3.5 cursor-pointer w-full z-10 duration-300 box-border group ${
+    props.hData.name === select.selectHitter.name
+      ? `${props.hData.팀명 === "KT" ? "bg-main" : "bg-black"} rounded-3xl`
+      : `${
+          props.hData.팀명 === "KT"
+            ? "hover:bg-[#ffcdd3]"
+            : "hover:bg-[#848484]"
+        }`
+  }`;
+
   return (
     <li
-      className="relative flex py-2 px-3.5 cursor-pointer w-full z-10"
+      className={selectHitterStyle}
       onClick={() => {
-        changePlayer();
         // phPredictApiHandler();
+        changePlayer();
         testHandler();
       }}
     >
@@ -87,9 +98,15 @@ export default function HitterList(props: THitterListProps) {
         alt="player"
         width={32}
         height={32}
-        className="relative left-2 w-9 shadow-md h-auto"
+        className="relative left-2 w-9 h-auto"
       />
-      <section className="py-3 pl-4 pr-8 bg-[#F3F3F3] bg-opacity-50 text-sm font-[Pretendard-SemiBold] flex-1">
+      <section
+        className={`py-3 pl-4 pr-8 bg-white ${
+          select.selectHitter.name !== props.hData.name
+            ? "bg-opacity-50 group-hover:bg-white"
+            : ""
+        } rounded-xl text-sm font-[Pretendard-SemiBold] flex items-center flex-1`}
+      >
         {props.hData.order}. {props.hData.name}
       </section>
     </li>
