@@ -24,7 +24,7 @@ export default async function Match(props: TMatchProps) {
   // ]);
 
   return (
-    <section className="flex flex-col w-2/5 items-center gap-6">
+    <section className="flex flex-col w-full xl:w-2/5 items-center gap-2 xl:gap-6">
       <MatchScore
         ktScore={props.data.kt.score}
         opponentScore={props.data.opponent.score}

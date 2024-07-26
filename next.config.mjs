@@ -7,7 +7,18 @@ const nextConfig = {
   },
   reactStrictMode: false,
   images: {
-    domains: ["wizzap.ktwiz.co.kr", "statiz.sporki.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "wizzap.ktwiz.co.kr",
+        pathname: "**",
+      },
+      {
+        protocol: "https",
+        hostname: "statiz.sporki.com",
+        pathname: "**",
+      },
+    ],
   },
 };
 

@@ -31,21 +31,21 @@ export function TimeLeft(props: TTimeLefeProps) {
   }, [timeLeft]);
 
   return (
-    <section className="font-[Pretendard-SemiBold] text-[#8a8a8a] flex items-center gap-2">
-      <span className="text-base">
+    <section className="font-[Pretendard-SemiBold] text-[#8a8a8a] flex flex-col xs:flex-row items-center gap-2">
+      <span className="text-xs sm:text-base">
         {timeLeft
           ? "경기 시작 10분 전 마감됩니다"
           : "아쉽게도 오늘의 경기는 마감되었습니다"}
       </span>
       {timeLeft && (
         <section className="text-black border-[1px] rounded-xl px-2 flex items-center gap-2">
-          {`${timeLeft.hours}시간 ${timeLeft.minutes}분 ${timeLeft.seconds}초`}
+          <span className="text-xs sm:text-base">{`${timeLeft.hours}시간 ${timeLeft.minutes}분 ${timeLeft.seconds}초`}</span>
           <Image
             src={clock}
             alt="clock"
             width={24}
             height={24}
-            className="w-6 h-6"
+            className="w-4 h-4 sm:w-6 sm:h-6"
           />
         </section>
       )}

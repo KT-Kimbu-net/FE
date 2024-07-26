@@ -81,27 +81,29 @@ export default function MatchBet(props: TMatchBet) {
 
   if (isLoading) {
     return (
-      <section className="bg-white w-1/3 rounded-2xl flex flex-col items-center h-[13rem] p-5 animate-pulse"></section>
+      <section className="bg-white w-full 3xl:w-1/3 sm:rounded-2xl flex flex-col items-center h-[13rem] p-5 animate-pulse"></section>
     );
   }
 
   return (
-    <section className="bg-white w-full xl:w-1/3 rounded-2xl h-[13rem] flex flex-col gap-3 items-center p-5">
+    <section className="bg-white w-full xl:w-1/3 sm:rounded-2xl h-[13rem] flex flex-col gap-3 items-center p-5">
       {todaySchedule ? (
         <>
           <section className="flex flex-col gap-2 items-center">
             <span className="font-[Pretendard-Bold] text-response_text flex items-center gap-2">
               <Image src={ddory} alt="ddory" width={16} height={16} />
-              오늘의 경기 결과를 예측하고 크레딧을 받아가세요!
+              <span className="text-xs sm:text-base">
+                오늘의 경기 결과를 예측하고 크레딧을 받아가세요!
+              </span>
             </span>
             <TimeLeft todaySchedule={todaySchedule} />
           </section>
           <section
             className={`relative flex gap-2 items-center h-1/3 ${
-              selectBet === "무" ? "py-1.5" : ""
+              selectBet === "무" ? "py-1 xs:py-1.5" : ""
             }`}
           >
-            <span className="text-xl font-[Pretendard-ExtraBold] z-10 text-black">
+            <span className="text-base sm:text-xl font-[Pretendard-ExtraBold] z-10 text-black">
               {selectBet
                 ? selectBet === "승"
                   ? "KT"
@@ -118,7 +120,7 @@ export default function MatchBet(props: TMatchBet) {
                   alt="vs team logo"
                   width={40}
                   height={40}
-                  className="z-10"
+                  className="w-8 h-8 xs:h-10 xs:w-10 z-10"
                 />
               )
             ) : (
@@ -145,7 +147,7 @@ export default function MatchBet(props: TMatchBet) {
                 alt="kt"
                 width={32}
                 height={24}
-                className="w-auto"
+                className="w-6 h-4 xs:w-8 xs:h-6"
               />
               <section className="flex flex-col font-[Pretendard-Bold]">
                 <strong className="font-[Pretendard-SemiBold]">KT</strong>
@@ -154,7 +156,7 @@ export default function MatchBet(props: TMatchBet) {
 
             {/* 무 */}
             <section
-              className={`flex items-center justify-center absolute right-0 h-full left-1/2 translate-x-[-50%] [clip-path:polygon(0_0,80%_0%,100%_100%,20%_100%)] px-1 py-3 translate-y-[-50%] top-1/2 w-1/3 cursor-pointer ${
+              className={`flex items-center justify-center absolute right-0 h-full left-1/2 translate-x-[-50%] [clip-path:polygon(0_0,80%_0%,100%_100%,20%_100%)] px-1 translate-y-[-50%] top-1/2 w-1/3 cursor-pointer ${
                 selectBet === "무"
                   ? "bg-black text-white"
                   : "bg-[#EFECEC] text-[#242424]"
@@ -166,7 +168,7 @@ export default function MatchBet(props: TMatchBet) {
                 }
               }}
             >
-              <section className="flex flex-col font-[Pretendard-Bold] items-center p-2">
+              <section className="flex font-[Pretendard-Bold] items-center">
                 <strong className="font-[Pretendard-SemiBold]">무</strong>
               </section>
             </section>
@@ -196,7 +198,7 @@ export default function MatchBet(props: TMatchBet) {
                   alt="nc"
                   width={24}
                   height={24}
-                  className="w-auto"
+                  className="w-6 h-4 xs:w-8 xs:h-6"
                 />
               )}
             </section>
