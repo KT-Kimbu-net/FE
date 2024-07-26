@@ -76,7 +76,7 @@ export default function HitterList(props: THitterListProps) {
 
   const selectHitterStyle = `relative flex py-2 px-3.5 cursor-pointer w-full z-10 duration-300 box-border group ${
     props.hData.name === select.selectHitter.name
-      ? `${props.hData.팀명 === "KT" ? "bg-main" : "bg-black"} rounded-3xl`
+      ? `${props.hData.팀명 === "KT" ? "bg-main" : "bg-black"} rounded-[2.5rem]`
       : `${
           props.hData.팀명 === "KT"
             ? "hover:bg-[#ffcdd3]"
@@ -93,21 +93,23 @@ export default function HitterList(props: THitterListProps) {
         testHandler();
       }}
     >
-      <Image
-        src={props.hData.image}
-        alt="player"
-        width={32}
-        height={32}
-        className="relative left-2 w-9 h-auto"
-      />
       <section
-        className={`py-3 pl-4 pr-8 bg-white ${
+        className={`sm:pl-4 sm:pr-8 bg-white ${
           select.selectHitter.name !== props.hData.name
             ? "bg-opacity-50 group-hover:bg-white"
             : ""
-        } rounded-xl text-sm font-[Pretendard-SemiBold] flex items-center flex-1`}
+        } rounded-3xl font-[Pretendard-SemiBold] flex gap-2 items-center flex-1`}
       >
-        {props.hData.order}. {props.hData.name}
+        <Image
+          src={props.hData.image}
+          alt="player"
+          width={32}
+          height={32}
+          className="relative left-2 w-9 h-auto"
+        />
+        <span className="text-xs sm:text-sm">
+          {props.hData.order}. {props.hData.name}
+        </span>
       </section>
     </li>
   );

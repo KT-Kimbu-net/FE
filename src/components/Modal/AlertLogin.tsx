@@ -10,7 +10,7 @@ export default function AlertLogin() {
   const { setModalName } = useModalState();
   return (
     <>
-      <ModalLayout className="bg-white w-[430px] h-[330px]">
+      <ModalLayout className="bg-white w-[320px] sm:w-[430px] h-[330px]">
         <CloseButton textColor="text-black" />
         <div className="flex flex-col items-center justify-center relative bg-white w-full h-full rounded-[12px]">
           <Image
@@ -23,7 +23,7 @@ export default function AlertLogin() {
             로그인하지 않은 사용자입니다.
           </div>
           <div className="text-base pt-3">
-            오늘의 퀴즈를 이용하려면 <span className="font-bold">로그인</span>이
+            해당 기능을 이용하려면 <span className="font-bold">로그인</span>이
             필요합니다.
           </div>
           <div className="text-base">로그인 후 다시 클릭해주세요.</div>

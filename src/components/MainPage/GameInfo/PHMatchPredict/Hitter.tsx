@@ -28,11 +28,14 @@ export default function Hitter() {
     select.selectTeam === "KT" ? ktHitters.data : ncHitters.data
   ).find((hitter) => hitter.name === select.selectHitter.name);
 
-  const indicatorStyle = "w-full flex items-center justify-between px-4";
-  const indicatorTitleStyle = "text-sm font-[Pretendard-SemiBold]";
-  const indicatorContentStyle = "font-[Pretendard-SemiBold]";
+  const indicatorStyle =
+    "w-full flex items-center justify-between px-1 xs:px-2 sm:px-3 md:px-4";
+  const indicatorTitleStyle = "text-xs sm:text-sm font-[Pretendard-SemiBold]";
+  const indicatorContentStyle =
+    "text-sm sm:text-base font-[Pretendard-SemiBold]";
 
-  const animateStyle = `w-1/2 bg-[#D4D4D4] rounded-2xl flex flex-col items-center py-6 px-5 before:content-['선택타자기록'] before:font-[Pretendard-Bold] before:border-[1px] before:py-3 before:px-8 before:rounded-xl before:text-[#242424] before:bg-white before:absolute before:top-[-2rem] before:shadow-md ${
+  const playerImageStyle = "w-8 h-12 sm:w-12 sm:h-16";
+  const animateStyle = `w-1/2 bg-[#D4D4D4] rounded-2xl flex flex-col items-center py-6 px-3 xs:px-4 sm:px-5 before:text-sm sm:before:text-base before:content-['선택타자기록'] before:font-[Pretendard-Bold] before:border-[1px] before:py-3 before:px-8 before:rounded-xl before:text-[#242424] before:bg-white before:absolute before:top-[-2rem] before:shadow-md ${
     tWinPercent > pWinPercent
       ? "animate-winScale border-[1px] border-black"
       : ""
@@ -46,13 +49,13 @@ export default function Hitter() {
           alt="pitcher"
           width={48}
           height={64}
-          className="w-12 h-auto"
+          className={playerImageStyle}
         />
-        <strong className="text-2xl">{player!.name}</strong>
+        <strong className="text-base sm:text-2xl">{player!.name}</strong>
       </section>
       <ul className="flex gap-8 mt-4">
         <li
-          className={`font-[Pretendard-SemiBold] text-lg cursor-pointer ${
+          className={`font-[Pretendard-SemiBold] text-xs xs:text-sm sm:text-base md:text-lg cursor-pointer ${
             selectHitterRecord === "CURRENT" ? "text-main" : ""
           }`}
           onClick={() => {
@@ -62,7 +65,7 @@ export default function Hitter() {
           현재시즌
         </li>
         <li
-          className={`font-[Pretendard-SemiBold] text-lg cursor-pointer ${
+          className={`font-[Pretendard-SemiBold] text-xs xs:text-sm sm:text-base md:text-lg cursor-pointer ${
             selectHitterRecord === "RELATIVE" ? "text-main" : ""
           }`}
           onClick={() => {

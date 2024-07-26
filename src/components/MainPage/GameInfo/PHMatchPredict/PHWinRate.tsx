@@ -31,11 +31,11 @@ export default function PHWinRate(props: TPHWinRate) {
       ? ncPitcher.data.find((pitcher) => pitcher.name === props.opponentPitcher)
       : ktPitcher.data.find((pitcher) => pitcher.name === props.ktPitcher);
 
-  const pitcherPercentStyle = `text-white ml-2 duration-300 ${
+  const pitcherPercentStyle = `text-white ml-2 duration-300 text-sm sm:text-base ${
     pWinPercent > tWinPercent ? "scale-110" : ""
   }`;
 
-  const hitterPercentStyle = `text-[#ABABAB] mr-2 duration-300 ${
+  const hitterPercentStyle = `text-[#ABABAB] mr-2 duration-300 text-sm sm:text-base ${
     pWinPercent < tWinPercent ? "scale-110" : ""
   }`;
 
@@ -47,9 +47,11 @@ export default function PHWinRate(props: TPHWinRate) {
           alt="picther"
           width={40}
           height={52}
-          className="mr-2 w-10 h-auto"
+          className="mr-1 sm:mr-2 w-6 h-9 sm:w-10 sm:h-13"
         />
-        <strong className="text-white">{pitcherPlayer?.name}</strong>
+        <strong className="text-white text-sm sm:text-base">
+          {pitcherPlayer?.name}
+        </strong>
         <span className={pitcherPercentStyle}>{pWinPercent}%</span>
       </section>
       <section
@@ -57,13 +59,15 @@ export default function PHWinRate(props: TPHWinRate) {
         style={{ width: `${tWinPercent + 5}%` }}
       >
         <span className={hitterPercentStyle}>{tWinPercent}%</span>
-        <strong className="text-white">{hitterPlayer?.name}</strong>
+        <strong className="text-white text-sm sm:text-base">
+          {hitterPlayer?.name}
+        </strong>
         <Image
           src={hitterPlayer?.image!}
           alt="picther"
           width={40}
           height={52}
-          className="ml-2 w-10 h-auto"
+          className="ml-1 sm:ml-2 w-6 h-9 sm:w-10 sm:h-13"
         />
       </section>
     </section>

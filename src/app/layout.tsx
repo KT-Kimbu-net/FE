@@ -19,6 +19,12 @@ export function generateMetadata(): Metadata {
     },
   };
 }
+export const viewport = {
+  width: "device-width",
+  initialScale: 1.0,
+  maximumScale: 1,
+  userScalable: "no",
+};
 
 export default function RootLayout({
   children,

@@ -1,3 +1,4 @@
+import React from "react";
 import { TDaySchedule } from "@/types/weekSchdule";
 import DaySchedule from "./DaySchedule";
 import { getCurrentDay } from "@/utils/date";
@@ -6,42 +7,36 @@ export type TWeekSchedule = {
   currentWeekSchedule: TDaySchedule[] | undefined;
 };
 
-export default function WeekSchedule(props: TWeekSchedule) {
+export default function WeekSchedule({ currentWeekSchedule }: TWeekSchedule) {
   const currentDay = getCurrentDay();
 
   return (
-    <section className="w-full p-10 bg-black flex flex-col items-center">
-      <section className="w-3/4 flexjustify-between items-center">
-        <section className="text-white text-2xl font-[Leferi]">
+    <section className="w-full py-10 sm:p-10 bg-black flex flex-col items-center">
+      <section className="w-full 3xl:w-3/4 flex flex-col items-center">
+        <h2 className="text-white px-4 sm:px-0 text-base sm:text-2xl font-[Leferi] self-start mb-8">
           Weekend Schedule
-        </section>
-        <ul className="w-full flex [&>:first-child]:rounded-tl-xl [&>:first-child]:rounded-bl-xl [&>:last-child]:rounded-br-xl [&>:last-child]:rounded-tr-xl mt-8 gap-0.5">
-          {props.currentWeekSchedule &&
-            props.currentWeekSchedule.map(
-              (daySchedule: TDaySchedule, index) => (
-                <DaySchedule
-                  currentDay={currentDay}
-                  key={index}
-                  displayDate={daySchedule.displayDate}
-                  gameDate={daySchedule.gameDate}
-                  gmkey={daySchedule.gmkey}
-                  gtime={daySchedule.gtime}
-                  home={daySchedule.home}
-                  homeKey={daySchedule.homeKey}
-                  homeScore={daySchedule.homeScore}
-                  matchTeamCode={daySchedule.matchTeamCode}
-                  matchTeamName={daySchedule.matchTeamName}
-                  outcome={daySchedule.outcome}
-                  stadium={daySchedule.stadium}
-                  stadiumKey={daySchedule.stadiumKey}
-                  status={daySchedule.status}
-                  visit={daySchedule.visit}
-                  visitKey={daySchedule.visitKey}
-                  visitScore={daySchedule.visitScore}
-                />
-              )
+        </h2>
+        <div className="w-full h-full flex flex-col gap-2 sm:flex-row items-center">
+          <div className="flex w-full sm:w-[42.5%] justify-evenly gap-1">
+            {currentWeekSchedule?.slice(0, 3).map((daySchedule, index) => (
+              <div key={`day-${index}`} className="w-1/3 gap-1 sm:gap-0">
+                <DaySchedule {...daySchedule} />
+              </div>
+            ))}
+          </div>
+          <div className="flex justify-center items-center w-1/3 sm:w-[15%]">
+            {currentWeekSchedule && currentWeekSchedule.length > 3 && (
+              <DaySchedule key="day-3" {...currentWeekSchedule[3]} />
             )}
-        </ul>
+          </div>
+          <div className="flex w-full sm:w-[42.5%] justify-evenly gap-1">
+            {currentWeekSchedule?.slice(4, 7).map((daySchedule, index) => (
+              <div key={`day-${index + 4}`} className="w-1/3">
+                <DaySchedule {...daySchedule} />
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
     </section>
   );

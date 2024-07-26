@@ -5,7 +5,7 @@ import { matchPredictAction } from "@/libs/action/MatchPredictAction";
 import { useLiveScoreState } from "@/store/liveScore";
 
 export default function MatchPredict() {
-  const [showText, setShowText] = useState(false);
+  const [showText, setShowText] = useState(true);
   const {
     ktWinPercent,
     opponentWinPercent,
@@ -31,9 +31,9 @@ export default function MatchPredict() {
     }, 100);
   };
 
-  useEffect(() => {
-    fetchPredictData();
-  }, []);
+  // useEffect(() => {
+  //   fetchPredictData();
+  // }, []);
 
   const ktWinBarStyle =
     "bg-main px-4 py-3 rounded-bl-xl text-white font-[Pretendard-ExtraBold] transition-all duration-500 ease-in-out";
