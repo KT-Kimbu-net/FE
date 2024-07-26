@@ -45,7 +45,7 @@ export const calculateTimeLeft = (
     0
   );
 
-  if (tomorrow.getTime() - now.getTime() < 0) return undefined;
+  if (now.getTime() - tomorrow.getTime() < 0) return undefined;
 
   const difference = tomorrow.getTime() - now.getTime();
   if (difference > 0) {
