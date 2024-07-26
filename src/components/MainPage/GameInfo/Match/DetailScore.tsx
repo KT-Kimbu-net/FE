@@ -70,9 +70,9 @@ export default function DetailScore(props: TDetailScore) {
   ];
 
   return (
-    <section className="w-full flex flex-col gap-6 justify-center mt-4">
-      <section className="relative border-t-[2px] border-black w-full">
-        <span className="absolute top-1/2 left-1/2 translate-y-[-50%] translate-x-[-50%] bg-white px-2 ">
+    <section className="w-full flex flex-col gap-6 justify-center sm:mt-4">
+      <section className="relative sm:border-t-[2px] border-black w-full">
+        <span className="hidden sm:block absolute top-1/2 left-1/2 translate-y-[-50%] translate-x-[-50%] bg-white px-2 ">
           스코어
         </span>
       </section>

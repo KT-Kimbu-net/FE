@@ -47,7 +47,7 @@ export default function PHWinRate(props: TPHWinRate) {
           alt="picther"
           width={40}
           height={52}
-          className="mr-1 sm:mr-2 w-6 h-9 sm:w-10 sm:h-13"
+          className="mr-1 sm:mr-2 w-6 h-9 sm:w-10 sm:h-auto"
         />
         <strong className="text-white text-sm sm:text-base">
           {pitcherPlayer?.name}
@@ -67,7 +67,7 @@ export default function PHWinRate(props: TPHWinRate) {
           alt="picther"
           width={40}
           height={52}
-          className="ml-1 sm:ml-2 w-6 h-9 sm:w-10 sm:h-13"
+          className="ml-1 sm:ml-2 w-6 h-9 sm:w-10 sm:h-auto"
         />
       </section>
     </section>
