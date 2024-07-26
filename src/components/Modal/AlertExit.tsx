@@ -6,7 +6,7 @@ export default function AlertExit() {
   const { previousModalType, setModalName } = useModalState();
   return (
     <>
-      <ModalLayout className="bg-gray-300 w-[430px] h-[230px] border border-black">
+      <ModalLayout className="bg-gray-300 w-full h-fit border border-black">
         <div className="flex flex-col items-center justify-center relative w-full h-full rounded-[12px]">
           <div className="-mt-4 flex flex-col items-center justify-center">
             <SvgAlertExitAlert />

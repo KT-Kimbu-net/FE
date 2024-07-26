@@ -47,7 +47,7 @@ export default function QuizRanking() {
 
   return (
     <>
-      <div className="relative first-line:flex flex-col rounded-[12px] bg-opacity-100 bg-[#a42a2a] w-[500px] box-border">
+      <div className="relative first-line:flex flex-col rounded-[12px] bg-opacity-100 bg-[#a42a2a] w-full box-border">
         {/* X button */}
         <div className="absolute right-0 top-0">
           <IoIosClose
@@ -80,7 +80,7 @@ export default function QuizRanking() {
                 </select>
               </div>
               <div className="w-full pl-2 overflow-hidden">
-                <table role="table" className="w-full min-w-[480px]">
+                <table role="table" className="w-full min-w-[200px]">
                   <thead>
                     <tr role="row">
                       <TableHeader title="Rank" />

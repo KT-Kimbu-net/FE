@@ -6,7 +6,7 @@ import Progressbar from "./Common/Progressbar";
 export default function QuizLoading() {
   return (
     <>
-      <ModalLayout className="bg-[#a42a2a] w-[400px] h-[400px]">
+      <ModalLayout className="bg-[#a42a2a] w-full h-fit">
         <CloseButton />
         <div className="flex flex-col items-center justify-center relative bg-white w-full mt-9 h-full rounded-t-none rounded-b-[12px]">
           <div className="flex flex-col items-center justify-center">
