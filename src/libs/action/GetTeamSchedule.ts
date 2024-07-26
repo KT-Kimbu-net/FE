@@ -1,9 +1,21 @@
-import dayjs from "dayjs";
+import {
+  format,
+  parse,
+  addDays,
+  subDays,
+  subMonths,
+  addMonths,
+  isSameDay,
+  getDaysInMonth,
+} from "date-fns";
+import { toZonedTime } from "date-fns-tz";
 import { TDaySchedule } from "@/types/weekSchdule";
-import next from "next";
+
+const timeZone = "Asia/Seoul";
 
 const getCurrentDay = (): string => {
-  return dayjs().format("YYYYMMDD");
+  const now = toZonedTime(new Date(), timeZone);
+  return format(now, "yyyyMMdd");
 };
 
 const getEmptyMondayData = (date: string): TDaySchedule => ({
@@ -41,34 +53,34 @@ const getScheduleData = async (yearMonth: string): Promise<TDaySchedule[]> => {
 };
 
 export const getWeekSchedule = async (): Promise<TDaySchedule[]> => {
-  const today = dayjs();
-  const currentYearMonth = today.format("YYYYMM");
-  const previousYearMonth = today.subtract(1, "month").format("YYYYMM");
-  const nextYearMonth = today.add(1, "month").format("YYYYMM");
+  const today = toZonedTime(new Date(), timeZone);
+  const currentYearMonth = format(today, "yyyyMM");
+  const previousYearMonth = format(subMonths(today, 1), "yyyyMM");
+  const nextYearMonth = format(addMonths(today, 1), "yyyyMM");
 
   let currentMonthData = await getScheduleData(currentYearMonth);
 
   let previousMonthData: TDaySchedule[] = [];
   let nextMonthData: TDaySchedule[] = [];
-  if (today.date() <= 3) {
+  if (parseInt(format(today, "d")) <= 3) {
     previousMonthData = await getScheduleData(previousYearMonth);
   }
-  if (today.date() >= dayjs(today).daysInMonth() - 3) {
+  if (parseInt(format(today, "d")) >= getDaysInMonth(today) - 3) {
     nextMonthData = await getScheduleData(nextYearMonth);
   }
 
   const allData = [...previousMonthData, ...currentMonthData, ...nextMonthData];
   const sortedData = allData.sort((a, b) => a.gameDate - b.gameDate);
-  // const todayIndex = sortedData.findIndex((item) =>
-  //   dayjs(item.displayDate).isSame(today, "day")
-  // );
 
   const weekSchedule: TDaySchedule[] = [];
 
   for (let i = -3; i <= 3; i++) {
-    const date = today.add(i, "day").format("YYYYMMDD");
+    const date = format(addDays(today, i), "yyyyMMdd");
     const schedule = sortedData.find((item) =>
-      dayjs(item.displayDate).isSame(date, "day")
+      isSameDay(
+        toZonedTime(parse(item.displayDate, "yyyyMMdd", new Date()), timeZone),
+        toZonedTime(parse(date, "yyyyMMdd", new Date()), timeZone)
+      )
     );
 
     if (schedule) {
