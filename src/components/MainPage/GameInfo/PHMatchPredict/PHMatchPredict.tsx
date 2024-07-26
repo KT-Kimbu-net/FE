@@ -18,7 +18,7 @@ export default function PHMatchPredict(props: TPHMatchPredictProps) {
   const { kt, opponent } = useLiveScoreState();
 
   return (
-    <section className="flex flex-col w-2/5 items-center">
+    <section className="flex flex-col w-full xl:w-2/5 items-center">
       <div className="flex items-center gap-2">
         <section className="font-[Leferi] text-lg">투수 vs 타자 예측</section>
         <Image

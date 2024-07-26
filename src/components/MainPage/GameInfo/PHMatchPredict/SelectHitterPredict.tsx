@@ -82,7 +82,7 @@ export default function SelectHitterPredict() {
   };
 
   return (
-    <section className="relative mt-3 w-full h-full rounded-xl flex">
+    <section className="relative mt-3 w-full h-full rounded-xl flex flex-col sm:flex-row">
       <section className="flex items-center ml-5 top-[-0.5rem] self-start">
         <Image
           src={ddory}

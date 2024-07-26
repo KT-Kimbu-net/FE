@@ -21,9 +21,10 @@ export default function Floating() {
   }));
 
   const listStyle =
-    "h-1/5 flex flex-col items-center py-4 cursor-pointer hover:scale-110 duration-300 gap-2";
-  const iconStyle = "w-8 h-8";
-  const titleStyle = "text-sm";
+    "h-1/5 flex flex-col items-center justify-center cursor-pointer hover:scale-110 duration-300 gap-0.5 md:gap-1 lg:gap-1.5 xl:gap-2";
+  const iconStyle =
+    "w-4 sm:w-5 md:w-6 lg:w-7 xl:w-8 h-4 sm:h-5 md:h-6 lg:h-7 xl:h-8";
+  const titleStyle = "text-[10px] sm:text-sm";
 
   const isLoginCheckHandler = () => {
     if (getCookie("token")) setIsShow();
@@ -31,8 +32,8 @@ export default function Floating() {
   };
 
   return (
-    <section className="fixed top-[10%] right-0 h-fit bg-[rgba(0,0,0,0.7)] text-white px-1 z-20">
-      <ul className="flex flex-col justify-betweenitems-center h-full">
+    <section className="fixed top-[10%] right-0 h-1/2 bg-[rgba(0,0,0,0.7)] text-white px-1 z-20">
+      <ul className="flex flex-col gap-0.5 sm:gap-1 md:gap-1.5 xl:gap-2 justify-betweenitems-center h-full py-4">
         <li className={listStyle}>
           <Image
             src={ticket}

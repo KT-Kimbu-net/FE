@@ -24,7 +24,7 @@ export default async function GameInfo(props: TGameInfoProps) {
   );
 
   return (
-    <section className="bg-white w-3/4 px-8 py-8 flex justify-between rounded-xl">
+    <section className="bg-white w-full 3xl:w-3/4 px-2 md:px-4 lg:px-6 xl:px-8 py-8 flex flex-col gap-10 xl:flex-row sm:justify-between border-t-gray-500 border-t-[1px] sm:border-none sm:rounded-xl">
       <Match
         data={liveInfo!.data}
         vsTeamData={vsTeamInfo}

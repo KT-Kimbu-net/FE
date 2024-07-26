@@ -16,10 +16,10 @@ export default async function Page() {
 
   return (
     <section className="flex flex-col items-center justify-center w-full h-full">
-      <section className="p-10 w-full h-full flex flex-col gap-12 bg-[url('/img/BgImage.png')] bg-cover items-center">
+      <section className="sm:p-10 w-full h-full flex flex-col gap-6 sm:gap-12 bg-[url('/img/BgImage.png')] bg-cover items-center">
         <GameInfo teamsData={leagueRanking?.data} weekSchedule={weekSchedule} />
         {/* <GameInfoTest /> */}
-        <section className="flex flex-col xl:flex-row gap-8 md:gap-14 w-full 2xl:w-3/4">
+        <section className="flex flex-col xl:flex-row gap-8 md:gap-14 w-full 3xl:w-3/4">
           <MatchBet weekSchedule={weekSchedule} />
           <Shortcuts />
         </section>

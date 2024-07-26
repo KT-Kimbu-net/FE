@@ -23,8 +23,10 @@ export default function DetailScore(props: TDetailScore) {
     setOpponentWinPercent,
     ktWinPercent,
   } = useLiveScoreState();
-  const inningThStyle = "w-10 font-medium";
-  const inningTdStyle = "px-2 text-center";
+  const inningThStyle =
+    "text-xs sm:text-base w-4 md:w-6 lg:w-8 xl:w-10 font-medium";
+  const inningTdStyle =
+    "xl:px-2 text-xs sm:text-base w-4 md:w-6 lg:w-8 xl:w-10 text-center";
   const inningsCount = 9;
 
   const fullKtScore = Array.from({ length: inningsCount }, (_, i) =>
@@ -77,29 +79,41 @@ export default function DetailScore(props: TDetailScore) {
       <table className="border-collapse w-full">
         <thead className="bg-gray-800">
           <tr className="text-white">
-            <th scope="col" className="rounded-tl-xl w-20"></th>
+            <th scope="col" className="rounded-tl-xl w-10 sm:w-20"></th>
             {Array.from({ length: inningsCount }, (_, i) => (
               <th scope="col" className={inningThStyle} key={i + 1}>
                 {i + 1}
               </th>
             ))}
-            <th scope="col" className="w-10">
-              <span>R</span>
+            <th
+              scope="col"
+              className="text-sm sm:text-base w-4 md:w-6 lg:w-8 xl:w-10"
+            >
+              <span className="text-xs sm:text-base">R</span>
             </th>
-            <th scope="col" className="w-10">
-              <span>H</span>
+            <th
+              scope="col"
+              className="text-sm sm:text-base w-4 md:w-6 lg:w-8 xl:w-10"
+            >
+              <span className="text-xs sm:text-base">H</span>
             </th>
-            <th scope="col" className="w-10">
-              <span>E</span>
+            <th
+              scope="col"
+              className="text-sm sm:text-base w-4 md:w-6 lg:w-8 xl:w-10"
+            >
+              <span className="text-xs sm:text-base">E</span>
             </th>
-            <th scope="col" className="w-10 rounded-tr-xl">
-              <span>B</span>
+            <th
+              scope="col"
+              className="text-sm sm:text-base w-4 md:w-6 lg:w-8 xl:w-10 rounded-tr-xl"
+            >
+              <span className="text-xs sm:text-base">B</span>
             </th>
           </tr>
         </thead>
         <tbody>
           <tr className="bg-[#f3f3f3]">
-            <td className="px-2 border-r-[1px] border-white font-[Pretendard-SemiBold] text-center">
+            <td className="px-1 xl:px-2 border-r-[1px] text-xs sm:text-base border-white font-[Pretendard-SemiBold] text-center">
               {props.ktTeamData?.팀}
             </td>
             {ktRow.map((score, index) => (
@@ -109,7 +123,7 @@ export default function DetailScore(props: TDetailScore) {
             ))}
           </tr>
           <tr className="bg-[#f3f3f3] border-t-[1px] border-white">
-            <td className="px-2 rounded-bl-xl border-r-[1px] border-white font-[Pretendard-SemiBold] text-center">
+            <td className=" rounded-bl-xl border-r-[1px] text-xs sm:text-base  border-white font-[Pretendard-SemiBold] text-center">
               {props.vsTeamData?.팀}
             </td>
             {opponentRow.map((score, index) => (

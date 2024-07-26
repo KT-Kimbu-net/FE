@@ -16,7 +16,6 @@ export default function ChangeNcScore() {
     if (gameSocket.disconnected) {
       gameSocket.connect();
     }
-    console.log("submit", true, score);
     gameSocket.emit(
       "changeScore",
       {
@@ -26,8 +25,6 @@ export default function ChangeNcScore() {
       (error: string | null) => {
         if (error) {
           console.error("Emit failed:", error);
-        } else {
-          console.log("Emit successful");
         }
       }
     );

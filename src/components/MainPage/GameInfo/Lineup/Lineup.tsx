@@ -25,11 +25,11 @@ export default function Lineup(props: TLineup) {
   );
 
   return (
-    <section className="relative flex flex-col items-center h-[45rem]">
+    <section className="bg-blacksm:bg-white relative flex flex-col items-center h-1/2 xl:h-[45rem]">
       <section className="font-[Leferi] text-lg">LineUp</section>
-      <section className="flex flex-col flex-1 h-full">
+      <section className="flex justify-between flew-row xl:flex-col flex-1 h-fit sm:h-full w-full">
         <section className="relative w-full flex flex-col h-1/2">
-          <ul className="flex py-3.5 flex-col gap-1 border-[3px] border-[rgba(0,0,0,0.1)] items-center mt-3 w-full rounded-2xl overflow-y-auto scrollbar-hide h-full">
+          <ul className="flex py-3.5 flex-col gap-1 border-[3px] border-[rgba(0,0,0,0.1)] items-center mt-3 w-full rounded-2xl overflow-y-auto scrollbar-hide h-[10rem] xl:h-full">
             <li className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] z-10">
               <Image
                 src={kt}
@@ -45,7 +45,7 @@ export default function Lineup(props: TLineup) {
           </ul>
         </section>
         <section className="relative w-full h-1/2">
-          <ul className="flex py-3.5 flex-col gap-1 border-[3px] border-[rgba(0,0,0,0.1)] items-center mt-3 w-full rounded-2xl overflow-y-auto overflow-x-visible scrollbar-hide h-full">
+          <ul className="flex py-3.5 flex-col gap-1 border-[3px] border-[rgba(0,0,0,0.1)] items-center mt-3 w-full rounded-2xl overflow-y-auto overflow-x-visible scrollbar-hide h-[10rem] xl:h-full">
             <li className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] z-10">
               <Image
                 src={nc}
