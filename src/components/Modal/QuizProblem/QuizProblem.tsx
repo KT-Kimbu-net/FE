@@ -81,7 +81,7 @@ export default function QuizProblem() {
   };
   return (
     <>
-      <ModalLayout className="bg-[#a42a2a] w-[500px] h-[550px]">
+      <ModalLayout className="bg-[#a42a2a] w-full h-[550px]">
         <CloseButton textColor="text-white" onClick={handleProblemExit} />
         <QuizProblemBody
           problem={answers[problemIndex]?.question ?? ""}

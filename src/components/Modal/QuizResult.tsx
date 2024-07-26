@@ -38,7 +38,7 @@ export default function QuizResult() {
 
   return (
     <>
-      <ModalLayout className="bg-[#a42a2a] w-[500px] h-[500px]">
+      <ModalLayout className="bg-[#a42a2a] w-full h-fit">
         <CloseButton />
         <div className="flex flex-col items-center justify-center relative bg-white w-full mt-9 h-full rounded-t-none rounded-b-[12px]">
           <div className="text-left w-[90%]">
