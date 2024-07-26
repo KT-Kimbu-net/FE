@@ -7,13 +7,10 @@ type TTimeLeftInfo = {
   seconds: number;
 };
 
-export const getCurrentDay = () => {
-  const now = new Date();
-  const year = String(now.getFullYear());
-  const month = String(now.getMonth() + 1).padStart(2, "0");
-  const day = String(now.getDate()).padStart(2, "0");
-  const currentDay = year.concat(month.concat(day));
-  return currentDay;
+export const getCurrentDay = (): string => {
+  const timeZone = "Asia/Seoul";
+  const now = toZonedTime(new Date(), timeZone);
+  return format(now, "yyyyMMdd");
 };
 
 export const formatDate = (inputDate: string): string => {
