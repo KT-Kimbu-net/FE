@@ -74,9 +74,9 @@ export default function HitterList(props: THitterListProps) {
     });
   };
 
-  const selectHitterStyle = `relative flex py-2 px-3.5 cursor-pointer w-full z-10 duration-300 box-border group ${
+  const selectHitterStyle = `relative flex py-1 px-2.5 xs:py-1.5 xs:px-3 sm:py-2 sm:px-3.5 cursor-pointer w-full z-10 duration-300 box-border group ${
     props.hData.name === select.selectHitter.name
-      ? `${props.hData.팀명 === "KT" ? "bg-main" : "bg-black"} rounded-[2.5rem]`
+      ? `${props.hData.팀명 === "KT" ? "bg-main" : "bg-black"}`
       : `${
           props.hData.팀명 === "KT"
             ? "hover:bg-[#ffcdd3]"
@@ -94,18 +94,18 @@ export default function HitterList(props: THitterListProps) {
       }}
     >
       <section
-        className={`sm:pl-4 sm:pr-8 bg-white ${
+        className={`sm:pl-4 sm:pr-8 justify-center bg-white ${
           select.selectHitter.name !== props.hData.name
             ? "bg-opacity-50 group-hover:bg-white"
             : ""
-        } rounded-3xl font-[Pretendard-SemiBold] flex gap-2 items-center flex-1`}
+        } font-[Pretendard-SemiBold] flex gap-2 items-center flex-1`}
       >
         <Image
           src={props.hData.image}
           alt="player"
           width={32}
           height={32}
-          className="relative left-2 w-9 h-auto"
+          className="relative sm:left-2 w-6 h-auto xs:w-7 sm:w-8"
         />
         <span className="text-xs sm:text-sm">
           {props.hData.order}. {props.hData.name}

@@ -17,9 +17,9 @@ export default function MatchAnalogy(props: TMatchAnalogy) {
     "text-center text-sm sm:text-base sm:py-2 text-gray-700 font-[Pretendard-Medium]";
 
   return (
-    <section className="w-full flex justify-center mt-4 flex-col">
-      <section className="relative border-t-[2px] border-black w-full">
-        <span className="absolute top-1/2 left-1/2 translate-y-[-50%] translate-x-[-50%] bg-white px-2">
+    <section className="w-full flex justify-center sm:mt-4 flex-col">
+      <section className="relative sm:border-t-[2px] border-black w-full">
+        <span className="hidden sm:block absolute top-1/2 left-1/2 translate-y-[-50%] translate-x-[-50%] bg-white px-2">
           팀 전력비교
         </span>
       </section>
