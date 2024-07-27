@@ -42,8 +42,8 @@ export default function page() {
   }, [checkedItems, isCongestion, markersData]);
 
   return (
-    <div className="relative container mx-auto px-4 flex justify-center my-5 rounded-2xl">
-      <div id="map" className="w-full h-svh"></div>
+    <div className="relative container mx-auto px-4 flex rounded-2xl">
+      <div id="map" className="w-full h-screen"></div>
       {/* 플로팅 */}
       <div className="absolute bg-white bg-opacity-70 top-5 left-5 text-blue-500 font-sans text-xl text-center z-10 py-3 rounded-3xl font-semibold border-spacing-x-5 border border-blue-500 border-b-4 border-r-4 border-opacity-50">
         <div>

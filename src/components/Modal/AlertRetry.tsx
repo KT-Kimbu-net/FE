@@ -5,7 +5,7 @@ import CloseButton from "./Common/CloseButton";
 export default function AlertRetry() {
   return (
     <>
-      <ModalLayout className="bg-white w-[430px] h-[250px]">
+      <ModalLayout className="bg-white w-full h-[250px]">
         <CloseButton textColor="text-black" />
         <div className="flex flex-col items-center justify-center relative bg-white w-full h-full rounded-[12px]">
           <div className="-mt-6 flex flex-col items-center justify-center">

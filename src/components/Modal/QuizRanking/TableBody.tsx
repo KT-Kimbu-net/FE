@@ -32,7 +32,7 @@ export default function TableBody({
         key={index}
         className={index === 0 ? "bg-yellow-100 bg-opacity-50 rounded-3xl" : ""}
       >
-        <td className="py-3 text-sm" role="cell">
+        <td className="py-1 xs:py-2 sm:py-3 text-sm" role="cell">
           <div className="flex items-center gap-2">
             <div className="h-[30px] w-[30px] rounded-full">
               {loading ? (
