@@ -44,9 +44,7 @@ export const calculateTimeLeft = (
     timeZone
   );
 
-  if (differenceInMilliseconds(tomorrow, now) < 0) {
-    tomorrow = addDays(tomorrow, 1);
-  }
+  if (differenceInMilliseconds(tomorrow, now) < 0) return undefined;
 
   const difference = differenceInMilliseconds(tomorrow, now);
 
