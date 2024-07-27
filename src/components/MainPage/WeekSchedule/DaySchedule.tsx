@@ -62,6 +62,11 @@ export default function DaySchedule(props: TDaySchedule) {
           경기중
         </section>
       )}
+      {props.status === "1" && (
+        <section className="font-[Pretendard-Bold] text-base sm:text-2xl">
+          경기준비중
+        </section>
+      )}
       {!props.status && (
         <button className="w-full bg-[#f3f3f3] py-2 sm:py-3 font-[Pretendard-SemiBold] text-xs xs:text-sm rounded-[10px] shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)]">
           예매하기
