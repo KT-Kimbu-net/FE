@@ -13,14 +13,15 @@ import { useUserState } from "@/store/user";
 import imgLogoBlack from "@/img/img-logo-black.svg";
 import { useGameBetState } from "@/store/resultBet";
 import { getMyDataAction } from "@/libs/action/GetMyDataAction";
+import { useRouter } from "next/navigation";
 
 export default function Header() {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-
   const { userData, resetUserData, setUserData } = useUserState();
+  const router = useRouter();
   const { setSelectBet } = useGameBetState();
   const { setIsShow, isShow } = useChatState((state) => ({
     isShow: state.isShow,
@@ -55,7 +56,10 @@ export default function Header() {
   };
 
   const toggleUserMenu = () => {
-    setIsUserMenuOpen(!isUserMenuOpen);
+    if (getCookie("token")) {
+      console.log("active");
+      router.push("/mypage/editprofile");
+    } else setIsUserMenuOpen(!isUserMenuOpen);
   };
 
   useEffect(() => {
@@ -70,7 +74,7 @@ export default function Header() {
     <>
       <header className="bg-white sticky top-0 left-0 w-full z-20">
         <div className="sm:px-6 lg:px-8">
-          <div className="hidden md:flex h-16 relative border-b border-gray-200">
+          <div className="hidden xl:flex h-16 relative border-b border-gray-200">
             {/* 좌측 로고 */}
             <div className="absolute left-0 top-1/2 translate-y-[-50%]">
               <Link href="/">

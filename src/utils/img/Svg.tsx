@@ -14,6 +14,7 @@ export const SvgQuizProblemLoading = () => {
         strokeLinecap="round"
         strokeWidth="2"
         d="M12 3C16.9706 3 21 7.02944 21 12"
+        fillRule="evenodd"
       >
         <animate
           fill="freeze"
@@ -41,7 +42,11 @@ export const SvgAlertExitAlert = () => {
         height="80"
         viewBox="0 0 24 24"
       >
-        <path fill="currentColor" d="M13 14h-2V9h2m0 9h-2v-2h2M1 21h22L12 2z" />
+        <path
+          fill="currentColor"
+          d="M13 14h-2V9h2m0 9h-2v-2h2M1 21h22L12 2z"
+          fillRule="evenodd"
+        />
       </svg>
     </>
   );
@@ -64,7 +69,7 @@ export const SvgQuizResultCheck = () => {
           strokeWidth="2"
         >
           <rect width="18" height="18" x="3" y="3" rx="4" />
-          <path d="m9 12l2.25 2L15 10" />
+          <path d="m9 12l2.25 2L15 10" fillRule="evenodd" />
         </g>
       </svg>
     </>

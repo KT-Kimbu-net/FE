@@ -37,7 +37,7 @@ export default function HeaderMobile({
   };
 
   return (
-    <div className="md:hidden">
+    <div className="xl:hidden shadow-md">
       <div className="flex justify-between items-center h-16 px-4">
         <button
           className="inline-flex items-center justify-center p-2 rounded-md text-black hover:text-black focus:outline-none focus:ring-2 focus:ring-inset focus:ring-black"
@@ -56,6 +56,7 @@ export default function HeaderMobile({
                 strokeLinejoin="round"
                 strokeWidth={2}
                 d="M6 18L18 6M6 6l12 12"
+                fillRule="evenodd"
               />
             </svg>
           ) : (
@@ -71,6 +72,7 @@ export default function HeaderMobile({
                 strokeLinejoin="round"
                 strokeWidth={2}
                 d="M4 6h16M4 12h16m-7 6h7"
+                fillRule="evenodd"
               />
             </svg>
           )}
@@ -95,6 +97,7 @@ export default function HeaderMobile({
                 strokeLinejoin="round"
                 strokeWidth={2}
                 d="M6 18L18 6M6 6l12 12"
+                fillRule="evenodd"
               />
             </svg>
           ) : (
@@ -108,6 +111,7 @@ export default function HeaderMobile({
               <path
                 fill="#000"
                 d="M5.5 5a3 3 0 116 0 3 3 0 01-6 0zm3-5a5 5 0 100 10 5 5 0 000-10zm7 0h-1v2h1a3 3 0 010 6h-1v2h1a5 5 0 100-10zM0 17a5 5 0 015-5h7a5 5 0 015 5v2h-2v-2a3 3 0 00-3-3H5a3 3 0 00-3 3v2H0v-2zm24 0a5 5 0 00-5-5h-1v2h1a3 3 0 013 3v2h2v-2z"
+                fillRule="evenodd"
               ></path>
             </svg>
           )}
@@ -136,6 +140,7 @@ export default function HeaderMobile({
                       <path
                         fill="currentColor"
                         d="m1 7.4l.7.7l6-6l6 6l.7-.7L8.1 1h-.7zm0 6l.7.7l6-6l6 6l.7-.7L8.1 7h-.7z"
+                        fillRule="evenodd"
                       />
                     </svg>
                   ) : (
@@ -147,9 +152,9 @@ export default function HeaderMobile({
                     >
                       <path
                         fill="currentColor"
-                        fill-rule="evenodd"
                         d="M14.207 1.707L13.5 1l-6 6l-6-6l-.707.707l6.353 6.354h.708zm0 6L13.5 7l-6 6l-6-6l-.707.707l6.353 6.354h.708z"
                         clip-rule="evenodd"
+                        fillRule="evenodd"
                       />
                     </svg>
                   )}
