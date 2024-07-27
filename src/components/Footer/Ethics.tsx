@@ -7,15 +7,15 @@ interface EthicsProps {
 
 export default function Ethics({ onClose, content }: EthicsProps) {
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-      <div className="bg-white p-8 rounded-lg max-w-lg w-full">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-20">
+      <div className="bg-white p-4 sm:p-8 rounded-lg max-w-lg w-4/5">
         <div className="flex justify-between items-center mb-4">
-          <h4 className="text-xl font-semibold">{content}</h4>
+          <h4 className="text-lg sm:text-xl font-semibold">{content}</h4>
           <button className="text-gray-500" onClick={onClose}>
             닫기
           </button>
         </div>
-        <div className="text-gray-700">
+        <div className="text-gray-700 text-xs sm:text-base">
           <p>
             {`"사이버 신문고란" 건전한 기업윤리원칙에서 벗어나는 임직원 및 선수의`}
             부정, 부조리행위를 신고하거나,

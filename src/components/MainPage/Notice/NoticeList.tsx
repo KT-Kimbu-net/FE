@@ -1,3 +1,5 @@
+"use client";
+
 import Image, { StaticImageData } from "next/image";
 
 export default function NoticeList(props: { image: StaticImageData }) {
