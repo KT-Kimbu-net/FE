@@ -82,8 +82,8 @@ export default function SelectHitterPredict() {
   };
 
   return (
-    <section className="relative mt-3 w-full h-full rounded-xl flex flex-col sm:flex-row">
-      <section className="flex items-center ml-5 top-[-0.5rem] self-start">
+    <section className="relative mt-3 w-full h-full rounded-xl flex justify-end sm:justify-center flex-col sm:flex-row">
+      <section className="sm:absolute left-0 flex w-full items-center ml-5 top-[-0.5rem] self-start">
         <Image
           src={ddory}
           alt="ddory"
@@ -93,7 +93,9 @@ export default function SelectHitterPredict() {
         />
         <span className="text-main font-[Pretendard-Bold]">선택타자 예측</span>
       </section>
-      <Pie data={data} options={options} />
+      <section className="flex justify-end sm:justify-center w-full">
+        <Pie data={data} options={options} />
+      </section>
     </section>
   );
 }

@@ -94,7 +94,9 @@ export default function MatchAnalogy(props: TMatchAnalogy) {
                 alt="luck"
                 className="absolute right-4 sm:right-8 top-1/2 translate-y-[-50%] w-4 h-4 sm:w-8 sm:h-8"
                 data-tooltip-id="kt-pitcher-tooltip"
-                data-tooltip-content={"테스트"}
+                data-tooltip-content={
+                  "상대 선수의 오심으로 인해 기회를 잡을 수 있어요. 상대 타자의 슥격을 강조하며 결정적인 선구압박을 주면 경기 운을 바꿀 수 있겠어요. 선구의 장점을 살려 강한 스트라이크를 집중적으로 던지면 패배 위기를 승리로 뒤집을 수 있어요. 공을 세밀하게 제어하며 승리라는 목표를 명심해요."
+                }
               />
               <Tooltip
                 id="kt-pitcher-tooltip"
@@ -109,7 +111,9 @@ export default function MatchAnalogy(props: TMatchAnalogy) {
                 alt="luck"
                 className="absolute left-4 sm:left-8 top-1/2 translate-y-[-50%] w-4 h-4 sm:w-8 sm:h-8"
                 data-tooltip-id="kia-pitcher-tooltip"
-                data-tooltip-content={"테스트"}
+                data-tooltip-content={
+                  "상대 선수의 오심으로 인해 기회를 잡을 수 있어요. 상대 타자의 슥격을 강조하며 결정적인 선구압박을 주면 경기 운을 바꿀 수 있겠어요. 선구의 장점을 살려 강한 스트라이크를 집중적으로 던지면 패배 위기를 승리로 뒤집을 수 있어요. 공을 세밀하게 제어하며 승리라는 목표를 명심해요."
+                }
               />
               <Tooltip
                 id="kia-pitcher-tooltip"

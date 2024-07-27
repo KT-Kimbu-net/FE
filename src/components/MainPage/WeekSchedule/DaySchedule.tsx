@@ -6,8 +6,9 @@ import { getTeamLogo } from "@/utils/gameInfo";
 export default function DaySchedule(props: TDaySchedule) {
   const teamLogoStyle = "w-8 h-6 sm:w-14 sm:h-12";
   const locationStyle =
-    "font-[Pretendard-SemiBold] text-xs xs:text-sm sm:text-lg text-gray-600";
-  const dateStyle = "font-[Leferi] text-xs xs:text-sm sm:text-2xl";
+    "font-[Pretendard-SemiBold] text-xs md:text-sm lg:text-base xl:text-lg text-gray-600";
+  const dateStyle =
+    "font-[Leferi] text-xs xs:text-sm md:text-base lg:text-xl xl:text-2xl";
 
   const getTeamLogoHandler = () => {
     if (props.stadium === "수원") {
