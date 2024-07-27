@@ -40,12 +40,12 @@ export default function QuizResult() {
     <>
       <ModalLayout className="bg-[#a42a2a] w-full h-fit">
         <CloseButton />
-        <div className="flex flex-col items-center justify-center relative bg-white w-full mt-9 h-full rounded-t-none rounded-b-[12px]">
+        <div className="flex flex-col items-center justify-center relative bg-white w-fit mt-9 h-full rounded-t-none rounded-b-[12px]">
           <div className="text-left w-[90%]">
-            <div className="tracking-wider text-2xl font-bold">
+            <div className="tracking-wider text-xl sm:text-2xl font-bold">
               오늘의 퀴즈 결과는?
             </div>
-            <div className="mt-2 text-center text-base pt-2 bg-slate-200 rounded-2xl pl-2 pb-2">
+            <div className="mt-2 text-center text-sm sm:text-base pt-2 bg-slate-200 rounded-2xl pl-2 pb-2">
               <div>
                 <span className="text-blue-500 font-bold">
                   {userData?.nickname || "사용자 "} 님{" "}
@@ -60,14 +60,16 @@ export default function QuizResult() {
             <div className="pt-5 flex items-center transform transition duration-500 ease-in-out hover:scale-105">
               <SvgQuizResultCheck />
               <div>
-                <div className="pl-5 text-lg font-bold">
+                <div className="pl-5 text-base sm:text-lg font-bold">
                   기본 참여 크레딧을 제공합니다!
                 </div>
-                <div className="pl-5 text-sm">
+                <div className="pl-5 text-xs sm:text-sm">
                   내일도 참여하면 추가 포인트가 제공됩니다.
                 </div>
               </div>
-              <div className="ml-auto font-bold text-red-500 pr-2">+30</div>
+              <div className="ml-auto font-bold text-red-500 pr-2 text-base">
+                +30
+              </div>
             </div>
             <div className="mt-3 border-t border-gray-200 w-full"></div>
             {answers.slice(1).map((element, index) => (
@@ -75,18 +77,18 @@ export default function QuizResult() {
                 <div className="pt-3 flex items-center transform transition duration-500 ease-in-out hover:scale-105">
                   <SvgQuizResultCheck />
                   <div>
-                    <div className="pl-5 text-lg font-bold">
+                    <div className="pl-5 text-base sm:text-lg font-bold">
                       {index + 1}번 정답은 {element.answer}입니다.
                     </div>
                     <div
-                      className="pl-5 text-sm overflow-hidden text-ellipsis whitespace-nowrap max-w-[40ch]"
+                      className="pl-5 text-xs xs:text-sm overflow-hidden text-ellipsis whitespace-nowrap max-w-[40ch]"
                       title={element.explanation}
                     >
                       {element.explanation}
                     </div>
                   </div>
                   <div
-                    className={`ml-auto font-bold pr-2 ${
+                    className={`ml-auto font-bold pr-2 text-base ${
                       resultArr[index + 1]
                         ? "text-red-500"
                         : "text-gray-500 line-through"

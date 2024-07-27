@@ -57,8 +57,8 @@ export default function Header() {
 
   const toggleUserMenu = () => {
     if (getCookie("token")) {
-      console.log("active");
-      router.push("/mypage/editprofile");
+      if (isUserMenuOpen) setIsUserMenuOpen(!isUserMenuOpen);
+      else router.push("/mypage/editprofile");
     } else setIsUserMenuOpen(!isUserMenuOpen);
   };
 
